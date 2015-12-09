@@ -31,6 +31,9 @@
                         <constraint firstAttribute="height" constant="30" id="cF1-F5-Zah"/>
                     </constraints>
                     <state key="normal" title="忘记密码"/>
+                    <connections>
+                        <action selector="forgetPassTap:" destination="-1" eventType="touchUpInside" id="EFS-CW-o6z"/>
+                    </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="THi-nP-Luf">
                     <rect key="frame" x="8" y="211" width="524" height="30"/>

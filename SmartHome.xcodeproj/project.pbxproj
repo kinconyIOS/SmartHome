@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		980A92F61C17B440009166D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A92F51C17B440009166D0 /* AppDelegate.swift */; };
-		980A92F81C17B440009166D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A92F71C17B440009166D0 /* ViewController.swift */; };
 		980A92FB1C17B440009166D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 980A92F91C17B440009166D0 /* Main.storyboard */; };
 		980A92FE1C17B440009166D0 /* SmartHome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 980A92FC1C17B440009166D0 /* SmartHome.xcdatamodeld */; };
 		980A93001C17B440009166D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 980A92FF1C17B440009166D0 /* Assets.xcassets */; };
 		980A93031C17B440009166D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 980A93011C17B440009166D0 /* LaunchScreen.storyboard */; };
 		980A930E1C17B441009166D0 /* SmartHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A930D1C17B441009166D0 /* SmartHomeTests.swift */; };
 		980A93191C17B441009166D0 /* SmartHomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A93181C17B441009166D0 /* SmartHomeUITests.swift */; };
+		983FE2E91C1821B6004B89CE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983FE2E81C1821B6004B89CE /* Helper.swift */; };
 		98B8A39D1C1815BE00A584D3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A39C1C1815BE00A584D3 /* libsqlite3.tbd */; };
 		98B8A39F1C1815E700A584D3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A39E1C1815E700A584D3 /* libz.tbd */; };
 		98B8A3A11C1815FF00A584D3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A3A01C1815FF00A584D3 /* libc++.tbd */; };
@@ -55,8 +55,6 @@
 		C24FD2BB1C18043700B16BF2 /* SetRomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2641C18043600B16BF2 /* SetRomeVC.swift */; };
 		C24FD2BC1C18043700B16BF2 /* SetRomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD2651C18043600B16BF2 /* SetRomeVC.xib */; };
 		C24FD2BD1C18043700B16BF2 /* libGexinSdk-1.1.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C24FD26B1C18043600B16BF2 /* libGexinSdk-1.1.1.a */; };
-		C24FD2BE1C18043700B16BF2 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD26E1C18043600B16BF2 /* GCDAsyncUdpSocket.m */; };
-		C24FD2BF1C18043700B16BF2 /* libSmartLinkV30Lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C24FD2701C18043600B16BF2 /* libSmartLinkV30Lib.a */; };
 		C24FD2C01C18043700B16BF2 /* QRCameraSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2731C18043600B16BF2 /* QRCameraSwitchButton.m */; };
 		C24FD2C11C18043700B16BF2 /* QRCodeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2751C18043600B16BF2 /* QRCodeReader.m */; };
 		C24FD2C21C18043700B16BF2 /* QRCodeReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2781C18043600B16BF2 /* QRCodeReaderView.m */; };
@@ -99,7 +97,6 @@
 /* Begin PBXFileReference section */
 		980A92F21C17B440009166D0 /* SmartHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		980A92F51C17B440009166D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		980A92F71C17B440009166D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		980A92FA1C17B440009166D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		980A92FD1C17B440009166D0 /* SmartHome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartHome.xcdatamodel; sourceTree = "<group>"; };
 		980A92FF1C17B440009166D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -111,6 +108,7 @@
 		980A93141C17B441009166D0 /* SmartHomeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartHomeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		980A93181C17B441009166D0 /* SmartHomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeUITests.swift; sourceTree = "<group>"; };
 		980A931A1C17B441009166D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		983FE2E81C1821B6004B89CE /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		98B8A39C1C1815BE00A584D3 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		98B8A39E1C1815E700A584D3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		98B8A3A01C1815FF00A584D3 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -154,10 +152,6 @@
 		C24FD2691C18043600B16BF2 /* GexinSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GexinSdk.h; sourceTree = "<group>"; };
 		C24FD26A1C18043600B16BF2 /* GXSdkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXSdkError.h; sourceTree = "<group>"; };
 		C24FD26B1C18043600B16BF2 /* libGexinSdk-1.1.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGexinSdk-1.1.1.a"; sourceTree = "<group>"; };
-		C24FD26D1C18043600B16BF2 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
-		C24FD26E1C18043600B16BF2 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
-		C24FD26F1C18043600B16BF2 /* HFSmtlkV30.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSmtlkV30.h; sourceTree = "<group>"; };
-		C24FD2701C18043600B16BF2 /* libSmartLinkV30Lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSmartLinkV30Lib.a; sourceTree = "<group>"; };
 		C24FD2721C18043600B16BF2 /* QRCameraSwitchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCameraSwitchButton.h; sourceTree = "<group>"; };
 		C24FD2731C18043600B16BF2 /* QRCameraSwitchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCameraSwitchButton.m; sourceTree = "<group>"; };
 		C24FD2741C18043600B16BF2 /* QRCodeReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReader.h; sourceTree = "<group>"; };
@@ -211,7 +205,6 @@
 				98B8A39F1C1815E700A584D3 /* libz.tbd in Frameworks */,
 				98B8A39D1C1815BE00A584D3 /* libsqlite3.tbd in Frameworks */,
 				C24FD2BD1C18043700B16BF2 /* libGexinSdk-1.1.1.a in Frameworks */,
-				C24FD2BF1C18043700B16BF2 /* libSmartLinkV30Lib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,13 +253,11 @@
 			children = (
 				980A92F51C17B440009166D0 /* AppDelegate.swift */,
 				C24FD2361C18043600B16BF2 /* General */,
-				C24FD2401C18043600B16BF2 /* Helpers */,
 				C24FD2411C18043600B16BF2 /* Macro */,
 				C24FD2431C18043600B16BF2 /* Models */,
 				C24FD2441C18043600B16BF2 /* Resources */,
 				C24FD2451C18043600B16BF2 /* Sections */,
 				C24FD2671C18043600B16BF2 /* Vendors */,
-				980A92F71C17B440009166D0 /* ViewController.swift */,
 				980A92F91C17B440009166D0 /* Main.storyboard */,
 				980A92FF1C17B440009166D0 /* Assets.xcassets */,
 				980A93011C17B440009166D0 /* LaunchScreen.storyboard */,
@@ -340,17 +331,11 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		C24FD2401C18043600B16BF2 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		C24FD2411C18043600B16BF2 /* Macro */ = {
 			isa = PBXGroup;
 			children = (
 				C24FD2421C18043600B16BF2 /* GlobalVariables.swift */,
+				983FE2E81C1821B6004B89CE /* Helper.swift */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -458,7 +443,6 @@
 			children = (
 				C24FD2681C18043600B16BF2 /* include */,
 				C24FD26B1C18043600B16BF2 /* libGexinSdk-1.1.1.a */,
-				C24FD26C1C18043600B16BF2 /* libSmartLink */,
 				C24FD2711C18043600B16BF2 /* QRCodeReaderViewController */,
 				C24FD27B1C18043600B16BF2 /* SDWebImage */,
 			);
@@ -472,17 +456,6 @@
 				C24FD26A1C18043600B16BF2 /* GXSdkError.h */,
 			);
 			path = include;
-			sourceTree = "<group>";
-		};
-		C24FD26C1C18043600B16BF2 /* libSmartLink */ = {
-			isa = PBXGroup;
-			children = (
-				C24FD26D1C18043600B16BF2 /* GCDAsyncUdpSocket.h */,
-				C24FD26E1C18043600B16BF2 /* GCDAsyncUdpSocket.m */,
-				C24FD26F1C18043600B16BF2 /* HFSmtlkV30.h */,
-				C24FD2701C18043600B16BF2 /* libSmartLinkV30Lib.a */,
-			);
-			path = libSmartLink;
 			sourceTree = "<group>";
 		};
 		C24FD2711C18043600B16BF2 /* QRCodeReaderViewController */ = {
@@ -697,7 +670,6 @@
 				C24FD2AB1C18043700B16BF2 /* VCodeVC.swift in Sources */,
 				C24FD2B91C18043700B16BF2 /* SetFloor.swift in Sources */,
 				C24FD2C51C18043700B16BF2 /* NSData+ImageContentType.m in Sources */,
-				C24FD2BE1C18043700B16BF2 /* GCDAsyncUdpSocket.m in Sources */,
 				C24FD2AF1C18043700B16BF2 /* MineVC.swift in Sources */,
 				C24FD2CD1C18043700B16BF2 /* UIButton+WebCache.m in Sources */,
 				C24FD2CC1C18043700B16BF2 /* SDWebImagePrefetcher.m in Sources */,
@@ -720,7 +692,7 @@
 				C24FD2B51C18043700B16BF2 /* DeviceIconVC.swift in Sources */,
 				C24FD2CF1C18043700B16BF2 /* UIImage+MultiFormat.m in Sources */,
 				C24FD2CA1C18043700B16BF2 /* SDWebImageDownloaderOperation.m in Sources */,
-				980A92F81C17B440009166D0 /* ViewController.swift in Sources */,
+				983FE2E91C1821B6004B89CE /* Helper.swift in Sources */,
 				C24FD2A21C18043700B16BF2 /* GlobalVariables.swift in Sources */,
 				C24FD2B11C18043700B16BF2 /* AllDeviceListVC.swift in Sources */,
 				C24FD2C81C18043700B16BF2 /* SDWebImageDecoder.m in Sources */,
