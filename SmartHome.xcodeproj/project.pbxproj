@@ -24,6 +24,8 @@
 		C21E15911C18065200C45854 /* FailedVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21E158F1C18065200C45854 /* FailedVC.xib */; };
 		C21E15941C1806FE00C45854 /* SetModelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E15921C1806FE00C45854 /* SetModelVC.swift */; };
 		C21E15951C1806FE00C45854 /* SetModelVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21E15931C1806FE00C45854 /* SetModelVC.xib */; };
+		C21E15991C181B5F00C45854 /* CreatHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E15971C181B5F00C45854 /* CreatHomeVC.swift */; };
+		C21E159A1C181B5F00C45854 /* CreatHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21E15981C181B5F00C45854 /* CreatHomeVC.xib */; };
 		C24FD29D1C18043700B16BF2 /* NSString+Contains.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2391C18043600B16BF2 /* NSString+Contains.m */; };
 		C24FD2A21C18043700B16BF2 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2421C18043600B16BF2 /* GlobalVariables.swift */; };
 		C24FD2A31C18043700B16BF2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2471C18043600B16BF2 /* HomeVC.swift */; };
@@ -118,6 +120,8 @@
 		C21E158F1C18065200C45854 /* FailedVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FailedVC.xib; sourceTree = "<group>"; };
 		C21E15921C1806FE00C45854 /* SetModelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetModelVC.swift; sourceTree = "<group>"; };
 		C21E15931C1806FE00C45854 /* SetModelVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetModelVC.xib; sourceTree = "<group>"; };
+		C21E15971C181B5F00C45854 /* CreatHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatHomeVC.swift; sourceTree = "<group>"; };
+		C21E15981C181B5F00C45854 /* CreatHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatHomeVC.xib; sourceTree = "<group>"; };
 		C24FD2381C18043600B16BF2 /* NSString+Contains.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Contains.h"; sourceTree = "<group>"; };
 		C24FD2391C18043600B16BF2 /* NSString+Contains.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Contains.m"; sourceTree = "<group>"; };
 		C24FD2421C18043600B16BF2 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
@@ -290,6 +294,15 @@
 			path = SmartHomeUITests;
 			sourceTree = "<group>";
 		};
+		C21E15961C181B3200C45854 /* Creat */ = {
+			isa = PBXGroup;
+			children = (
+				C21E15971C181B5F00C45854 /* CreatHomeVC.swift */,
+				C21E15981C181B5F00C45854 /* CreatHomeVC.xib */,
+			);
+			path = Creat;
+			sourceTree = "<group>";
+		};
 		C24FD2361C18043600B16BF2 /* General */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +372,7 @@
 		C24FD2451C18043600B16BF2 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				C21E15961C181B3200C45854 /* Creat */,
 				C24FD2461C18043600B16BF2 /* Home */,
 				C24FD2491C18043600B16BF2 /* login&reg&reset&modify */,
 				C24FD2521C18043600B16BF2 /* mall */,
@@ -645,6 +659,7 @@
 				C21E15951C1806FE00C45854 /* SetModelVC.xib in Resources */,
 				980A93001C17B440009166D0 /* Assets.xcassets in Resources */,
 				C21E15911C18065200C45854 /* FailedVC.xib in Resources */,
+				C21E159A1C181B5F00C45854 /* CreatHomeVC.xib in Resources */,
 				C21E158D1C18063B00C45854 /* SuccessVC.xib in Resources */,
 				C24FD2AC1C18043700B16BF2 /* VCodeVC.xib in Resources */,
 				C24FD2B21C18043700B16BF2 /* AllDeviceListVC.xib in Resources */,
@@ -686,6 +701,7 @@
 				C24FD2AF1C18043700B16BF2 /* MineVC.swift in Sources */,
 				C24FD2CD1C18043700B16BF2 /* UIButton+WebCache.m in Sources */,
 				C24FD2CC1C18043700B16BF2 /* SDWebImagePrefetcher.m in Sources */,
+				C21E15991C181B5F00C45854 /* CreatHomeVC.swift in Sources */,
 				C24FD2A91C18043700B16BF2 /* PhoneVC.swift in Sources */,
 				C21E15901C18065200C45854 /* FailedVC.swift in Sources */,
 				C24FD2A51C18043700B16BF2 /* LoginVCViewController.swift in Sources */,
