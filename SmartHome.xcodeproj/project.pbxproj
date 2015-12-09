@@ -15,6 +15,63 @@
 		980A93031C17B440009166D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 980A93011C17B440009166D0 /* LaunchScreen.storyboard */; };
 		980A930E1C17B441009166D0 /* SmartHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A930D1C17B441009166D0 /* SmartHomeTests.swift */; };
 		980A93191C17B441009166D0 /* SmartHomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A93181C17B441009166D0 /* SmartHomeUITests.swift */; };
+		C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E158A1C18063B00C45854 /* SuccessVC.swift */; };
+		C21E158D1C18063B00C45854 /* SuccessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21E158B1C18063B00C45854 /* SuccessVC.xib */; };
+		C21E15901C18065200C45854 /* FailedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E158E1C18065200C45854 /* FailedVC.swift */; };
+		C21E15911C18065200C45854 /* FailedVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21E158F1C18065200C45854 /* FailedVC.xib */; };
+		C21E15941C1806FE00C45854 /* SetModelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E15921C1806FE00C45854 /* SetModelVC.swift */; };
+		C21E15951C1806FE00C45854 /* SetModelVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21E15931C1806FE00C45854 /* SetModelVC.xib */; };
+		C24FD29D1C18043700B16BF2 /* NSString+Contains.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2391C18043600B16BF2 /* NSString+Contains.m */; };
+		C24FD2A21C18043700B16BF2 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2421C18043600B16BF2 /* GlobalVariables.swift */; };
+		C24FD2A31C18043700B16BF2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2471C18043600B16BF2 /* HomeVC.swift */; };
+		C24FD2A41C18043700B16BF2 /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD2481C18043600B16BF2 /* HomeVC.xib */; };
+		C24FD2A51C18043700B16BF2 /* LoginVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD24A1C18043600B16BF2 /* LoginVCViewController.swift */; };
+		C24FD2A61C18043700B16BF2 /* LoginVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD24B1C18043600B16BF2 /* LoginVCViewController.xib */; };
+		C24FD2A71C18043700B16BF2 /* PassWordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD24C1C18043600B16BF2 /* PassWordVC.swift */; };
+		C24FD2A81C18043700B16BF2 /* PassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD24D1C18043600B16BF2 /* PassWordVC.xib */; };
+		C24FD2A91C18043700B16BF2 /* PhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD24E1C18043600B16BF2 /* PhoneVC.swift */; };
+		C24FD2AA1C18043700B16BF2 /* PhoneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD24F1C18043600B16BF2 /* PhoneVC.xib */; };
+		C24FD2AB1C18043700B16BF2 /* VCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2501C18043600B16BF2 /* VCodeVC.swift */; };
+		C24FD2AC1C18043700B16BF2 /* VCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD2511C18043600B16BF2 /* VCodeVC.xib */; };
+		C24FD2AD1C18043700B16BF2 /* MallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2531C18043600B16BF2 /* MallVC.swift */; };
+		C24FD2AE1C18043700B16BF2 /* MallVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD2541C18043600B16BF2 /* MallVC.xib */; };
+		C24FD2AF1C18043700B16BF2 /* MineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2561C18043600B16BF2 /* MineVC.swift */; };
+		C24FD2B01C18043700B16BF2 /* MineVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD2571C18043600B16BF2 /* MineVC.xib */; };
+		C24FD2B11C18043700B16BF2 /* AllDeviceListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD25A1C18043600B16BF2 /* AllDeviceListVC.swift */; };
+		C24FD2B21C18043700B16BF2 /* AllDeviceListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD25B1C18043600B16BF2 /* AllDeviceListVC.xib */; };
+		C24FD2B31C18043700B16BF2 /* CreateChooseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD25C1C18043600B16BF2 /* CreateChooseVC.swift */; };
+		C24FD2B41C18043700B16BF2 /* CreateChooseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD25D1C18043600B16BF2 /* CreateChooseVC.xib */; };
+		C24FD2B51C18043700B16BF2 /* DeviceIconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD25E1C18043600B16BF2 /* DeviceIconVC.swift */; };
+		C24FD2B61C18043700B16BF2 /* DeviceIconVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD25F1C18043600B16BF2 /* DeviceIconVC.xib */; };
+		C24FD2B71C18043700B16BF2 /* SetDeviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2601C18043600B16BF2 /* SetDeviceVC.swift */; };
+		C24FD2B81C18043700B16BF2 /* SetDeviceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD2611C18043600B16BF2 /* SetDeviceVC.xib */; };
+		C24FD2B91C18043700B16BF2 /* SetFloor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2621C18043600B16BF2 /* SetFloor.swift */; };
+		C24FD2BA1C18043700B16BF2 /* SetFloor.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD2631C18043600B16BF2 /* SetFloor.xib */; };
+		C24FD2BB1C18043700B16BF2 /* SetRomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2641C18043600B16BF2 /* SetRomeVC.swift */; };
+		C24FD2BC1C18043700B16BF2 /* SetRomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD2651C18043600B16BF2 /* SetRomeVC.xib */; };
+		C24FD2BD1C18043700B16BF2 /* libGexinSdk-1.1.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C24FD26B1C18043600B16BF2 /* libGexinSdk-1.1.1.a */; };
+		C24FD2BE1C18043700B16BF2 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD26E1C18043600B16BF2 /* GCDAsyncUdpSocket.m */; };
+		C24FD2BF1C18043700B16BF2 /* libSmartLinkV30Lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C24FD2701C18043600B16BF2 /* libSmartLinkV30Lib.a */; };
+		C24FD2C01C18043700B16BF2 /* QRCameraSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2731C18043600B16BF2 /* QRCameraSwitchButton.m */; };
+		C24FD2C11C18043700B16BF2 /* QRCodeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2751C18043600B16BF2 /* QRCodeReader.m */; };
+		C24FD2C21C18043700B16BF2 /* QRCodeReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2781C18043600B16BF2 /* QRCodeReaderView.m */; };
+		C24FD2C31C18043700B16BF2 /* QRCodeReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD27A1C18043600B16BF2 /* QRCodeReaderViewController.m */; };
+		C24FD2C41C18043700B16BF2 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD27D1C18043600B16BF2 /* MKAnnotationView+WebCache.m */; };
+		C24FD2C51C18043700B16BF2 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD27F1C18043700B16BF2 /* NSData+ImageContentType.m */; };
+		C24FD2C61C18043700B16BF2 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2811C18043700B16BF2 /* SDImageCache.m */; };
+		C24FD2C71C18043700B16BF2 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2831C18043700B16BF2 /* SDWebImageCompat.m */; };
+		C24FD2C81C18043700B16BF2 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2851C18043700B16BF2 /* SDWebImageDecoder.m */; };
+		C24FD2C91C18043700B16BF2 /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2871C18043700B16BF2 /* SDWebImageDownloader.m */; };
+		C24FD2CA1C18043700B16BF2 /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2891C18043700B16BF2 /* SDWebImageDownloaderOperation.m */; };
+		C24FD2CB1C18043700B16BF2 /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD28B1C18043700B16BF2 /* SDWebImageManager.m */; };
+		C24FD2CC1C18043700B16BF2 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD28E1C18043700B16BF2 /* SDWebImagePrefetcher.m */; };
+		C24FD2CD1C18043700B16BF2 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2901C18043700B16BF2 /* UIButton+WebCache.m */; };
+		C24FD2CE1C18043700B16BF2 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2921C18043700B16BF2 /* UIImage+GIF.m */; };
+		C24FD2CF1C18043700B16BF2 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2941C18043700B16BF2 /* UIImage+MultiFormat.m */; };
+		C24FD2D01C18043700B16BF2 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2961C18043700B16BF2 /* UIImage+WebP.m */; };
+		C24FD2D11C18043700B16BF2 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2981C18043700B16BF2 /* UIImageView+HighlightedWebCache.m */; };
+		C24FD2D21C18043700B16BF2 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD29A1C18043700B16BF2 /* UIImageView+WebCache.m */; };
+		C24FD2D31C18043700B16BF2 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +106,90 @@
 		980A93141C17B441009166D0 /* SmartHomeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartHomeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		980A93181C17B441009166D0 /* SmartHomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHomeUITests.swift; sourceTree = "<group>"; };
 		980A931A1C17B441009166D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C21E158A1C18063B00C45854 /* SuccessVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessVC.swift; sourceTree = "<group>"; };
+		C21E158B1C18063B00C45854 /* SuccessVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuccessVC.xib; sourceTree = "<group>"; };
+		C21E158E1C18065200C45854 /* FailedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailedVC.swift; sourceTree = "<group>"; };
+		C21E158F1C18065200C45854 /* FailedVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FailedVC.xib; sourceTree = "<group>"; };
+		C21E15921C1806FE00C45854 /* SetModelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetModelVC.swift; sourceTree = "<group>"; };
+		C21E15931C1806FE00C45854 /* SetModelVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetModelVC.xib; sourceTree = "<group>"; };
+		C24FD2381C18043600B16BF2 /* NSString+Contains.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Contains.h"; sourceTree = "<group>"; };
+		C24FD2391C18043600B16BF2 /* NSString+Contains.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Contains.m"; sourceTree = "<group>"; };
+		C24FD2421C18043600B16BF2 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		C24FD2471C18043600B16BF2 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		C24FD2481C18043600B16BF2 /* HomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
+		C24FD24A1C18043600B16BF2 /* LoginVCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVCViewController.swift; sourceTree = "<group>"; };
+		C24FD24B1C18043600B16BF2 /* LoginVCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginVCViewController.xib; sourceTree = "<group>"; };
+		C24FD24C1C18043600B16BF2 /* PassWordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassWordVC.swift; sourceTree = "<group>"; };
+		C24FD24D1C18043600B16BF2 /* PassWordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PassWordVC.xib; sourceTree = "<group>"; };
+		C24FD24E1C18043600B16BF2 /* PhoneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVC.swift; sourceTree = "<group>"; };
+		C24FD24F1C18043600B16BF2 /* PhoneVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneVC.xib; sourceTree = "<group>"; };
+		C24FD2501C18043600B16BF2 /* VCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCodeVC.swift; sourceTree = "<group>"; };
+		C24FD2511C18043600B16BF2 /* VCodeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCodeVC.xib; sourceTree = "<group>"; };
+		C24FD2531C18043600B16BF2 /* MallVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MallVC.swift; sourceTree = "<group>"; };
+		C24FD2541C18043600B16BF2 /* MallVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MallVC.xib; sourceTree = "<group>"; };
+		C24FD2561C18043600B16BF2 /* MineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineVC.swift; sourceTree = "<group>"; };
+		C24FD2571C18043600B16BF2 /* MineVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineVC.xib; sourceTree = "<group>"; };
+		C24FD25A1C18043600B16BF2 /* AllDeviceListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllDeviceListVC.swift; sourceTree = "<group>"; };
+		C24FD25B1C18043600B16BF2 /* AllDeviceListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllDeviceListVC.xib; sourceTree = "<group>"; };
+		C24FD25C1C18043600B16BF2 /* CreateChooseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChooseVC.swift; sourceTree = "<group>"; };
+		C24FD25D1C18043600B16BF2 /* CreateChooseVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateChooseVC.xib; sourceTree = "<group>"; };
+		C24FD25E1C18043600B16BF2 /* DeviceIconVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceIconVC.swift; sourceTree = "<group>"; };
+		C24FD25F1C18043600B16BF2 /* DeviceIconVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceIconVC.xib; sourceTree = "<group>"; };
+		C24FD2601C18043600B16BF2 /* SetDeviceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDeviceVC.swift; sourceTree = "<group>"; };
+		C24FD2611C18043600B16BF2 /* SetDeviceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetDeviceVC.xib; sourceTree = "<group>"; };
+		C24FD2621C18043600B16BF2 /* SetFloor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetFloor.swift; sourceTree = "<group>"; };
+		C24FD2631C18043600B16BF2 /* SetFloor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetFloor.xib; sourceTree = "<group>"; };
+		C24FD2641C18043600B16BF2 /* SetRomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetRomeVC.swift; sourceTree = "<group>"; };
+		C24FD2651C18043600B16BF2 /* SetRomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetRomeVC.xib; sourceTree = "<group>"; };
+		C24FD2691C18043600B16BF2 /* GexinSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GexinSdk.h; sourceTree = "<group>"; };
+		C24FD26A1C18043600B16BF2 /* GXSdkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXSdkError.h; sourceTree = "<group>"; };
+		C24FD26B1C18043600B16BF2 /* libGexinSdk-1.1.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGexinSdk-1.1.1.a"; sourceTree = "<group>"; };
+		C24FD26D1C18043600B16BF2 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		C24FD26E1C18043600B16BF2 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		C24FD26F1C18043600B16BF2 /* HFSmtlkV30.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSmtlkV30.h; sourceTree = "<group>"; };
+		C24FD2701C18043600B16BF2 /* libSmartLinkV30Lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSmartLinkV30Lib.a; sourceTree = "<group>"; };
+		C24FD2721C18043600B16BF2 /* QRCameraSwitchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCameraSwitchButton.h; sourceTree = "<group>"; };
+		C24FD2731C18043600B16BF2 /* QRCameraSwitchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCameraSwitchButton.m; sourceTree = "<group>"; };
+		C24FD2741C18043600B16BF2 /* QRCodeReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReader.h; sourceTree = "<group>"; };
+		C24FD2751C18043600B16BF2 /* QRCodeReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReader.m; sourceTree = "<group>"; };
+		C24FD2761C18043600B16BF2 /* QRCodeReaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderDelegate.h; sourceTree = "<group>"; };
+		C24FD2771C18043600B16BF2 /* QRCodeReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderView.h; sourceTree = "<group>"; };
+		C24FD2781C18043600B16BF2 /* QRCodeReaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReaderView.m; sourceTree = "<group>"; };
+		C24FD2791C18043600B16BF2 /* QRCodeReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderViewController.h; sourceTree = "<group>"; };
+		C24FD27A1C18043600B16BF2 /* QRCodeReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReaderViewController.m; sourceTree = "<group>"; };
+		C24FD27C1C18043600B16BF2 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
+		C24FD27D1C18043600B16BF2 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
+		C24FD27E1C18043700B16BF2 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
+		C24FD27F1C18043700B16BF2 /* NSData+ImageContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ImageContentType.m"; sourceTree = "<group>"; };
+		C24FD2801C18043700B16BF2 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
+		C24FD2811C18043700B16BF2 /* SDImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDImageCache.m; sourceTree = "<group>"; };
+		C24FD2821C18043700B16BF2 /* SDWebImageCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageCompat.h; sourceTree = "<group>"; };
+		C24FD2831C18043700B16BF2 /* SDWebImageCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageCompat.m; sourceTree = "<group>"; };
+		C24FD2841C18043700B16BF2 /* SDWebImageDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDecoder.h; sourceTree = "<group>"; };
+		C24FD2851C18043700B16BF2 /* SDWebImageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDecoder.m; sourceTree = "<group>"; };
+		C24FD2861C18043700B16BF2 /* SDWebImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDownloader.h; sourceTree = "<group>"; };
+		C24FD2871C18043700B16BF2 /* SDWebImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDownloader.m; sourceTree = "<group>"; };
+		C24FD2881C18043700B16BF2 /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
+		C24FD2891C18043700B16BF2 /* SDWebImageDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDownloaderOperation.m; sourceTree = "<group>"; };
+		C24FD28A1C18043700B16BF2 /* SDWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageManager.h; sourceTree = "<group>"; };
+		C24FD28B1C18043700B16BF2 /* SDWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageManager.m; sourceTree = "<group>"; };
+		C24FD28C1C18043700B16BF2 /* SDWebImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageOperation.h; sourceTree = "<group>"; };
+		C24FD28D1C18043700B16BF2 /* SDWebImagePrefetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImagePrefetcher.h; sourceTree = "<group>"; };
+		C24FD28E1C18043700B16BF2 /* SDWebImagePrefetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImagePrefetcher.m; sourceTree = "<group>"; };
+		C24FD28F1C18043700B16BF2 /* UIButton+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WebCache.h"; sourceTree = "<group>"; };
+		C24FD2901C18043700B16BF2 /* UIButton+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WebCache.m"; sourceTree = "<group>"; };
+		C24FD2911C18043700B16BF2 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
+		C24FD2921C18043700B16BF2 /* UIImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
+		C24FD2931C18043700B16BF2 /* UIImage+MultiFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MultiFormat.h"; sourceTree = "<group>"; };
+		C24FD2941C18043700B16BF2 /* UIImage+MultiFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MultiFormat.m"; sourceTree = "<group>"; };
+		C24FD2951C18043700B16BF2 /* UIImage+WebP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WebP.h"; sourceTree = "<group>"; };
+		C24FD2961C18043700B16BF2 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
+		C24FD2971C18043700B16BF2 /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
+		C24FD2981C18043700B16BF2 /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
+		C24FD2991C18043700B16BF2 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
+		C24FD29A1C18043700B16BF2 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		C24FD29B1C18043700B16BF2 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
+		C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +197,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C24FD2BD1C18043700B16BF2 /* libGexinSdk-1.1.1.a in Frameworks */,
+				C24FD2BF1C18043700B16BF2 /* libSmartLinkV30Lib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +243,13 @@
 			isa = PBXGroup;
 			children = (
 				980A92F51C17B440009166D0 /* AppDelegate.swift */,
+				C24FD2361C18043600B16BF2 /* General */,
+				C24FD2401C18043600B16BF2 /* Helpers */,
+				C24FD2411C18043600B16BF2 /* Macro */,
+				C24FD2431C18043600B16BF2 /* Models */,
+				C24FD2441C18043600B16BF2 /* Resources */,
+				C24FD2451C18043600B16BF2 /* Sections */,
+				C24FD2671C18043600B16BF2 /* Vendors */,
 				980A92F71C17B440009166D0 /* ViewController.swift */,
 				980A92F91C17B440009166D0 /* Main.storyboard */,
 				980A92FF1C17B440009166D0 /* Assets.xcassets */,
@@ -126,6 +276,243 @@
 				980A931A1C17B441009166D0 /* Info.plist */,
 			);
 			path = SmartHomeUITests;
+			sourceTree = "<group>";
+		};
+		C24FD2361C18043600B16BF2 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD2371C18043600B16BF2 /* Categories */,
+				C24FD23A1C18043600B16BF2 /* Classes */,
+				C24FD23B1C18043600B16BF2 /* Views */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		C24FD2371C18043600B16BF2 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD2381C18043600B16BF2 /* NSString+Contains.h */,
+				C24FD2391C18043600B16BF2 /* NSString+Contains.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		C24FD23A1C18043600B16BF2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C24FD23B1C18043600B16BF2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C21E158A1C18063B00C45854 /* SuccessVC.swift */,
+				C21E158B1C18063B00C45854 /* SuccessVC.xib */,
+				C21E158E1C18065200C45854 /* FailedVC.swift */,
+				C21E158F1C18065200C45854 /* FailedVC.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C24FD2401C18043600B16BF2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C24FD2411C18043600B16BF2 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD2421C18043600B16BF2 /* GlobalVariables.swift */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		C24FD2431C18043600B16BF2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C24FD2441C18043600B16BF2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C24FD2451C18043600B16BF2 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD2461C18043600B16BF2 /* Home */,
+				C24FD2491C18043600B16BF2 /* login&reg&reset&modify */,
+				C24FD2521C18043600B16BF2 /* mall */,
+				C24FD2551C18043600B16BF2 /* mine */,
+				C24FD2581C18043600B16BF2 /* setModel */,
+				C24FD2591C18043600B16BF2 /* setRome&Device */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		C24FD2461C18043600B16BF2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD2471C18043600B16BF2 /* HomeVC.swift */,
+				C24FD2481C18043600B16BF2 /* HomeVC.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C24FD2491C18043600B16BF2 /* login&reg&reset&modify */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD24A1C18043600B16BF2 /* LoginVCViewController.swift */,
+				C24FD24B1C18043600B16BF2 /* LoginVCViewController.xib */,
+				C24FD24C1C18043600B16BF2 /* PassWordVC.swift */,
+				C24FD24D1C18043600B16BF2 /* PassWordVC.xib */,
+				C24FD24E1C18043600B16BF2 /* PhoneVC.swift */,
+				C24FD24F1C18043600B16BF2 /* PhoneVC.xib */,
+				C24FD2501C18043600B16BF2 /* VCodeVC.swift */,
+				C24FD2511C18043600B16BF2 /* VCodeVC.xib */,
+			);
+			path = "login&reg&reset&modify";
+			sourceTree = "<group>";
+		};
+		C24FD2521C18043600B16BF2 /* mall */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD2531C18043600B16BF2 /* MallVC.swift */,
+				C24FD2541C18043600B16BF2 /* MallVC.xib */,
+			);
+			path = mall;
+			sourceTree = "<group>";
+		};
+		C24FD2551C18043600B16BF2 /* mine */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD2561C18043600B16BF2 /* MineVC.swift */,
+				C24FD2571C18043600B16BF2 /* MineVC.xib */,
+			);
+			path = mine;
+			sourceTree = "<group>";
+		};
+		C24FD2581C18043600B16BF2 /* setModel */ = {
+			isa = PBXGroup;
+			children = (
+				C21E15921C1806FE00C45854 /* SetModelVC.swift */,
+				C21E15931C1806FE00C45854 /* SetModelVC.xib */,
+			);
+			path = setModel;
+			sourceTree = "<group>";
+		};
+		C24FD2591C18043600B16BF2 /* setRome&Device */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD25A1C18043600B16BF2 /* AllDeviceListVC.swift */,
+				C24FD25B1C18043600B16BF2 /* AllDeviceListVC.xib */,
+				C24FD25C1C18043600B16BF2 /* CreateChooseVC.swift */,
+				C24FD25D1C18043600B16BF2 /* CreateChooseVC.xib */,
+				C24FD25E1C18043600B16BF2 /* DeviceIconVC.swift */,
+				C24FD25F1C18043600B16BF2 /* DeviceIconVC.xib */,
+				C24FD2601C18043600B16BF2 /* SetDeviceVC.swift */,
+				C24FD2611C18043600B16BF2 /* SetDeviceVC.xib */,
+				C24FD2621C18043600B16BF2 /* SetFloor.swift */,
+				C24FD2631C18043600B16BF2 /* SetFloor.xib */,
+				C24FD2641C18043600B16BF2 /* SetRomeVC.swift */,
+				C24FD2651C18043600B16BF2 /* SetRomeVC.xib */,
+			);
+			path = "setRome&Device";
+			sourceTree = "<group>";
+		};
+		C24FD2671C18043600B16BF2 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD2681C18043600B16BF2 /* include */,
+				C24FD26B1C18043600B16BF2 /* libGexinSdk-1.1.1.a */,
+				C24FD26C1C18043600B16BF2 /* libSmartLink */,
+				C24FD2711C18043600B16BF2 /* QRCodeReaderViewController */,
+				C24FD27B1C18043600B16BF2 /* SDWebImage */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		C24FD2681C18043600B16BF2 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD2691C18043600B16BF2 /* GexinSdk.h */,
+				C24FD26A1C18043600B16BF2 /* GXSdkError.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		C24FD26C1C18043600B16BF2 /* libSmartLink */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD26D1C18043600B16BF2 /* GCDAsyncUdpSocket.h */,
+				C24FD26E1C18043600B16BF2 /* GCDAsyncUdpSocket.m */,
+				C24FD26F1C18043600B16BF2 /* HFSmtlkV30.h */,
+				C24FD2701C18043600B16BF2 /* libSmartLinkV30Lib.a */,
+			);
+			path = libSmartLink;
+			sourceTree = "<group>";
+		};
+		C24FD2711C18043600B16BF2 /* QRCodeReaderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD2721C18043600B16BF2 /* QRCameraSwitchButton.h */,
+				C24FD2731C18043600B16BF2 /* QRCameraSwitchButton.m */,
+				C24FD2741C18043600B16BF2 /* QRCodeReader.h */,
+				C24FD2751C18043600B16BF2 /* QRCodeReader.m */,
+				C24FD2761C18043600B16BF2 /* QRCodeReaderDelegate.h */,
+				C24FD2771C18043600B16BF2 /* QRCodeReaderView.h */,
+				C24FD2781C18043600B16BF2 /* QRCodeReaderView.m */,
+				C24FD2791C18043600B16BF2 /* QRCodeReaderViewController.h */,
+				C24FD27A1C18043600B16BF2 /* QRCodeReaderViewController.m */,
+			);
+			path = QRCodeReaderViewController;
+			sourceTree = "<group>";
+		};
+		C24FD27B1C18043600B16BF2 /* SDWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				C24FD27C1C18043600B16BF2 /* MKAnnotationView+WebCache.h */,
+				C24FD27D1C18043600B16BF2 /* MKAnnotationView+WebCache.m */,
+				C24FD27E1C18043700B16BF2 /* NSData+ImageContentType.h */,
+				C24FD27F1C18043700B16BF2 /* NSData+ImageContentType.m */,
+				C24FD2801C18043700B16BF2 /* SDImageCache.h */,
+				C24FD2811C18043700B16BF2 /* SDImageCache.m */,
+				C24FD2821C18043700B16BF2 /* SDWebImageCompat.h */,
+				C24FD2831C18043700B16BF2 /* SDWebImageCompat.m */,
+				C24FD2841C18043700B16BF2 /* SDWebImageDecoder.h */,
+				C24FD2851C18043700B16BF2 /* SDWebImageDecoder.m */,
+				C24FD2861C18043700B16BF2 /* SDWebImageDownloader.h */,
+				C24FD2871C18043700B16BF2 /* SDWebImageDownloader.m */,
+				C24FD2881C18043700B16BF2 /* SDWebImageDownloaderOperation.h */,
+				C24FD2891C18043700B16BF2 /* SDWebImageDownloaderOperation.m */,
+				C24FD28A1C18043700B16BF2 /* SDWebImageManager.h */,
+				C24FD28B1C18043700B16BF2 /* SDWebImageManager.m */,
+				C24FD28C1C18043700B16BF2 /* SDWebImageOperation.h */,
+				C24FD28D1C18043700B16BF2 /* SDWebImagePrefetcher.h */,
+				C24FD28E1C18043700B16BF2 /* SDWebImagePrefetcher.m */,
+				C24FD28F1C18043700B16BF2 /* UIButton+WebCache.h */,
+				C24FD2901C18043700B16BF2 /* UIButton+WebCache.m */,
+				C24FD2911C18043700B16BF2 /* UIImage+GIF.h */,
+				C24FD2921C18043700B16BF2 /* UIImage+GIF.m */,
+				C24FD2931C18043700B16BF2 /* UIImage+MultiFormat.h */,
+				C24FD2941C18043700B16BF2 /* UIImage+MultiFormat.m */,
+				C24FD2951C18043700B16BF2 /* UIImage+WebP.h */,
+				C24FD2961C18043700B16BF2 /* UIImage+WebP.m */,
+				C24FD2971C18043700B16BF2 /* UIImageView+HighlightedWebCache.h */,
+				C24FD2981C18043700B16BF2 /* UIImageView+HighlightedWebCache.m */,
+				C24FD2991C18043700B16BF2 /* UIImageView+WebCache.h */,
+				C24FD29A1C18043700B16BF2 /* UIImageView+WebCache.m */,
+				C24FD29B1C18043700B16BF2 /* UIView+WebCacheOperation.h */,
+				C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */,
+			);
+			path = SDWebImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +619,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C24FD2BA1C18043700B16BF2 /* SetFloor.xib in Resources */,
+				C24FD2B41C18043700B16BF2 /* CreateChooseVC.xib in Resources */,
+				C24FD2A41C18043700B16BF2 /* HomeVC.xib in Resources */,
+				C24FD2B61C18043700B16BF2 /* DeviceIconVC.xib in Resources */,
+				C24FD2BC1C18043700B16BF2 /* SetRomeVC.xib in Resources */,
+				C24FD2B81C18043700B16BF2 /* SetDeviceVC.xib in Resources */,
+				C24FD2A81C18043700B16BF2 /* PassWordVC.xib in Resources */,
+				C24FD2AA1C18043700B16BF2 /* PhoneVC.xib in Resources */,
+				C24FD2A61C18043700B16BF2 /* LoginVCViewController.xib in Resources */,
 				980A93031C17B440009166D0 /* LaunchScreen.storyboard in Resources */,
+				C21E15951C1806FE00C45854 /* SetModelVC.xib in Resources */,
 				980A93001C17B440009166D0 /* Assets.xcassets in Resources */,
+				C21E15911C18065200C45854 /* FailedVC.xib in Resources */,
+				C21E158D1C18063B00C45854 /* SuccessVC.xib in Resources */,
+				C24FD2AC1C18043700B16BF2 /* VCodeVC.xib in Resources */,
+				C24FD2B21C18043700B16BF2 /* AllDeviceListVC.xib in Resources */,
+				C24FD2B01C18043700B16BF2 /* MineVC.xib in Resources */,
+				C24FD2AE1C18043700B16BF2 /* MallVC.xib in Resources */,
 				980A92FB1C17B440009166D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,9 +662,48 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C24FD29D1C18043700B16BF2 /* NSString+Contains.m in Sources */,
+				C24FD2D31C18043700B16BF2 /* UIView+WebCacheOperation.m in Sources */,
+				C24FD2A31C18043700B16BF2 /* HomeVC.swift in Sources */,
+				C24FD2D21C18043700B16BF2 /* UIImageView+WebCache.m in Sources */,
+				C24FD2AB1C18043700B16BF2 /* VCodeVC.swift in Sources */,
+				C24FD2B91C18043700B16BF2 /* SetFloor.swift in Sources */,
+				C24FD2C51C18043700B16BF2 /* NSData+ImageContentType.m in Sources */,
+				C24FD2BE1C18043700B16BF2 /* GCDAsyncUdpSocket.m in Sources */,
+				C24FD2AF1C18043700B16BF2 /* MineVC.swift in Sources */,
+				C24FD2CD1C18043700B16BF2 /* UIButton+WebCache.m in Sources */,
+				C24FD2CC1C18043700B16BF2 /* SDWebImagePrefetcher.m in Sources */,
+				C24FD2A91C18043700B16BF2 /* PhoneVC.swift in Sources */,
+				C21E15901C18065200C45854 /* FailedVC.swift in Sources */,
+				C24FD2A51C18043700B16BF2 /* LoginVCViewController.swift in Sources */,
+				C24FD2A71C18043700B16BF2 /* PassWordVC.swift in Sources */,
+				C24FD2D11C18043700B16BF2 /* UIImageView+HighlightedWebCache.m in Sources */,
+				C24FD2C21C18043700B16BF2 /* QRCodeReaderView.m in Sources */,
+				C24FD2B71C18043700B16BF2 /* SetDeviceVC.swift in Sources */,
+				C24FD2CB1C18043700B16BF2 /* SDWebImageManager.m in Sources */,
+				C24FD2AD1C18043700B16BF2 /* MallVC.swift in Sources */,
+				C24FD2BB1C18043700B16BF2 /* SetRomeVC.swift in Sources */,
+				C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */,
+				C24FD2C11C18043700B16BF2 /* QRCodeReader.m in Sources */,
+				C24FD2CE1C18043700B16BF2 /* UIImage+GIF.m in Sources */,
 				980A92FE1C17B440009166D0 /* SmartHome.xcdatamodeld in Sources */,
+				C24FD2C01C18043700B16BF2 /* QRCameraSwitchButton.m in Sources */,
+				C24FD2B51C18043700B16BF2 /* DeviceIconVC.swift in Sources */,
+				C24FD2CF1C18043700B16BF2 /* UIImage+MultiFormat.m in Sources */,
+				C24FD2CA1C18043700B16BF2 /* SDWebImageDownloaderOperation.m in Sources */,
 				980A92F81C17B440009166D0 /* ViewController.swift in Sources */,
+				C24FD2A21C18043700B16BF2 /* GlobalVariables.swift in Sources */,
+				C24FD2B11C18043700B16BF2 /* AllDeviceListVC.swift in Sources */,
+				C24FD2C81C18043700B16BF2 /* SDWebImageDecoder.m in Sources */,
+				C21E15941C1806FE00C45854 /* SetModelVC.swift in Sources */,
+				C24FD2D01C18043700B16BF2 /* UIImage+WebP.m in Sources */,
+				C24FD2C71C18043700B16BF2 /* SDWebImageCompat.m in Sources */,
+				C24FD2B31C18043700B16BF2 /* CreateChooseVC.swift in Sources */,
+				C24FD2C31C18043700B16BF2 /* QRCodeReaderViewController.m in Sources */,
+				C24FD2C91C18043700B16BF2 /* SDWebImageDownloader.m in Sources */,
+				C24FD2C41C18043700B16BF2 /* MKAnnotationView+WebCache.m in Sources */,
 				980A92F61C17B440009166D0 /* AppDelegate.swift in Sources */,
+				C24FD2C61C18043700B16BF2 /* SDImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +845,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SmartHome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SmartHome/Vendors",
+					"$(PROJECT_DIR)/SmartHome/Vendors/libSmartLink",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.konlin.SmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -414,6 +861,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SmartHome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SmartHome/Vendors",
+					"$(PROJECT_DIR)/SmartHome/Vendors/libSmartLink",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.konlin.SmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -486,6 +938,7 @@
 				980A931F1C17B441009166D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		980A93201C17B441009166D0 /* Build configuration list for PBXNativeTarget "SmartHomeTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +947,7 @@
 				980A93221C17B441009166D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		980A93231C17B441009166D0 /* Build configuration list for PBXNativeTarget "SmartHomeUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +956,7 @@
 				980A93251C17B441009166D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
