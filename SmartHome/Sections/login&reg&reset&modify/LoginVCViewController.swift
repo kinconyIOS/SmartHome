@@ -10,11 +10,15 @@ import UIKit
 
 class LoginVCViewController: UIViewController {
 
+    @IBOutlet var loginBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor=UIColor.whiteColor();
+        self.view.backgroundColor=UIColor.whiteColor()
+        self.loginBtn.backgroundColor=buttonColor1
+        self.loginBtn.layer.cornerRadius=7.0
+        self.loginBtn.layer.masksToBounds=true;
         
-        // Do any additional setup after loading the view.
+        
     }
 }

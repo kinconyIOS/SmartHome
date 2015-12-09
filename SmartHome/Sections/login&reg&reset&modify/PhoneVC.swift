@@ -10,6 +10,7 @@ import UIKit
 
 class PhoneVC: UIViewController {
 
+    @IBOutlet var nextTap: UIButton!
   
     override func viewDidLoad() {
         super.viewDidLoad()
