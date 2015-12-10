@@ -10,6 +10,7 @@ import UIKit
 
 class PhoneVC: UIViewController {
 
+    @IBOutlet var phoneText: UITextField!
     @IBOutlet var nextBtn: UIButton!
   
     var setUserType:SetUserType?{
@@ -38,9 +39,8 @@ class PhoneVC: UIViewController {
         {
         case SetUserType.Modify : self.navigationItem.title = NSLocalizedString("修改密码", comment: "")
         case SetUserType.Reg :self.navigationItem.title = NSLocalizedString("注册账号", comment: "")
-            case SetUserType.Reset :self.navigationItem.title = NSLocalizedString("重置密码", comment: "")
-        default : break
-        
+        case SetUserType.Reset :self.navigationItem.title = NSLocalizedString("重置密码", comment: "")
+       
         }
        
       
@@ -53,5 +53,14 @@ class PhoneVC: UIViewController {
     
     }
 
+    @IBAction func nextTap(sender: AnyObject) {
+       
+        let codevc:VCodeVC=VCodeVC()
+        codevc.phoneNum=trimString(" 17258136536 ")
+        if !validateMobile(codevc.phoneNum!) { showMsg("不合规矩")}
+  
+        
+        navigationController?.pushViewController(codevc, animated: true)
+    }
   
 }

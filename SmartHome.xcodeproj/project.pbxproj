@@ -17,9 +17,11 @@
 		980A93191C17B441009166D0 /* SmartHomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A93181C17B441009166D0 /* SmartHomeUITests.swift */; };
 		983FE2E91C1821B6004B89CE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983FE2E81C1821B6004B89CE /* Helper.swift */; };
 		9847F0931C194F09005D72A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9847F0951C194F09005D72A9 /* InfoPlist.strings */; };
+		9847F0981C19577C005D72A9 /* PhoneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9847F09A1C19577C005D72A9 /* PhoneVC.xib */; };
 		98B8A39D1C1815BE00A584D3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A39C1C1815BE00A584D3 /* libsqlite3.tbd */; };
 		98B8A39F1C1815E700A584D3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A39E1C1815E700A584D3 /* libz.tbd */; };
 		98B8A3A11C1815FF00A584D3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A3A01C1815FF00A584D3 /* libc++.tbd */; };
+		98E906C01C19694100392450 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E906BF1C19694100392450 /* Tools.swift */; };
 		C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E158A1C18063B00C45854 /* SuccessVC.swift */; };
 		C21E158D1C18063B00C45854 /* SuccessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21E158B1C18063B00C45854 /* SuccessVC.xib */; };
 		C21E15901C18065200C45854 /* FailedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E158E1C18065200C45854 /* FailedVC.swift */; };
@@ -37,7 +39,6 @@
 		C24FD2A71C18043700B16BF2 /* PassWordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD24C1C18043600B16BF2 /* PassWordVC.swift */; };
 		C24FD2A81C18043700B16BF2 /* PassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD24D1C18043600B16BF2 /* PassWordVC.xib */; };
 		C24FD2A91C18043700B16BF2 /* PhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD24E1C18043600B16BF2 /* PhoneVC.swift */; };
-		C24FD2AA1C18043700B16BF2 /* PhoneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD24F1C18043600B16BF2 /* PhoneVC.xib */; };
 		C24FD2AB1C18043700B16BF2 /* VCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2501C18043600B16BF2 /* VCodeVC.swift */; };
 		C24FD2AC1C18043700B16BF2 /* VCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD2511C18043600B16BF2 /* VCodeVC.xib */; };
 		C24FD2AD1C18043700B16BF2 /* MallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2531C18043600B16BF2 /* MallVC.swift */; };
@@ -100,10 +101,6 @@
 		9803539E1C1947E500A2C6A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		980353A81C19499E00A2C6A8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		980353AB1C1949A800A2C6A8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		980353AD1C1949CF00A2C6A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		980353B01C194A5B00A2C6A8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
-		980353B11C194A5B00A2C6A8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
-		980353B51C194A7E00A2C6A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		980353B81C194A8A00A2C6A8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		980353B91C194A8A00A2C6A8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hant"; path = "zh-Hant.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		980353BB1C194A8D00A2C6A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -121,9 +118,13 @@
 		9847F0941C194F09005D72A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9847F0961C194F0A005D72A9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		9847F0971C194F0B005D72A9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		9847F0A51C195798005D72A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PhoneVC.xib; sourceTree = "<group>"; };
+		9847F0AF1C1958C6005D72A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		98B8A39C1C1815BE00A584D3 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		98B8A39E1C1815E700A584D3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		98B8A3A01C1815FF00A584D3 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		98E906B51C19594800392450 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		98E906BF1C19694100392450 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		C21E158A1C18063B00C45854 /* SuccessVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessVC.swift; sourceTree = "<group>"; };
 		C21E158B1C18063B00C45854 /* SuccessVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuccessVC.xib; sourceTree = "<group>"; };
 		C21E158E1C18065200C45854 /* FailedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailedVC.swift; sourceTree = "<group>"; };
@@ -142,7 +143,6 @@
 		C24FD24C1C18043600B16BF2 /* PassWordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassWordVC.swift; sourceTree = "<group>"; };
 		C24FD24D1C18043600B16BF2 /* PassWordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PassWordVC.xib; sourceTree = "<group>"; };
 		C24FD24E1C18043600B16BF2 /* PhoneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVC.swift; sourceTree = "<group>"; };
-		C24FD24F1C18043600B16BF2 /* PhoneVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneVC.xib; sourceTree = "<group>"; };
 		C24FD2501C18043600B16BF2 /* VCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCodeVC.swift; sourceTree = "<group>"; };
 		C24FD2511C18043600B16BF2 /* VCodeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCodeVC.xib; sourceTree = "<group>"; };
 		C24FD2531C18043600B16BF2 /* MallVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MallVC.swift; sourceTree = "<group>"; };
@@ -299,6 +299,14 @@
 			path = SmartHomeUITests;
 			sourceTree = "<group>";
 		};
+		98E906BE1C19693600392450 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				98E906BF1C19694100392450 /* Tools.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		C21E15961C181B3200C45854 /* Creat */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,8 +319,8 @@
 		C24FD2361C18043600B16BF2 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				98E906BE1C19693600392450 /* Classes */,
 				C24FD2371C18043600B16BF2 /* Categories */,
-				C24FD23A1C18043600B16BF2 /* Classes */,
 				C24FD23B1C18043600B16BF2 /* Views */,
 			);
 			path = General;
@@ -325,13 +333,6 @@
 				C24FD2391C18043600B16BF2 /* NSString+Contains.m */,
 			);
 			path = Categories;
-			sourceTree = "<group>";
-		};
-		C24FD23A1C18043600B16BF2 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		C24FD23B1C18043600B16BF2 /* Views */ = {
@@ -399,7 +400,7 @@
 				C24FD24C1C18043600B16BF2 /* PassWordVC.swift */,
 				C24FD24D1C18043600B16BF2 /* PassWordVC.xib */,
 				C24FD24E1C18043600B16BF2 /* PhoneVC.swift */,
-				C24FD24F1C18043600B16BF2 /* PhoneVC.xib */,
+				9847F09A1C19577C005D72A9 /* PhoneVC.xib */,
 				C24FD2501C18043600B16BF2 /* VCodeVC.swift */,
 				C24FD2511C18043600B16BF2 /* VCodeVC.xib */,
 			);
@@ -642,7 +643,7 @@
 				C24FD2BC1C18043700B16BF2 /* SetRomeVC.xib in Resources */,
 				C24FD2B81C18043700B16BF2 /* SetDeviceVC.xib in Resources */,
 				C24FD2A81C18043700B16BF2 /* PassWordVC.xib in Resources */,
-				C24FD2AA1C18043700B16BF2 /* PhoneVC.xib in Resources */,
+				9847F0981C19577C005D72A9 /* PhoneVC.xib in Resources */,
 				C24FD2A61C18043700B16BF2 /* LoginVCViewController.xib in Resources */,
 				9847F0931C194F09005D72A9 /* InfoPlist.strings in Resources */,
 				980A93031C17B440009166D0 /* LaunchScreen.storyboard in Resources */,
@@ -721,6 +722,7 @@
 				C24FD2C31C18043700B16BF2 /* QRCodeReaderViewController.m in Sources */,
 				C24FD2C91C18043700B16BF2 /* SDWebImageDownloader.m in Sources */,
 				C24FD2C41C18043700B16BF2 /* MKAnnotationView+WebCache.m in Sources */,
+				98E906C01C19694100392450 /* Tools.swift in Sources */,
 				980A92F61C17B440009166D0 /* AppDelegate.swift in Sources */,
 				C24FD2C61C18043700B16BF2 /* SDImageCache.m in Sources */,
 			);
@@ -771,7 +773,7 @@
 			children = (
 				980353A81C19499E00A2C6A8 /* zh-Hans */,
 				980353AB1C1949A800A2C6A8 /* zh-Hant */,
-				980353AD1C1949CF00A2C6A8 /* en */,
+				9847F0AF1C1958C6005D72A9 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -789,9 +791,7 @@
 		980A93011C17B440009166D0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				980353B01C194A5B00A2C6A8 /* zh-Hans */,
-				980353B11C194A5B00A2C6A8 /* zh-Hant */,
-				980353B51C194A7E00A2C6A8 /* en */,
+				98E906B51C19594800392450 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -804,6 +804,14 @@
 				9847F0971C194F0B005D72A9 /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9847F09A1C19577C005D72A9 /* PhoneVC.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9847F0A51C195798005D72A9 /* Base */,
+			);
+			name = PhoneVC.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

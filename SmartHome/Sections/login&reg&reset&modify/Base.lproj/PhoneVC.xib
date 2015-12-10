@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhoneVC" customModule="SmartHome" customModuleProvider="target">
             <connections>
                 <outlet property="nextBtn" destination="FfL-sh-YAw" id="0or-XT-cOE"/>
+                <outlet property="phoneText" destination="oBo-Nb-0d9" id="Ff4-70-pqJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,13 +17,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfL-sh-YAw">
-                    <rect key="frame" x="8" y="69" width="578" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="n2F-62-fkz"/>
-                    </constraints>
-                    <state key="normal" title="下一步"/>
-                </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="oBo-Nb-0d9">
                     <rect key="frame" x="8" y="25" width="578" height="30"/>
                     <constraints>
@@ -31,6 +25,16 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfL-sh-YAw">
+                    <rect key="frame" x="8" y="69" width="578" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="n2F-62-fkz"/>
+                    </constraints>
+                    <state key="normal" title="下一步"/>
+                    <connections>
+                        <action selector="nextTap:" destination="-1" eventType="touchUpInside" id="bZ0-O2-cpl"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

@@ -23,6 +23,9 @@
                         <constraint firstAttribute="width" constant="60" id="NPI-ct-EVc"/>
                     </constraints>
                     <state key="normal" title="用户注册"/>
+                    <connections>
+                        <action selector="registerNewUserTap:" destination="-1" eventType="touchUpInside" id="vDA-xg-Lxn"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9O-nl-L0B">
                     <rect key="frame" x="8" y="562" width="60" height="30"/>

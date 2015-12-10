@@ -26,16 +26,26 @@ class LoginVCViewController: UIViewController {
         self.loginBtn.layer.masksToBounds=true
     
        
+       
+        
+    
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         let image:UIImage = imageWithColor(UIColor.clearColor())
         self.navigationController!.navigationBar.setBackgroundImage(image, forBarMetrics: UIBarMetrics.Default)
         
         self.navigationController!.navigationBar.shadowImage=image
         
-    
     }
     @IBAction func forgetPassTap(sender: AnyObject) {
         let phonevc:PhoneVC = PhoneVC()
         phonevc.setUserType=SetUserType.Reset;
+        self.navigationController?.pushViewController(phonevc, animated: true)
+    }
+    @IBAction func registerNewUserTap(sender: AnyObject) {
+        let phonevc:PhoneVC = PhoneVC()
+        phonevc.setUserType=SetUserType.Reg;
         self.navigationController?.pushViewController(phonevc, animated: true)
     }
 }
