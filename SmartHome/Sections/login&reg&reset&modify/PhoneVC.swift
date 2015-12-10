@@ -16,7 +16,6 @@ class PhoneVC: UIViewController {
         willSet{
         print("新值为:\(newValue)\n")
         }
-    
     }
     
 
@@ -27,6 +26,7 @@ class PhoneVC: UIViewController {
         self.configView();
         // Do any additional setup after loading the view.
     }
+    
     func configView()
     {
         nextBtn.layer.cornerRadius=7.0
@@ -36,9 +36,9 @@ class PhoneVC: UIViewController {
     
         switch setUserType!
         {
-        case SetUserType.Modify : self.navigationItem.title = NSLocalizedString("输入手机号", comment: "")
-        case SetUserType.Reg :self.navigationItem.title = NSLocalizedString("输入手机号", comment: "")
-            case SetUserType.Reset :self.navigationItem.title = NSLocalizedString("忘记密码", comment: "")
+        case SetUserType.Modify : self.navigationItem.title = NSLocalizedString("修改密码", comment: "")
+        case SetUserType.Reg :self.navigationItem.title = NSLocalizedString("注册账号", comment: "")
+            case SetUserType.Reset :self.navigationItem.title = NSLocalizedString("重置密码", comment: "")
         default : break
         
         }
