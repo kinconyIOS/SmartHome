@@ -34,6 +34,8 @@ class LoginVCViewController: UIViewController {
     
     }
     @IBAction func forgetPassTap(sender: AnyObject) {
-        self.navigationController?.pushViewController(PhoneVC(), animated: true)
+        let phonevc:PhoneVC = PhoneVC()
+        phonevc.setUserType=SetUserType.Reset;
+        self.navigationController?.pushViewController(phonevc, animated: true)
     }
 }

@@ -57,6 +57,13 @@
                     </constraints>
                     <state key="normal" title="Button"/>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEC-gh-0ds">
+                    <rect key="frame" x="8" y="303" width="584" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="ywy-eu-c3a"/>
+                    </constraints>
+                    <state key="normal" title="登陆"/>
+                </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wsN-U6-Med">
                     <rect key="frame" x="8" y="249" width="524" height="30"/>
                     <constraints>
@@ -65,13 +72,6 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEC-gh-0ds">
-                    <rect key="frame" x="8" y="303" width="584" height="31"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="31" id="ywy-eu-c3a"/>
-                    </constraints>
-                    <state key="normal" title="登陆"/>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
