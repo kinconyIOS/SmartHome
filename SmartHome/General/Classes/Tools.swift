@@ -13,7 +13,7 @@ func trimString(text:String)->String
     return text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet());
 }
 func showMsg(msg:String){
-  UIAlertView.init(title: msg, message:"", delegate: nil, cancelButtonTitle: "我知道了", otherButtonTitles: "", "").show()
+ UIAlertView(title: msg, message: nil, delegate: nil, cancelButtonTitle: "我知道了").show()
 
 }
 
