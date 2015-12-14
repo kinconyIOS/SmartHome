@@ -40,6 +40,7 @@
 		98B8A3A11C1815FF00A584D3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A3A01C1815FF00A584D3 /* libc++.tbd */; };
 		98E906C01C19694100392450 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E906BF1C19694100392450 /* Tools.swift */; };
 		98FD77AB1C1E5B530079E5A7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FD77AA1C1E5B530079E5A7 /* UserModel.swift */; };
+		98FD77B01C1EBEF80079E5A7 /* HScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FD77AE1C1EBEF80079E5A7 /* HScrollView.m */; };
 		C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E158A1C18063B00C45854 /* SuccessVC.swift */; };
 		C21E158D1C18063B00C45854 /* SuccessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21E158B1C18063B00C45854 /* SuccessVC.xib */; };
 		C21E15901C18065200C45854 /* FailedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E158E1C18065200C45854 /* FailedVC.swift */; };
@@ -181,6 +182,8 @@
 		98E906BF1C19694100392450 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		98FD77AA1C1E5B530079E5A7 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		98FD77AC1C1E694B0079E5A7 /* SmartHome-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SmartHome-Bridging-Header.h"; sourceTree = "<group>"; };
+		98FD77AD1C1EBEF80079E5A7 /* HScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HScrollView.h; sourceTree = "<group>"; };
+		98FD77AE1C1EBEF80079E5A7 /* HScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HScrollView.m; sourceTree = "<group>"; };
 		C21E158A1C18063B00C45854 /* SuccessVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessVC.swift; sourceTree = "<group>"; };
 		C21E158B1C18063B00C45854 /* SuccessVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuccessVC.xib; sourceTree = "<group>"; };
 		C21E158E1C18065200C45854 /* FailedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailedVC.swift; sourceTree = "<group>"; };
@@ -423,6 +426,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		98FD77AF1C1EBEF80079E5A7 /* scroll */ = {
+			isa = PBXGroup;
+			children = (
+				98FD77AD1C1EBEF80079E5A7 /* HScrollView.h */,
+				98FD77AE1C1EBEF80079E5A7 /* HScrollView.m */,
+			);
+			name = scroll;
+			path = "../../../../我的软件/我的例子/天天视讯/天天视讯/lib/scroll";
+			sourceTree = "<group>";
+		};
 		C21E15961C181B3200C45854 /* Creat */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +508,7 @@
 		C24FD2461C18043600B16BF2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				98FD77AF1C1EBEF80079E5A7 /* scroll */,
 				C24FD2471C18043600B16BF2 /* HomeVC.swift */,
 				C24FD2481C18043600B16BF2 /* HomeVC.xib */,
 			);
@@ -830,6 +844,7 @@
 				984739DB1C1AC9A300E80376 /* AFURLConnectionOperation.m in Sources */,
 				984739DA1C1AC9A300E80376 /* AFSecurityPolicy.m in Sources */,
 				C24FD2C01C18043700B16BF2 /* QRCameraSwitchButton.m in Sources */,
+				98FD77B01C1EBEF80079E5A7 /* HScrollView.m in Sources */,
 				C24FD2B51C18043700B16BF2 /* DeviceIconVC.swift in Sources */,
 				C24FD2CF1C18043700B16BF2 /* UIImage+MultiFormat.m in Sources */,
 				C24FD2CA1C18043700B16BF2 /* SDWebImageDownloaderOperation.m in Sources */,

@@ -11,13 +11,21 @@ import UIKit
 class LoginVCViewController: UIViewController {
 
     @IBOutlet var loginBtn: UIButton!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-       self.configView()
-        
+    var i:Int?
+    deinit{
         
     }
+    override func viewDidLoad() {
+
+        super.viewDidLoad()
+        self.configView()
+        i=0
+       // NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("greetings"), userInfo: nil, repeats: true)
+     
+    }
+//   func greetings(){
+//       print(i!++);
+//    }
     func configView()
     {
         self.view.backgroundColor=UIColor.whiteColor()

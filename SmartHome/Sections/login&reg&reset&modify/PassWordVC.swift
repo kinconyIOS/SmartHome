@@ -22,9 +22,7 @@ class PassWordVC: UIViewController {
     
     func configView()
     {
-        
         self.navigationController!.navigationBar.titleTextAttributes=[NSFontAttributeName:UIFont.systemFontOfSize(19),NSForegroundColorAttributeName:UIColor.whiteColor()]
-        
         self.navigationItem.title = NSLocalizedString("请输入密码", comment: "")
         self.navigationController!.navigationBar.tintColor=UIColor.whiteColor()
         let image:UIImage = imageWithColor(UIColor.blueColor())

@@ -15,7 +15,8 @@ public enum SetUserType:Int{
     case Reset
     case Modify
 }
-
+let ScreenWidth = UIScreen.mainScreen().bounds.size.width;
+let ScreenHeight = UIScreen.mainScreen().bounds.size.height;
 let BaseUrl:String = "http://192.168.1.120:8080/smarthome.IMCPlatform/public5001/"
 let reg:String="registers.action"
 let send:String="send.action"

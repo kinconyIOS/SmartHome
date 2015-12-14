@@ -10,4 +10,14 @@ import Foundation
 class UserModel: NSObject {
     var userCode:String=""
     var userPhone:String=""
+    
+    convenience init(dict:[String : AnyObject]) {
+        self.init()
+        self.setValuesForKeysWithDictionary(dict)
+        
+    }
+    
+    override func setValue(value: AnyObject?, forUndefinedKey key: String){
+        
+    }
 }

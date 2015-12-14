@@ -63,7 +63,6 @@ class PhoneVC: UIViewController {
         }
         //发送验证码并跳转界面
         let manager = AFHTTPRequestOperationManager()
-       
         let url=BaseUrl+"send.action"
         let params = ["userPhone": codevc.phoneNum!]
         print(url)
@@ -79,10 +78,5 @@ class PhoneVC: UIViewController {
                 error: NSError!) in
                 print("Error: " + error.localizedDescription)
         })
-    
-    
-        
-    }
-    
-  
+     }
 }
