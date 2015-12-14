@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? = UIWindow.init(frame: UIScreen.mainScreen().bounds)
 
 
+    var user:UserModel?=UserModel()
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let nav:UINavigationController = UINavigationController(rootViewController: LoginVCViewController())
         self.window!.rootViewController = nav

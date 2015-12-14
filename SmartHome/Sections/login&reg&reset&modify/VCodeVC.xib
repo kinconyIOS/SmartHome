@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="nextBtn" destination="n5E-bk-Qib" id="hqe-Um-hXe"/>
                 <outlet property="showLabel" destination="1dX-kf-2jm" id="o1Q-Lc-i81"/>
+                <outlet property="vcodeText" destination="7Ul-Hi-fbF" id="7xp-er-ePV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,7 +34,7 @@
                         <constraint firstAttribute="height" constant="21" id="8J1-NT-mvm"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ul-Hi-fbF">

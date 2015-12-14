@@ -24,11 +24,6 @@ class LoginVCViewController: UIViewController {
         self.loginBtn.backgroundColor=buttonColor1
         self.loginBtn.layer.cornerRadius=7.0
         self.loginBtn.layer.masksToBounds=true
-    
-       
-       
-        
-    
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

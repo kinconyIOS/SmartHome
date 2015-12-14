@@ -39,6 +39,7 @@
 		98B8A39F1C1815E700A584D3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A39E1C1815E700A584D3 /* libz.tbd */; };
 		98B8A3A11C1815FF00A584D3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A3A01C1815FF00A584D3 /* libc++.tbd */; };
 		98E906C01C19694100392450 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E906BF1C19694100392450 /* Tools.swift */; };
+		98FD77AB1C1E5B530079E5A7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FD77AA1C1E5B530079E5A7 /* UserModel.swift */; };
 		C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E158A1C18063B00C45854 /* SuccessVC.swift */; };
 		C21E158D1C18063B00C45854 /* SuccessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21E158B1C18063B00C45854 /* SuccessVC.xib */; };
 		C21E15901C18065200C45854 /* FailedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E158E1C18065200C45854 /* FailedVC.swift */; };
@@ -178,6 +179,8 @@
 		98B8A3A01C1815FF00A584D3 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		98E906B51C19594800392450 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98E906BF1C19694100392450 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		98FD77AA1C1E5B530079E5A7 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		98FD77AC1C1E694B0079E5A7 /* SmartHome-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SmartHome-Bridging-Header.h"; sourceTree = "<group>"; };
 		C21E158A1C18063B00C45854 /* SuccessVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessVC.swift; sourceTree = "<group>"; };
 		C21E158B1C18063B00C45854 /* SuccessVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuccessVC.xib; sourceTree = "<group>"; };
 		C21E158E1C18065200C45854 /* FailedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailedVC.swift; sourceTree = "<group>"; };
@@ -318,10 +321,11 @@
 		980A92F41C17B440009166D0 /* SmartHome */ = {
 			isa = PBXGroup;
 			children = (
+				98FD77AC1C1E694B0079E5A7 /* SmartHome-Bridging-Header.h */,
 				980A92F51C17B440009166D0 /* AppDelegate.swift */,
+				98FD77A91C1E5B440079E5A7 /* Model */,
 				C24FD2361C18043600B16BF2 /* General */,
 				C24FD2411C18043600B16BF2 /* Macro */,
-				C24FD2431C18043600B16BF2 /* Models */,
 				C24FD2441C18043600B16BF2 /* Resources */,
 				C24FD2451C18043600B16BF2 /* Sections */,
 				C24FD2671C18043600B16BF2 /* Vendors */,
@@ -411,6 +415,14 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		98FD77A91C1E5B440079E5A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				98FD77AA1C1E5B530079E5A7 /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C21E15961C181B3200C45854 /* Creat */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,13 +469,6 @@
 				983FE2E81C1821B6004B89CE /* Helper.swift */,
 			);
 			path = Macro;
-			sourceTree = "<group>";
-		};
-		C24FD2431C18043600B16BF2 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		C24FD2441C18043600B16BF2 /* Resources */ = {
@@ -846,6 +851,7 @@
 				C24FD2C41C18043700B16BF2 /* MKAnnotationView+WebCache.m in Sources */,
 				98E906C01C19694100392450 /* Tools.swift in Sources */,
 				980A92F61C17B440009166D0 /* AppDelegate.swift in Sources */,
+				98FD77AB1C1E5B530079E5A7 /* UserModel.swift in Sources */,
 				C24FD2C61C18043700B16BF2 /* SDImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1038,6 +1044,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.konlin.SmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2811a111-262e-416d-8e44-a2df472a754b";
+				SWIFT_OBJC_BRIDGING_HEADER = "SmartHome/SmartHome-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -1059,6 +1066,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.konlin.SmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2811a111-262e-416d-8e44-a2df472a754b";
+				SWIFT_OBJC_BRIDGING_HEADER = "SmartHome/SmartHome-Bridging-Header.h";
 			};
 			name = Release;
 		};

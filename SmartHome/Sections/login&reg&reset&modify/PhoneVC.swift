@@ -54,13 +54,34 @@ class PhoneVC: UIViewController {
     }
 
     @IBAction func nextTap(sender: AnyObject) {
-       
+       //验证手机号格式
         let codevc:VCodeVC=VCodeVC()
-        codevc.phoneNum=trimString(" 17258136536 ")
-        if !validateMobile(codevc.phoneNum!) { showMsg("不合规矩")}
-  
+        codevc.phoneNum=trimString(phoneText.text!)
+        if !validateMobile(codevc.phoneNum!) {
+            showMsg("手机号格式不对，请重新输入");
+            return
+        }
+        //发送验证码并跳转界面
+        let manager = AFHTTPRequestOperationManager()
+       
+        let url=BaseUrl+"send.action"
+        let params = ["userPhone": codevc.phoneNum!]
+        print(url)
+        print(params)
+             manager.GET(url,
+            parameters: params,
+            success: { (operation: AFHTTPRequestOperation!,
+                responseObject: AnyObject!) in
+                print("JSON: " + responseObject.description!)
+                self.navigationController?.pushViewController(codevc, animated: true)
+                },
+            failure: { (operation: AFHTTPRequestOperation!,
+                error: NSError!) in
+                print("Error: " + error.localizedDescription)
+        })
+    
+    
         
-        navigationController?.pushViewController(codevc, animated: true)
     }
     
   
