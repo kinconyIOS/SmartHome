@@ -53,8 +53,8 @@
 		C24FD2A21C18043700B16BF2 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2421C18043600B16BF2 /* GlobalVariables.swift */; };
 		C24FD2A31C18043700B16BF2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2471C18043600B16BF2 /* HomeVC.swift */; };
 		C24FD2A41C18043700B16BF2 /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD2481C18043600B16BF2 /* HomeVC.xib */; };
-		C24FD2A51C18043700B16BF2 /* LoginVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD24A1C18043600B16BF2 /* LoginVCViewController.swift */; };
-		C24FD2A61C18043700B16BF2 /* LoginVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD24B1C18043600B16BF2 /* LoginVCViewController.xib */; };
+		C24FD2A51C18043700B16BF2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD24A1C18043600B16BF2 /* LoginVC.swift */; };
+		C24FD2A61C18043700B16BF2 /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD24B1C18043600B16BF2 /* LoginVC.xib */; };
 		C24FD2A71C18043700B16BF2 /* PassWordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD24C1C18043600B16BF2 /* PassWordVC.swift */; };
 		C24FD2A81C18043700B16BF2 /* PassWordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24FD24D1C18043600B16BF2 /* PassWordVC.xib */; };
 		C24FD2A91C18043700B16BF2 /* PhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD24E1C18043600B16BF2 /* PhoneVC.swift */; };
@@ -197,8 +197,8 @@
 		C24FD2421C18043600B16BF2 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		C24FD2471C18043600B16BF2 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		C24FD2481C18043600B16BF2 /* HomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
-		C24FD24A1C18043600B16BF2 /* LoginVCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVCViewController.swift; sourceTree = "<group>"; };
-		C24FD24B1C18043600B16BF2 /* LoginVCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginVCViewController.xib; sourceTree = "<group>"; };
+		C24FD24A1C18043600B16BF2 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		C24FD24B1C18043600B16BF2 /* LoginVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
 		C24FD24C1C18043600B16BF2 /* PassWordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassWordVC.swift; sourceTree = "<group>"; };
 		C24FD24D1C18043600B16BF2 /* PassWordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PassWordVC.xib; sourceTree = "<group>"; };
 		C24FD24E1C18043600B16BF2 /* PhoneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVC.swift; sourceTree = "<group>"; };
@@ -518,8 +518,8 @@
 		C24FD2491C18043600B16BF2 /* login&reg&reset&modify */ = {
 			isa = PBXGroup;
 			children = (
-				C24FD24A1C18043600B16BF2 /* LoginVCViewController.swift */,
-				C24FD24B1C18043600B16BF2 /* LoginVCViewController.xib */,
+				C24FD24A1C18043600B16BF2 /* LoginVC.swift */,
+				C24FD24B1C18043600B16BF2 /* LoginVC.xib */,
 				C24FD24C1C18043600B16BF2 /* PassWordVC.swift */,
 				C24FD24D1C18043600B16BF2 /* PassWordVC.xib */,
 				C24FD24E1C18043600B16BF2 /* PhoneVC.swift */,
@@ -768,7 +768,7 @@
 				C24FD2B81C18043700B16BF2 /* SetDeviceVC.xib in Resources */,
 				C24FD2A81C18043700B16BF2 /* PassWordVC.xib in Resources */,
 				9847F0981C19577C005D72A9 /* PhoneVC.xib in Resources */,
-				C24FD2A61C18043700B16BF2 /* LoginVCViewController.xib in Resources */,
+				C24FD2A61C18043700B16BF2 /* LoginVC.xib in Resources */,
 				9847F0931C194F09005D72A9 /* InfoPlist.strings in Resources */,
 				980A93031C17B440009166D0 /* LaunchScreen.storyboard in Resources */,
 				980353A71C19499E00A2C6A8 /* Localizable.strings in Resources */,
@@ -823,7 +823,7 @@
 				C24FD2A91C18043700B16BF2 /* PhoneVC.swift in Sources */,
 				C21E15901C18065200C45854 /* FailedVC.swift in Sources */,
 				984739D81C1AC9A300E80376 /* AFHTTPSessionManager.m in Sources */,
-				C24FD2A51C18043700B16BF2 /* LoginVCViewController.swift in Sources */,
+				C24FD2A51C18043700B16BF2 /* LoginVC.swift in Sources */,
 				C24FD2A71C18043700B16BF2 /* PassWordVC.swift in Sources */,
 				984739DC1C1AC9A300E80376 /* AFURLRequestSerialization.m in Sources */,
 				C24FD2D11C18043700B16BF2 /* UIImageView+HighlightedWebCache.m in Sources */,

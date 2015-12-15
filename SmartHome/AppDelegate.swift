@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? = UIWindow.init(frame: UIScreen.mainScreen().bounds)
     var user:UserModel?=UserModel()
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let nav:UINavigationController = UINavigationController(rootViewController: LoginVCViewController())
+        let nav:UINavigationController = UINavigationController(rootViewController: HomeVC())
         self.window!.rootViewController = nav
         self.window!.makeKeyAndVisible();
         return true

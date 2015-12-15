@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginVCViewController: UIViewController {
+class LoginVC: UIViewController {
 
     @IBOutlet var loginBtn: UIButton!
     var i:Int?
