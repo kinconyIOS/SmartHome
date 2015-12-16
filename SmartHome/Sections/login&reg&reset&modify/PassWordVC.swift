@@ -9,8 +9,11 @@
 import UIKit
 
 class PassWordVC: UIViewController {
-
-  
+    @IBOutlet var firstPassText: UITextField!
+    
+    @IBOutlet var lastPassText: UITextField!
+    
+    @IBOutlet var doBtn: UIButton!
     var setUserType:SetUserType?
     var vcode:String?=""
     var phoneNum:String?=""
@@ -22,12 +25,17 @@ class PassWordVC: UIViewController {
     
     func configView()
     {
+        
+        //保证图片拉伸不变形
+        firstPassText.background=textBgImage!
+        lastPassText.background=textBgImage!
+        doBtn.setBackgroundImage(btnBgImage, forState: UIControlState.Normal)
         self.navigationController!.navigationBar.titleTextAttributes=[NSFontAttributeName:UIFont.systemFontOfSize(19),NSForegroundColorAttributeName:UIColor.whiteColor()]
-        self.navigationItem.title = NSLocalizedString("请输入密码", comment: "")
+        self.navigationItem.title = NSLocalizedString("完成注册", comment: "")
         self.navigationController!.navigationBar.tintColor=UIColor.whiteColor()
-        let image:UIImage = imageWithColor(UIColor.blueColor())
-        self.navigationController!.navigationBar.setBackgroundImage(image, forBarMetrics: UIBarMetrics.Default)
-        self.navigationController!.navigationBar.shadowImage=image
+   
+        self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
+        
         
     }
     
@@ -58,12 +66,12 @@ class PassWordVC: UIViewController {
             success: { (operation: AFHTTPRequestOperation!,
                 responseObject: AnyObject!) in
                 print("JSON: " + responseObject.description!)
-            
+                
                 let successvc:SuccessVC? = SuccessVC()
                 successvc!.setUserType=self.setUserType
-            
+                
                 self.navigationController?.pushViewController(successvc!, animated: true)
-
+                
             },
             failure: { (operation: AFHTTPRequestOperation!,
                 error: NSError!) in
@@ -71,5 +79,5 @@ class PassWordVC: UIViewController {
         })
         
     }
-
+    
 }

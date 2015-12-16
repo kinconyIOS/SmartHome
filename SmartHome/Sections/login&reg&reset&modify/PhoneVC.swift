@@ -32,7 +32,9 @@ class PhoneVC: UIViewController {
     {
         nextBtn.layer.cornerRadius=7.0
         nextBtn.layer.masksToBounds=true;
-        
+        nextBtn.setBackgroundImage(btnBgImage, forState: UIControlState.Normal)
+     
+       phoneText.background=textBgImage!
         self.navigationController!.navigationBar.titleTextAttributes=[NSFontAttributeName:UIFont.systemFontOfSize(19),NSForegroundColorAttributeName:UIColor.whiteColor()]
     
         switch setUserType!
@@ -45,10 +47,9 @@ class PhoneVC: UIViewController {
        
       
         self.navigationController!.navigationBar.tintColor=UIColor.whiteColor()
-        let image:UIImage = imageWithColor(UIColor.blueColor())
-        self.navigationController!.navigationBar.setBackgroundImage(image, forBarMetrics: UIBarMetrics.Default)
+        self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
         
-        self.navigationController!.navigationBar.shadowImage=image
+       
       
     
     }

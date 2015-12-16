@@ -14,11 +14,13 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
+          self.view.addSubview(Waiting())
         // Do any additional setup after loading the view.
     }
     func configView(){
         
-        hscroll!.frame=CGRectMake(0,20, ScreenWidth-60, 44);
+        hscroll!.frame=CGRectMake(0,20, ScreenWidth-60, 64);
+    
         self.navigationItem.titleView=hscroll;
         scrollAddBtn()
     }

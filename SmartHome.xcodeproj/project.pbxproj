@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		980353A71C19499E00A2C6A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 980353A91C19499E00A2C6A8 /* Localizable.strings */; };
+		9806CD411C210FF30038A8E0 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9806CD401C210FF30038A8E0 /* GuideViewController.m */; };
+		9806CD481C2124C90038A8E0 /* 引导页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9806CD471C2124C90038A8E0 /* 引导页.jpg */; };
 		980A92F61C17B440009166D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A92F51C17B440009166D0 /* AppDelegate.swift */; };
 		980A92FB1C17B440009166D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 980A92F91C17B440009166D0 /* Main.storyboard */; };
 		980A92FE1C17B440009166D0 /* SmartHome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 980A92FC1C17B440009166D0 /* SmartHome.xcdatamodeld */; };
@@ -35,6 +37,8 @@
 		984739E61C1AC9A300E80376 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 984739D51C1AC9A300E80376 /* UIWebView+AFNetworking.m */; };
 		9847F0931C194F09005D72A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9847F0951C194F09005D72A9 /* InfoPlist.strings */; };
 		9847F0981C19577C005D72A9 /* PhoneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9847F09A1C19577C005D72A9 /* PhoneVC.xib */; };
+		98539A601C1FBFBB00DA7699 /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98539A5F1C1FBFBB00DA7699 /* Waiting.swift */; };
+		98539A621C1FDA0B00DA7699 /* wait.gif in Resources */ = {isa = PBXBuildFile; fileRef = 98539A611C1FDA0B00DA7699 /* wait.gif */; };
 		98B8A39D1C1815BE00A584D3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A39C1C1815BE00A584D3 /* libsqlite3.tbd */; };
 		98B8A39F1C1815E700A584D3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A39E1C1815E700A584D3 /* libz.tbd */; };
 		98B8A3A11C1815FF00A584D3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A3A01C1815FF00A584D3 /* libc++.tbd */; };
@@ -123,6 +127,9 @@
 		980353B81C194A8A00A2C6A8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		980353B91C194A8A00A2C6A8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hant"; path = "zh-Hant.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		980353BB1C194A8D00A2C6A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9806CD3F1C210FF30038A8E0 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
+		9806CD401C210FF30038A8E0 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		9806CD471C2124C90038A8E0 /* 引导页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "引导页.jpg"; sourceTree = "<group>"; };
 		980A92F21C17B440009166D0 /* SmartHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		980A92F51C17B440009166D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		980A92FD1C17B440009166D0 /* SmartHome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartHome.xcdatamodel; sourceTree = "<group>"; };
@@ -175,6 +182,8 @@
 		9847F0971C194F0B005D72A9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		9847F0A51C195798005D72A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PhoneVC.xib; sourceTree = "<group>"; };
 		9847F0AF1C1958C6005D72A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		98539A5F1C1FBFBB00DA7699 /* Waiting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Waiting.swift; sourceTree = "<group>"; };
+		98539A611C1FDA0B00DA7699 /* wait.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = wait.gif; sourceTree = "<group>"; };
 		98B8A39C1C1815BE00A584D3 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		98B8A39E1C1815E700A584D3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		98B8A3A01C1815FF00A584D3 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -296,6 +305,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9806CD461C2124970038A8E0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9806CD471C2124C90038A8E0 /* 引导页.jpg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		980A92E91C17B440009166D0 = {
 			isa = PBXGroup;
 			children = (
@@ -326,10 +343,10 @@
 			children = (
 				98FD77AC1C1E694B0079E5A7 /* SmartHome-Bridging-Header.h */,
 				980A92F51C17B440009166D0 /* AppDelegate.swift */,
+				9806CD461C2124970038A8E0 /* Resources */,
 				98FD77A91C1E5B440079E5A7 /* Model */,
 				C24FD2361C18043600B16BF2 /* General */,
 				C24FD2411C18043600B16BF2 /* Macro */,
-				C24FD2441C18043600B16BF2 /* Resources */,
 				C24FD2451C18043600B16BF2 /* Sections */,
 				C24FD2671C18043600B16BF2 /* Vendors */,
 				980A92F91C17B440009166D0 /* Main.storyboard */,
@@ -413,6 +430,8 @@
 		98E906BE1C19693600392450 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9806CD3F1C210FF30038A8E0 /* GuideViewController.h */,
+				9806CD401C210FF30038A8E0 /* GuideViewController.m */,
 				98E906BF1C19694100392450 /* Tools.swift */,
 			);
 			path = Classes;
@@ -471,6 +490,8 @@
 				C21E158B1C18063B00C45854 /* SuccessVC.xib */,
 				C21E158E1C18065200C45854 /* FailedVC.swift */,
 				C21E158F1C18065200C45854 /* FailedVC.xib */,
+				98539A611C1FDA0B00DA7699 /* wait.gif */,
+				98539A5F1C1FBFBB00DA7699 /* Waiting.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -482,13 +503,6 @@
 				983FE2E81C1821B6004B89CE /* Helper.swift */,
 			);
 			path = Macro;
-			sourceTree = "<group>";
-		};
-		C24FD2441C18043600B16BF2 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		C24FD2451C18043600B16BF2 /* Sections */ = {
@@ -518,6 +532,7 @@
 		C24FD2491C18043600B16BF2 /* login&reg&reset&modify */ = {
 			isa = PBXGroup;
 			children = (
+				C24FD2511C18043600B16BF2 /* VCodeVC.xib */,
 				C24FD24A1C18043600B16BF2 /* LoginVC.swift */,
 				C24FD24B1C18043600B16BF2 /* LoginVC.xib */,
 				C24FD24C1C18043600B16BF2 /* PassWordVC.swift */,
@@ -525,7 +540,6 @@
 				C24FD24E1C18043600B16BF2 /* PhoneVC.swift */,
 				9847F09A1C19577C005D72A9 /* PhoneVC.xib */,
 				C24FD2501C18043600B16BF2 /* VCodeVC.swift */,
-				C24FD2511C18043600B16BF2 /* VCodeVC.xib */,
 			);
 			path = "login&reg&reset&modify";
 			sourceTree = "<group>";
@@ -768,12 +782,14 @@
 				C24FD2B81C18043700B16BF2 /* SetDeviceVC.xib in Resources */,
 				C24FD2A81C18043700B16BF2 /* PassWordVC.xib in Resources */,
 				9847F0981C19577C005D72A9 /* PhoneVC.xib in Resources */,
+				98539A621C1FDA0B00DA7699 /* wait.gif in Resources */,
 				C24FD2A61C18043700B16BF2 /* LoginVC.xib in Resources */,
 				9847F0931C194F09005D72A9 /* InfoPlist.strings in Resources */,
 				980A93031C17B440009166D0 /* LaunchScreen.storyboard in Resources */,
 				980353A71C19499E00A2C6A8 /* Localizable.strings in Resources */,
 				C21E15951C1806FE00C45854 /* SetModelVC.xib in Resources */,
 				980A93001C17B440009166D0 /* Assets.xcassets in Resources */,
+				9806CD481C2124C90038A8E0 /* 引导页.jpg in Resources */,
 				C21E15911C18065200C45854 /* FailedVC.xib in Resources */,
 				C21E159A1C181B5F00C45854 /* CreatHomeVC.xib in Resources */,
 				C21E158D1C18063B00C45854 /* SuccessVC.xib in Resources */,
@@ -811,6 +827,7 @@
 				C24FD2D31C18043700B16BF2 /* UIView+WebCacheOperation.m in Sources */,
 				C24FD2A31C18043700B16BF2 /* HomeVC.swift in Sources */,
 				984739E11C1AC9A300E80376 /* UIAlertView+AFNetworking.m in Sources */,
+				9806CD411C210FF30038A8E0 /* GuideViewController.m in Sources */,
 				C24FD2D21C18043700B16BF2 /* UIImageView+WebCache.m in Sources */,
 				984739D91C1AC9A300E80376 /* AFNetworkReachabilityManager.m in Sources */,
 				C24FD2AB1C18043700B16BF2 /* VCodeVC.swift in Sources */,
@@ -831,6 +848,7 @@
 				984739D71C1AC9A300E80376 /* AFHTTPRequestOperationManager.m in Sources */,
 				C24FD2B71C18043700B16BF2 /* SetDeviceVC.swift in Sources */,
 				C24FD2CB1C18043700B16BF2 /* SDWebImageManager.m in Sources */,
+				98539A601C1FBFBB00DA7699 /* Waiting.swift in Sources */,
 				984739E01C1AC9A300E80376 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				C24FD2AD1C18043700B16BF2 /* MallVC.swift in Sources */,
 				C24FD2BB1C18043700B16BF2 /* SetRomeVC.swift in Sources */,

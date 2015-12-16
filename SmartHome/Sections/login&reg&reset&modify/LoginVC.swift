@@ -1,5 +1,5 @@
 //
-//  LoginVCViewController.swift
+//  LoginVC.swift
 //  SmartHome
 //
 //  Created by sunzl on 15/12/9.
@@ -10,8 +10,10 @@ import UIKit
 
 class LoginVC: UIViewController {
 
+    @IBOutlet var bgImg: UIImageView!
     @IBOutlet var loginBtn: UIButton!
     var i:Int?
+    
     deinit{
         
     }
@@ -20,6 +22,7 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         self.configView()
         i=0
+      
        // NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("greetings"), userInfo: nil, repeats: true)
      
     }
@@ -28,10 +31,14 @@ class LoginVC: UIViewController {
 //    }
     func configView()
     {
+        bgImg.image=loginBgImage!
         self.view.backgroundColor=UIColor.whiteColor()
-        self.loginBtn.backgroundColor=buttonColor1
         self.loginBtn.layer.cornerRadius=7.0
         self.loginBtn.layer.masksToBounds=true
+        self.loginBtn.setBackgroundImage(btnBgImage, forState: UIControlState.Normal)
+        self.loginBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
+        self.addTouchDownHideKey()
+     
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,5 +57,37 @@ class LoginVC: UIViewController {
         let phonevc:PhoneVC = PhoneVC()
         phonevc.setUserType=SetUserType.Reg;
         self.navigationController?.pushViewController(phonevc, animated: true)
+    }
+    @IBAction func loginTap(sender: AnyObject) {
+
+        let homevc:HomeVC=HomeVC()
+        homevc.tabBarItem.title=NSLocalizedString("首页", comment: "")
+        homevc.tabBarItem.image=homeIcon
+        homevc.tabBarItem.selectedImage=homeIconSelected
+          let homeNav:UINavigationController = UINavigationController(rootViewController: homevc)
+        
+        let setModelVC:SetModelVC=SetModelVC()
+        setModelVC.tabBarItem.title=NSLocalizedString("情景模式", comment: "")
+        setModelVC.tabBarItem.image=modelIcon
+        setModelVC.tabBarItem.selectedImage=modelIconSelected
+          let setModelNav:UINavigationController = UINavigationController(rootViewController: setModelVC)
+        
+        let mallvc:MallVC=MallVC()
+        mallvc.tabBarItem.title=NSLocalizedString("商城", comment: "")
+        mallvc.tabBarItem.image=mallIcon
+        mallvc.tabBarItem.selectedImage=mallIconSelected
+          let mallNav:UINavigationController = UINavigationController(rootViewController:mallvc)
+        
+        let minevc:MineVC=MineVC()
+        minevc.tabBarItem.title=NSLocalizedString("我的", comment: "")
+        minevc.tabBarItem.image=mineIcon
+        minevc.tabBarItem.selectedImage=mineIconSelected
+          let mineNav:UINavigationController = UINavigationController(rootViewController: minevc)
+       let tab=UITabBarController()
+        tab.viewControllers=[homeNav,setModelNav,mallNav,mineNav];
+        tab.tabBar.tintColor=mainColor
+        self.navigationController?.presentViewController(tab, animated: true, completion:nil)
+    }
+    @IBAction func onExit(sender: AnyObject) {
     }
 }

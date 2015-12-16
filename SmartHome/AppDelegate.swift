@@ -10,15 +10,27 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow? = UIWindow.init(frame: UIScreen.mainScreen().bounds)
     var user:UserModel?=UserModel()
+   
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let nav:UINavigationController = UINavigationController(rootViewController: HomeVC())
-        self.window!.rootViewController = nav
+        //此处要考虑三种情况
+        //1.下载软件第一次安装 2.不是首次且令牌失效 3.不是首次且令牌不失效
+        let guidevc:GuideViewController = GuideViewController(coverImageNames: ["引导页.jpg","引导页.jpg","引导页.jpg"], backgroundImageNames: nil)
+        
+        guidevc.didSelectedEnter=didSelectedEnter
+        //
+        self.window!.rootViewController = guidevc
         self.window!.makeKeyAndVisible();
         return true
+    }
+    func didSelectedEnter(){
+        let nav:UINavigationController = UINavigationController(rootViewController: LoginVC())
+        self.window!.rootViewController=nav
+        print("完毕")
     }
 
     func applicationWillResignActive(application: UIApplication) {
