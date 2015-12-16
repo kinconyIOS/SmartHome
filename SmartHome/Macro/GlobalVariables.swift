@@ -25,8 +25,8 @@ let loginBgImage:UIImage? = UIImage (named: "背景.png")
 //登陆注册等按钮背景
 let btnBgImage:UIImage? = UIImage(named: "登陆.png")
  //首页
-let homeIcon:UIImage? = UIImage(named: "Home未按.png")
-let homeIconSelected:UIImage? = UIImage(named: "Home.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+let homeIcon:UIImage? = UIImage(named: "首页未按.png")
+let homeIconSelected:UIImage? = UIImage(named: "首页.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
 //情景模式
 let modelIcon:UIImage? = UIImage(named: "情景模式未按.png")
 let modelIconSelected:UIImage? = UIImage(named: "情景模式.png")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
