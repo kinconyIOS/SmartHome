@@ -39,6 +39,21 @@
 		9847F0981C19577C005D72A9 /* PhoneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9847F09A1C19577C005D72A9 /* PhoneVC.xib */; };
 		98539A601C1FBFBB00DA7699 /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98539A5F1C1FBFBB00DA7699 /* Waiting.swift */; };
 		98539A621C1FDA0B00DA7699 /* wait.gif in Resources */ = {isa = PBXBuildFile; fileRef = 98539A611C1FDA0B00DA7699 /* wait.gif */; };
+		985F9A631C2159FC00FFE955 /* AddRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F9A581C2159FC00FFE955 /* AddRoomCell.swift */; };
+		985F9A641C2159FC00FFE955 /* AddRoomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985F9A591C2159FC00FFE955 /* AddRoomCell.xib */; };
+		985F9A661C2159FC00FFE955 /* FloorRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F9A5B1C2159FC00FFE955 /* FloorRoomCell.swift */; };
+		985F9A671C2159FC00FFE955 /* FloorRoomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985F9A5C1C2159FC00FFE955 /* FloorRoomCell.xib */; };
+		985F9A681C2159FC00FFE955 /* FloorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F9A5D1C2159FC00FFE955 /* FloorViewController.swift */; };
+		985F9A691C2159FC00FFE955 /* FloorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985F9A5E1C2159FC00FFE955 /* FloorViewController.xib */; };
+		985F9A6A1C2159FC00FFE955 /* RoomAndFloorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F9A5F1C2159FC00FFE955 /* RoomAndFloorCell.swift */; };
+		985F9A6B1C2159FC00FFE955 /* RoomAndFloorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985F9A601C2159FC00FFE955 /* RoomAndFloorCell.xib */; };
+		985F9A6C1C2159FC00FFE955 /* RoomAndRenameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F9A611C2159FC00FFE955 /* RoomAndRenameVC.swift */; };
+		985F9A6D1C2159FC00FFE955 /* RoomAndRenameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985F9A621C2159FC00FFE955 /* RoomAndRenameVC.xib */; };
+		985F9A6F1C215B6E00FFE955 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F9A6E1C215B6E00FFE955 /* EditView.swift */; };
+		985F9A761C215D9F00FFE955 /* CreatHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F9A741C215D9F00FFE955 /* CreatHomeVC.swift */; };
+		985F9A771C215D9F00FFE955 /* CreatHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985F9A751C215D9F00FFE955 /* CreatHomeVC.xib */; };
+		985F9A7A1C215DBA00FFE955 /* CreatRootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F9A781C215DBA00FFE955 /* CreatRootVC.swift */; };
+		985F9A7B1C215DBA00FFE955 /* CreatRootVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 985F9A791C215DBA00FFE955 /* CreatRootVC.xib */; };
 		98B8A39D1C1815BE00A584D3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A39C1C1815BE00A584D3 /* libsqlite3.tbd */; };
 		98B8A39F1C1815E700A584D3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A39E1C1815E700A584D3 /* libz.tbd */; };
 		98B8A3A11C1815FF00A584D3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A3A01C1815FF00A584D3 /* libc++.tbd */; };
@@ -51,8 +66,6 @@
 		C21E15911C18065200C45854 /* FailedVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21E158F1C18065200C45854 /* FailedVC.xib */; };
 		C21E15941C1806FE00C45854 /* SetModelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E15921C1806FE00C45854 /* SetModelVC.swift */; };
 		C21E15951C1806FE00C45854 /* SetModelVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21E15931C1806FE00C45854 /* SetModelVC.xib */; };
-		C21E15991C181B5F00C45854 /* CreatHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E15971C181B5F00C45854 /* CreatHomeVC.swift */; };
-		C21E159A1C181B5F00C45854 /* CreatHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21E15981C181B5F00C45854 /* CreatHomeVC.xib */; };
 		C24FD29D1C18043700B16BF2 /* NSString+Contains.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2391C18043600B16BF2 /* NSString+Contains.m */; };
 		C24FD2A21C18043700B16BF2 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2421C18043600B16BF2 /* GlobalVariables.swift */; };
 		C24FD2A31C18043700B16BF2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2471C18043600B16BF2 /* HomeVC.swift */; };
@@ -184,6 +197,21 @@
 		9847F0AF1C1958C6005D72A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		98539A5F1C1FBFBB00DA7699 /* Waiting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Waiting.swift; sourceTree = "<group>"; };
 		98539A611C1FDA0B00DA7699 /* wait.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = wait.gif; sourceTree = "<group>"; };
+		985F9A581C2159FC00FFE955 /* AddRoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomCell.swift; sourceTree = "<group>"; };
+		985F9A591C2159FC00FFE955 /* AddRoomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRoomCell.xib; sourceTree = "<group>"; };
+		985F9A5B1C2159FC00FFE955 /* FloorRoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorRoomCell.swift; sourceTree = "<group>"; };
+		985F9A5C1C2159FC00FFE955 /* FloorRoomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloorRoomCell.xib; sourceTree = "<group>"; };
+		985F9A5D1C2159FC00FFE955 /* FloorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorViewController.swift; sourceTree = "<group>"; };
+		985F9A5E1C2159FC00FFE955 /* FloorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloorViewController.xib; sourceTree = "<group>"; };
+		985F9A5F1C2159FC00FFE955 /* RoomAndFloorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomAndFloorCell.swift; sourceTree = "<group>"; };
+		985F9A601C2159FC00FFE955 /* RoomAndFloorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomAndFloorCell.xib; sourceTree = "<group>"; };
+		985F9A611C2159FC00FFE955 /* RoomAndRenameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomAndRenameVC.swift; sourceTree = "<group>"; };
+		985F9A621C2159FC00FFE955 /* RoomAndRenameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomAndRenameVC.xib; sourceTree = "<group>"; };
+		985F9A6E1C215B6E00FFE955 /* EditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		985F9A741C215D9F00FFE955 /* CreatHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatHomeVC.swift; sourceTree = "<group>"; };
+		985F9A751C215D9F00FFE955 /* CreatHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatHomeVC.xib; sourceTree = "<group>"; };
+		985F9A781C215DBA00FFE955 /* CreatRootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatRootVC.swift; sourceTree = "<group>"; };
+		985F9A791C215DBA00FFE955 /* CreatRootVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatRootVC.xib; sourceTree = "<group>"; };
 		98B8A39C1C1815BE00A584D3 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		98B8A39E1C1815E700A584D3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		98B8A3A01C1815FF00A584D3 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -199,8 +227,6 @@
 		C21E158F1C18065200C45854 /* FailedVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FailedVC.xib; sourceTree = "<group>"; };
 		C21E15921C1806FE00C45854 /* SetModelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetModelVC.swift; sourceTree = "<group>"; };
 		C21E15931C1806FE00C45854 /* SetModelVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetModelVC.xib; sourceTree = "<group>"; };
-		C21E15971C181B5F00C45854 /* CreatHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatHomeVC.swift; sourceTree = "<group>"; };
-		C21E15981C181B5F00C45854 /* CreatHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatHomeVC.xib; sourceTree = "<group>"; };
 		C24FD2381C18043600B16BF2 /* NSString+Contains.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Contains.h"; sourceTree = "<group>"; };
 		C24FD2391C18043600B16BF2 /* NSString+Contains.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Contains.m"; sourceTree = "<group>"; };
 		C24FD2421C18043600B16BF2 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
@@ -458,8 +484,20 @@
 		C21E15961C181B3200C45854 /* Creat */ = {
 			isa = PBXGroup;
 			children = (
-				C21E15971C181B5F00C45854 /* CreatHomeVC.swift */,
-				C21E15981C181B5F00C45854 /* CreatHomeVC.xib */,
+				985F9A581C2159FC00FFE955 /* AddRoomCell.swift */,
+				985F9A591C2159FC00FFE955 /* AddRoomCell.xib */,
+				985F9A5B1C2159FC00FFE955 /* FloorRoomCell.swift */,
+				985F9A5C1C2159FC00FFE955 /* FloorRoomCell.xib */,
+				985F9A5D1C2159FC00FFE955 /* FloorViewController.swift */,
+				985F9A5E1C2159FC00FFE955 /* FloorViewController.xib */,
+				985F9A5F1C2159FC00FFE955 /* RoomAndFloorCell.swift */,
+				985F9A601C2159FC00FFE955 /* RoomAndFloorCell.xib */,
+				985F9A611C2159FC00FFE955 /* RoomAndRenameVC.swift */,
+				985F9A621C2159FC00FFE955 /* RoomAndRenameVC.xib */,
+				985F9A741C215D9F00FFE955 /* CreatHomeVC.swift */,
+				985F9A751C215D9F00FFE955 /* CreatHomeVC.xib */,
+				985F9A781C215DBA00FFE955 /* CreatRootVC.swift */,
+				985F9A791C215DBA00FFE955 /* CreatRootVC.xib */,
 			);
 			path = Creat;
 			sourceTree = "<group>";
@@ -486,6 +524,7 @@
 		C24FD23B1C18043600B16BF2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				985F9A6E1C215B6E00FFE955 /* EditView.swift */,
 				C21E158A1C18063B00C45854 /* SuccessVC.swift */,
 				C21E158B1C18063B00C45854 /* SuccessVC.xib */,
 				C21E158E1C18065200C45854 /* FailedVC.swift */,
@@ -775,15 +814,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				C24FD2BA1C18043700B16BF2 /* SetFloor.xib in Resources */,
+				985F9A771C215D9F00FFE955 /* CreatHomeVC.xib in Resources */,
 				C24FD2B41C18043700B16BF2 /* CreateChooseVC.xib in Resources */,
 				C24FD2A41C18043700B16BF2 /* HomeVC.xib in Resources */,
+				985F9A641C2159FC00FFE955 /* AddRoomCell.xib in Resources */,
 				C24FD2B61C18043700B16BF2 /* DeviceIconVC.xib in Resources */,
 				C24FD2BC1C18043700B16BF2 /* SetRomeVC.xib in Resources */,
 				C24FD2B81C18043700B16BF2 /* SetDeviceVC.xib in Resources */,
+				985F9A7B1C215DBA00FFE955 /* CreatRootVC.xib in Resources */,
 				C24FD2A81C18043700B16BF2 /* PassWordVC.xib in Resources */,
 				9847F0981C19577C005D72A9 /* PhoneVC.xib in Resources */,
 				98539A621C1FDA0B00DA7699 /* wait.gif in Resources */,
 				C24FD2A61C18043700B16BF2 /* LoginVC.xib in Resources */,
+				985F9A6D1C2159FC00FFE955 /* RoomAndRenameVC.xib in Resources */,
 				9847F0931C194F09005D72A9 /* InfoPlist.strings in Resources */,
 				980A93031C17B440009166D0 /* LaunchScreen.storyboard in Resources */,
 				980353A71C19499E00A2C6A8 /* Localizable.strings in Resources */,
@@ -791,12 +834,14 @@
 				980A93001C17B440009166D0 /* Assets.xcassets in Resources */,
 				9806CD481C2124C90038A8E0 /* 引导页.jpg in Resources */,
 				C21E15911C18065200C45854 /* FailedVC.xib in Resources */,
-				C21E159A1C181B5F00C45854 /* CreatHomeVC.xib in Resources */,
 				C21E158D1C18063B00C45854 /* SuccessVC.xib in Resources */,
 				C24FD2AC1C18043700B16BF2 /* VCodeVC.xib in Resources */,
 				C24FD2B21C18043700B16BF2 /* AllDeviceListVC.xib in Resources */,
 				C24FD2B01C18043700B16BF2 /* MineVC.xib in Resources */,
+				985F9A6B1C2159FC00FFE955 /* RoomAndFloorCell.xib in Resources */,
+				985F9A671C2159FC00FFE955 /* FloorRoomCell.xib in Resources */,
 				C24FD2AE1C18043700B16BF2 /* MallVC.xib in Resources */,
+				985F9A691C2159FC00FFE955 /* FloorViewController.xib in Resources */,
 				980A92FB1C17B440009166D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -835,8 +880,8 @@
 				C24FD2C51C18043700B16BF2 /* NSData+ImageContentType.m in Sources */,
 				C24FD2AF1C18043700B16BF2 /* MineVC.swift in Sources */,
 				C24FD2CD1C18043700B16BF2 /* UIButton+WebCache.m in Sources */,
+				985F9A6C1C2159FC00FFE955 /* RoomAndRenameVC.swift in Sources */,
 				C24FD2CC1C18043700B16BF2 /* SDWebImagePrefetcher.m in Sources */,
-				C21E15991C181B5F00C45854 /* CreatHomeVC.swift in Sources */,
 				C24FD2A91C18043700B16BF2 /* PhoneVC.swift in Sources */,
 				C21E15901C18065200C45854 /* FailedVC.swift in Sources */,
 				984739D81C1AC9A300E80376 /* AFHTTPSessionManager.m in Sources */,
@@ -850,6 +895,7 @@
 				C24FD2CB1C18043700B16BF2 /* SDWebImageManager.m in Sources */,
 				98539A601C1FBFBB00DA7699 /* Waiting.swift in Sources */,
 				984739E01C1AC9A300E80376 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				985F9A661C2159FC00FFE955 /* FloorRoomCell.swift in Sources */,
 				C24FD2AD1C18043700B16BF2 /* MallVC.swift in Sources */,
 				C24FD2BB1C18043700B16BF2 /* SetRomeVC.swift in Sources */,
 				984739E31C1AC9A300E80376 /* UIImageView+AFNetworking.m in Sources */,
@@ -866,9 +912,12 @@
 				C24FD2B51C18043700B16BF2 /* DeviceIconVC.swift in Sources */,
 				C24FD2CF1C18043700B16BF2 /* UIImage+MultiFormat.m in Sources */,
 				C24FD2CA1C18043700B16BF2 /* SDWebImageDownloaderOperation.m in Sources */,
+				985F9A761C215D9F00FFE955 /* CreatHomeVC.swift in Sources */,
 				984739E41C1AC9A300E80376 /* UIProgressView+AFNetworking.m in Sources */,
 				983FE2E91C1821B6004B89CE /* Helper.swift in Sources */,
 				C24FD2A21C18043700B16BF2 /* GlobalVariables.swift in Sources */,
+				985F9A6A1C2159FC00FFE955 /* RoomAndFloorCell.swift in Sources */,
+				985F9A681C2159FC00FFE955 /* FloorViewController.swift in Sources */,
 				984739DE1C1AC9A300E80376 /* AFURLSessionManager.m in Sources */,
 				C24FD2B11C18043700B16BF2 /* AllDeviceListVC.swift in Sources */,
 				984739D61C1AC9A300E80376 /* AFHTTPRequestOperation.m in Sources */,
@@ -884,7 +933,10 @@
 				C24FD2C41C18043700B16BF2 /* MKAnnotationView+WebCache.m in Sources */,
 				98E906C01C19694100392450 /* Tools.swift in Sources */,
 				980A92F61C17B440009166D0 /* AppDelegate.swift in Sources */,
+				985F9A631C2159FC00FFE955 /* AddRoomCell.swift in Sources */,
+				985F9A6F1C215B6E00FFE955 /* EditView.swift in Sources */,
 				98FD77AB1C1E5B530079E5A7 /* UserModel.swift in Sources */,
+				985F9A7A1C215DBA00FFE955 /* CreatRootVC.swift in Sources */,
 				C24FD2C61C18043700B16BF2 /* SDImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

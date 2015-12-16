@@ -19,7 +19,7 @@ let textImage:UIImage? = UIImage(named: "输入框背景.png")
 //保证图片拉伸不变形
 let textBgImage:UIImage?=textImage!.stretchableImageWithLeftCapWidth((Int)(textImage!.size.width/2), topCapHeight:(Int)(textImage!.size.height/2))
 //导航栏背景
-let navBgImage:UIImage? = UIImage(named: "导航栏")
+let navBgImage:UIImage? = UIImage(named: "导航栏L")
 //登陆界面背景
 let loginBgImage:UIImage? = UIImage (named: "背景.png")
 //登陆注册等按钮背景
