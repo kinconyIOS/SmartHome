@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreatRootVC" customModule="SmartHome" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="8Wf-A8-2eo" id="umz-1O-whs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,7 +15,36 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AwD-6c-cfx">
+                    <rect key="frame" x="21" y="483" width="557" height="69"/>
+                    <color key="backgroundColor" red="0.53725490200000003" green="0.75686274509999996" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="AwD-6c-cfx" secondAttribute="height" multiplier="530:51" constant="-160.05882352941182" id="5hc-Pc-tZ5"/>
+                    </constraints>
+                    <state key="normal" title="确定" backgroundImage="圆角矩形_确定"/>
+                    <connections>
+                        <action selector="handleCreat:" destination="-1" eventType="touchUpInside" id="Hll-pT-0Km"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Wf-A8-2eo">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="458"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="8Wf-A8-2eo" secondAttribute="trailing" id="2ZH-jG-Xzr"/>
+                <constraint firstItem="8Wf-A8-2eo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="46P-TZ-LCH"/>
+                <constraint firstAttribute="trailing" secondItem="AwD-6c-cfx" secondAttribute="trailing" constant="22" id="4wm-sd-pyB"/>
+                <constraint firstItem="AwD-6c-cfx" firstAttribute="top" secondItem="8Wf-A8-2eo" secondAttribute="bottom" constant="25" id="BEb-Nr-oh1"/>
+                <constraint firstItem="AwD-6c-cfx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="21" id="CrK-fi-iTM"/>
+                <constraint firstItem="8Wf-A8-2eo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="K6U-Pj-MUB"/>
+                <constraint firstAttribute="bottom" secondItem="AwD-6c-cfx" secondAttribute="bottom" constant="48" id="mcD-Qy-mCt"/>
+            </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="圆角矩形_确定" width="281" height="45"/>
+    </resources>
 </document>
