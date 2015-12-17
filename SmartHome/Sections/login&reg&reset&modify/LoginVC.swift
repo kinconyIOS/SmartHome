@@ -87,7 +87,8 @@ class LoginVC: UIViewController {
         tab.viewControllers=[homeNav,setModelNav,mallNav,mineNav];
         tab.tabBar.tintColor=mainColor
         let createHome = CreatHomeVC()
-        self.navigationController?.presentViewController(createHome, animated: true, completion:nil)
+        let navigationC = UINavigationController(rootViewController: createHome)
+        self.navigationController?.presentViewController(navigationC, animated: true, completion:nil)
     }
     @IBAction func onExit(sender: AnyObject) {
     }

@@ -21,7 +21,7 @@ class EditView: UIView {
         self.backgroundColor = UIColor(RGB: 0xfda074, alpha: 1)
         
     }
-
+          
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
