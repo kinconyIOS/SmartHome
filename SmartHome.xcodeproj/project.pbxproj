@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		980353A71C19499E00A2C6A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 980353A91C19499E00A2C6A8 /* Localizable.strings */; };
+		980474621C23931200B3966D /* SZLSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 980474601C23931200B3966D /* SZLSideView.m */; };
+		980474631C23931200B3966D /* SZLSideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980474611C23931200B3966D /* SZLSideView.xib */; };
 		9806CD411C210FF30038A8E0 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9806CD401C210FF30038A8E0 /* GuideViewController.m */; };
 		9806CD481C2124C90038A8E0 /* 引导页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9806CD471C2124C90038A8E0 /* 引导页.jpg */; };
 		980A92F61C17B440009166D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A92F51C17B440009166D0 /* AppDelegate.swift */; };
@@ -140,6 +142,9 @@
 		980353B81C194A8A00A2C6A8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		980353B91C194A8A00A2C6A8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hant"; path = "zh-Hant.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		980353BB1C194A8D00A2C6A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9804745F1C23931200B3966D /* SZLSideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLSideView.h; sourceTree = "<group>"; };
+		980474601C23931200B3966D /* SZLSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLSideView.m; sourceTree = "<group>"; };
+		980474611C23931200B3966D /* SZLSideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SZLSideView.xib; sourceTree = "<group>"; };
 		9806CD3F1C210FF30038A8E0 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		9806CD401C210FF30038A8E0 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		9806CD471C2124C90038A8E0 /* 引导页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "引导页.jpg"; sourceTree = "<group>"; };
@@ -523,6 +528,9 @@
 		C24FD23B1C18043600B16BF2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9804745F1C23931200B3966D /* SZLSideView.h */,
+				980474601C23931200B3966D /* SZLSideView.m */,
+				980474611C23931200B3966D /* SZLSideView.xib */,
 				985F9A6E1C215B6E00FFE955 /* EditView.swift */,
 				C21E158A1C18063B00C45854 /* SuccessVC.swift */,
 				C21E158B1C18063B00C45854 /* SuccessVC.xib */,
@@ -821,6 +829,7 @@
 				C24FD2BC1C18043700B16BF2 /* SetRomeVC.xib in Resources */,
 				C24FD2B81C18043700B16BF2 /* SetDeviceVC.xib in Resources */,
 				985F9A7B1C215DBA00FFE955 /* CreatRootVC.xib in Resources */,
+				980474631C23931200B3966D /* SZLSideView.xib in Resources */,
 				C24FD2A81C18043700B16BF2 /* PassWordVC.xib in Resources */,
 				9847F0981C19577C005D72A9 /* PhoneVC.xib in Resources */,
 				98539A621C1FDA0B00DA7699 /* wait.gif in Resources */,
@@ -891,6 +900,7 @@
 				C24FD2D11C18043700B16BF2 /* UIImageView+HighlightedWebCache.m in Sources */,
 				C24FD2C21C18043700B16BF2 /* QRCodeReaderView.m in Sources */,
 				984739D71C1AC9A300E80376 /* AFHTTPRequestOperationManager.m in Sources */,
+				980474621C23931200B3966D /* SZLSideView.m in Sources */,
 				C24FD2B71C18043700B16BF2 /* SetDeviceVC.swift in Sources */,
 				C24FD2CB1C18043700B16BF2 /* SDWebImageManager.m in Sources */,
 				98539A601C1FBFBB00DA7699 /* Waiting.swift in Sources */,
