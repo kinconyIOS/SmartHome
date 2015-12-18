@@ -11,14 +11,28 @@ import UIKit
 class HomeVC: UIViewController {
     let array=["精选","电视剧","电影","综艺","娱乐","健康","科技","游戏","体育","搞笑"];
     let  hscroll:HScrollView?=HScrollView.init()
+    var sideView:SZLSideView?
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
           self.view.addSubview(Waiting())
         // Do any additional setup after loading the view.
     }
-    func configView(){
+    override  func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        //侧滑
+      
+        if sideView==nil{
+          sideView = NSBundle.mainBundle().loadNibNamed("SZLSideView", owner: self, options: nil)[0] as? SZLSideView
+          sideView!.frame=CGRectMake(ScreenWidth, 0, sideView!.frame.size.width,ScreenHeight);
+    
+            self.tabBarController!.view.addSubview(sideView!)
+           
+        }
         
+    }
+    func configView(){
+           self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
         hscroll!.frame=CGRectMake(0,20, ScreenWidth-60, 64);
     
         self.navigationItem.titleView=hscroll;
@@ -51,6 +65,18 @@ class HomeVC: UIViewController {
         btn.setTitleColor(UIColor.orangeColor(), forState: UIControlState.Normal)
         btn.backgroundColor=UIColor.whiteColor();
         // selectMenuId=(int)btn.tag-1;
+    }
+  
+    @IBAction func closeSideViewGesture(sender: AnyObject) {
+        sideView?.closeTap()
+    }
+   
+    @IBAction func openSideViewGesture(sender: AnyObject) {
+        sideView?.openTap()
+    }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        sideView?.closeTap()
     }
 }
 
