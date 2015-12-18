@@ -8,10 +8,12 @@
 
 import UIKit
 
-class HomeVC: UIViewController {
+class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     let array=["精选","电视剧","电影","综艺","娱乐","健康","科技","游戏","体育","搞笑"];
     let  hscroll:HScrollView?=HScrollView.init()
     var sideView:SZLSideView?
+    var tableSideViewDataSource = []
+    var floors:[RoomListItem] = Array()
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
@@ -25,7 +27,7 @@ class HomeVC: UIViewController {
         if sideView==nil{
           sideView = NSBundle.mainBundle().loadNibNamed("SZLSideView", owner: self, options: nil)[0] as? SZLSideView
           sideView!.frame=CGRectMake(ScreenWidth, 0, sideView!.frame.size.width,ScreenHeight);
-    
+            sideView?.delegate=self
             self.tabBarController!.view.addSubview(sideView!)
            
         }
@@ -37,7 +39,18 @@ class HomeVC: UIViewController {
     
         self.navigationItem.titleView=hscroll;
         scrollAddBtn()
+        let numOfFloor=3;
+        for _ in 1...numOfFloor{
+        let floor = RoomListItem()
+        let room  = RoomListItem()
+        floor.items.append(room)
+        floors.append(floor)
+      //  tableSideViewDataSource .arrayByAddingObjectsFromArray(<#T##otherArray: [AnyObject]##[AnyObject]#>)
+            //arrayByAddingObject(floor)
+        }
+
     }
+    //导航栏scollView
     func scrollAddBtn()
     {
         for index in 1...array.count
@@ -66,7 +79,47 @@ class HomeVC: UIViewController {
         btn.backgroundColor=UIColor.whiteColor();
         // selectMenuId=(int)btn.tag-1;
     }
-  
+    // MARK: - Table view data source
+    //返回节的个数
+   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if tableView === sideView?.tableView{ return 1}
+        return 1
+    }
+    //返回某个节中的行数
+   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      if tableView === sideView?.tableView{
+        return tableSideViewDataSource.count
+    
+        }
+    return 1;
+    }
+   
+   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
+    
+    if tableView===sideView?.tableView{
+    
+        if indexPath.row==0{
+            let cell: AddCell = tableView.dequeueReusableCellWithIdentifier("addcell", forIndexPath: indexPath) as! AddCell
+            cell.backgroundColor=UIColor.clearColor();
+            return cell
+
+        
+        }else{
+            let cell: ItemCell = tableView.dequeueReusableCellWithIdentifier("itemcell", forIndexPath: indexPath) as! ItemCell
+            cell.backgroundColor=UIColor.clearColor();
+            return cell
+            
+        }
+    
+    }
+        return UITableViewCell()
+    }
+    //高度
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 55
+    }
+    //手势识别
     @IBAction func closeSideViewGesture(sender: AnyObject) {
         sideView?.closeTap()
     }

@@ -12,7 +12,8 @@ class SetModelVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-   self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
+   
+        self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
         // Do any additional setup after loading the view.
     }
 

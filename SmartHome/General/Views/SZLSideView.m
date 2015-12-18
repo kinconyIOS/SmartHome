@@ -15,17 +15,22 @@
 
     self=[super initWithCoder:aDecoder];
     if (self) {
-        
+        self.tableView.showsHorizontalScrollIndicator = NO;
+        self.tableView.showsVerticalScrollIndicator = NO;
+   
+   
+      
     }
     return self;
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+
+-(void)setDelegate:(id<UITableViewDataSource,UITableViewDelegate>)delegate
+{
+    self.tableView.dataSource=delegate;
+    self.tableView.delegate=delegate;
+    [self.tableView registerNib:[UINib nibWithNibName:@"ItemCell" bundle:nil] forCellReuseIdentifier:@"itemcell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"AddCell" bundle:nil] forCellReuseIdentifier:@"addcell"];
 }
-*/
 
 - (void)closeTap {
     NSLog(@"close");

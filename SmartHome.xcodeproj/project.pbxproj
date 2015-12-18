@@ -10,6 +10,11 @@
 		980353A71C19499E00A2C6A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 980353A91C19499E00A2C6A8 /* Localizable.strings */; };
 		980474621C23931200B3966D /* SZLSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 980474601C23931200B3966D /* SZLSideView.m */; };
 		980474631C23931200B3966D /* SZLSideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980474611C23931200B3966D /* SZLSideView.xib */; };
+		980474651C23A52D00B3966D /* RoomListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980474641C23A52D00B3966D /* RoomListItem.swift */; };
+		980474681C23B51B00B3966D /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980474661C23B51B00B3966D /* ItemCell.swift */; };
+		980474691C23B51B00B3966D /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980474671C23B51B00B3966D /* ItemCell.xib */; };
+		980474701C23B54000B3966D /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9804746E1C23B54000B3966D /* AddCell.swift */; };
+		980474711C23B54000B3966D /* AddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9804746F1C23B54000B3966D /* AddCell.xib */; };
 		9806CD411C210FF30038A8E0 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9806CD401C210FF30038A8E0 /* GuideViewController.m */; };
 		9806CD481C2124C90038A8E0 /* 引导页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9806CD471C2124C90038A8E0 /* 引导页.jpg */; };
 		980A92F61C17B440009166D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A92F51C17B440009166D0 /* AppDelegate.swift */; };
@@ -145,6 +150,11 @@
 		9804745F1C23931200B3966D /* SZLSideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZLSideView.h; sourceTree = "<group>"; };
 		980474601C23931200B3966D /* SZLSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZLSideView.m; sourceTree = "<group>"; };
 		980474611C23931200B3966D /* SZLSideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SZLSideView.xib; sourceTree = "<group>"; };
+		980474641C23A52D00B3966D /* RoomListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListItem.swift; sourceTree = "<group>"; };
+		980474661C23B51B00B3966D /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		980474671C23B51B00B3966D /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
+		9804746E1C23B54000B3966D /* AddCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
+		9804746F1C23B54000B3966D /* AddCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCell.xib; sourceTree = "<group>"; };
 		9806CD3F1C210FF30038A8E0 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		9806CD401C210FF30038A8E0 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		9806CD471C2124C90038A8E0 /* 引导页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "引导页.jpg"; sourceTree = "<group>"; };
@@ -336,6 +346,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		980474721C23B54B00B3966D /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				980474661C23B51B00B3966D /* ItemCell.swift */,
+				980474671C23B51B00B3966D /* ItemCell.xib */,
+				9804746E1C23B54000B3966D /* AddCell.swift */,
+				9804746F1C23B54000B3966D /* AddCell.xib */,
+			);
+			name = cell;
+			sourceTree = "<group>";
+		};
 		9806CD461C2124970038A8E0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,6 +549,7 @@
 		C24FD23B1C18043600B16BF2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				980474721C23B54B00B3966D /* cell */,
 				9804745F1C23931200B3966D /* SZLSideView.h */,
 				980474601C23931200B3966D /* SZLSideView.m */,
 				980474611C23931200B3966D /* SZLSideView.xib */,
@@ -538,6 +560,7 @@
 				C21E158F1C18065200C45854 /* FailedVC.xib */,
 				98539A611C1FDA0B00DA7699 /* wait.gif */,
 				98539A5F1C1FBFBB00DA7699 /* Waiting.swift */,
+				980474641C23A52D00B3966D /* RoomListItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -820,6 +843,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				980474691C23B51B00B3966D /* ItemCell.xib in Resources */,
 				C24FD2BA1C18043700B16BF2 /* SetFloor.xib in Resources */,
 				985F9A771C215D9F00FFE955 /* CreatHomeVC.xib in Resources */,
 				C24FD2B41C18043700B16BF2 /* CreateChooseVC.xib in Resources */,
@@ -830,6 +854,7 @@
 				C24FD2B81C18043700B16BF2 /* SetDeviceVC.xib in Resources */,
 				985F9A7B1C215DBA00FFE955 /* CreatRootVC.xib in Resources */,
 				980474631C23931200B3966D /* SZLSideView.xib in Resources */,
+				980474711C23B54000B3966D /* AddCell.xib in Resources */,
 				C24FD2A81C18043700B16BF2 /* PassWordVC.xib in Resources */,
 				9847F0981C19577C005D72A9 /* PhoneVC.xib in Resources */,
 				98539A621C1FDA0B00DA7699 /* wait.gif in Resources */,
@@ -877,6 +902,7 @@
 			files = (
 				984739DF1C1AC9A300E80376 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				C24FD29D1C18043700B16BF2 /* NSString+Contains.m in Sources */,
+				980474681C23B51B00B3966D /* ItemCell.swift in Sources */,
 				C24FD2D31C18043700B16BF2 /* UIView+WebCacheOperation.m in Sources */,
 				C24FD2A31C18043700B16BF2 /* HomeVC.swift in Sources */,
 				984739E11C1AC9A300E80376 /* UIAlertView+AFNetworking.m in Sources */,
@@ -900,6 +926,7 @@
 				C24FD2D11C18043700B16BF2 /* UIImageView+HighlightedWebCache.m in Sources */,
 				C24FD2C21C18043700B16BF2 /* QRCodeReaderView.m in Sources */,
 				984739D71C1AC9A300E80376 /* AFHTTPRequestOperationManager.m in Sources */,
+				980474651C23A52D00B3966D /* RoomListItem.swift in Sources */,
 				980474621C23931200B3966D /* SZLSideView.m in Sources */,
 				C24FD2B71C18043700B16BF2 /* SetDeviceVC.swift in Sources */,
 				C24FD2CB1C18043700B16BF2 /* SDWebImageManager.m in Sources */,
@@ -922,6 +949,7 @@
 				C24FD2CF1C18043700B16BF2 /* UIImage+MultiFormat.m in Sources */,
 				C24FD2CA1C18043700B16BF2 /* SDWebImageDownloaderOperation.m in Sources */,
 				985F9A761C215D9F00FFE955 /* CreatHomeVC.swift in Sources */,
+				980474701C23B54000B3966D /* AddCell.swift in Sources */,
 				984739E41C1AC9A300E80376 /* UIProgressView+AFNetworking.m in Sources */,
 				983FE2E91C1821B6004B89CE /* Helper.swift in Sources */,
 				C24FD2A21C18043700B16BF2 /* GlobalVariables.swift in Sources */,
