@@ -37,7 +37,7 @@ class CreatHomeVC: UIViewController {
         navigationController?.pushViewController(creatRootVC, animated: true)
         print(creatRootVC.creatType)
         
-        let alert = UIAlertView(title: "dd", message: "ss", delegate: self, cancelButtonTitle: "dd")
+        let alert = UIAlertView(title: "hfanjflnalsjnfljasjlfnlajsnfjnajf", message: "ss", delegate: self, cancelButtonTitle: "dd")
         alert.show()
     }
 
