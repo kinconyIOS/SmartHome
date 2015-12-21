@@ -46,10 +46,13 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
             floor.name = "层"
             floor.isSubItem = false
         let room  = RoomListItem()
-            room.name = "房间"
+            room.name = "房间1"
             room.isSubItem = true
+            let room2  = RoomListItem()
+            room2.name = "房间2"
+            room2.isSubItem = true
         floor.items.addObject(room)
-       
+          floor.items.addObject(room2)
         tableSideViewDataSource.addObject(floor)
         }
 
@@ -103,20 +106,24 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     
     if tableView===sideView?.tableView{
     
+        var cell:UITableViewCell?
         if indexPath.row==0{
-            let cell: AddCell = tableView.dequeueReusableCellWithIdentifier("addcell", forIndexPath: indexPath) as! AddCell
-            cell.backgroundColor=UIColor.clearColor();
-            return cell
+            cell = tableView.dequeueReusableCellWithIdentifier("addcell", forIndexPath: indexPath) as! AddCell
+         
+           
 
         
         }else{
             let item:RoomListItem = self.tableSideViewDataSource[indexPath.row-1] as! RoomListItem;
-            let cell: ItemCell = tableView.dequeueReusableCellWithIdentifier("itemcell", forIndexPath: indexPath) as! ItemCell
-            cell.textLabel?.text=item.name
-            cell.backgroundColor=UIColor.clearColor();
-            return cell
+            cell = tableView.dequeueReusableCellWithIdentifier("itemcell", forIndexPath: indexPath) as! ItemCell
+            cell!.textLabel?.text=item.name
+          
+            
             
         }
+        cell!.selectionStyle=UITableViewCellSelectionStyle.None
+        cell!.backgroundColor=UIColor.clearColor();
+        return cell!
     
     }
         return UITableViewCell()
@@ -131,66 +138,38 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
             if item.isSubItem == false{//菜单选项
                 if (item.isOpen) {
                     //收起
-                           let indexSet = NSIndexSet(indexesInRange: NSMakeRange(indexPath.row-1, item.items.count))
-                    tableSideViewDataSource.removeObjectsAtIndexes(indexSet)
-                        //removeObjectsInArray(item.items as [AnyObject])
-                   
-               tableView.deleteRowsAtIndexPaths( self.indexPathsOfDeal(item, nowIndexPath: indexPath) as! [NSIndexPath], withRowAnimation: UITableViewRowAnimation.Bottom)
+                 let indexSet = NSIndexSet(indexesInRange: NSMakeRange(indexPath.row, item.items.count))
+                 tableSideViewDataSource.removeObjectsAtIndexes(indexSet)
+                 tableView.deleteRowsAtIndexPaths( self.indexPathsOfDeal(item, nowIndexPath: indexPath) as! [NSIndexPath], withRowAnimation: UITableViewRowAnimation.Bottom)
+                 item.isOpen = false;
                     
-                  
-                    item.isOpen = false;
                 } else {
                    // 按下
-                  let indexSet = NSIndexSet(indexesInRange: NSMakeRange(indexPath.row-1, item.items.count))
-                   
+                  let indexSet = NSIndexSet(indexesInRange: NSMakeRange(indexPath.row, item.items.count))
                     self.tableSideViewDataSource.insertObjects(item.items as [AnyObject], atIndexes:indexSet)
-                   
-                    
-                    tableView.insertRowsAtIndexPaths(self.indexPathsOfDeal(item, nowIndexPath: indexPath) as! [NSIndexPath], withRowAnimation: UITableViewRowAnimation.Bottom)
-                   
-                    //cell.storeImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", cell.imageName]];
-                    item.isOpen = true;
+                tableView.insertRowsAtIndexPaths(self.indexPathsOfDeal(item, nowIndexPath: indexPath) as! [NSIndexPath], withRowAnimation: UITableViewRowAnimation.Bottom)
+                  item.isOpen = true;
                 }
-            } else {//非菜单选项
-                if (item.isOpen) {
-                    //收起
-                    item.isOpen = false;
-                } else {
-                  self.tableView(tableView, closeItemExcept: indexPath)
-                    //展开
-                    item.isOpen =  true;
-                }
+            } else {
+                
+                //非菜单选项
+                 print("点到具体房间。。")
+
             }
             
         }
         
     }
-    
-    func tableView(tableView:UITableView, closeItemExcept indexPath:NSIndexPath) {
-        for index in 0..<self.tableSideViewDataSource.count
-        {
-            let item:RoomListItem = self.tableSideViewDataSource[index] as! RoomListItem
-            if (item.isSubItem) {
-                if (item.isOpen && indexPath.row-1 != index) {
-                    // StoreTableCell *cell = (StoreTableCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-                    // cell.storeImage.image = [UIImage imageNamed:cell.imageName];
-                    item.isOpen = false;
-                }
-            }
-        }
-    }
+ 
     //更改索引
     func indexPathsOfDeal(item:RoomListItem, nowIndexPath nowPath:NSIndexPath ) ->NSArray{
     if  item.items.count == 0 {
     return []
     }
-        print(item.items.count)
     let mArr = NSMutableArray(capacity:1)
     for i in 0..<item.items.count{
-         print("here7")
         let indexPath:NSIndexPath = NSIndexPath(forRow: nowPath.row+i+1, inSection: nowPath.section)
-       
-        mArr.addObject(indexPath)
+         mArr.addObject(indexPath)
 
     }
     return mArr;
