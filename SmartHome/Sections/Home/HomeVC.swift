@@ -40,6 +40,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     
         self.navigationItem.titleView=hscroll;
         scrollAddBtn()
+        //模拟数据源
         let numOfFloor=3;
         for _ in 0..<numOfFloor{
         let floor = RoomListItem()
@@ -134,7 +135,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
            
             let item:RoomListItem =
             self.tableSideViewDataSource[indexPath.row-1] as! RoomListItem;
-           let cell: ItemCell = tableView.dequeueReusableCellWithIdentifier("itemcell", forIndexPath: indexPath) as! ItemCell
+          // let cell: ItemCell = tableView.dequeueReusableCellWithIdentifier("itemcell", forIndexPath: indexPath) as! ItemCell
             if item.isSubItem == false{//菜单选项
                 if (item.isOpen) {
                     //收起
@@ -154,6 +155,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
                 
                 //非菜单选项
                  print("点到具体房间。。")
+                tableView.deselectRowAtIndexPath(indexPath,animated:false)
 
             }
             
