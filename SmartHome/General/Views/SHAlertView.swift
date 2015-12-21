@@ -92,7 +92,6 @@ class SHAlertView: UIView {
             dismiss()
             action?(alert: self, buttonIndex: 0)
         } else if sender == confirmBtn {
-            dismiss()
             action?(alert: self, buttonIndex: 1)
         }
     }

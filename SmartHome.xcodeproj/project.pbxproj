@@ -67,6 +67,7 @@
 		98B8A3A11C1815FF00A584D3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A3A01C1815FF00A584D3 /* libc++.tbd */; };
 		98E906C01C19694100392450 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E906BF1C19694100392450 /* Tools.swift */; };
 		98FD77AB1C1E5B530079E5A7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FD77AA1C1E5B530079E5A7 /* UserModel.swift */; };
+		C21031131C27D7140039B96C /* SHAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21031121C27D7140039B96C /* SHAlertView.swift */; };
 		C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E158A1C18063B00C45854 /* SuccessVC.swift */; };
 		C21E158D1C18063B00C45854 /* SuccessVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21E158B1C18063B00C45854 /* SuccessVC.xib */; };
 		C21E15901C18065200C45854 /* FailedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E158E1C18065200C45854 /* FailedVC.swift */; };
@@ -121,8 +122,6 @@
 		C24FD2D11C18043700B16BF2 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2981C18043700B16BF2 /* UIImageView+HighlightedWebCache.m */; };
 		C24FD2D21C18043700B16BF2 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD29A1C18043700B16BF2 /* UIImageView+WebCache.m */; };
 		C24FD2D31C18043700B16BF2 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */; };
-		C2864A281C27A04500B393B6 /* SHAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2864A271C27A04500B393B6 /* SHAlertView.swift */; };
-		C2864A2A1C27CEE700B393B6 /* SHAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2864A291C27CEE700B393B6 /* SHAlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,6 +237,7 @@
 		98E906BF1C19694100392450 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		98FD77AA1C1E5B530079E5A7 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		98FD77AC1C1E694B0079E5A7 /* SmartHome-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SmartHome-Bridging-Header.h"; sourceTree = "<group>"; };
+		C21031121C27D7140039B96C /* SHAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHAlertView.swift; sourceTree = "<group>"; };
 		C21E158A1C18063B00C45854 /* SuccessVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessVC.swift; sourceTree = "<group>"; };
 		C21E158B1C18063B00C45854 /* SuccessVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuccessVC.xib; sourceTree = "<group>"; };
 		C21E158E1C18065200C45854 /* FailedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailedVC.swift; sourceTree = "<group>"; };
@@ -317,8 +317,6 @@
 		C24FD29A1C18043700B16BF2 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		C24FD29B1C18043700B16BF2 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		C2864A271C27A04500B393B6 /* SHAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHAlertView.swift; sourceTree = "<group>"; };
-		C2864A291C27CEE700B393B6 /* SHAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHAlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -554,7 +552,7 @@
 			isa = PBXGroup;
 			children = (
 				980474721C23B54B00B3966D /* cell */,
-				C2864A291C27CEE700B393B6 /* SHAlertView.swift */,
+				C21031121C27D7140039B96C /* SHAlertView.swift */,
 				9804745F1C23931200B3966D /* SZLSideView.h */,
 				980474601C23931200B3966D /* SZLSideView.m */,
 				980474611C23931200B3966D /* SZLSideView.xib */,
@@ -939,7 +937,6 @@
 				984739E01C1AC9A300E80376 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				985F9A661C2159FC00FFE955 /* FloorRoomCell.swift in Sources */,
 				C24FD2AD1C18043700B16BF2 /* MallVC.swift in Sources */,
-				C2864A2A1C27CEE700B393B6 /* SHAlertView.swift in Sources */,
 				C24FD2BB1C18043700B16BF2 /* SetRomeVC.swift in Sources */,
 				984739E31C1AC9A300E80376 /* UIImageView+AFNetworking.m in Sources */,
 				C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */,
@@ -956,6 +953,7 @@
 				C24FD2CA1C18043700B16BF2 /* SDWebImageDownloaderOperation.m in Sources */,
 				985F9A761C215D9F00FFE955 /* CreatHomeVC.swift in Sources */,
 				980474701C23B54000B3966D /* AddCell.swift in Sources */,
+				C21031131C27D7140039B96C /* SHAlertView.swift in Sources */,
 				984739E41C1AC9A300E80376 /* UIProgressView+AFNetworking.m in Sources */,
 				983FE2E91C1821B6004B89CE /* Helper.swift in Sources */,
 				C24FD2A21C18043700B16BF2 /* GlobalVariables.swift in Sources */,
@@ -981,7 +979,6 @@
 				98FD77AB1C1E5B530079E5A7 /* UserModel.swift in Sources */,
 				985F9A7A1C215DBA00FFE955 /* CreatRootVC.swift in Sources */,
 				C24FD2C61C18043700B16BF2 /* SDImageCache.m in Sources */,
-				C2864A281C27A04500B393B6 /* SHAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
