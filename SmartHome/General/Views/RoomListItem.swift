@@ -12,5 +12,5 @@ class RoomListItem: NSObject {
     var isSubItem:Bool = false
     var isOpen:Bool = false
     var name:String = ""
-    var items:[RoomListItem] = []
+    let items:NSMutableArray = NSMutableArray(capacity: 1)
 }
