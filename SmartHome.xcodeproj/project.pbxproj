@@ -116,6 +116,7 @@
 		C24FD2D11C18043700B16BF2 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2981C18043700B16BF2 /* UIImageView+HighlightedWebCache.m */; };
 		C24FD2D21C18043700B16BF2 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD29A1C18043700B16BF2 /* UIImageView+WebCache.m */; };
 		C24FD2D31C18043700B16BF2 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */; };
+		C2864A281C27A04500B393B6 /* SHAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2864A271C27A04500B393B6 /* SHAlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -305,6 +306,7 @@
 		C24FD29A1C18043700B16BF2 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		C24FD29B1C18043700B16BF2 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		C2864A271C27A04500B393B6 /* SHAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHAlertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,6 +530,7 @@
 		C24FD23B1C18043600B16BF2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C2864A271C27A04500B393B6 /* SHAlertView.swift */,
 				9804745F1C23931200B3966D /* SZLSideView.h */,
 				980474601C23931200B3966D /* SZLSideView.m */,
 				980474611C23931200B3966D /* SZLSideView.xib */,
@@ -947,6 +950,7 @@
 				98FD77AB1C1E5B530079E5A7 /* UserModel.swift in Sources */,
 				985F9A7A1C215DBA00FFE955 /* CreatRootVC.swift in Sources */,
 				C24FD2C61C18043700B16BF2 /* SDImageCache.m in Sources */,
+				C2864A281C27A04500B393B6 /* SHAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

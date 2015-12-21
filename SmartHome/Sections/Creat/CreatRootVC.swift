@@ -14,6 +14,8 @@ enum CreatType {
 
 class CreatRootVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    var dataSource: NSMutableArray?
+    
     @IBOutlet var tableView: UITableView!
     var creatType: CreatType = .CreatTypeRoom {
         willSet {
@@ -95,6 +97,13 @@ class CreatRootVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 53
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if creatType == .CreatTypeFloor {
+            let floorVC = FloorViewController()
+            navigationController?.pushViewController(floorVC, animated: true)
+        }
     }
     
     override func didReceiveMemoryWarning() {
