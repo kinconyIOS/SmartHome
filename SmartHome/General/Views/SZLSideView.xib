@@ -8,14 +8,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="HBd-dI-ePr" customClass="SZLSideView">
-            <rect key="frame" x="0.0" y="0.0" width="80" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="160" height="568"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="侧滑背景" translatesAutoresizingMaskIntoConstraints="NO" id="ECu-Bx-b0E">
-                    <rect key="frame" x="0.0" y="64" width="80" height="504"/>
+                    <rect key="frame" x="0.0" y="64" width="160" height="504"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UXZ-ou-drg">
-                    <rect key="frame" x="0.0" y="64" width="80" height="504"/>
+                    <rect key="frame" x="0.0" y="64" width="160" height="504"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
@@ -33,6 +33,9 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tableView" destination="UXZ-ou-drg" id="FJm-VM-CTl"/>
+            </connections>
             <point key="canvasLocation" x="803" y="300"/>
         </view>
     </objects>

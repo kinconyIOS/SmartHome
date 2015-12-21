@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface SZLSideView : UIView
-
-
+@property (weak,nonatomic) id<UITableViewDataSource,UITableViewDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+-(void)setDelegate:(id<UITableViewDataSource,UITableViewDelegate>)delegate
+;
 - (void)closeTap;
 
 - (void)openTap;
