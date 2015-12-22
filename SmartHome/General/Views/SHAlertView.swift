@@ -83,6 +83,7 @@ class SHAlertView: UIView {
         confirmBtn!.addTarget(self, action: Selector("touchButton:"), forControlEvents: UIControlEvents.TouchUpInside)
         alertView.addSubview(confirmBtn!)
         
+        
         self.addSubview(background)
     }
     

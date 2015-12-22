@@ -122,6 +122,8 @@
 		C24FD2D11C18043700B16BF2 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2981C18043700B16BF2 /* UIImageView+HighlightedWebCache.m */; };
 		C24FD2D21C18043700B16BF2 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD29A1C18043700B16BF2 /* UIImageView+WebCache.m */; };
 		C24FD2D31C18043700B16BF2 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */; };
+		C2DCCC811C28E61600F637F1 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DCCC7F1C28E61600F637F1 /* AddDeviceViewController.swift */; };
+		C2DCCC821C28E61600F637F1 /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DCCC801C28E61600F637F1 /* AddDeviceViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -317,6 +319,8 @@
 		C24FD29A1C18043700B16BF2 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		C24FD29B1C18043700B16BF2 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		C2DCCC7F1C28E61600F637F1 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
+		C2DCCC801C28E61600F637F1 /* AddDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -580,6 +584,7 @@
 		C24FD2451C18043600B16BF2 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				C2DCCC7E1C28E5A200F637F1 /* AddDevice */,
 				C21E15961C181B3200C45854 /* Creat */,
 				C24FD2461C18043600B16BF2 /* Home */,
 				C24FD2491C18043600B16BF2 /* login&reg&reset&modify */,
@@ -739,6 +744,15 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		C2DCCC7E1C28E5A200F637F1 /* AddDevice */ = {
+			isa = PBXGroup;
+			children = (
+				C2DCCC7F1C28E61600F637F1 /* AddDeviceViewController.swift */,
+				C2DCCC801C28E61600F637F1 /* AddDeviceViewController.xib */,
+			);
+			path = AddDevice;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -846,6 +860,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2DCCC821C28E61600F637F1 /* AddDeviceViewController.xib in Resources */,
 				980474691C23B51B00B3966D /* ItemCell.xib in Resources */,
 				C24FD2BA1C18043700B16BF2 /* SetFloor.xib in Resources */,
 				985F9A771C215D9F00FFE955 /* CreatHomeVC.xib in Resources */,
@@ -926,6 +941,7 @@
 				C24FD2A51C18043700B16BF2 /* LoginVC.swift in Sources */,
 				C24FD2A71C18043700B16BF2 /* PassWordVC.swift in Sources */,
 				984739DC1C1AC9A300E80376 /* AFURLRequestSerialization.m in Sources */,
+				C2DCCC811C28E61600F637F1 /* AddDeviceViewController.swift in Sources */,
 				C24FD2D11C18043700B16BF2 /* UIImageView+HighlightedWebCache.m in Sources */,
 				C24FD2C21C18043700B16BF2 /* QRCodeReaderView.m in Sources */,
 				984739D71C1AC9A300E80376 /* AFHTTPRequestOperationManager.m in Sources */,
