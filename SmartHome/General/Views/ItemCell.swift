@@ -9,6 +9,8 @@
 import UIKit
 
 class ItemCell: UITableViewCell {
+    @IBOutlet var icon: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
     var editView: EditView?
     @IBOutlet var bgView: UIView!
     override func awakeFromNib() {

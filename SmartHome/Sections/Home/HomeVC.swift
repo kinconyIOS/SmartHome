@@ -9,8 +9,21 @@
 import UIKit
 
 class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
+    var orientationLast:UIInterfaceOrientation?=UIInterfaceOrientation.Portrait
     let array=["精选","电视剧","电影","综艺","娱乐","健康","科技","游戏","体育","搞笑"];
     let  hscroll:HScrollView?=HScrollView.init()
+    lazy var  drakBtn:UIButton = {
+        
+        let dark:UIButton=UIButton()
+            dark.hidden=true
+            dark.backgroundColor=UIColor.blackColor()
+            dark.alpha=0.3
+            print("创建bg")
+        
+            return dark
+        
+        }()
+    
     var sideView:SZLSideView?
     var tableSideViewDataSource:NSMutableArray = NSMutableArray(capacity: 1)
    
@@ -29,6 +42,9 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
           sideView = NSBundle.mainBundle().loadNibNamed("SZLSideView", owner: self, options: nil)[0] as? SZLSideView
           sideView!.frame=CGRectMake(ScreenWidth, 0, sideView!.frame.size.width,ScreenHeight);
             sideView?.delegate=self
+            self.drakBtn.frame=CGRectMake(0, 64, ScreenWidth,ScreenHeight)
+           self.tabBarController!.view.addSubview(self.drakBtn)
+
             self.tabBarController!.view.addSubview(sideView!)
            
         }
@@ -38,19 +54,33 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
            self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
         hscroll!.frame=CGRectMake(0,20, ScreenWidth-60, 64);
     
-        self.navigationItem.titleView=hscroll;
-        scrollAddBtn()
-        //模拟数据源
-        let numOfFloor=3;
-        for _ in 0..<numOfFloor{
+        self.navigationItem.titleView=hscroll
+               scrollAddBtn()
+        
+        //修改导航栏按钮；
+        let bbi_r=UIBarButtonItem(image: UIImage(named: ""), style:UIBarButtonItemStyle.Plain, target:self ,action:Selector("showSide"));
+        bbi_r.tintColor=UIColor.whiteColor()
+        self.navigationItem.rightBarButtonItem=bbi_r;
+
+        //
+      NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("statusBarOrientationChange:"), name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
+        
+
+        
+               //模拟数据源
+        let numOfFloor=4;
+        for index in 1...numOfFloor{
         let floor = RoomListItem()
-            floor.name = "层"
+            floor.name = "\(index)楼"
+            floor.iconName = "\(index)楼"
             floor.isSubItem = false
         let room  = RoomListItem()
-            room.name = "房间1"
+            room.name = "地下室"
+            room.iconName = "地下室"
             room.isSubItem = true
-            let room2  = RoomListItem()
-            room2.name = "房间2"
+        let room2  = RoomListItem()
+            room2.name = "花园"
+            room2.iconName="花园"
             room2.isSubItem = true
         floor.items.addObject(room)
           floor.items.addObject(room2)
@@ -117,8 +147,12 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         }else{
             let item:RoomListItem = self.tableSideViewDataSource[indexPath.row-1] as! RoomListItem;
             cell = tableView.dequeueReusableCellWithIdentifier("itemcell", forIndexPath: indexPath) as! ItemCell
-            cell!.textLabel?.text=item.name
-          
+            (cell! as!ItemCell).nameLabel?.text=item.name
+            (cell! as!ItemCell).icon.image=UIImage(named: item.iconName)
+            if item.isSubItem {
+            
+            cell!.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
+            }
             
             
         }
@@ -185,15 +219,54 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     //手势识别
     @IBAction func closeSideViewGesture(sender: AnyObject) {
         sideView?.closeTap()
+        self.drakBtn.hidden=true
     }
    
     @IBAction func openSideViewGesture(sender: AnyObject) {
         sideView?.openTap()
+        self.drakBtn.hidden=false
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         sideView?.closeTap()
+        self.drakBtn.hidden=true
     }
+    //转屏适配
+    func statusBarOrientationChange(notification:NSNotification)
+    
+    {
+    
+      let  orientation:UIInterfaceOrientation = UIApplication.sharedApplication().statusBarOrientation
+        if orientation == UIInterfaceOrientation.LandscapeRight||orientation == UIInterfaceOrientation.LandscapeLeft && !(orientationLast==UIInterfaceOrientation.LandscapeRight)// home键靠右
+    {
+        
+       orientationLast=UIInterfaceOrientation.LandscapeRight
+       sideView!.frame=CGRectMake(ScreenHeight-(ScreenWidth-sideView!.frame.origin.x),-35, sideView!.frame.size.width,ScreenWidth+35);
+       hscroll!.frame=CGRectMake(0,20, ScreenHeight-60, 64);
+        self.drakBtn.frame=CGRectMake(0, 31,ScreenHeight, ScreenWidth)
+        
+    }
+    
+    if orientation == UIInterfaceOrientation.Portrait && !(orientationLast==UIInterfaceOrientation.Portrait)
+    
+    {
+        orientationLast=UIInterfaceOrientation.Portrait
+         sideView!.frame=CGRectMake(ScreenWidth-(ScreenHeight-sideView!.frame.origin.x), 0, sideView!.frame.size.width,ScreenHeight);
+        hscroll!.frame=CGRectMake(0,20, ScreenWidth-60, 64);
+        self.drakBtn.frame=CGRectMake(0, 64, ScreenWidth,ScreenHeight)
+    }
+    
+    
+    if (orientation == UIInterfaceOrientation.PortraitUpsideDown)
+    
+    {
+    
+    //
+    
+    }
+    
+    }
+
 }
 
 

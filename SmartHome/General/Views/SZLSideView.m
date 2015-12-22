@@ -37,7 +37,7 @@
     //close
     [UIView beginAnimations:@"closeSide" context:nil];
     [UIView setAnimationDuration:0.30f];
-    self.frame=CGRectMake([UIScreen mainScreen].bounds.size.width, 0, self.frame.size.width,  self.frame.size.height);
+    self.frame=CGRectMake([UIScreen mainScreen].bounds.size.width, self.frame.origin.y, self.frame.size.width,  self.frame.size.height);
     [UIView commitAnimations];
 }
 
@@ -46,7 +46,7 @@
        NSLog(@"open");
     [UIView beginAnimations:@"openSide" context:nil];
     [UIView setAnimationDuration:0.30f];
-    self.frame=CGRectMake([UIScreen mainScreen].bounds.size.width-self.frame.size.width, 0, self.frame.size.width,  self.frame.size.height);
+    self.frame=CGRectMake([UIScreen mainScreen].bounds.size.width-self.frame.size.width, self.frame.origin.y, self.frame.size.width,  self.frame.size.height);
     [UIView commitAnimations];
 }
 @end
