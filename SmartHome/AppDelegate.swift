@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //此处要考虑三种情况
         //1.下载软件第一次安装 2.不是首次且令牌失效 3.不是首次且令牌不失效
         let guidevc:GuideViewController = GuideViewController(coverImageNames: ["引导页.jpg","引导页.jpg","引导页.jpg"], backgroundImageNames: nil)
+        //天气预报
+        weatherWithProvince("杭州市", city: "南阳市")
         
         guidevc.didSelectedEnter=didSelectedEnter
         //

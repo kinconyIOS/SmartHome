@@ -18,6 +18,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
             dark.hidden=true
             dark.backgroundColor=UIColor.blackColor()
             dark.alpha=0.3
+            dark.userInteractionEnabled=false
             print("创建bg")
         
             return dark
@@ -56,7 +57,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     
         self.navigationItem.titleView=hscroll
                scrollAddBtn()
-        
+
         //修改导航栏按钮；
         let bbi_r=UIBarButtonItem(image: UIImage(named: ""), style:UIBarButtonItemStyle.Plain, target:self ,action:Selector("showSide"));
         bbi_r.tintColor=UIColor.whiteColor()
@@ -67,7 +68,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         
 
         
-               //模拟数据源
+       //模拟数据源
         let numOfFloor=4;
         for index in 1...numOfFloor{
         let floor = RoomListItem()
