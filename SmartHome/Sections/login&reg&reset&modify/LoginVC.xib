@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bk4-QY-eRW">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="背景.png" translatesAutoresizingMaskIntoConstraints="NO" id="bk4-QY-eRW">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="textbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="6kB-gI-FQi">
@@ -156,5 +156,6 @@
         <image name="头像.png" width="79" height="79"/>
         <image name="手机号选择.png" width="21" height="11"/>
         <image name="明暗码.png" width="20" height="12"/>
+        <image name="背景.png" width="320" height="568"/>
     </resources>
 </document>

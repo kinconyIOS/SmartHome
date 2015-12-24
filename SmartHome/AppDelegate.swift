@@ -28,7 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     func didSelectedEnter(){
-        let nav:UINavigationController = UINavigationController(rootViewController: LoginVC())
+        
+        let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
         self.window!.rootViewController=nav
         print("完毕")
     }

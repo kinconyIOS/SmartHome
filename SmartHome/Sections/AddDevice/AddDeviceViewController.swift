@@ -22,6 +22,9 @@ class AddDeviceViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(named: "导航栏L"), forBarMetrics: UIBarMetrics.Default)
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "矢量智能对象"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleBack:"))
     }
     func handleBack(barButton: UIBarButtonItem) {
@@ -29,15 +32,28 @@ class AddDeviceViewController: UIViewController {
     }
     
     @IBAction func handleScanning(sender: UITapGestureRecognizer) {
-        print("点击扫描")
+        let qrCodeScan = LQRcodeVC()
+        qrCodeScan.setCompeletBlock { (resultString) -> () in
+            print(resultString)
+            qrCodeScan.stopScanning()
+            let alertView = AddDeviceAlert(success: true)
+            alertView.show()
+        }
+        self.presentViewController(qrCodeScan, animated: true, completion: nil)
     }
     @IBAction func handleCompelet(sender: UIButton) {
+        let successAlert = AddDeviceAlert(success: true)
+        successAlert.show()
         
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
+    }
+    @IBAction func exitKeyboard(sender: UITextField) {
         
     }
     
@@ -47,15 +63,8 @@ class AddDeviceViewController: UIViewController {
         self.nicknameTF.resignFirstResponder()
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.hidden = true
-    }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.tabBarController?.tabBar.hidden = false
-    }
+    
     
     /*
     // MARK: - Navigation

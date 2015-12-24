@@ -31,7 +31,7 @@ class LoginVC: UIViewController {
 //    }
     func configView()
     {
-        bgImg.image=loginBgImage!
+        self.bgImg.image=loginBgImage!
         self.view.backgroundColor=UIColor.whiteColor()
         self.loginBtn.layer.cornerRadius=7.0
         self.loginBtn.layer.masksToBounds=true
@@ -86,9 +86,16 @@ class LoginVC: UIViewController {
         let tab=UITabBarController()
         tab.viewControllers=[homeNav,setModelNav,mallNav,mineNav];
         tab.tabBar.tintColor=mainColor
-        let createHome = CreatHomeVC()
+        /*
+        let createHome = CreatHomeVC(nibName: "CreatHomeVC", bundle: nil)
         let navigationC = UINavigationController(rootViewController: createHome)
-        self.navigationController?.presentViewController(tab, animated: true, completion:nil)
+        */
+
+        let addDeviceVC: AddDeviceViewController = AddDeviceViewController(nibName: "AddDeviceViewController", bundle: nil)
+        let navigationC = UINavigationController(rootViewController: addDeviceVC)
+        
+        
+        self.navigationController?.presentViewController(navigationC, animated: true, completion:nil)
     }
     @IBAction func onExit(sender: AnyObject) {
     }

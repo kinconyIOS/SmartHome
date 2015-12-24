@@ -84,7 +84,7 @@ class FloorViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row + 1 == tableView.numberOfRowsInSection(0) {
-            let roomVC = RoomAndRenameVC()
+            let roomVC = RoomAndRenameVC(nibName: "RoomAndRenameVC", bundle: nil)
             roomVC.viewType = .RoomType
             navigationController?.pushViewController(roomVC, animated: true)
         }

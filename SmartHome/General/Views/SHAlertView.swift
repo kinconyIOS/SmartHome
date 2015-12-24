@@ -11,8 +11,12 @@ import UIKit
 
 let globalColor = UIColor.greenColor()
 
-let l_ScreenWidth = UIScreen.mainScreen().bounds.size.width
-let l_ScreenHeight = UIScreen.mainScreen().bounds.size.height
+var l_ScreenWidth: CGFloat {
+    return UIScreen.mainScreen().bounds.width
+}
+var l_ScreenHeight: CGFloat {
+    return UIScreen.mainScreen().bounds.height
+}
 
 class SHAlertView: UIView {
     private var titleView: UIView?
@@ -21,9 +25,12 @@ class SHAlertView: UIView {
     private var cancleBtn: UIButton?
     private var confirmBtn: UIButton?
     
-    private var alertView: UIView = UIView(frame: CGRectMake(0, 0, l_ScreenWidth * 0.77, l_ScreenWidth * 0.77 * 0.64))
+    private var alertView: UIView = UIView()
     private var background: UIView = UIView(frame: CGRectMake(0, 0, l_ScreenWidth, l_ScreenHeight))
     
+    private override init(frame: CGRect) {
+         super.init(frame: frame)
+    }
     
     convenience init(title: String?, message: String?, cancleButtonTitle: String?, confirmButtonTitle: String?) {
         self.init(frame: CGRectMake(0, 0, l_ScreenWidth, l_ScreenHeight))
@@ -34,6 +41,14 @@ class SHAlertView: UIView {
         background.addSubview(alertView)
         
         alertView.backgroundColor = UIColor.whiteColor()
+        
+        switch UIDevice.currentDevice().orientation {
+        case .LandscapeLeft, .LandscapeRight:
+            alertView.frame = CGRectMake(0, 0, l_ScreenHeight * 0.77, l_ScreenHeight * 0.77 * 0.64)
+        default:
+            alertView.frame = CGRectMake(0, 0, l_ScreenWidth * 0.77, l_ScreenWidth * 0.77 * 0.64)
+        }
+         
         alertView.center = CGPointMake(l_ScreenWidth / 2, l_ScreenHeight / 2)
         titleView = UIView(frame: CGRectMake(0, 0, alertView.frame.width, alertView.frame.height * 0.234))
         titleView!.tag = 477
@@ -86,6 +101,10 @@ class SHAlertView: UIView {
         
         self.addSubview(background)
     }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     func touchButton(sender: UIButton) {
@@ -114,12 +133,30 @@ class SHAlertView: UIView {
     func show() {
         UIApplication.sharedApplication().keyWindow?.addSubview(self)
         let animation = CABasicAnimation(keyPath: "transform.scale")
-        animation.fromValue = [1.5, 1.5, 2]
-        animation.toValue = [1, 1, 1]
+        animation.fromValue = 2
+        animation.toValue = 1
         animation.duration = 0.125
         background.layer.addAnimation(animation, forKey: "show")
         
     }
     
+    override func setNeedsLayout() {
+        super.setNeedsLayout()
+        self.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight)
+        background.frame = CGRectMake(0, 0, l_ScreenWidth, l_ScreenHeight)
+        switch UIDevice.currentDevice().orientation {
+        case .LandscapeLeft, .LandscapeRight:
+            alertView.frame = CGRectMake(0, 0, l_ScreenHeight * 0.77, l_ScreenHeight * 0.77 * 0.64)
+        default:
+            alertView.frame = CGRectMake(0, 0, l_ScreenWidth * 0.77, l_ScreenWidth * 0.77 * 0.64)
+        }
+        alertView.center = CGPointMake(l_ScreenWidth / 2, l_ScreenHeight / 2)
+        titleView!.frame = CGRectMake(0, 0, alertView.frame.width, alertView.frame.height * 0.234)
+        titleLabel!.frame = CGRectMake(15, 2, titleView!.frame.width - 30, titleView!.frame.height - 4)
+        detailLabel!.frame = CGRectMake(alertView.frame.width * 0.05, alertView.frame.height * 0.281, alertView.frame.width * 0.9, alertView.frame.height * 0.390)
+        cancleBtn!.frame = CGRectMake(alertView.frame.width * 0.09, alertView.frame.height * 0.718, alertView.frame.width * 0.32, alertView.frame.height * 0.188)
+        confirmBtn!.frame = CGRectMake(alertView.frame.width * 0.6, alertView.frame.height * 0.718, alertView.frame.width * 0.32, alertView.frame.height * 0.188)
+        
+    }
     
 }

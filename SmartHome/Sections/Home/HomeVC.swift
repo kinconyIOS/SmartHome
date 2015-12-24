@@ -133,8 +133,6 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0 {
             
-            let addDeviceVC: AddDeviceViewController = AddDeviceViewController()
-            self.navigationController?.pushViewController(addDeviceVC, animated: true)
             
         }
         
