@@ -42,6 +42,15 @@ extension UIColor {
         self.init(red: CGFloat((RGB & 0xFF0000) >> 16) / CGFloat(255), green: CGFloat((RGB & 0xFF00) >> 8) / CGFloat(255), blue: CGFloat(RGB & 0xFF) / CGFloat(255), alpha: CGFloat(alpha))
     }
 }
+extension String{
+
+    func trimString()->String!
+    {
+        let str:String!=self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        return str;
+    }
+
+}
 
     /**
     *  根据位置的具体参数获取天气情况
@@ -50,7 +59,8 @@ extension UIColor {
     *  @param city     NSString 城市
     *  @param area     NSString 区域
     */
-    func weatherWithProvince( administrativeArea:String,city localCity:String){
+typealias Complete = (WeatherModel) -> ()
+func weatherWithProvince( administrativeArea:String,localCity:String,complete:Complete){
         var str:String?=localCity
         if str!.characters.count==0 || !str!.containsString("市")
         {
@@ -81,35 +91,24 @@ extension UIColor {
                 
                 for index in 0..<3{
                     let aDict:NSDictionary = arr!![index]!as!NSDictionary
-                    //"date"日期,"dayPictureUrl白天图片链接","nightPictureUrl晚上图片链接","weather"天气,"wind风",
-                    //NSRange range = [[aDict valueForKey:@"date"] rangeOfString:@"("];
-                    //        NSString *aName;
-                    //        if (i == 0) {
-                    //            aName = [[aDict valueForKey:@"date"] substringToIndex:range.location + 0];
-                    //        }
-                    //        else
-                    //        {
-                    //            aName = [aDict valueForKey:@"date"];
-                    //        }
-                 
+            
                     let dayPictureUrl:String = aDict["dayPictureUrl"]! as! String
                     
                     let nightPictureUrl:String = aDict["nightPictureUrl"]! as! String
                     //
                     let  arrayTemp:Array=aDict["temperature"]!.componentsSeparatedByString("~")
-                     let aTemp = arrayTemp["temperature"]
+                    let aMaxTemp = arrayTemp.first?.trimString()
                     //
-                  let range:Range = (arrayTemp.last?.rangeOfString("℃"))!
-                  let aSmallTemp = (arrayTemp.last?.substringToIndex(range.startIndex).stringByAppendingString("℃"))!
+                    let range:Range = (arrayTemp.last?.rangeOfString("℃"))!
+                    let aSmallTemp = (arrayTemp.last?.substringToIndex(range.startIndex))!.trimString()
                     let aWeather:String = aDict["weather"] as! String
                     let aWind:String = aDict["wind"] as! String
-                    print("maxTemp-"+aMaxTemp)
-                    print("aSmallTemp--"+aSmallTemp)
-                    print("aWeather--"+aWeather)
-                    print("aWind--"+aWind)
-                    print("image--"+aImageName)
-                    //print()
-              
+                    
+               
+                
+                    let weather=WeatherModel(aMaxTemp: aMaxTemp!, aSmallTemp: aSmallTemp, aWeather: aWeather, aWind: aWind, dayPictureUrl: dayPictureUrl, nightPictureUrl: nightPictureUrl)
+                    complete(weather)
+               
 
                 }
                

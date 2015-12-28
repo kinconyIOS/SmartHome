@@ -15,15 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow? = UIWindow.init(frame: UIScreen.mainScreen().bounds)
     var user:UserModel?=UserModel()
+  
    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //此处要考虑三种情况
         //1.下载软件第一次安装 2.不是首次且令牌失效 3.不是首次且令牌不失效
         let guidevc:GuideViewController = GuideViewController(coverImageNames: ["引导页.jpg","引导页.jpg","引导页.jpg"], backgroundImageNames: nil)
-        //天气预报
-        weatherWithProvince("杭州市", city: "南阳市")
+      
         
         guidevc.didSelectedEnter=didSelectedEnter
+        LocationManager.sharedManager().configLocation()
         //
         self.window!.rootViewController = guidevc
         self.window!.makeKeyAndVisible();
@@ -58,6 +59,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
+ 
+    
+
+
+
+  
+
 
     // MARK: - Core Data stack
 

@@ -12,6 +12,8 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     var orientationLast:UIInterfaceOrientation?=UIInterfaceOrientation.Portrait
     let array=["精选","电视剧","电影","综艺","娱乐","健康","科技","游戏","体育","搞笑"];
     let  hscroll:HScrollView?=HScrollView.init()
+    
+    @IBOutlet var homeTableView: UITableView!
     lazy var  drakBtn:UIButton = {
         
         let dark:UIButton=UIButton()
@@ -32,7 +34,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
-        self.view.addSubview(Waiting())
+      //  self.view.addSubview(Waiting())
         // Do any additional setup after loading the view.
     }
     override  func viewWillAppear(animated: Bool) {
@@ -65,7 +67,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
 
         //
       NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("statusBarOrientationChange:"), name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
-        
+            self.homeTableView.registerNib(UINib(nibName: "HomeTopTableViewCell", bundle: nil), forCellReuseIdentifier:"topcell")
 
         
        //模拟数据源
@@ -87,8 +89,19 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
           floor.items.addObject(room2)
         tableSideViewDataSource.addObject(floor)
         }
+        
+        //天气预报 闭包回调
+        weatherWithProvince("杭州市", localCity: "南阳市") { (weather:WeatherModel) -> () in
+            print("maxTemp-"+weather.aMaxTemp)
+            print("aSmallTemp--"+weather.aSmallTemp)
+            print("aWeather--"+weather.aWeather)
+            print("aWind--"+weather.aWind)
+            print("image--"+weather.dayPictureUrl+"--"+weather.nightPictureUrl)
+        }
+      
 
     }
+    
     //导航栏scollView
     func scrollAddBtn()
     {
@@ -122,6 +135,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     //返回节的个数
    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if tableView === sideView?.tableView{ return 1}
+        if tableView===self.homeTableView{return 1}
         return 1
     }
     //返回某个节中的行数
@@ -130,6 +144,9 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         return tableSideViewDataSource.count+1
     
         }
+     if tableView===self.homeTableView{
+        return 1
+    }
     return 1;
     }
    
@@ -140,14 +157,14 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     
         var cell:UITableViewCell?
         if indexPath.row==0{
-            cell = tableView.dequeueReusableCellWithIdentifier("addcell", forIndexPath: indexPath) as! AddCell
+            cell = tableView.dequeueReusableCellWithIdentifier("addcell", forIndexPath: indexPath)
          
            
 
         
         }else{
             let item:RoomListItem = self.tableSideViewDataSource[indexPath.row-1] as! RoomListItem;
-            cell = tableView.dequeueReusableCellWithIdentifier("itemcell", forIndexPath: indexPath) as! ItemCell
+            cell = tableView.dequeueReusableCellWithIdentifier("itemcell", forIndexPath: indexPath)
             (cell! as!ItemCell).nameLabel?.text=item.name
             (cell! as!ItemCell).icon.image=UIImage(named: item.iconName)
             if item.isSubItem {
@@ -160,6 +177,12 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         cell!.selectionStyle=UITableViewCellSelectionStyle.None
         cell!.backgroundColor=UIColor.clearColor();
         return cell!
+    
+    }else if tableView===self.homeTableView{
+         var cell:UITableViewCell?
+        cell = tableView.dequeueReusableCellWithIdentifier("topcell",forIndexPath: indexPath)
+       // (  cell!  as! HomeTopTableViewCell)
+    
     
     }
         return UITableViewCell()
@@ -215,6 +238,10 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     
     //高度
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if tableView===self.homeTableView{
+        return 220
+        }
+        if tableView === sideView?.tableView{return 55 }
         return 55
     }
     //手势识别

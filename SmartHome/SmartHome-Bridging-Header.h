@@ -10,3 +10,4 @@
 #import "HScrollView.h"
 #import "GuideViewController.h"
 #import "SZLSideView.h"
+#import "UIImageView+WebCache.h"
