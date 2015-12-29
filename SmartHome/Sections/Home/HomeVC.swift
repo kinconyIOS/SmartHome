@@ -227,6 +227,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     return []
     }
     let mArr = NSMutableArray(capacity:1)
+        //
     for i in 0..<item.items.count{
         let indexPath:NSIndexPath = NSIndexPath(forRow: nowPath.row+i+1, inSection: nowPath.section)
          mArr.addObject(indexPath)

@@ -11,25 +11,44 @@ import CoreData
 
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+  class AppDelegate: UIResponder, UIApplicationDelegate{
+   
     var window: UIWindow? = UIWindow.init(frame: UIScreen.mainScreen().bounds)
     var user:UserModel?=UserModel()
-  
+    //个推
+    var  deviceToken:NSString = ""
+    var  gexinPusher:GexinSdk?
+    var  clientId:NSString? = ""
+    var  sdkStatus:SdkStatus?
+    var  lastPayloadIndex:Int = 0
+    var  payloadId:NSString? = ""
+    //pgyer url
+    var updateUrl:NSString = ""
+
    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //此处要考虑三种情况
         //1.下载软件第一次安装 2.不是首次且令牌失效 3.不是首次且令牌不失效
         let guidevc:GuideViewController = GuideViewController(coverImageNames: ["引导页.jpg","引导页.jpg","引导页.jpg"], backgroundImageNames: nil)
       
+        self.setUpErrorTest()
+      
+        self.registerRemoteNotification()
+        self.setUpPgy()
+        self.setUpReach { () -> () in
+            showMsg("没有网络")
+        }
+        self.startGeTuiSdk()
         
         guidevc.didSelectedEnter=didSelectedEnter
         LocationManager.sharedManager().configLocation()
         //
         self.window!.rootViewController = guidevc
         self.window!.makeKeyAndVisible();
+ 
         return true
     }
+ 
     func didSelectedEnter(){
         let nav:UINavigationController = UINavigationController(rootViewController: LoginVC())
         self.window!.rootViewController=nav
@@ -95,7 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
 
-            dict[NSUnderlyingErrorKey] = error as NSError
+            dict[NSUnderlyingErrorKey] = error as! NSError
             let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.

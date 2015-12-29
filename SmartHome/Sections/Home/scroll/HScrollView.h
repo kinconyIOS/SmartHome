@@ -17,4 +17,5 @@
 -(HScrollView *)init;
 -(void)addButton:(UIButton *)btn with:(float)height;
 -(void)clearColor;
+
 @end

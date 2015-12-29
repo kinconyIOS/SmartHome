@@ -11,3 +11,10 @@
 #import "GuideViewController.h"
 #import "SZLSideView.h"
 #import "UIImageView+WebCache.h"
+#import "GexinSdk.h"
+
+#import <PgyUpdate/PgyUpdateManager.h>
+
+
+
+
