@@ -75,6 +75,7 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="6vx-Vl-69N" firstAttribute="top" secondItem="a3a-VH-Y6m" secondAttribute="bottom" id="CWE-Ei-9vi"/>
                 <constraint firstItem="a3a-VH-Y6m" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Fhj-mS-zXM"/>
@@ -88,7 +89,15 @@
                 <constraint firstAttribute="trailing" secondItem="6vx-Vl-69N" secondAttribute="trailing" id="wht-D7-V0X"/>
                 <constraint firstItem="6vx-Vl-69N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="z3L-aP-C0C"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="riX-cm-sTs" appends="YES" id="rIJ-Y4-MlS"/>
+            </connections>
         </view>
+        <tapGestureRecognizer id="riX-cm-sTs">
+            <connections>
+                <action selector="recyclingKeyboard:" destination="-1" id="5ND-Nw-p3f"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="楼层按下" width="16" height="9"/>

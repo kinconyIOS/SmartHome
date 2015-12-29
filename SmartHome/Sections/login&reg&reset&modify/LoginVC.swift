@@ -82,11 +82,12 @@ class LoginVC: UIViewController {
         minevc.tabBarItem.title=NSLocalizedString("我的", comment: "")
         minevc.tabBarItem.image=mineIcon
         minevc.tabBarItem.selectedImage=mineIconSelected
-          let mineNav:UINavigationController = UINavigationController(rootViewController: minevc)
-       let tab=UITabBarController()
+        let mineNav:UINavigationController = UINavigationController(rootViewController: minevc)
+        let tab=UITabBarController()
         tab.viewControllers=[homeNav,setModelNav,mallNav,mineNav];
         tab.tabBar.tintColor=mainColor
-     //   let createHome = CreatHomeVC()
+        let createHome = CreatHomeVC()
+        let navigationC = UINavigationController(rootViewController: createHome)
         self.navigationController?.presentViewController(tab, animated: true, completion:nil)
     }
     @IBAction func onExit(sender: AnyObject) {

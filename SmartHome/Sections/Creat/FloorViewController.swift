@@ -10,7 +10,15 @@ import UIKit
 
 class FloorViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var isShowRoom = false
+    var isShowRoom = false {
+        didSet {
+            if isShowRoom {
+                detailBtn.setBackgroundImage(UIImage(named: "楼层按下"), forState: UIControlState.Normal)
+            } else {
+                detailBtn.setBackgroundImage(UIImage(named: "返回-拷贝"), forState: UIControlState.Normal)
+            }
+        }
+    }
     
     var count = 5
     
@@ -42,8 +50,9 @@ class FloorViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet var floorTF: UITextField!
     @IBOutlet var detailBtn: UIButton!
     @IBAction func handleDetailBtn(sender: UIButton) {
-        isShowRoom = true
-        tableView.reloadData()
+        isShowRoom = !isShowRoom
+        
+        tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Bottom)
     }
     @IBAction func exitAction(sender: UITextField) {
         
@@ -81,6 +90,9 @@ class FloorViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    @IBAction func recyclingKeyboard(sender: UITapGestureRecognizer) {
+        self.floorTF.resignFirstResponder()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
