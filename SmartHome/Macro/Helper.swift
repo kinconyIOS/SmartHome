@@ -144,7 +144,3 @@ func weatherWithProvince( administrativeArea:String,localCity:String,complete:Co
     
 
 
-func helper() {
-    
-}
-
