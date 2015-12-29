@@ -12,9 +12,8 @@
 #import "SZLSideView.h"
 #import "UIImageView+WebCache.h"
 #import "GexinSdk.h"
-
 #import <PgyUpdate/PgyUpdateManager.h>
-
+//debugPrint(__FUNCTION__, __LINE__,str)
 
 
 

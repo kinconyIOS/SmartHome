@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 //根据颜色返回图片
+
 func imageWithColor(color:UIColor)->UIImage
  {
     let rect:CGRect = CGRectMake(0.0, 0.0, 1.0, 1.0)
@@ -106,7 +107,7 @@ func weatherWithProvince( administrativeArea:String,localCity:String,complete:Co
                     
                
                 
-                    let weather=WeatherModel(aMaxTemp: aMaxTemp!, aSmallTemp: aSmallTemp, aWeather: aWeather, aWind: aWind, dayPictureUrl: dayPictureUrl, nightPictureUrl: nightPictureUrl)
+                    let weather=WeatherModel(address:str!,aMaxTemp: aMaxTemp!, aSmallTemp: aSmallTemp, aWeather: aWeather, aWind: aWind, dayPictureUrl: dayPictureUrl, nightPictureUrl: nightPictureUrl)
                     complete(weather)
                
 

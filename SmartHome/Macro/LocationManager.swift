@@ -8,9 +8,10 @@
 
 import UIKit
 import CoreLocation
+typealias CallbackCityName=(String!)->()
 class LocationManager: NSObject,CLLocationManagerDelegate{
-  var currentlocation:CLLocationManager?
-    
+   var currentlocation:CLLocationManager?
+    var callback:CallbackCityName?
  
     class func sharedManager()->LocationManager{
         struct YRSingleton{
@@ -25,6 +26,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate{
     }
     func configLocation()
     {
+       
         if (currentlocation == nil)
         {
             if (!CLLocationManager.locationServicesEnabled() || (CLLocationManager.authorizationStatus()==CLAuthorizationStatus.Denied))
@@ -34,18 +36,18 @@ class LocationManager: NSObject,CLLocationManagerDelegate{
             }
             else
             {
-                print(".....")
+               
                 //开启定位
                 currentlocation = CLLocationManager()//创建位置管理器
                 currentlocation!.delegate=self
                 currentlocation!.desiredAccuracy=kCLLocationAccuracyBest
-                currentlocation!.distanceFilter=100.0
+                currentlocation!.distanceFilter=1000.0
                 
                 if ( Float(UIDevice.currentDevice().systemVersion) >= 8.0)
                 {
                    currentlocation!.requestWhenInUseAuthorization()
                    currentlocation!.requestAlwaysAuthorization()
-                    
+                 
                 }                //启动位置更新
                currentlocation?.startUpdatingLocation()
             }
@@ -59,17 +61,15 @@ class LocationManager: NSObject,CLLocationManagerDelegate{
         let geoCoder:CLGeocoder  = CLGeocoder()
         
         geoCoder.reverseGeocodeLocation(newLocation!) { (placemarks:[CLPlacemark]?,error:NSError?) -> Void in
-            if (error != nil)
+            if (error == nil)
             {
+              
                 for placemark:CLPlacemark in placemarks!{
                     
                     let test:NSDictionary = placemark.addressDictionary!
-                    print(test)
-                    print(test["Country"])
-                    print(test["State"])
-                    print(test["City"])
-                    print(test["SubLocality"])
-                    print(test["Street"])
+                    
+             
+                    self.callback!(test["City"] as! String)
    
                 }
             }

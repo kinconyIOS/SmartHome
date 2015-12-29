@@ -90,14 +90,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         tableSideViewDataSource.addObject(floor)
         }
         
-        //天气预报 闭包回调
-        weatherWithProvince("杭州市", localCity: "南阳市") { (weather:WeatherModel) -> () in
-            print("maxTemp-"+weather.aMaxTemp)
-            print("aSmallTemp--"+weather.aSmallTemp)
-            print("aWeather--"+weather.aWeather)
-            print("aWind--"+weather.aWind)
-            print("image--"+weather.dayPictureUrl+"--"+weather.nightPictureUrl)
-        }
+  
       
 
     }
@@ -179,10 +172,25 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         return cell!
     
     }else if tableView===self.homeTableView{
-         var cell:UITableViewCell?
-        cell = tableView.dequeueReusableCellWithIdentifier("topcell",forIndexPath: indexPath)
-       // (  cell!  as! HomeTopTableViewCell)
-    
+        if indexPath.row == 0{
+         let cell:HomeTopTableViewCell? = tableView.dequeueReusableCellWithIdentifier("topcell",forIndexPath: indexPath) as? HomeTopTableViewCell
+        let app=UIApplication.sharedApplication().delegate as! AppDelegate
+        if (app.weather != nil) {
+            //设置轮播图
+            (cell!).images = [UIImage(named: "1.jpg")!,UIImage(named: "2.jpg")!,UIImage(named: "3.jpg")!]
+             cell!.setupPage(nil)
+            
+             cell!.currentAddressLabel.text="当前位置:"+(app.weather?.address)!
+             cell!.weatherName.text=(app.weather?.aWeather)!
+             cell!.wind.text=(app.weather?.aWind)!
+             cell!.maxTemp.text="最高"+(app.weather?.aMaxTemp)!+"°C"
+             cell!.minTemp.text="最低"+(app.weather?.aSmallTemp)!+"°C"
+             cell!.weatherIcon.sd_setImageWithURL(NSURL(string: (app.weather?.nightPictureUrl)!))
+        }
+        }else{
+        
+        
+        }
     
     }
         return UITableViewCell()

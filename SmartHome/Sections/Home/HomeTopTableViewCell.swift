@@ -9,7 +9,15 @@
 import UIKit
 
 class HomeTopTableViewCell: UITableViewCell ,UIScrollViewDelegate{
+  //   var orientationLast:UIInterfaceOrientation?=UIInterfaceOrientation.Portrait
+    @IBOutlet var currentAddressLabel: UILabel!
 
+    @IBOutlet var wind: UILabel!
+    @IBOutlet var minTemp: UILabel!
+    @IBOutlet var maxTemp: UILabel!
+    @IBOutlet var weatherName: UILabel!
+    @IBOutlet var weatherIcon: UIImageView!
+    @IBOutlet var date: UILabel!
     var scrollView:UIScrollView?
     var pageControl:UIPageControl?
     var images=[]
@@ -21,14 +29,18 @@ class HomeTopTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         self.pageControl = UIPageControl(frame:CGRectMake(0,self.frame.size.height*4/5,self.frame.size.width, 10))
         //初始化数组，存储滚动视图的图片
         
-       self.images = [UIImage(named: "1.jpg")!,UIImage(named: "1.jpg")!,UIImage(named: "1.jpg")!]
+     
         //把scrollView与pageControl添加到当前视图中
-        self.contentView.addSubview(self.scrollView!)
-        self.contentView.addSubview(self.pageControl!)
+        self.contentView.insertSubview(self.scrollView!, belowSubview: self.currentAddressLabel)
+   
+        self.contentView.insertSubview(self.pageControl!, belowSubview: self.currentAddressLabel)
+      
         //设置视图的背景颜色
         self.backgroundColor=UIColor.whiteColor()
         //调用 setuoPage方法
-        self.setupPage(nil)
+        
+          NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("statusBarOrientationChange:"), name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -114,7 +126,7 @@ func setupPage(sender:AnyObject?)
     self.scrollView!.contentSize=CGSizeMake(originX, 0)
 }
     //改变页码的方法实现
-    func changePage(sender:AnyObject)
+ func changePage(sender:AnyObject)
 {
     //NSLog(@"指示器的当前索引值为:%li",(long)self.pageControl.currentPage);
     //获取当前视图的页码
@@ -129,14 +141,14 @@ func setupPage(sender:AnyObject?)
 }
 //pragma mark-----UIScrollViewDelegate---------
 //实现协议UIScrollViewDelegate的方法，必须实现的
-    func scrollViewDidEndDecelerating(scrollView:UIScrollView)
-{
+   func scrollViewDidEndDecelerating(scrollView:UIScrollView)
+ {
     //获取当前视图的宽度
     let pageWith:CGFloat = scrollView.frame.size.width
     //根据scrolView的左右滑动,对pageCotrol的当前指示器进行切换(设置currentPage)
     let page = floor((scrollView.contentOffset.x - pageWith/2)/pageWith)+1;
     //切换改变页码，小圆点
     self.pageControl!.currentPage =  Int(Float(page))
-}
-    
+ }
+ 
 }

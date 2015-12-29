@@ -15,6 +15,7 @@ import CoreData
    
     var window: UIWindow? = UIWindow.init(frame: UIScreen.mainScreen().bounds)
     var user:UserModel?=UserModel()
+    var weather:WeatherModel?
     //个推
     var  deviceToken:NSString = ""
     var  gexinPusher:GexinSdk?
@@ -30,9 +31,7 @@ import CoreData
         //此处要考虑三种情况
         //1.下载软件第一次安装 2.不是首次且令牌失效 3.不是首次且令牌不失效
         let guidevc:GuideViewController = GuideViewController(coverImageNames: ["引导页.jpg","引导页.jpg","引导页.jpg"], backgroundImageNames: nil)
-      
         self.setUpErrorTest()
-      
         self.registerRemoteNotification()
         self.setUpPgy()
         self.setUpReach { () -> () in
@@ -41,6 +40,13 @@ import CoreData
         self.startGeTuiSdk()
         
         guidevc.didSelectedEnter=didSelectedEnter
+        LocationManager.sharedManager().callback={(str:String!)in
+            //天气预报 闭包回调
+            weatherWithProvince("北京市", localCity:str) { (weather:WeatherModel) -> () in
+                self.weather=weather
+            }
+        
+        }
         LocationManager.sharedManager().configLocation()
         //
         self.window!.rootViewController = guidevc
@@ -48,8 +54,7 @@ import CoreData
  
         return true
     }
- 
-    func didSelectedEnter(){
+      func didSelectedEnter(){
         let nav:UINavigationController = UINavigationController(rootViewController: LoginVC())
         self.window!.rootViewController=nav
         print("完毕")

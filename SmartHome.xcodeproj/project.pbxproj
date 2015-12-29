@@ -29,7 +29,6 @@
 		980A93191C17B441009166D0 /* SmartHomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A93181C17B441009166D0 /* SmartHomeUITests.swift */; };
 		981B78C21C2BE2E900CBF882 /* HomeTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981B78C01C2BE2E900CBF882 /* HomeTopTableViewCell.swift */; };
 		981B78C31C2BE2E900CBF882 /* HomeTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981B78C11C2BE2E900CBF882 /* HomeTopTableViewCell.xib */; };
-		981B78C51C2BF0BB00CBF882 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 981B78C41C2BF0BB00CBF882 /* 1.jpg */; };
 		983FE2E91C1821B6004B89CE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983FE2E81C1821B6004B89CE /* Helper.swift */; };
 		984739D61C1AC9A300E80376 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 984739B21C1AC9A300E80376 /* AFHTTPRequestOperation.m */; };
 		984739D71C1AC9A300E80376 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 984739B41C1AC9A300E80376 /* AFHTTPRequestOperationManager.m */; };
@@ -72,6 +71,9 @@
 		989276071C321EDE00FAEF5E /* AppDelegate+Pgy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989276061C321EDE00FAEF5E /* AppDelegate+Pgy.swift */; };
 		989276091C32267D00FAEF5E /* AppDelegate+Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989276081C32267D00FAEF5E /* AppDelegate+Reach.swift */; };
 		9892760B1C3226A200FAEF5E /* AppDelegate+Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892760A1C3226A200FAEF5E /* AppDelegate+Remote.swift */; };
+		989276101C32712800FAEF5E /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9892760D1C32712800FAEF5E /* 1.jpg */; };
+		989276111C32712800FAEF5E /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9892760E1C32712800FAEF5E /* 2.jpg */; };
+		989276121C32712800FAEF5E /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9892760F1C32712800FAEF5E /* 3.jpg */; };
 		989ECECA1C30BF4300F5867A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989ECEC91C30BF4300F5867A /* MapKit.framework */; };
 		989ECECC1C30C01E00F5867A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECECB1C30C01E00F5867A /* LocationManager.swift */; };
 		989ECEF81C31382100F5867A /* PgySDk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989ECEF61C31382100F5867A /* PgySDk.framework */; };
@@ -189,7 +191,6 @@
 		980A931A1C17B441009166D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		981B78C01C2BE2E900CBF882 /* HomeTopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTopTableViewCell.swift; sourceTree = "<group>"; };
 		981B78C11C2BE2E900CBF882 /* HomeTopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTopTableViewCell.xib; sourceTree = "<group>"; };
-		981B78C41C2BF0BB00CBF882 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		983FE2E81C1821B6004B89CE /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		984739B11C1AC9A300E80376 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		984739B21C1AC9A300E80376 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
@@ -255,6 +256,9 @@
 		989276061C321EDE00FAEF5E /* AppDelegate+Pgy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Pgy.swift"; sourceTree = "<group>"; };
 		989276081C32267D00FAEF5E /* AppDelegate+Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Reach.swift"; sourceTree = "<group>"; };
 		9892760A1C3226A200FAEF5E /* AppDelegate+Remote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Remote.swift"; sourceTree = "<group>"; };
+		9892760D1C32712800FAEF5E /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		9892760E1C32712800FAEF5E /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		9892760F1C32712800FAEF5E /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		989ECEC91C30BF4300F5867A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		989ECECB1C30C01E00F5867A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		989ECEF61C31382100F5867A /* PgySDk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PgySDk.framework; sourceTree = "<group>"; };
@@ -405,14 +409,7 @@
 		980A92E91C17B440009166D0 = {
 			isa = PBXGroup;
 			children = (
-				989ECEC91C30BF4300F5867A /* MapKit.framework */,
-				98062E931C2D3FB600903DF0 /* CFNetwork.framework */,
-				98062E911C2D2A1700903DF0 /* CoreLocation.framework */,
-				9847F0951C194F09005D72A9 /* InfoPlist.strings */,
-				980353A91C19499E00A2C6A8 /* Localizable.strings */,
-				98B8A3A01C1815FF00A584D3 /* libc++.tbd */,
-				98B8A39E1C1815E700A584D3 /* libz.tbd */,
-				98B8A39C1C1815BE00A584D3 /* libsqlite3.tbd */,
+				9892760C1C32432800FAEF5E /* frameworks */,
 				980A92F41C17B440009166D0 /* SmartHome */,
 				980A930C1C17B441009166D0 /* SmartHomeTests */,
 				980A93171C17B441009166D0 /* SmartHomeUITests */,
@@ -527,6 +524,21 @@
 				985F9A811C21632B00FFE955 /* HScrollView.m */,
 			);
 			path = scroll;
+			sourceTree = "<group>";
+		};
+		9892760C1C32432800FAEF5E /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				980353A91C19499E00A2C6A8 /* Localizable.strings */,
+				9847F0951C194F09005D72A9 /* InfoPlist.strings */,
+				989ECEC91C30BF4300F5867A /* MapKit.framework */,
+				98062E931C2D3FB600903DF0 /* CFNetwork.framework */,
+				98062E911C2D2A1700903DF0 /* CoreLocation.framework */,
+				98B8A3A01C1815FF00A584D3 /* libc++.tbd */,
+				98B8A39E1C1815E700A584D3 /* libz.tbd */,
+				98B8A39C1C1815BE00A584D3 /* libsqlite3.tbd */,
+			);
+			name = frameworks;
 			sourceTree = "<group>";
 		};
 		989ECED91C3128FD00F5867A /* AppDelegate */ = {
@@ -657,9 +669,11 @@
 			isa = PBXGroup;
 			children = (
 				985F9A7F1C21632B00FFE955 /* scroll */,
+				9892760D1C32712800FAEF5E /* 1.jpg */,
+				9892760E1C32712800FAEF5E /* 2.jpg */,
+				9892760F1C32712800FAEF5E /* 3.jpg */,
 				C24FD2471C18043600B16BF2 /* HomeVC.swift */,
 				C24FD2481C18043600B16BF2 /* HomeVC.xib */,
-				981B78C41C2BF0BB00CBF882 /* 1.jpg */,
 				981B78C01C2BE2E900CBF882 /* HomeTopTableViewCell.swift */,
 				981B78C11C2BE2E900CBF882 /* HomeTopTableViewCell.xib */,
 			);
@@ -932,6 +946,7 @@
 				985F9A6D1C2159FC00FFE955 /* RoomAndRenameVC.xib in Resources */,
 				9847F0931C194F09005D72A9 /* InfoPlist.strings in Resources */,
 				980A93031C17B440009166D0 /* LaunchScreen.storyboard in Resources */,
+				989276121C32712800FAEF5E /* 3.jpg in Resources */,
 				980353A71C19499E00A2C6A8 /* Localizable.strings in Resources */,
 				C21E15951C1806FE00C45854 /* SetModelVC.xib in Resources */,
 				980A93001C17B440009166D0 /* Assets.xcassets in Resources */,
@@ -942,11 +957,12 @@
 				C24FD2B21C18043700B16BF2 /* AllDeviceListVC.xib in Resources */,
 				C24FD2B01C18043700B16BF2 /* MineVC.xib in Resources */,
 				985F9A6B1C2159FC00FFE955 /* RoomAndFloorCell.xib in Resources */,
+				989276111C32712800FAEF5E /* 2.jpg in Resources */,
 				985F9A671C2159FC00FFE955 /* FloorRoomCell.xib in Resources */,
 				C24FD2AE1C18043700B16BF2 /* MallVC.xib in Resources */,
 				985F9A691C2159FC00FFE955 /* FloorViewController.xib in Resources */,
 				980A92FB1C17B440009166D0 /* Main.storyboard in Resources */,
-				981B78C51C2BF0BB00CBF882 /* 1.jpg in Resources */,
+				989276101C32712800FAEF5E /* 1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

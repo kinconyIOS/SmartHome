@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -10,6 +10,8 @@
             <connections>
                 <outlet property="bgImg" destination="bk4-QY-eRW" id="7Jv-LD-QO7"/>
                 <outlet property="loginBtn" destination="HEC-gh-0ds" id="Cyi-1g-wqN"/>
+                <outlet property="passText" destination="THi-nP-Luf" id="jXO-21-BJQ"/>
+                <outlet property="phoneText" destination="wsN-U6-Med" id="Ymx-9d-FdX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -40,7 +42,7 @@
                     </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     <connections>
                         <action selector="onExit:" destination="-1" eventType="editingDidEndOnExit" id="LtZ-IA-Yc7"/>
                     </connections>
@@ -52,7 +54,7 @@
                     </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" secureTextEntry="YES"/>
                     <connections>
                         <action selector="onExit:" destination="-1" eventType="editingDidEndOnExit" id="DCQ-qB-AqH"/>
                     </connections>
@@ -63,6 +65,9 @@
                         <constraint firstAttribute="width" secondItem="e5p-yd-wkY" secondAttribute="height" multiplier="1:1" constant="-1" id="VWg-Sd-UnE"/>
                     </constraints>
                     <state key="normal" image="手机号选择.png"/>
+                    <connections>
+                        <action selector="showUserList:" destination="-1" eventType="touchUpInside" id="zyo-bP-Voc"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ci-mb-M0Z">
                     <rect key="frame" x="567" y="228" width="20" height="22"/>
@@ -70,6 +75,9 @@
                         <constraint firstAttribute="width" secondItem="1Ci-mb-M0Z" secondAttribute="height" multiplier="1:1" constant="-2" id="Ghk-HM-1TQ"/>
                     </constraints>
                     <state key="normal" image="明暗码.png"/>
+                    <connections>
+                        <action selector="showPassWord:" destination="-1" eventType="touchUpInside" id="hri-cl-22M"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9O-nl-L0B">
                     <rect key="frame" x="20" y="549" width="60" height="30"/>
