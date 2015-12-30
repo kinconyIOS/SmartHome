@@ -10,6 +10,19 @@ import UIKit
 let AFAppDotNetAPIBaseURLString:String = "https://www.baidu.com/"
 typealias NoReach = ()->()
 extension AppDelegate{
+    func registerRemoteNotification()
+    {
+        if #available(iOS 8.0, *) {
+            let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
+            let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+            UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+            UIApplication.sharedApplication().registerForRemoteNotifications()
+        } else {
+            let types: UIRemoteNotificationType = [.Alert, .Badge, .Sound]
+            UIApplication.sharedApplication().registerForRemoteNotificationTypes(types)
+        }
+    }
+    
     func setUpReach(noreach:NoReach)
     {
         let sessionManager =  AFHTTPSessionManager(baseURL:NSURL(string: AFAppDotNetAPIBaseURLString))
