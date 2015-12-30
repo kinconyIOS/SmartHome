@@ -57,7 +57,7 @@ class PhoneVC: UIViewController {
     @IBAction func nextTap(sender: AnyObject) {
        //验证手机号格式
         let codevc:VCodeVC=VCodeVC()
-        codevc.phoneNum=trimString(phoneText.text!)
+        codevc.phoneNum=phoneText.text!.trimString()
         if !validateMobile(codevc.phoneNum!) {
             showMsg("手机号格式不对，请重新输入");
             return

@@ -9,6 +9,8 @@
 import UIKit
 
 class LoginVC: UIViewController {
+    @IBOutlet var phoneText: UITextField!
+    @IBOutlet var passText: UITextField!
 
     @IBOutlet var bgImg: UIImageView!
     @IBOutlet var loginBtn: UIButton!
@@ -101,5 +103,11 @@ class LoginVC: UIViewController {
     }
     @IBAction func onExit(sender: AnyObject) {
         
+    }
+   
+    @IBAction func showUserList(sender: UIButton) {
+    }
+    @IBAction func showPassWord(sender: UIButton) {
+        self.passText.secureTextEntry = !self.passText.secureTextEntry
     }
 }

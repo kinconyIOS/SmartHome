@@ -8,11 +8,7 @@
 
 import Foundation
 import UIKit
-func trimString(text:String)->String!
-{
-    let str:String!=text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-    return str;
-}
+
 func showMsg(msg:String){
  UIAlertView(title: msg, message: nil, delegate: nil, cancelButtonTitle: "我知道了").show()
 

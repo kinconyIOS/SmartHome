@@ -41,7 +41,7 @@ class VCodeVC: UIViewController {
         let passvc:PassWordVC = PassWordVC()
         //传递手机号与验证码
         passvc.phoneNum=phoneNum
-        passvc.vcode=trimString(vcodeText!.text!)
+        passvc.vcode=vcodeText!.text!.trimString()
         self.navigationController?.pushViewController(passvc, animated: true)
       
     }

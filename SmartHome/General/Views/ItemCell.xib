@@ -17,15 +17,15 @@
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="50a-gO-s56">
                         <rect key="frame" x="0.0" y="0.0" width="160" height="54"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1楼" translatesAutoresizingMaskIntoConstraints="NO" id="pMl-T4-P92">
-                                <rect key="frame" x="59" y="0.0" width="42" height="33"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="别墅一楼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xq4-oX-747">
-                                <rect key="frame" x="50" y="36" width="60" height="18"/>
+                                <rect key="frame" x="67" y="18" width="60" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1楼" translatesAutoresizingMaskIntoConstraints="NO" id="pMl-T4-P92">
+                                <rect key="frame" x="13" y="8" width="33" height="33"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -33,6 +33,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="bgView" destination="50a-gO-s56" id="IFO-hl-4ru"/>
+                <outlet property="icon" destination="pMl-T4-P92" id="hSB-yU-FjV"/>
+                <outlet property="nameLabel" destination="xq4-oX-747" id="cRF-f6-Y7D"/>
             </connections>
             <point key="canvasLocation" x="262" y="305"/>
         </tableViewCell>

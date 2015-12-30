@@ -15,11 +15,12 @@ class Waiting :UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
        
-        let gifData:NSData = NSData.dataWithContentsOfMappedFile(NSBundle.mainBundle().pathForResource("wait", ofType: "gif")!) as! NSData;
+     //   let gifData:NSData = NSData.dataWithContentsOfMappedFile(NSBundle.mainBundle().pathForResource("wait", ofType: "gif")!) as! NSData;
         webView?.backgroundColor=UIColor.clearColor()
         
         webView!.userInteractionEnabled = false;//用户不可交互
-        webView!.loadData(gifData, MIMEType: "image/gif", textEncodingName:String(), baseURL:NSURL())
+        webView!.loadHTMLString("", baseURL: NSURL.init(string: "http://api.delishou.com/42/3470/chuzu_ct.html"))
+        //webView!.loadData(gifData, MIMEType: "image/gif", textEncodingName:String(), baseURL:NSURL())
         self.addSubview(webView!)
     }
      convenience init() {

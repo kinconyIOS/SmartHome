@@ -9,25 +9,27 @@
 import UIKit
 
 class ItemCell: UITableViewCell {
+    @IBOutlet var icon: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
     var editView: EditView?
     @IBOutlet var bgView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
     
         // Initialization code
-        let frame = CGRectMake(ScreenWidth, 0, self.frame.height / 4 * 3, self.frame.height)
-        editView = EditView(frame: frame)
-        self.contentView.addSubview(editView!)
-        
-        
-        
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipe:"))
-        leftSwipe.direction = UISwipeGestureRecognizerDirection.Left
-        self.addGestureRecognizer(leftSwipe)
-        
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipe:"))
-        rightSwipe.direction = UISwipeGestureRecognizerDirection.Right
-        self.addGestureRecognizer(rightSwipe)
+//        let frame = CGRectMake(ScreenWidth, 0, self.frame.height / 4 * 3, self.frame.height)
+//        editView = EditView(frame: frame)
+//        self.contentView.addSubview(editView!)
+//        
+//        
+//        
+//        let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipe:"))
+//        leftSwipe.direction = UISwipeGestureRecognizerDirection.Left
+//        self.addGestureRecognizer(leftSwipe)
+//        
+//        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipe:"))
+//        rightSwipe.direction = UISwipeGestureRecognizerDirection.Right
+//        self.addGestureRecognizer(rightSwipe)
         
     }
     
