@@ -108,7 +108,8 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: dataSource.count - 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Bottom)
     }
     func handleRightItem(barButton: UIBarButtonItem) {
-        
+        let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
+        self.navigationController?.pushViewController(classifyVC, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

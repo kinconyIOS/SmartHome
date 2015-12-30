@@ -16,8 +16,6 @@
 		980474691C23B51B00B3966D /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980474671C23B51B00B3966D /* ItemCell.xib */; };
 		980474701C23B54000B3966D /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9804746E1C23B54000B3966D /* AddCell.swift */; };
 		980474711C23B54000B3966D /* AddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9804746F1C23B54000B3966D /* AddCell.xib */; };
-		98062E921C2D2A1700903DF0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98062E911C2D2A1700903DF0 /* CoreLocation.framework */; };
-		98062E941C2D3FB600903DF0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98062E931C2D3FB600903DF0 /* CFNetwork.framework */; };
 		9806CD411C210FF30038A8E0 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9806CD401C210FF30038A8E0 /* GuideViewController.m */; };
 		9806CD481C2124C90038A8E0 /* 引导页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9806CD471C2124C90038A8E0 /* 引导页.jpg */; };
 		980A92F61C17B440009166D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A92F51C17B440009166D0 /* AppDelegate.swift */; };
@@ -28,7 +26,6 @@
 		980A930E1C17B441009166D0 /* SmartHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A930D1C17B441009166D0 /* SmartHomeTests.swift */; };
 		980A93191C17B441009166D0 /* SmartHomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A93181C17B441009166D0 /* SmartHomeUITests.swift */; };
 		981B78C21C2BE2E900CBF882 /* HomeTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981B78C01C2BE2E900CBF882 /* HomeTopTableViewCell.swift */; };
-		981B78C31C2BE2E900CBF882 /* HomeTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981B78C11C2BE2E900CBF882 /* HomeTopTableViewCell.xib */; };
 		983FE2E91C1821B6004B89CE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983FE2E81C1821B6004B89CE /* Helper.swift */; };
 		984739D61C1AC9A300E80376 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 984739B21C1AC9A300E80376 /* AFHTTPRequestOperation.m */; };
 		984739D71C1AC9A300E80376 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 984739B41C1AC9A300E80376 /* AFHTTPRequestOperationManager.m */; };
@@ -70,14 +67,11 @@
 		989276051C321AA000FAEF5E /* AppDelegate+GeTui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989276041C321AA000FAEF5E /* AppDelegate+GeTui.swift */; };
 		989276071C321EDE00FAEF5E /* AppDelegate+Pgy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989276061C321EDE00FAEF5E /* AppDelegate+Pgy.swift */; };
 		989276091C32267D00FAEF5E /* AppDelegate+Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989276081C32267D00FAEF5E /* AppDelegate+Reach.swift */; };
-		9892760B1C3226A200FAEF5E /* AppDelegate+Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892760A1C3226A200FAEF5E /* AppDelegate+Remote.swift */; };
 		989276101C32712800FAEF5E /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9892760D1C32712800FAEF5E /* 1.jpg */; };
 		989276111C32712800FAEF5E /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9892760E1C32712800FAEF5E /* 2.jpg */; };
 		989276121C32712800FAEF5E /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9892760F1C32712800FAEF5E /* 3.jpg */; };
-		989ECECA1C30BF4300F5867A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989ECEC91C30BF4300F5867A /* MapKit.framework */; };
 		989ECECC1C30C01E00F5867A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECECB1C30C01E00F5867A /* LocationManager.swift */; };
 		989ECEF81C31382100F5867A /* PgySDk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989ECEF61C31382100F5867A /* PgySDk.framework */; };
-		989ECEF91C31382100F5867A /* PgyUpdate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 989ECEF71C31382100F5867A /* PgyUpdate.framework */; };
 		989ECEFB1C313FA500F5867A /* AppDelegate+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEFA1C313FA500F5867A /* AppDelegate+Error.swift */; };
 		98B8A39D1C1815BE00A584D3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A39C1C1815BE00A584D3 /* libsqlite3.tbd */; };
 		98B8A39F1C1815E700A584D3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B8A39E1C1815E700A584D3 /* libz.tbd */; };
@@ -146,6 +140,19 @@
 		C2AD17DC1C2CDD5700AFE71E /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AD17DA1C2CDD5700AFE71E /* RoomCell.swift */; };
 		C2AD17DD1C2CDD5700AFE71E /* RoomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AD17DB1C2CDD5700AFE71E /* RoomCell.xib */; };
 		C2CA54781C2A444900B52498 /* AddDeviceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA54771C2A444900B52498 /* AddDeviceAlert.swift */; };
+		C2D04EDC1C33880000A59345 /* PgySDk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D04EDA1C33880000A59345 /* PgySDk.framework */; };
+		C2D04EDD1C33880000A59345 /* PgyUpdate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D04EDB1C33880000A59345 /* PgyUpdate.framework */; };
+		C2D04EE11C33A2B300A59345 /* ClassifyHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D04EDF1C33A2B300A59345 /* ClassifyHomeVC.swift */; };
+		C2D04EE21C33A2B300A59345 /* ClassifyHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D04EE01C33A2B300A59345 /* ClassifyHomeVC.xib */; };
+		C2D04EE41C33A48F00A59345 /* SHSegement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D04EE31C33A48F00A59345 /* SHSegement.swift */; };
+		C2D04EE71C33BBC600A59345 /* EquipCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D04EE51C33BBC600A59345 /* EquipCollectionCell.swift */; };
+		C2D04EE81C33BBC600A59345 /* EquipCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D04EE61C33BBC600A59345 /* EquipCollectionCell.xib */; };
+		C2D04EEB1C33C98E00A59345 /* EquipSetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D04EE91C33C98E00A59345 /* EquipSetVC.swift */; };
+		C2D04EEC1C33C98E00A59345 /* EquipSetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D04EEA1C33C98E00A59345 /* EquipSetVC.xib */; };
+		C2D04EEF1C33CB9C00A59345 /* EquipNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D04EED1C33CB9C00A59345 /* EquipNameCell.swift */; };
+		C2D04EF01C33CB9C00A59345 /* EquipNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D04EEE1C33CB9C00A59345 /* EquipNameCell.xib */; };
+		C2D04EF31C33CBCA00A59345 /* EquipConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D04EF11C33CBCA00A59345 /* EquipConfigCell.swift */; };
+		C2D04EF41C33CBCA00A59345 /* EquipConfigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D04EF21C33CBCA00A59345 /* EquipConfigCell.xib */; };
 		C2DCCC811C28E61600F637F1 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DCCC7F1C28E61600F637F1 /* AddDeviceViewController.swift */; };
 		C2DCCC821C28E61600F637F1 /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DCCC801C28E61600F637F1 /* AddDeviceViewController.xib */; };
 		C2EC1CA01C2BC99F005030FC /* LQRcodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC1C9F1C2BC99F005030FC /* LQRcodeVC.swift */; };
@@ -185,8 +192,6 @@
 		980474671C23B51B00B3966D /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		9804746E1C23B54000B3966D /* AddCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
 		9804746F1C23B54000B3966D /* AddCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCell.xib; sourceTree = "<group>"; };
-		98062E911C2D2A1700903DF0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		98062E931C2D3FB600903DF0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		9806CD3F1C210FF30038A8E0 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		9806CD401C210FF30038A8E0 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		9806CD471C2124C90038A8E0 /* 引导页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "引导页.jpg"; sourceTree = "<group>"; };
@@ -270,10 +275,8 @@
 		9892760D1C32712800FAEF5E /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		9892760E1C32712800FAEF5E /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		9892760F1C32712800FAEF5E /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
-		989ECEC91C30BF4300F5867A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		989ECECB1C30C01E00F5867A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		989ECEF61C31382100F5867A /* PgySDk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PgySDk.framework; sourceTree = "<group>"; };
-		989ECEF71C31382100F5867A /* PgyUpdate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PgyUpdate.framework; sourceTree = "<group>"; };
 		989ECEFA1C313FA500F5867A /* AppDelegate+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Error.swift"; sourceTree = "<group>"; };
 		98B8A39C1C1815BE00A584D3 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		98B8A39E1C1815E700A584D3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -369,6 +372,19 @@
 		C2AD17DA1C2CDD5700AFE71E /* RoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
 		C2AD17DB1C2CDD5700AFE71E /* RoomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomCell.xib; sourceTree = "<group>"; };
 		C2CA54771C2A444900B52498 /* AddDeviceAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceAlert.swift; sourceTree = "<group>"; };
+		C2D04EDA1C33880000A59345 /* PgySDk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PgySDk.framework; sourceTree = "<group>"; };
+		C2D04EDB1C33880000A59345 /* PgyUpdate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PgyUpdate.framework; sourceTree = "<group>"; };
+		C2D04EDF1C33A2B300A59345 /* ClassifyHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassifyHomeVC.swift; sourceTree = "<group>"; };
+		C2D04EE01C33A2B300A59345 /* ClassifyHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassifyHomeVC.xib; sourceTree = "<group>"; };
+		C2D04EE31C33A48F00A59345 /* SHSegement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHSegement.swift; sourceTree = "<group>"; };
+		C2D04EE51C33BBC600A59345 /* EquipCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipCollectionCell.swift; sourceTree = "<group>"; };
+		C2D04EE61C33BBC600A59345 /* EquipCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipCollectionCell.xib; sourceTree = "<group>"; };
+		C2D04EE91C33C98E00A59345 /* EquipSetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipSetVC.swift; sourceTree = "<group>"; };
+		C2D04EEA1C33C98E00A59345 /* EquipSetVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipSetVC.xib; sourceTree = "<group>"; };
+		C2D04EED1C33CB9C00A59345 /* EquipNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipNameCell.swift; sourceTree = "<group>"; };
+		C2D04EEE1C33CB9C00A59345 /* EquipNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipNameCell.xib; sourceTree = "<group>"; };
+		C2D04EF11C33CBCA00A59345 /* EquipConfigCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipConfigCell.swift; sourceTree = "<group>"; };
+		C2D04EF21C33CBCA00A59345 /* EquipConfigCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipConfigCell.xib; sourceTree = "<group>"; };
 		C2DCCC7F1C28E61600F637F1 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
 		C2DCCC801C28E61600F637F1 /* AddDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
 		C2EC1C9F1C2BC99F005030FC /* LQRcodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LQRcodeVC.swift; sourceTree = "<group>"; };
@@ -382,8 +398,10 @@
 			files = (
 				C2EC1CA21C2BC9E9005030FC /* AVFoundation.framework in Frameworks */,
 				98B8A3A11C1815FF00A584D3 /* libc++.tbd in Frameworks */,
+				C2D04EDD1C33880000A59345 /* PgyUpdate.framework in Frameworks */,
 				98B8A39F1C1815E700A584D3 /* libz.tbd in Frameworks */,
 				98B8A39D1C1815BE00A584D3 /* libsqlite3.tbd in Frameworks */,
+				C2D04EDC1C33880000A59345 /* PgySDk.framework in Frameworks */,
 				989ECEF81C31382100F5867A /* PgySDk.framework in Frameworks */,
 				C24FD2BD1C18043700B16BF2 /* libGexinSdk-1.1.1.a in Frameworks */,
 			);
@@ -550,21 +568,6 @@
 			path = scroll;
 			sourceTree = "<group>";
 		};
-		9892760C1C32432800FAEF5E /* frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				980353A91C19499E00A2C6A8 /* Localizable.strings */,
-				9847F0951C194F09005D72A9 /* InfoPlist.strings */,
-				989ECEC91C30BF4300F5867A /* MapKit.framework */,
-				98062E931C2D3FB600903DF0 /* CFNetwork.framework */,
-				98062E911C2D2A1700903DF0 /* CoreLocation.framework */,
-				98B8A3A01C1815FF00A584D3 /* libc++.tbd */,
-				98B8A39E1C1815E700A584D3 /* libz.tbd */,
-				98B8A39C1C1815BE00A584D3 /* libsqlite3.tbd */,
-			);
-			name = frameworks;
-			sourceTree = "<group>";
-		};
 		989ECED91C3128FD00F5867A /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,15 +578,6 @@
 				9892760A1C3226A200FAEF5E /* AppDelegate+Remote.swift */,
 			);
 			path = AppDelegate;
-			sourceTree = "<group>";
-		};
-		989ECEF51C31382100F5867A /* sdk */ = {
-			isa = PBXGroup;
-			children = (
-				989ECEF61C31382100F5867A /* PgySDk.framework */,
-				989ECEF71C31382100F5867A /* PgyUpdate.framework */,
-			);
-			path = sdk;
 			sourceTree = "<group>";
 		};
 		98E906BE1C19693600392450 /* Classes */ = {
@@ -684,6 +678,7 @@
 		C24FD2451C18043600B16BF2 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				C2D04EDE1C33A28C00A59345 /* ClassifyDevice */,
 				C2DCCC7E1C28E5A200F637F1 /* AddDevice */,
 				C21E15961C181B3200C45854 /* Creat */,
 				C24FD2461C18043600B16BF2 /* Home */,
@@ -775,6 +770,7 @@
 		C24FD2671C18043600B16BF2 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				C2D04ED91C33880000A59345 /* sdk */,
 				C2EC1C9F1C2BC99F005030FC /* LQRcodeVC.swift */,
 				984739B01C1AC9A300E80376 /* AFNetworking */,
 				C24FD2681C18043600B16BF2 /* include */,
@@ -848,6 +844,33 @@
 				C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		C2D04ED91C33880000A59345 /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+				C2D04EDA1C33880000A59345 /* PgySDk.framework */,
+				C2D04EDB1C33880000A59345 /* PgyUpdate.framework */,
+			);
+			path = sdk;
+			sourceTree = "<group>";
+		};
+		C2D04EDE1C33A28C00A59345 /* ClassifyDevice */ = {
+			isa = PBXGroup;
+			children = (
+				C2D04EE31C33A48F00A59345 /* SHSegement.swift */,
+				C2D04EDF1C33A2B300A59345 /* ClassifyHomeVC.swift */,
+				C2D04EE01C33A2B300A59345 /* ClassifyHomeVC.xib */,
+				C2D04EE51C33BBC600A59345 /* EquipCollectionCell.swift */,
+				C2D04EE61C33BBC600A59345 /* EquipCollectionCell.xib */,
+				C2D04EE91C33C98E00A59345 /* EquipSetVC.swift */,
+				C2D04EEA1C33C98E00A59345 /* EquipSetVC.xib */,
+				C2D04EED1C33CB9C00A59345 /* EquipNameCell.swift */,
+				C2D04EEE1C33CB9C00A59345 /* EquipNameCell.xib */,
+				C2D04EF11C33CBCA00A59345 /* EquipConfigCell.swift */,
+				C2D04EF21C33CBCA00A59345 /* EquipConfigCell.xib */,
+			);
+			path = ClassifyDevice;
 			sourceTree = "<group>";
 		};
 		C2DCCC7E1C28E5A200F637F1 /* AddDevice */ = {
@@ -970,12 +993,15 @@
 				C2DCCC821C28E61600F637F1 /* AddDeviceViewController.xib in Resources */,
 				980474691C23B51B00B3966D /* ItemCell.xib in Resources */,
 				C24FD2BA1C18043700B16BF2 /* SetFloor.xib in Resources */,
+				C2D04EE21C33A2B300A59345 /* ClassifyHomeVC.xib in Resources */,
 				985F9A771C215D9F00FFE955 /* CreatHomeVC.xib in Resources */,
 				C24FD2B41C18043700B16BF2 /* CreateChooseVC.xib in Resources */,
+				C2D04EEC1C33C98E00A59345 /* EquipSetVC.xib in Resources */,
 				C24FD2A41C18043700B16BF2 /* HomeVC.xib in Resources */,
 				C2AD17DD1C2CDD5700AFE71E /* RoomCell.xib in Resources */,
 				985F9A641C2159FC00FFE955 /* AddRoomCell.xib in Resources */,
 				C24FD2B61C18043700B16BF2 /* DeviceIconVC.xib in Resources */,
+				C2D04EF01C33CB9C00A59345 /* EquipNameCell.xib in Resources */,
 				C24FD2BC1C18043700B16BF2 /* SetRomeVC.xib in Resources */,
 				C2AD17D51C2CD33A00AFE71E /* CreatHomeViewController.xib in Resources */,
 				C24FD2B81C18043700B16BF2 /* SetDeviceVC.xib in Resources */,
@@ -1000,6 +1026,7 @@
 				C24FD2AC1C18043700B16BF2 /* VCodeVC.xib in Resources */,
 				C24FD2B21C18043700B16BF2 /* AllDeviceListVC.xib in Resources */,
 				C24FD2B01C18043700B16BF2 /* MineVC.xib in Resources */,
+				C2D04EE81C33BBC600A59345 /* EquipCollectionCell.xib in Resources */,
 				985F9A6B1C2159FC00FFE955 /* RoomAndFloorCell.xib in Resources */,
 				989276111C32712800FAEF5E /* 2.jpg in Resources */,
 				985F9A671C2159FC00FFE955 /* FloorRoomCell.xib in Resources */,
@@ -1007,6 +1034,7 @@
 				985F9A691C2159FC00FFE955 /* FloorViewController.xib in Resources */,
 				980A92FB1C17B440009166D0 /* Main.storyboard in Resources */,
 				989276101C32712800FAEF5E /* 1.jpg in Resources */,
+				C2D04EF41C33CBCA00A59345 /* EquipConfigCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1034,10 +1062,14 @@
 				984739DF1C1AC9A300E80376 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				C24FD29D1C18043700B16BF2 /* NSString+Contains.m in Sources */,
 				980474681C23B51B00B3966D /* ItemCell.swift in Sources */,
+				C2D04EEF1C33CB9C00A59345 /* EquipNameCell.swift in Sources */,
 				C24FD2D31C18043700B16BF2 /* UIView+WebCacheOperation.m in Sources */,
 				C24FD2A31C18043700B16BF2 /* HomeVC.swift in Sources */,
+				C2D04EF31C33CBCA00A59345 /* EquipConfigCell.swift in Sources */,
+				C2D04EE11C33A2B300A59345 /* ClassifyHomeVC.swift in Sources */,
 				984739E11C1AC9A300E80376 /* UIAlertView+AFNetworking.m in Sources */,
 				9806CD411C210FF30038A8E0 /* GuideViewController.m in Sources */,
+				C2D04EE71C33BBC600A59345 /* EquipCollectionCell.swift in Sources */,
 				C24FD2D21C18043700B16BF2 /* UIImageView+WebCache.m in Sources */,
 				984739D91C1AC9A300E80376 /* AFNetworkReachabilityManager.m in Sources */,
 				C24FD2AB1C18043700B16BF2 /* VCodeVC.swift in Sources */,
@@ -1095,6 +1127,7 @@
 				984739E41C1AC9A300E80376 /* UIProgressView+AFNetworking.m in Sources */,
 				983FE2E91C1821B6004B89CE /* Helper.swift in Sources */,
 				C24FD2A21C18043700B16BF2 /* GlobalVariables.swift in Sources */,
+				C2D04EE41C33A48F00A59345 /* SHSegement.swift in Sources */,
 				985F9A6A1C2159FC00FFE955 /* RoomAndFloorCell.swift in Sources */,
 				985F9A681C2159FC00FFE955 /* FloorViewController.swift in Sources */,
 				984739DE1C1AC9A300E80376 /* AFURLSessionManager.m in Sources */,
@@ -1109,6 +1142,7 @@
 				C24FD2B31C18043700B16BF2 /* CreateChooseVC.swift in Sources */,
 				C24FD2C31C18043700B16BF2 /* QRCodeReaderViewController.m in Sources */,
 				C24FD2C91C18043700B16BF2 /* SDWebImageDownloader.m in Sources */,
+				C2D04EEB1C33C98E00A59345 /* EquipSetVC.swift in Sources */,
 				984739DD1C1AC9A300E80376 /* AFURLResponseSerialization.m in Sources */,
 				C24FD2C41C18043700B16BF2 /* MKAnnotationView+WebCache.m in Sources */,
 				98E906C01C19694100392450 /* Tools.swift in Sources */,
