@@ -10,6 +10,8 @@ import UIKit
 
 class AddRoomCell: UITableViewCell {
 
+    var building: Building?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

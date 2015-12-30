@@ -10,7 +10,7 @@ import UIKit
 
 class AddDeviceAlert: UIView {
 
-    var alertImage: UIImageView = UIImageView() {
+    var alertImage: UIView = UIView() {
         didSet {
             switch UIDevice.currentDevice().orientation {
             case .LandscapeLeft, .LandscapeRight:
@@ -18,8 +18,11 @@ class AddDeviceAlert: UIView {
             default:
                 alertImage.frame = CGRectMake(ScreenWidth / 7, ScreenHeight * 0.352, ScreenWidth / 7 * 5, ScreenWidth / 7 * 5 * 0.65)
             }
+            
         }
     }
+    var alert: UIImageView = UIImageView()
+    var alertText: UILabel = UILabel()
     
     var exitBtn: UIButton = UIButton(type: UIButtonType.Custom)
     
@@ -33,15 +36,25 @@ class AddDeviceAlert: UIView {
             alertImage.frame = CGRectMake(ScreenWidth / 7, ScreenHeight * 0.352, ScreenWidth / 7 * 5, ScreenWidth / 7 * 5 * 0.65)
         }
         if success {
-            alertImage.image = UIImage(named: "添加设备成功")
+            alert.image = UIImage(named: "添加设备成功")
+            alertText.text = "添加设备成功"
         } else {
-            alertImage.image = UIImage(named: "添加设备失败")
+            alert.image = UIImage(named: "添加设备失败")
+            alertText.text = "添加设备失败"
         }
-        alertImage.userInteractionEnabled = true
+        alert.frame = CGRectMake(0, 0, alertImage.frame.height * 0.3, alertImage.frame.height * 0.3)
+        alert.center = CGPointMake(alertImage.frame.width / 2, alertImage.frame.height / 2 - alert.bounds.height / 4)
+        alertText.frame = CGRectMake(0, 0, alertImage.frame.width * 0.45, alertImage.frame.height * 0.16)
+        alertText.center = CGPointMake(alertImage.frame.width / 2, alertImage.frame.height / 2 +  alertText.bounds.height)
+        alertText.textColor = UIColor.whiteColor()
+        alertImage.addSubview(alert)
+        alertImage.addSubview(alertText)
+        
         exitBtn.frame = CGRectMake(alertImage.frame.size.width - 43, 2, 40, 40)
         exitBtn.setImage(UIImage(named: "添加设备提示X号普通"), forState: UIControlState.Normal)
         exitBtn.setImage(UIImage(named: "添加设备提示X号按下"), forState: UIControlState.Highlighted)
         exitBtn.addTarget(self, action: Selector("handleExit:"), forControlEvents: UIControlEvents.TouchUpInside)
+        alertImage.backgroundColor = UIColor(RGB: 0x2fceaa, alpha: 1)
         alertImage.addSubview(exitBtn)
         self.addSubview(alertImage)
     }

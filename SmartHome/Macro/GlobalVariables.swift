@@ -17,6 +17,7 @@ var ScreenHeight: CGFloat {
     return UIScreen.mainScreen().bounds.height
 }
 
+let themeColors = UIColor(RGB: 0x2fceaa, alpha: 1)
 
 let app = (UIApplication.sharedApplication().delegate) as! AppDelegate
 let mainColor=UIColor(RGB: 0x2fceaa,alpha: 1)

@@ -24,11 +24,9 @@ class AddDeviceViewController: UIViewController {
         // Do any additional setup after loading the view.
         navigationController?.navigationBar.translucent = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(named: "导航栏L"), forBarMetrics: UIBarMetrics.Default)
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "矢量智能对象"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleBack:"))
-    }
-    func handleBack(barButton: UIBarButtonItem) {
-        self.navigationController?.popViewControllerAnimated(true)
+        navigationItem.title = "添加的主机"
     }
     
     @IBAction func handleScanning(sender: UITapGestureRecognizer) {
@@ -41,17 +39,21 @@ class AddDeviceViewController: UIViewController {
         }
         self.presentViewController(qrCodeScan, animated: true, completion: nil)
     }
-    @IBAction func handleCompelet(sender: UIButton) {
-        let successAlert = AddDeviceAlert(success: true)
-        successAlert.show()
-        
+    
+    func setCompeletBlock(block: () -> ()) {
+        self.compeletBlock = block
     }
     
-
+    private var compeletBlock: (() -> ())?
+    
+    @IBAction func handleCompelet(sender: UIButton) {
+        self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
+        compeletBlock?()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
     }
     @IBAction func exitKeyboard(sender: UITextField) {
         
@@ -63,7 +65,6 @@ class AddDeviceViewController: UIViewController {
         self.nicknameTF.resignFirstResponder()
     }
 
-    
     
     
     /*

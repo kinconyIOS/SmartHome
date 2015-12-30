@@ -70,13 +70,13 @@ class LoginVC: UIViewController {
         setModelVC.tabBarItem.title=NSLocalizedString("情景模式", comment: "")
         setModelVC.tabBarItem.image=modelIcon
         setModelVC.tabBarItem.selectedImage=modelIconSelected
-          let setModelNav:UINavigationController = UINavigationController(rootViewController: setModelVC)
+        let setModelNav:UINavigationController = UINavigationController(rootViewController: setModelVC)
         
         let mallvc:MallVC=MallVC()
         mallvc.tabBarItem.title=NSLocalizedString("商城", comment: "")
         mallvc.tabBarItem.image=mallIcon
         mallvc.tabBarItem.selectedImage=mallIconSelected
-          let mallNav:UINavigationController = UINavigationController(rootViewController:mallvc)
+        let mallNav:UINavigationController = UINavigationController(rootViewController:mallvc)
         
         let minevc:MineVC=MineVC()
         minevc.tabBarItem.title=NSLocalizedString("我的", comment: "")
@@ -86,17 +86,20 @@ class LoginVC: UIViewController {
         let tab=UITabBarController()
         tab.viewControllers=[homeNav,setModelNav,mallNav,mineNav];
         tab.tabBar.tintColor=mainColor
-        /*
-        let createHome = CreatHomeVC(nibName: "CreatHomeVC", bundle: nil)
-        let navigationC = UINavigationController(rootViewController: createHome)
-        */
-
-        let addDeviceVC: AddDeviceViewController = AddDeviceViewController(nibName: "AddDeviceViewController", bundle: nil)
-        let navigationC = UINavigationController(rootViewController: addDeviceVC)
         
+//        let createHome = CreatHomeVC(nibName: "CreatHomeVC", bundle: nil)
+        let creatHomeVC = CreatHomeViewController(nibName: "CreatHomeViewController", bundle: nil)
+        let creatNavigationC = UINavigationController(rootViewController: creatHomeVC)
+        
+        let addDeviceVC: AddDeviceViewController = AddDeviceViewController(nibName: "AddDeviceViewController", bundle: nil)
+        addDeviceVC.setCompeletBlock { () -> () in
+            UIApplication.sharedApplication().keyWindow?.rootViewController = creatNavigationC
+        }
+        let navigationC = UINavigationController(rootViewController: addDeviceVC)
         
         self.navigationController?.presentViewController(navigationC, animated: true, completion:nil)
     }
     @IBAction func onExit(sender: AnyObject) {
+        
     }
 }
