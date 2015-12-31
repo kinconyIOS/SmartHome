@@ -11,6 +11,7 @@
                 <outlet property="bgImg" destination="bk4-QY-eRW" id="7Jv-LD-QO7"/>
                 <outlet property="loginBtn" destination="HEC-gh-0ds" id="Cyi-1g-wqN"/>
                 <outlet property="passText" destination="THi-nP-Luf" id="jXO-21-BJQ"/>
+                <outlet property="phoneNumBg" destination="0Tg-0B-EUh" id="wty-A2-ej1"/>
                 <outlet property="phoneText" destination="wsN-U6-Med" id="Ymx-9d-FdX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,14 +30,8 @@
                         <constraint firstAttribute="height" constant="45" id="7Be-dQ-Oxk"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="textbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Tg-0B-EUh">
-                    <rect key="frame" x="0.0" y="171" width="600" height="45"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="45" id="WRs-Xi-Q3g"/>
-                    </constraints>
-                </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wsN-U6-Med">
-                    <rect key="frame" x="31" y="180" width="533" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wsN-U6-Med">
+                    <rect key="frame" x="31" y="179" width="533" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="q7X-to-J72"/>
                     </constraints>
@@ -121,6 +116,12 @@
                         <action selector="loginTap:" destination="-1" eventType="touchUpInside" id="aRH-1S-i4u"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="textbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Tg-0B-EUh">
+                    <rect key="frame" x="0.0" y="171" width="600" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="WRs-Xi-Q3g"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

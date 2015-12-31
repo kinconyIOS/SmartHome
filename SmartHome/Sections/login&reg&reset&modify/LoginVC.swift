@@ -8,22 +8,23 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
     @IBOutlet var phoneText: UITextField!
     @IBOutlet var passText: UITextField!
 
+    @IBOutlet var phoneNumBg: UIImageView!
+    var userNameTableView:UITableView?=UITableView.init(frame: CGRectZero, style: UITableViewStyle.Plain)
     @IBOutlet var bgImg: UIImageView!
     @IBOutlet var loginBtn: UIButton!
-    var i:Int?
-    
-    deinit{
-        
-    }
+    var num:Int?
+   
     override func viewDidLoad() {
 
         super.viewDidLoad()
         self.configView()
-        i=0
+        num=4
+      
+        
       
        // NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("greetings"), userInfo: nil, repeats: true)
      
@@ -39,11 +40,18 @@ class LoginVC: UIViewController {
         self.loginBtn.layer.masksToBounds=true
         self.loginBtn.setBackgroundImage(btnBgImage, forState: UIControlState.Normal)
         self.loginBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
+        
+        userNameTableView?.frame=CGRectMake(0, phoneNumBg.frame.height+phoneNumBg.frame.origin.y, phoneNumBg.frame.width, CGFloat(Float(num!*45)))
+        userNameTableView?.hidden=true;
+        userNameTableView?.delegate=self;
+        userNameTableView?.dataSource=self;
+        self.view.addSubview(self.userNameTableView!);
         self.addTouchDownHideKey()
      
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         let image:UIImage = imageWithColor(UIColor.clearColor())
         self.navigationController!.navigationBar.setBackgroundImage(image, forBarMetrics: UIBarMetrics.Default)
         
@@ -106,8 +114,34 @@ class LoginVC: UIViewController {
     }
    
     @IBAction func showUserList(sender: UIButton) {
+       self.userNameTableView!.hidden = !self.userNameTableView!.hidden
     }
     @IBAction func showPassWord(sender: UIButton) {
         self.passText.secureTextEntry = !self.passText.secureTextEntry
+    }
+    // MARK: - Table view data source
+    //返回节的个数
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+      
+        return 1
+    }
+    //返回某个节中的行数
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     
+        return num!;
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+       
+        return UITableViewCell()
+    }
+    //点击事件
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+     
+        
+    }
+    //高度
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+       return 45
     }
 }
