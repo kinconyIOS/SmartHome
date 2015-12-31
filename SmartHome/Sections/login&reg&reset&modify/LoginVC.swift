@@ -21,8 +21,8 @@ class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        self.configView()
         num=4
+        self.configView()
       
         
       
