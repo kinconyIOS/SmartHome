@@ -13,15 +13,15 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wzt-nh-WmX">
-                        <rect key="frame" x="25" y="11" width="90" height="90"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="电视" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAe-0H-DGZ">
                         <rect key="frame" x="25" y="106" width="90" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wzt-nh-WmX">
+                        <rect key="frame" x="33" y="23" width="75" height="75"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -29,8 +29,8 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="dAe-0H-DGZ" secondAttribute="bottom" constant="12" id="4jH-92-5hQ"/>
                 <constraint firstItem="Wzt-nh-WmX" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Hnb-bT-TaC"/>
-                <constraint firstItem="Wzt-nh-WmX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="11" id="Ppz-UE-vD0"/>
-                <constraint firstItem="dAe-0H-DGZ" firstAttribute="top" secondItem="Wzt-nh-WmX" secondAttribute="bottom" constant="5" id="aVv-fG-rVo"/>
+                <constraint firstItem="Wzt-nh-WmX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="23" id="Ppz-UE-vD0"/>
+                <constraint firstItem="dAe-0H-DGZ" firstAttribute="top" secondItem="Wzt-nh-WmX" secondAttribute="bottom" constant="8" id="aVv-fG-rVo"/>
                 <constraint firstItem="dAe-0H-DGZ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="iZL-oe-Rfj"/>
             </constraints>
             <size key="customSize" width="136" height="144"/>

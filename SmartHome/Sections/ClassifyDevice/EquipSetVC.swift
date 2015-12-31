@@ -18,9 +18,14 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        navigationItem.title = "我的设备"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "矢量智能对象"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleBack:"))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
+        
         
         self.tableView.registerNib(UINib(nibName: "EquipNameCell", bundle: nil), forCellReuseIdentifier: "equipnamecell")
         self.tableView.registerNib(UINib(nibName: "EquipConfigCell", bundle: nil), forCellReuseIdentifier: "equipconfigcell")
+        self.tableView.registerNib(UINib(nibName: "EquipImageCell", bundle: nil), forCellReuseIdentifier: "equipimagecell")
         
         let tap = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
         tap.delegate = self
@@ -28,6 +33,14 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
         
         
     }
+    
+    func handleBack(barButton: UIBarButtonItem) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    func handleRightItem(barButton: UIBarButtonItem) {
+        
+    }
+    
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         if NSStringFromClass(touch.view!.classForCoder) == "UITableViewCellContentView" {
             return false
@@ -61,53 +74,56 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell
-        if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCellWithIdentifier("equipnamecell", forIndexPath: indexPath)
-        } else {
-            cell = tableView.dequeueReusableCellWithIdentifier("equipconfigcell", forIndexPath: indexPath)
+        switch indexPath.section {
+        case 1:
+           let cell = tableView.dequeueReusableCellWithIdentifier("equipimagecell", forIndexPath: indexPath) as! EquipImageCell
+           cell.cellTitleLabel.text = "设备图标:"
+           cell.cellIconImage.image = UIImage(named: "灯泡1")
+           
+           return cell
+        case 2:
+           let cell = tableView.dequeueReusableCellWithIdentifier("equipconfigcell", forIndexPath: indexPath) as! EquipConfigCell
+           cell.cellTitle.text = "所属房间:"
+           cell.cellDetail.text = ""
+           
+           return cell
+        default:
+           let cell = tableView.dequeueReusableCellWithIdentifier("equipnamecell", forIndexPath: indexPath)
+           cell.selectionStyle = UITableViewCellSelectionStyle.None
+           return cell
         }
-
-        return cell
     }
     
+    // MARK: - UITableViewDelegate
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.section {
+        case 1:
+            let choosIconVC = ChooseIconVC(nibName: "ChooseIconVC", bundle: nil)
+            self.navigationController?.pushViewController(choosIconVC, animated: true)
+        case 2:
+            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)) as! EquipConfigCell
+            
+            let chooseAlert = SHChooseAlertView(title: "所属房间", dataSource: ["1楼1房", "2楼2房", "3楼3房"], cancleButtonTitle: "取消", confirmButtonTitle: "确定")
+            chooseAlert.alertAction({ [unowned cell] (alert, buttonIndex) -> () in
+                switch buttonIndex {
+                case 0:
+                    break
+                case 1:
+                    cell.cellDetail.text = alert.selectItem
+                default:
+                    break
+                }
+            })
+            chooseAlert.show()
+            tableView.deselectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2), animated: true)
+            break
+        default:
+            break
+        }
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+    
     /*
     // MARK: - Navigation
 

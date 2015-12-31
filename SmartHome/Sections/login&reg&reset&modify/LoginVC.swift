@@ -106,6 +106,7 @@ class LoginVC: UIViewController {
     }
    
     @IBAction func showUserList(sender: UIButton) {
+        
     }
     @IBAction func showPassWord(sender: UIButton) {
         self.passText.secureTextEntry = !self.passText.secureTextEntry

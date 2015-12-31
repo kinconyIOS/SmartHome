@@ -155,6 +155,13 @@
 		C2D04EF41C33CBCA00A59345 /* EquipConfigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D04EF21C33CBCA00A59345 /* EquipConfigCell.xib */; };
 		C2DCCC811C28E61600F637F1 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DCCC7F1C28E61600F637F1 /* AddDeviceViewController.swift */; };
 		C2DCCC821C28E61600F637F1 /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DCCC801C28E61600F637F1 /* AddDeviceViewController.xib */; };
+		C2DF38FA1C34C47F00114AE8 /* ChooseIconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DF38F81C34C47F00114AE8 /* ChooseIconVC.swift */; };
+		C2DF38FB1C34C47F00114AE8 /* ChooseIconVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DF38F91C34C47F00114AE8 /* ChooseIconVC.xib */; };
+		C2DF38FE1C34C5CB00114AE8 /* ChooseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DF38FC1C34C5CB00114AE8 /* ChooseHeaderView.swift */; };
+		C2DF38FF1C34C5CB00114AE8 /* ChooseHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DF38FD1C34C5CB00114AE8 /* ChooseHeaderView.xib */; };
+		C2DF39031C34FF0100114AE8 /* SHChooseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DF39021C34FF0100114AE8 /* SHChooseAlertView.swift */; };
+		C2DF39061C351E0600114AE8 /* EquipImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DF39041C351E0600114AE8 /* EquipImageCell.swift */; };
+		C2DF39071C351E0600114AE8 /* EquipImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DF39051C351E0600114AE8 /* EquipImageCell.xib */; };
 		C2EC1CA01C2BC99F005030FC /* LQRcodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC1C9F1C2BC99F005030FC /* LQRcodeVC.swift */; };
 		C2EC1CA21C2BC9E9005030FC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EC1CA11C2BC9E8005030FC /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
@@ -387,6 +394,13 @@
 		C2D04EF21C33CBCA00A59345 /* EquipConfigCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipConfigCell.xib; sourceTree = "<group>"; };
 		C2DCCC7F1C28E61600F637F1 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
 		C2DCCC801C28E61600F637F1 /* AddDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
+		C2DF38F81C34C47F00114AE8 /* ChooseIconVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseIconVC.swift; sourceTree = "<group>"; };
+		C2DF38F91C34C47F00114AE8 /* ChooseIconVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseIconVC.xib; sourceTree = "<group>"; };
+		C2DF38FC1C34C5CB00114AE8 /* ChooseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseHeaderView.swift; sourceTree = "<group>"; };
+		C2DF38FD1C34C5CB00114AE8 /* ChooseHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseHeaderView.xib; sourceTree = "<group>"; };
+		C2DF39021C34FF0100114AE8 /* SHChooseAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHChooseAlertView.swift; sourceTree = "<group>"; };
+		C2DF39041C351E0600114AE8 /* EquipImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipImageCell.swift; sourceTree = "<group>"; };
+		C2DF39051C351E0600114AE8 /* EquipImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipImageCell.xib; sourceTree = "<group>"; };
 		C2EC1C9F1C2BC99F005030FC /* LQRcodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LQRcodeVC.swift; sourceTree = "<group>"; };
 		C2EC1CA11C2BC9E8005030FC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -650,6 +664,7 @@
 			children = (
 				980474721C23B54B00B3966D /* cell */,
 				C21031121C27D7140039B96C /* SHAlertView.swift */,
+				C2DF39021C34FF0100114AE8 /* SHChooseAlertView.swift */,
 				9804745F1C23931200B3966D /* SZLSideView.h */,
 				980474601C23931200B3966D /* SZLSideView.m */,
 				980474611C23931200B3966D /* SZLSideView.xib */,
@@ -869,6 +884,12 @@
 				C2D04EEE1C33CB9C00A59345 /* EquipNameCell.xib */,
 				C2D04EF11C33CBCA00A59345 /* EquipConfigCell.swift */,
 				C2D04EF21C33CBCA00A59345 /* EquipConfigCell.xib */,
+				C2DF39041C351E0600114AE8 /* EquipImageCell.swift */,
+				C2DF39051C351E0600114AE8 /* EquipImageCell.xib */,
+				C2DF38F81C34C47F00114AE8 /* ChooseIconVC.swift */,
+				C2DF38F91C34C47F00114AE8 /* ChooseIconVC.xib */,
+				C2DF38FC1C34C5CB00114AE8 /* ChooseHeaderView.swift */,
+				C2DF38FD1C34C5CB00114AE8 /* ChooseHeaderView.xib */,
 			);
 			path = ClassifyDevice;
 			sourceTree = "<group>";
@@ -1000,8 +1021,10 @@
 				C24FD2A41C18043700B16BF2 /* HomeVC.xib in Resources */,
 				C2AD17DD1C2CDD5700AFE71E /* RoomCell.xib in Resources */,
 				985F9A641C2159FC00FFE955 /* AddRoomCell.xib in Resources */,
+				C2DF38FB1C34C47F00114AE8 /* ChooseIconVC.xib in Resources */,
 				C24FD2B61C18043700B16BF2 /* DeviceIconVC.xib in Resources */,
 				C2D04EF01C33CB9C00A59345 /* EquipNameCell.xib in Resources */,
+				C2DF38FF1C34C5CB00114AE8 /* ChooseHeaderView.xib in Resources */,
 				C24FD2BC1C18043700B16BF2 /* SetRomeVC.xib in Resources */,
 				C2AD17D51C2CD33A00AFE71E /* CreatHomeViewController.xib in Resources */,
 				C24FD2B81C18043700B16BF2 /* SetDeviceVC.xib in Resources */,
@@ -1030,6 +1053,7 @@
 				985F9A6B1C2159FC00FFE955 /* RoomAndFloorCell.xib in Resources */,
 				989276111C32712800FAEF5E /* 2.jpg in Resources */,
 				985F9A671C2159FC00FFE955 /* FloorRoomCell.xib in Resources */,
+				C2DF39071C351E0600114AE8 /* EquipImageCell.xib in Resources */,
 				C24FD2AE1C18043700B16BF2 /* MallVC.xib in Resources */,
 				985F9A691C2159FC00FFE955 /* FloorViewController.xib in Resources */,
 				980A92FB1C17B440009166D0 /* Main.storyboard in Resources */,
@@ -1107,6 +1131,7 @@
 				C24FD2BB1C18043700B16BF2 /* SetRomeVC.swift in Sources */,
 				984739E31C1AC9A300E80376 /* UIImageView+AFNetworking.m in Sources */,
 				989ECECC1C30C01E00F5867A /* LocationManager.swift in Sources */,
+				C2DF38FA1C34C47F00114AE8 /* ChooseIconVC.swift in Sources */,
 				C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */,
 				C24FD2C11C18043700B16BF2 /* QRCodeReader.m in Sources */,
 				984739E21C1AC9A300E80376 /* UIButton+AFNetworking.m in Sources */,
@@ -1124,6 +1149,9 @@
 				985F9A761C215D9F00FFE955 /* CreatHomeVC.swift in Sources */,
 				980474701C23B54000B3966D /* AddCell.swift in Sources */,
 				C21031131C27D7140039B96C /* SHAlertView.swift in Sources */,
+				C2DF38FE1C34C5CB00114AE8 /* ChooseHeaderView.swift in Sources */,
+				C2DF39061C351E0600114AE8 /* EquipImageCell.swift in Sources */,
+				C2DF39031C34FF0100114AE8 /* SHChooseAlertView.swift in Sources */,
 				984739E41C1AC9A300E80376 /* UIProgressView+AFNetworking.m in Sources */,
 				983FE2E91C1821B6004B89CE /* Helper.swift in Sources */,
 				C24FD2A21C18043700B16BF2 /* GlobalVariables.swift in Sources */,
