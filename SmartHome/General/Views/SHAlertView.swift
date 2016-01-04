@@ -9,7 +9,7 @@
 import UIKit
 
 
-let globalColor = UIColor.greenColor()
+
 
 var l_ScreenWidth: CGFloat {
     return UIScreen.mainScreen().bounds.width
@@ -19,6 +19,9 @@ var l_ScreenHeight: CGFloat {
 }
 
 class SHAlertView: UIView {
+    
+    var themeClolor: UIColor = UIColor.grayColor()
+    
     private var titleView: UIView?
     private var titleLabel: UILabel?
     private var detailLabel: UILabel?
@@ -52,7 +55,7 @@ class SHAlertView: UIView {
         alertView.center = CGPointMake(l_ScreenWidth / 2, l_ScreenHeight / 2)
         titleView = UIView(frame: CGRectMake(0, 0, alertView.frame.width, alertView.frame.height * 0.234))
         titleView!.tag = 477
-        titleView!.backgroundColor = globalColor
+        titleView!.backgroundColor = themeClolor
         titleLabel = UILabel(frame: CGRectMake(15, 2, titleView!.frame.width - 30, titleView!.frame.height - 4))
         titleLabel!.tag = 477
         titleLabel!.textAlignment = NSTextAlignment.Center
@@ -72,7 +75,7 @@ class SHAlertView: UIView {
         
         cancleBtn = UIButton(type: UIButtonType.Custom)
         cancleBtn!.frame = CGRectMake(alertView.frame.width * 0.09, alertView.frame.height * 0.718, alertView.frame.width * 0.32, alertView.frame.height * 0.188)
-        cancleBtn?.backgroundColor = globalColor
+        cancleBtn?.backgroundColor = themeClolor
         if cancleButtonTitle != nil {
             cancleBtn!.setTitle(cancleButtonTitle, forState: UIControlState.Normal)
         } else {
@@ -86,7 +89,7 @@ class SHAlertView: UIView {
         
         confirmBtn = UIButton(type: UIButtonType.Custom)
         confirmBtn!.frame = CGRectMake(alertView.frame.width * 0.6, alertView.frame.height * 0.718, alertView.frame.width * 0.32, alertView.frame.height * 0.188)
-        confirmBtn?.backgroundColor = globalColor
+        confirmBtn?.backgroundColor = themeClolor
         
         if confirmButtonTitle != nil {
             confirmBtn!.setTitle(confirmButtonTitle, forState: UIControlState.Normal)
@@ -113,6 +116,7 @@ class SHAlertView: UIView {
             action?(alert: self, buttonIndex: 0)
         } else if sender == confirmBtn {
             action?(alert: self, buttonIndex: 1)
+            dismiss()
         }
     }
     
@@ -127,7 +131,10 @@ class SHAlertView: UIView {
     }
     
     func dismiss() {
-        self.removeFromSuperview()
+        if self.superview != nil {
+            self.removeFromSuperview()
+        }
+        
     }
     
     func show() {

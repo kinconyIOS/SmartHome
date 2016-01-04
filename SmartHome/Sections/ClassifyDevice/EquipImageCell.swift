@@ -1,19 +1,17 @@
 //
-//  EquipConfigCell.swift
+//  EquipImageCell.swift
 //  SmartHome
 //
-//  Created by kincony on 15/12/30.
+//  Created by kincony on 15/12/31.
 //  Copyright © 2015年 sunzl. All rights reserved.
 //
 
 import UIKit
 
-class EquipConfigCell: UITableViewCell {
+class EquipImageCell: UITableViewCell {
 
-    @IBOutlet var cellTitle: UILabel!
-    @IBOutlet var cellDetail: UILabel!
-
-    
+    @IBOutlet var cellTitleLabel: UILabel!
+    @IBOutlet var cellIconImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
