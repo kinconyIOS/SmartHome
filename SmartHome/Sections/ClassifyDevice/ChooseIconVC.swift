@@ -81,8 +81,23 @@ class ChooseIconVC: UICollectionViewController {
     
     
     
+    
+    
     // MARK: UICollectionViewDelegate
+    
+    private var imageAction: ((image: UIImage) -> ())?
+    
+    func chooseImageBlock(block: (image: UIImage) -> ()) {
+        imageAction = block
+    }
+    
 
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! EquipCollectionCell
+        imageAction?(image: cell.equipImage.image!)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {

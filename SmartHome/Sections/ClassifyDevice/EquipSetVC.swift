@@ -99,7 +99,12 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
         case 1:
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! EquipImageCell
+            
             let choosIconVC = ChooseIconVC(nibName: "ChooseIconVC", bundle: nil)
+            choosIconVC.chooseImageBlock({ [unowned cell] (image) -> () in
+                cell.cellIconImage.image = image
+            })
             self.navigationController?.pushViewController(choosIconVC, animated: true)
         case 2:
             let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)) as! EquipConfigCell
