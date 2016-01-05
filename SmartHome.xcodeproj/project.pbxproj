@@ -139,6 +139,15 @@
 		C2AD17D91C2CDD4100AFE71E /* FloorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AD17D71C2CDD4100AFE71E /* FloorCell.xib */; };
 		C2AD17DC1C2CDD5700AFE71E /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AD17DA1C2CDD5700AFE71E /* RoomCell.swift */; };
 		C2AD17DD1C2CDD5700AFE71E /* RoomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AD17DB1C2CDD5700AFE71E /* RoomCell.xib */; };
+		C2AE33FB1C3B926300D30086 /* EquipAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE33F91C3B926300D30086 /* EquipAddVC.swift */; };
+		C2AE33FC1C3B926300D30086 /* EquipAddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AE33FA1C3B926300D30086 /* EquipAddVC.xib */; };
+		C2C979FC1C3A0BFF00706A07 /* Equip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C979FB1C3A0BFF00706A07 /* Equip.swift */; };
+		C2C979FF1C3A1B2800706A07 /* EquipTableRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C979FD1C3A1B2800706A07 /* EquipTableRoomCell.swift */; };
+		C2C97A001C3A1B2800706A07 /* EquipTableRoomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C979FE1C3A1B2800706A07 /* EquipTableRoomCell.xib */; };
+		C2C97A031C3A1B5500706A07 /* EquipTableEquipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C97A011C3A1B5500706A07 /* EquipTableEquipCell.swift */; };
+		C2C97A041C3A1B5500706A07 /* EquipTableEquipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C97A021C3A1B5500706A07 /* EquipTableEquipCell.xib */; };
+		C2C97A061C3A496300706A07 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C97A051C3A496300706A07 /* Room.swift */; };
+		C2C97A081C3A497400706A07 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C97A071C3A497400706A07 /* Floor.swift */; };
 		C2CA54781C2A444900B52498 /* AddDeviceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA54771C2A444900B52498 /* AddDeviceAlert.swift */; };
 		C2D04EDC1C33880000A59345 /* PgySDk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D04EDA1C33880000A59345 /* PgySDk.framework */; };
 		C2D04EDD1C33880000A59345 /* PgyUpdate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D04EDB1C33880000A59345 /* PgyUpdate.framework */; };
@@ -378,6 +387,15 @@
 		C2AD17D71C2CDD4100AFE71E /* FloorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloorCell.xib; sourceTree = "<group>"; };
 		C2AD17DA1C2CDD5700AFE71E /* RoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
 		C2AD17DB1C2CDD5700AFE71E /* RoomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomCell.xib; sourceTree = "<group>"; };
+		C2AE33F91C3B926300D30086 /* EquipAddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipAddVC.swift; sourceTree = "<group>"; };
+		C2AE33FA1C3B926300D30086 /* EquipAddVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipAddVC.xib; sourceTree = "<group>"; };
+		C2C979FB1C3A0BFF00706A07 /* Equip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equip.swift; sourceTree = "<group>"; };
+		C2C979FD1C3A1B2800706A07 /* EquipTableRoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipTableRoomCell.swift; sourceTree = "<group>"; };
+		C2C979FE1C3A1B2800706A07 /* EquipTableRoomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipTableRoomCell.xib; sourceTree = "<group>"; };
+		C2C97A011C3A1B5500706A07 /* EquipTableEquipCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipTableEquipCell.swift; sourceTree = "<group>"; };
+		C2C97A021C3A1B5500706A07 /* EquipTableEquipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipTableEquipCell.xib; sourceTree = "<group>"; };
+		C2C97A051C3A496300706A07 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		C2C97A071C3A497400706A07 /* Floor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
 		C2CA54771C2A444900B52498 /* AddDeviceAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceAlert.swift; sourceTree = "<group>"; };
 		C2D04EDA1C33880000A59345 /* PgySDk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PgySDk.framework; sourceTree = "<group>"; };
 		C2D04EDB1C33880000A59345 /* PgyUpdate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PgyUpdate.framework; sourceTree = "<group>"; };
@@ -600,6 +618,9 @@
 				9806CD3F1C210FF30038A8E0 /* GuideViewController.h */,
 				9806CD401C210FF30038A8E0 /* GuideViewController.m */,
 				98E906BF1C19694100392450 /* Tools.swift */,
+				C2C979FB1C3A0BFF00706A07 /* Equip.swift */,
+				C2C97A051C3A496300706A07 /* Room.swift */,
+				C2C97A071C3A497400706A07 /* Floor.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -876,8 +897,14 @@
 				C2D04EE31C33A48F00A59345 /* SHSegement.swift */,
 				C2D04EDF1C33A2B300A59345 /* ClassifyHomeVC.swift */,
 				C2D04EE01C33A2B300A59345 /* ClassifyHomeVC.xib */,
+				C2C979FD1C3A1B2800706A07 /* EquipTableRoomCell.swift */,
+				C2C979FE1C3A1B2800706A07 /* EquipTableRoomCell.xib */,
+				C2C97A011C3A1B5500706A07 /* EquipTableEquipCell.swift */,
+				C2C97A021C3A1B5500706A07 /* EquipTableEquipCell.xib */,
 				C2D04EE51C33BBC600A59345 /* EquipCollectionCell.swift */,
 				C2D04EE61C33BBC600A59345 /* EquipCollectionCell.xib */,
+				C2AE33F91C3B926300D30086 /* EquipAddVC.swift */,
+				C2AE33FA1C3B926300D30086 /* EquipAddVC.xib */,
 				C2D04EE91C33C98E00A59345 /* EquipSetVC.swift */,
 				C2D04EEA1C33C98E00A59345 /* EquipSetVC.xib */,
 				C2D04EED1C33CB9C00A59345 /* EquipNameCell.swift */,
@@ -1029,6 +1056,7 @@
 				C2AD17D51C2CD33A00AFE71E /* CreatHomeViewController.xib in Resources */,
 				C24FD2B81C18043700B16BF2 /* SetDeviceVC.xib in Resources */,
 				985F9A7B1C215DBA00FFE955 /* CreatRootVC.xib in Resources */,
+				C2C97A001C3A1B2800706A07 /* EquipTableRoomCell.xib in Resources */,
 				980474631C23931200B3966D /* SZLSideView.xib in Resources */,
 				980474711C23B54000B3966D /* AddCell.xib in Resources */,
 				C24FD2A81C18043700B16BF2 /* PassWordVC.xib in Resources */,
@@ -1044,6 +1072,7 @@
 				C21E15951C1806FE00C45854 /* SetModelVC.xib in Resources */,
 				980A93001C17B440009166D0 /* Assets.xcassets in Resources */,
 				9806CD481C2124C90038A8E0 /* 引导页.jpg in Resources */,
+				C2C97A041C3A1B5500706A07 /* EquipTableEquipCell.xib in Resources */,
 				C21E15911C18065200C45854 /* FailedVC.xib in Resources */,
 				C21E158D1C18063B00C45854 /* SuccessVC.xib in Resources */,
 				C24FD2AC1C18043700B16BF2 /* VCodeVC.xib in Resources */,
@@ -1051,6 +1080,7 @@
 				C24FD2B01C18043700B16BF2 /* MineVC.xib in Resources */,
 				C2D04EE81C33BBC600A59345 /* EquipCollectionCell.xib in Resources */,
 				985F9A6B1C2159FC00FFE955 /* RoomAndFloorCell.xib in Resources */,
+				C2AE33FC1C3B926300D30086 /* EquipAddVC.xib in Resources */,
 				989276111C32712800FAEF5E /* 2.jpg in Resources */,
 				985F9A671C2159FC00FFE955 /* FloorRoomCell.xib in Resources */,
 				C2DF39071C351E0600114AE8 /* EquipImageCell.xib in Resources */,
@@ -1131,8 +1161,10 @@
 				C24FD2BB1C18043700B16BF2 /* SetRomeVC.swift in Sources */,
 				984739E31C1AC9A300E80376 /* UIImageView+AFNetworking.m in Sources */,
 				989ECECC1C30C01E00F5867A /* LocationManager.swift in Sources */,
+				C2C97A081C3A497400706A07 /* Floor.swift in Sources */,
 				C2DF38FA1C34C47F00114AE8 /* ChooseIconVC.swift in Sources */,
 				C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */,
+				C2C979FC1C3A0BFF00706A07 /* Equip.swift in Sources */,
 				C24FD2C11C18043700B16BF2 /* QRCodeReader.m in Sources */,
 				984739E21C1AC9A300E80376 /* UIButton+AFNetworking.m in Sources */,
 				984739E61C1AC9A300E80376 /* UIWebView+AFNetworking.m in Sources */,
@@ -1155,12 +1187,14 @@
 				984739E41C1AC9A300E80376 /* UIProgressView+AFNetworking.m in Sources */,
 				983FE2E91C1821B6004B89CE /* Helper.swift in Sources */,
 				C24FD2A21C18043700B16BF2 /* GlobalVariables.swift in Sources */,
+				C2AE33FB1C3B926300D30086 /* EquipAddVC.swift in Sources */,
 				C2D04EE41C33A48F00A59345 /* SHSegement.swift in Sources */,
 				985F9A6A1C2159FC00FFE955 /* RoomAndFloorCell.swift in Sources */,
 				985F9A681C2159FC00FFE955 /* FloorViewController.swift in Sources */,
 				984739DE1C1AC9A300E80376 /* AFURLSessionManager.m in Sources */,
 				C24FD2B11C18043700B16BF2 /* AllDeviceListVC.swift in Sources */,
 				984739D61C1AC9A300E80376 /* AFHTTPRequestOperation.m in Sources */,
+				C2C97A061C3A496300706A07 /* Room.swift in Sources */,
 				C2EC1CA01C2BC99F005030FC /* LQRcodeVC.swift in Sources */,
 				C24FD2C81C18043700B16BF2 /* SDWebImageDecoder.m in Sources */,
 				C21E15941C1806FE00C45854 /* SetModelVC.swift in Sources */,
@@ -1169,6 +1203,7 @@
 				C24FD2C71C18043700B16BF2 /* SDWebImageCompat.m in Sources */,
 				C24FD2B31C18043700B16BF2 /* CreateChooseVC.swift in Sources */,
 				C24FD2C31C18043700B16BF2 /* QRCodeReaderViewController.m in Sources */,
+				C2C979FF1C3A1B2800706A07 /* EquipTableRoomCell.swift in Sources */,
 				C24FD2C91C18043700B16BF2 /* SDWebImageDownloader.m in Sources */,
 				C2D04EEB1C33C98E00A59345 /* EquipSetVC.swift in Sources */,
 				984739DD1C1AC9A300E80376 /* AFURLResponseSerialization.m in Sources */,
@@ -1181,6 +1216,7 @@
 				985F9A6F1C215B6E00FFE955 /* EditView.swift in Sources */,
 				98FD77AB1C1E5B530079E5A7 /* UserModel.swift in Sources */,
 				985F9A7A1C215DBA00FFE955 /* CreatRootVC.swift in Sources */,
+				C2C97A031C3A1B5500706A07 /* EquipTableEquipCell.swift in Sources */,
 				C24FD2C61C18043700B16BF2 /* SDImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

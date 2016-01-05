@@ -1,18 +1,17 @@
 //
-//  AddRoomCell.swift
+//  EquipTableRoomCell.swift
 //  SmartHome
 //
-//  Created by kincony on 15/12/16.
-//  Copyright © 2015年 sunzl. All rights reserved.
+//  Created by kincony on 16/1/4.
+//  Copyright © 2016年 sunzl. All rights reserved.
 //
 
 import UIKit
 
-class AddRoomCell: UITableViewCell {
+class EquipTableRoomCell: UITableViewCell {
 
-    var building: Building?
-    
-    @IBOutlet var addLabel: UILabel!
+    @IBOutlet var roomName: UILabel!
+    @IBOutlet var unfoldImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

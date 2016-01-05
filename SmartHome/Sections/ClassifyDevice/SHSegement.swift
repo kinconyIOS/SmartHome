@@ -10,6 +10,10 @@ import UIKit
 
 class SHSegement: UIView {
     
+    enum Click {
+        case Left, Right
+    }
+    
     private let selectLayer = CALayer()
     private let separa = CALayer()
     
@@ -41,6 +45,17 @@ class SHSegement: UIView {
         
     }
 
+    private var leftAction: (()->())?
+    private var rightAction: (()->())?
+    
+    func selectAction(click: Click, action: ()->()) {
+        switch click {
+        case .Left:
+            leftAction = action
+        case .Right:
+            rightAction = action
+        }
+    }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
@@ -48,8 +63,10 @@ class SHSegement: UIView {
         let point = touch?.locationInView(self)
         if point?.x < self.bounds.width / 2 {
             selectLayer.frame = CGRectMake(0, 0, frame.width / 2, frame.height)
+            leftAction?()
         } else {
             selectLayer.frame = CGRectMake(frame.width / 2, 0, frame.width / 2, frame.height)
+            rightAction?()
         }
     }
     

@@ -1,19 +1,23 @@
 //
-//  EquipSetVC.swift
+//  EquipAddVC.swift
 //  SmartHome
 //
-//  Created by kincony on 15/12/30.
-//  Copyright © 2015年 sunzl. All rights reserved.
+//  Created by kincony on 16/1/5.
+//  Copyright © 2016年 sunzl. All rights reserved.
 //
 
 import UIKit
 
-class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
-    private var compeletBlock: (()->())?
+class EquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
     
-    func configCompeletBlock(compeletBlock: ()->()) {
+    private var compeletBlock: ((Equip)->())?
+    
+    func configCompeletBlock(compeletBlock: (equip: Equip)->()) {
         self.compeletBlock = compeletBlock
     }
+    
+    var equip: Equip = Equip()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,10 +26,9 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        navigationItem.title = "我的设备"
+        navigationItem.title = "添加设备"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "矢量智能对象"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleBack:"))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
-        
         
         self.tableView.registerNib(UINib(nibName: "EquipNameCell", bundle: nil), forCellReuseIdentifier: "equipnamecell")
         self.tableView.registerNib(UINib(nibName: "EquipConfigCell", bundle: nil), forCellReuseIdentifier: "equipconfigcell")
@@ -35,15 +38,10 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
         tap.delegate = self
         self.tableView.addGestureRecognizer(tap)
         
-        
     }
     
-    func handleBack(barButton: UIBarButtonItem) {
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    func handleRightItem(barButton: UIBarButtonItem) {
-        compeletBlock?()
-        self.navigationController?.popViewControllerAnimated(true)
+    func handleTap(tap: UITapGestureRecognizer) {
+        self.tableView.endEditing(true)
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
@@ -53,10 +51,13 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
         return true
     }
     
-    func handleTap(sender: UITapGestureRecognizer) {
-        self.view.endEditing(true)
+    func handleBack(barButton: UIBarButtonItem) {
+        self.navigationController?.popViewControllerAnimated(true)
     }
-
+    func handleRightItem(barButton: UIBarButtonItem) {
+        compeletBlock?(equip)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -66,7 +67,7 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 4
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,22 +81,25 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("equipconfigcell", forIndexPath: indexPath) as! EquipConfigCell
+            cell.cellTitle.text = "设备类型"
+            return cell
         case 1:
-           let cell = tableView.dequeueReusableCellWithIdentifier("equipimagecell", forIndexPath: indexPath) as! EquipImageCell
-           cell.cellTitleLabel.text = "设备图标:"
-           cell.cellIconImage.image = UIImage(named: "灯泡1")
-           
-           return cell
+            let cell = tableView.dequeueReusableCellWithIdentifier("equipnamecell", forIndexPath: indexPath) as! EquipNameCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            return cell
         case 2:
-           let cell = tableView.dequeueReusableCellWithIdentifier("equipconfigcell", forIndexPath: indexPath) as! EquipConfigCell
-           cell.cellTitle.text = "所属房间:"
-           cell.cellDetail.text = ""
-           
-           return cell
+            let cell = tableView.dequeueReusableCellWithIdentifier("equipimagecell", forIndexPath: indexPath) as! EquipImageCell
+            cell.cellTitleLabel.text = "设备图标"
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCellWithIdentifier("equipimagecell", forIndexPath: indexPath) as! EquipImageCell
+            cell.cellTitleLabel.text = "学习界面"
+            return cell
         default:
-           let cell = tableView.dequeueReusableCellWithIdentifier("equipnamecell", forIndexPath: indexPath)
-           cell.selectionStyle = UITableViewCellSelectionStyle.None
-           return cell
+            let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "reusetableview")
+            return cell
         }
     }
     
@@ -103,37 +107,24 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
-        case 1:
+        case 0:
+            break
+        case 2:
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! EquipImageCell
             
             let choosIconVC = ChooseIconVC(nibName: "ChooseIconVC", bundle: nil)
-            choosIconVC.chooseImageBlock({ [unowned cell] (image) -> () in
+            choosIconVC.chooseImageBlock({ [unowned cell, unowned self] (image) -> () in
                 cell.cellIconImage.image = image
-            })
+                self.equip.icon = image.accessibilityIdentifier
+                })
             self.navigationController?.pushViewController(choosIconVC, animated: true)
-        case 2:
-            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)) as! EquipConfigCell
-            
-            let chooseAlert = SHChooseAlertView(title: "所属房间", dataSource: ["1楼1房", "2楼2房", "3楼3房"], cancleButtonTitle: "取消", confirmButtonTitle: "确定")
-            chooseAlert.alertAction({ [unowned cell] (alert, buttonIndex) -> () in
-                switch buttonIndex {
-                case 0:
-                    break
-                case 1:
-                    cell.cellDetail.text = alert.selectItem
-                default:
-                    break
-                }
-            })
-            chooseAlert.show()
-            tableView.deselectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2), animated: true)
+        case 3:
             break
         default:
             break
         }
     }
 
-    
     /*
     // MARK: - Navigation
 
