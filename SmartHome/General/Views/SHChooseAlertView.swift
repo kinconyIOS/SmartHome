@@ -53,7 +53,7 @@ class SHChooseAlertView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         titleLabel!.tag = 477
         titleLabel!.textAlignment = NSTextAlignment.Center
         titleLabel!.text = title
-        titleLabel!.font = UIFont.systemFontOfSize(20)
+        titleLabel!.font = UIFont.systemFontOfSize(19)
         titleLabel!.textColor = UIColor.whiteColor()
         titleView!.addSubview(titleLabel!)
         alertView.addSubview(titleView!)
@@ -69,7 +69,7 @@ class SHChooseAlertView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         cancleBtn!.layer.cornerRadius = 4
         cancleBtn!.layer.masksToBounds = true
-        cancleBtn!.titleLabel?.font = UIFont.systemFontOfSize(15)
+        cancleBtn!.titleLabel?.font = UIFont.systemFontOfSize(16)
         cancleBtn!.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
         cancleBtn!.addTarget(self, action: Selector("touchButton:"), forControlEvents: UIControlEvents.TouchUpInside)
         alertView.addSubview(cancleBtn!)
@@ -85,7 +85,7 @@ class SHChooseAlertView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         }
         confirmBtn!.layer.cornerRadius = 4
         confirmBtn!.layer.masksToBounds = true
-        confirmBtn!.titleLabel?.font = UIFont.systemFontOfSize(15)
+        confirmBtn!.titleLabel?.font = UIFont.systemFontOfSize(16)
         confirmBtn!.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
         confirmBtn!.addTarget(self, action: Selector("touchButton:"), forControlEvents: UIControlEvents.TouchUpInside)
         alertView.addSubview(confirmBtn!)
@@ -151,7 +151,6 @@ class SHChooseAlertView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         animation.toValue = 1
         animation.duration = 0.125
         self.layer.addAnimation(animation, forKey: "show")
-        
     }
     
     override func setNeedsLayout() {
@@ -165,7 +164,6 @@ class SHChooseAlertView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             alertView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width * 0.77, UIScreen.mainScreen().bounds.width * 0.77 * 0.64)
         }
         alertView.center = CGPointMake(UIScreen.mainScreen().bounds.width / 2, UIScreen.mainScreen().bounds.height / 2)
-        
         
     }
     

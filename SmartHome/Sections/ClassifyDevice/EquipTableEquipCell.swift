@@ -1,21 +1,22 @@
 //
-//  RoomCell.swift
+//  EquipTableEquipCell.swift
 //  SmartHome
 //
-//  Created by kincony on 15/12/25.
-//  Copyright © 2015年 sunzl. All rights reserved.
+//  Created by kincony on 16/1/4.
+//  Copyright © 2016年 sunzl. All rights reserved.
 //
 
 import UIKit
 
-class RoomCell: UITableViewCell {
+class EquipTableEquipCell: UITableViewCell {
 
-    var building: Building?
-    var indexPath: NSIndexPath?
     
-    func handleEdit(tap: UITapGestureRecognizer) {
+    @IBOutlet var iconImage: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
+    var editView: EditView?
         
-    }
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,26 +36,27 @@ class RoomCell: UITableViewCell {
         self.addGestureRecognizer(rightSwipe)
     }
     
-    @IBOutlet var roomName: UITextField!
-    var editView: EditView?
+    func handleEdit(tap: UITapGestureRecognizer) {
+        
+    }
     
     func handleSwipe(swipe: UISwipeGestureRecognizer) {
         switch swipe.direction {
         case UISwipeGestureRecognizerDirection.Left:
             print("left")
-            let nowCenter = roomName.center
-            if nowCenter.x == ScreenWidth / 2 {
+            let nowCenter = self.contentView.center
+            if nowCenter.x == self.bounds.width / 2 {
                 UIView.animateWithDuration(0.3, animations: { [unowned self] () -> Void in
-                    self.roomName.center = CGPointMake(ScreenWidth / 2 - self.editView!.frame.size.width, nowCenter.y)
+                    self.contentView.center = CGPointMake(self.bounds.width / 2 - self.editView!.frame.size.width, nowCenter.y)
                     self.editView!.center = CGPointMake(ScreenWidth - self.editView!.frame.size.width / 2, nowCenter.y)
                     })
             }
         case UISwipeGestureRecognizerDirection.Right:
             print("right")
-            let nowCenter = roomName.center
-            if nowCenter.x == ScreenWidth / 2 - self.editView!.frame.width {
+            let nowCenter = self.contentView.center
+            if nowCenter.x == self.bounds.width / 2 - self.editView!.frame.size.width {
                 UIView.animateWithDuration(0.3, animations: { [unowned self] () -> Void in
-                    self.roomName.center = CGPointMake(ScreenWidth / 2, nowCenter.y)
+                    self.contentView.center = CGPointMake(self.bounds.width / 2, nowCenter.y)
                     self.editView!.center = CGPointMake(ScreenWidth + self.editView!.frame.size.width / 2, nowCenter.y)
                     })
             }
@@ -63,20 +65,7 @@ class RoomCell: UITableViewCell {
         }
         
     }
-    private var keyboardAdapt: ((index: NSIndexPath) -> ())?
-    func configKeyboardAdpt(block: (index: NSIndexPath) -> ()) {
-        keyboardAdapt = block
-    }
-    
-    @IBAction func endEditingAction(sender: UITextField) {
-        building?.buildName = sender.text!
-    }
-    
-    @IBAction func exitAction(sender: UITextField) {
-    }
-    @IBAction func beginEditingAction(sender: UITextField) {
-        keyboardAdapt?(index: indexPath!)
-    }
+
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
