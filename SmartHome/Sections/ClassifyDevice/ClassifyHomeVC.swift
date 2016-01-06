@@ -46,7 +46,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
 
-    var cDataSource = [Equip(), Equip(), Equip(), Equip()]
+    var cDataSource: [Equip] = []
     var tDataSource: [RoomOrEquip] = []
     
     override func viewDidLoad() {
@@ -56,13 +56,13 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "矢量智能对象"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleBack:"))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
         
-        let room1 = Room(); room1.name = "客厅"
-        room1.equips = [Equip(), Equip(), Equip()]
-        let room2 = Room(); room2.name = "厨房"
+//        let room1 = Room(); room1.name = "客厅"
+//        room1.equips = [Equip(), Equip(), Equip()]
+//        let room2 = Room(); room2.name = "厨房"
 //        room2.equips = [Equip(), Equip()]
-        let room3 = Room(); room3.name = "卧室"
-        room3.equips = [Equip(), Equip(), Equip()]
-        tDataSource = [RoomOrEquip(room: room1, equip: nil), RoomOrEquip(room: room2, equip: nil), RoomOrEquip(room: room3, equip: nil)]
+//        let room3 = Room(); room3.name = "卧室"
+//        room3.equips = [Equip(), Equip(), Equip()]
+//        tDataSource = [RoomOrEquip(room: room1, equip: nil), RoomOrEquip(room: room2, equip: nil), RoomOrEquip(room: room3, equip: nil)]
         
         // Do any additional setup after loading the view.
         self.collectionView.delegate = self

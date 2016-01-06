@@ -8,5 +8,10 @@
 
 import Foundation
 class Floor {
+    let floorID: String
     var name: String?
+    var rooms = [Room]()
+    init(floorID: String) {
+        self.floorID = floorID
+    }
 }

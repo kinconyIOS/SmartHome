@@ -141,6 +141,7 @@
 		C2AD17DD1C2CDD5700AFE71E /* RoomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AD17DB1C2CDD5700AFE71E /* RoomCell.xib */; };
 		C2AE33FB1C3B926300D30086 /* EquipAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE33F91C3B926300D30086 /* EquipAddVC.swift */; };
 		C2AE33FC1C3B926300D30086 /* EquipAddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AE33FA1C3B926300D30086 /* EquipAddVC.xib */; };
+		C2AE33FE1C3BBDEE00D30086 /* DataDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE33FD1C3BBDEE00D30086 /* DataDeal.swift */; };
 		C2C979FC1C3A0BFF00706A07 /* Equip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C979FB1C3A0BFF00706A07 /* Equip.swift */; };
 		C2C979FF1C3A1B2800706A07 /* EquipTableRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C979FD1C3A1B2800706A07 /* EquipTableRoomCell.swift */; };
 		C2C97A001C3A1B2800706A07 /* EquipTableRoomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C979FE1C3A1B2800706A07 /* EquipTableRoomCell.xib */; };
@@ -389,6 +390,7 @@
 		C2AD17DB1C2CDD5700AFE71E /* RoomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomCell.xib; sourceTree = "<group>"; };
 		C2AE33F91C3B926300D30086 /* EquipAddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipAddVC.swift; sourceTree = "<group>"; };
 		C2AE33FA1C3B926300D30086 /* EquipAddVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipAddVC.xib; sourceTree = "<group>"; };
+		C2AE33FD1C3BBDEE00D30086 /* DataDeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDeal.swift; sourceTree = "<group>"; };
 		C2C979FB1C3A0BFF00706A07 /* Equip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equip.swift; sourceTree = "<group>"; };
 		C2C979FD1C3A1B2800706A07 /* EquipTableRoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipTableRoomCell.swift; sourceTree = "<group>"; };
 		C2C979FE1C3A1B2800706A07 /* EquipTableRoomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipTableRoomCell.xib; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				C2C979FB1C3A0BFF00706A07 /* Equip.swift */,
 				C2C97A051C3A496300706A07 /* Room.swift */,
 				C2C97A071C3A497400706A07 /* Floor.swift */,
+				C2AE33FD1C3BBDEE00D30086 /* DataDeal.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1148,6 +1151,7 @@
 				C24FD2C21C18043700B16BF2 /* QRCodeReaderView.m in Sources */,
 				984739D71C1AC9A300E80376 /* AFHTTPRequestOperationManager.m in Sources */,
 				980474651C23A52D00B3966D /* RoomListItem.swift in Sources */,
+				C2AE33FE1C3BBDEE00D30086 /* DataDeal.swift in Sources */,
 				980474621C23931200B3966D /* SZLSideView.m in Sources */,
 				C24FD2B71C18043700B16BF2 /* SetDeviceVC.swift in Sources */,
 				C24FD2CB1C18043700B16BF2 /* SDWebImageManager.m in Sources */,

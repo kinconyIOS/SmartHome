@@ -8,6 +8,11 @@
 
 import Foundation
 class Room {
+    let roomID: String
+    var inFloor: String?
     var name: String?
     var equips: [Equip] = []
+    init(roomID: String) {
+        self.roomID = roomID
+    }
 }
