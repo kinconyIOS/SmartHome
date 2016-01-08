@@ -54,11 +54,11 @@ class CreatRootVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     func handleRightItem(barButton: UIBarButtonItem) {
         switch creatType {
         case .CreatTypeRoom:
-            let roomVC = RoomAndRenameVC()
+            let roomVC = RoomAndRenameVC(nibName: "RoomAndRenameVC", bundle: nil)
             roomVC.viewType = RoomOrRenameType.RoomType
             navigationController?.pushViewController(roomVC, animated: true)
         case .CreatTypeFloor:
-            let floorVC = FloorViewController()
+            let floorVC = FloorViewController(nibName: "FloorViewController", bundle: nil)
             navigationController?.pushViewController(floorVC, animated: true)
             
         }

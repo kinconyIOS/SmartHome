@@ -10,6 +10,9 @@ import UIKit
 
 class AddRoomCell: UITableViewCell {
 
+    var building: Building?
+    
+    @IBOutlet var addLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

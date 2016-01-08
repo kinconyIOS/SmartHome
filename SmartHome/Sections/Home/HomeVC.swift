@@ -274,6 +274,11 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
     }
     //点击事件
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 0 {
+            
+            
+        }
+        
         if indexPath.row>0{
            
             let item:RoomListItem =

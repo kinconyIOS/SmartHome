@@ -9,8 +9,16 @@
 import Foundation
 import UIKit
 //常用
-let ScreenWidth = UIScreen.mainScreen().bounds.size.width;
-let ScreenHeight = UIScreen.mainScreen().bounds.size.height;
+
+var ScreenWidth: CGFloat {
+    return UIScreen.mainScreen().bounds.width
+}
+var ScreenHeight: CGFloat {
+    return UIScreen.mainScreen().bounds.height
+}
+
+let themeColors = UIColor(RGB: 0x2fceaa, alpha: 1)
+
 let app = (UIApplication.sharedApplication().delegate) as! AppDelegate
 let mainColor=UIColor(RGB: 0x2fceaa,alpha: 1)
 //图片
@@ -21,7 +29,7 @@ let textBgImage:UIImage?=textImage!.stretchableImageWithLeftCapWidth((Int)(textI
 //导航栏背景
 let navBgImage:UIImage? = UIImage(named: "导航栏L")
 //登陆界面背景
-let loginBgImage:UIImage? = UIImage (named: "背景.png")
+let loginBgImage:UIImage? = UIImage(named: "背景.png")
 //登陆注册等按钮背景
 let btnBgImage:UIImage? = UIImage(named: "登陆.png")
  //首页

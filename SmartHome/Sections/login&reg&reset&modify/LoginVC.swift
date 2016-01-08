@@ -40,7 +40,7 @@ class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
  
     func configView()
     {
-        bgImg.image=loginBgImage!
+        self.bgImg.image=loginBgImage!
         self.view.backgroundColor=UIColor.whiteColor()
         self.loginBtn.layer.cornerRadius=7.0
         self.loginBtn.layer.masksToBounds=true
@@ -76,19 +76,19 @@ class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
         homevc.tabBarItem.title=NSLocalizedString("首页", comment: "")
         homevc.tabBarItem.image=homeIcon
         homevc.tabBarItem.selectedImage=homeIconSelected
-          let homeNav:UINavigationController = UINavigationController(rootViewController: homevc)
+        let homeNav:UINavigationController = UINavigationController(rootViewController: homevc)
         
         let setModelVC:SetModelVC=SetModelVC()
         setModelVC.tabBarItem.title=NSLocalizedString("情景模式", comment: "")
         setModelVC.tabBarItem.image=modelIcon
         setModelVC.tabBarItem.selectedImage=modelIconSelected
-          let setModelNav:UINavigationController = UINavigationController(rootViewController: setModelVC)
+        let setModelNav:UINavigationController = UINavigationController(rootViewController: setModelVC)
         
         let mallvc:MallVC=MallVC()
         mallvc.tabBarItem.title=NSLocalizedString("商城", comment: "")
         mallvc.tabBarItem.image=mallIcon
         mallvc.tabBarItem.selectedImage=mallIconSelected
-          let mallNav:UINavigationController = UINavigationController(rootViewController:mallvc)
+        let mallNav:UINavigationController = UINavigationController(rootViewController:mallvc)
         
         let minevc:MineVC=MineVC()
         minevc.tabBarItem.title=NSLocalizedString("我的", comment: "")
