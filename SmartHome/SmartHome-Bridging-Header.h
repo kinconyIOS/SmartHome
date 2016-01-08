@@ -14,6 +14,11 @@
 #import "GexinSdk.h"
 #import <PgyUpdate/PgyUpdateManager.h>
 //debugPrint(__FUNCTION__, __LINE__,str)
-
+//摄像头1
+#import "EZOpenSDK.h"
+#import "GlobalKit.h"
+#import "EZAccessToken.h"
+#import "EZPlayer.h"
+#import "EZCameraInfo.h"
 
 

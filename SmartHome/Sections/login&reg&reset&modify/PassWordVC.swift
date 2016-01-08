@@ -40,6 +40,19 @@ class PassWordVC: UIViewController {
     }
     
     @IBAction func nextTap(sender: AnyObject) {
+        let fpass = firstPassText.text?.trimString()
+        let lpass = lastPassText.text?.trimString()
+        if fpass == "" || lpass == "" {
+        showMsg("密码不能为空")
+            return
+        }
+        if fpass != lpass{
+        showMsg("两次密码不一致")
+            return
+        }
+     
+        
+        
         
         let manager = AFHTTPRequestOperationManager()
         var url_action:String?
@@ -47,15 +60,15 @@ class PassWordVC: UIViewController {
         switch setUserType!//修改密码不需要vcode
         {
         case SetUserType.Modify :
-            params = ["userPhone": self.phoneNum!,"userPwd":""]
+            params = ["userPhone": self.phoneNum!,"userPwd":lpass!]
         case SetUserType.Reg :
             url_action=reg
             params = ["userPhone": self.phoneNum!,
-                "verifyCode":self.vcode!,"userPwd":""]
+                "verifyCode":self.vcode!,"userPwd":lpass!]
         case SetUserType.Reset :
             url_action=reset
             params = ["userPhone": self.phoneNum!,
-                "verifyCode":self.vcode!,"userPwd":""]
+                "verifyCode":self.vcode!,"userPwd":lpass!]
             
         }
         let url=BaseUrl+url_action!
@@ -66,11 +79,20 @@ class PassWordVC: UIViewController {
             success: { (operation: AFHTTPRequestOperation!,
                 responseObject: AnyObject!) in
                 print("JSON: " + responseObject.description!)
-                
-                let successvc:SuccessVC? = SuccessVC()
-                successvc!.setUserType=self.setUserType
-                
-                self.navigationController?.pushViewController(successvc!, animated: true)
+                if responseObject != nil && responseObject!["success"]!!.boolValue == true
+                {
+                    let successvc:SuccessVC? = SuccessVC()
+                    successvc!.setUserType=self.setUserType
+                    
+                    self.navigationController?.pushViewController(successvc!, animated: true)
+                }else  if(responseObject == nil){
+                     showMsg(responseObject!["message"]! as! String)
+                }else{
+                    showMsg("操作失败,请重新尝试")
+                    
+                }
+
+               
                 
             },
             failure: { (operation: AFHTTPRequestOperation!,

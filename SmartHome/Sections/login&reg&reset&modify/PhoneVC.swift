@@ -72,8 +72,16 @@ class PhoneVC: UIViewController {
             parameters: params,
             success: { (operation: AFHTTPRequestOperation!,
                 responseObject: AnyObject!) in
+                
                 print("JSON: " + responseObject.description!)
+                if responseObject != nil && responseObject!["success"]!!.boolValue == true
+                {
+                 
                 self.navigationController?.pushViewController(codevc, animated: true)
+                }else{
+                showMsg("获取验证码失败，请重新尝试")
+                
+                }
                 },
             failure: { (operation: AFHTTPRequestOperation!,
                 error: NSError!) in

@@ -22,21 +22,7 @@ func imageWithColor(color:UIColor)->UIImage
     return image;
 
 }
-//试图控制器扩展点击收起键盘
-extension UIViewController{
-     func addTouchDownHideKey()
-      {
-        let tap:UITapGestureRecognizer=UITapGestureRecognizer(target: self, action: Selector("hideKey"))
-          self.view.addGestureRecognizer(tap)
-    
-       }
-    
-     func hideKey(){
-        self.view.endEditing(true)
-      }
 
-
-}
 //颜色的便利构造器
 extension UIColor {
     convenience init(RGB: Int, alpha: Float) {
@@ -80,13 +66,13 @@ func weatherWithProvince( administrativeArea:String,localCity:String,complete:Co
       let parameters=["location": str!,
                       "output": "json",
                       "ak":"o1NQuijYqFmtMqTQv4AK4XWv"]
-        print(url)
+    
      
         manager.GET(url,
             parameters:parameters,
             success: { (operation: AFHTTPRequestOperation!,
                 responseObject: AnyObject!) in
-                print("JSON: " + responseObject.description!)
+            
               
                 let arr = responseObject["results"]!![0]["weather_data"]
                 
@@ -119,28 +105,21 @@ func weatherWithProvince( administrativeArea:String,localCity:String,complete:Co
                 print("Error: " + error.localizedDescription)
         })
 
-    /*
-       
-        */
-   
-    //        WeatherObject *aWeObj = [[WeatherObject alloc] initSmallTemp:aSmallTemp maxTemp:aMaxTemp weather:aWeather windSpeed:aWind name:aName imageName:aImageName andId:i + 1];
-    //        WeatherObject *aWeObj = [[WeatherObject alloc] initSmallTemp:aSmallTemp maxTemp:aMaxTemp weather:aWeather windSpeed:aWind name:[self weekDayWithIndex:i] imageName:aImageName andId:i + 1];
-    //        if (i == 0) {
-    //            w1 = aWeObj;
-    //        }
-    //        else if (i == 1) {
-    //            w2 = aWeObj;
-    //        }
-    //        else {
-    //            w3 = aWeObj;
-    //        }
-    //        if (![S_WeatherSqlite updateWeatherObject:aWeObj]) {
-    //            NSLog(@"跟新失败");
-    //        }
-    //    }
-    //    [weaView initInfo:[[NSDictionary alloc] initWithObjectsAndKeys:w1,@"1",w2,@"2",w3,@"3", nil]];
+  
 }
+func setDefault(phone:String,pwd:String){
+
+    var userlist:[String:String]? = NSUserDefaults.standardUserDefaults().objectForKey("userList") as? [String:String]
+    if userlist == nil {
+         userlist = [:]
+    }
+     userlist![phone] = pwd
+    NSUserDefaults.standardUserDefaults().setObject(userlist, forKey: "userList")
+    print(userlist)
+   
     
+}
+
 
     
 

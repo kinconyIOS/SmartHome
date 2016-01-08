@@ -10,6 +10,7 @@ import UIKit
 
 class HomeTopTableViewCell: UITableViewCell ,UIScrollViewDelegate{
   //   var orientationLast:UIInterfaceOrientation?=UIInterfaceOrientation.Portrait
+    @IBOutlet var playView: UIView!
     @IBOutlet var currentAddressLabel: UILabel!
 
     @IBOutlet var wind: UILabel!
@@ -31,9 +32,9 @@ class HomeTopTableViewCell: UITableViewCell ,UIScrollViewDelegate{
         
      
         //把scrollView与pageControl添加到当前视图中
-        self.contentView.insertSubview(self.scrollView!, belowSubview: self.currentAddressLabel)
+        self.contentView.insertSubview(self.scrollView!, belowSubview: self.playView)
    
-        self.contentView.insertSubview(self.pageControl!, belowSubview: self.currentAddressLabel)
+        self.contentView.insertSubview(self.pageControl!, belowSubview: self.playView)
       
         //设置视图的背景颜色
         self.backgroundColor=UIColor.whiteColor()

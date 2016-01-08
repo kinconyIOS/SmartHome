@@ -8,11 +8,25 @@
 
 import UIKit
 
-class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
+class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPlayerDelegate{
+    let PLAYER_NEED_VALIDATE_CODE = -1 //播放需要安全验证
+    let PLAYER_REALPLAY_START = 1   //直播开始
+    let PLAYER_VIDEOLEVEL_CHANGE = 2 //直播流清晰度切换中
+    let PLAYER_STREAM_RECONNECT = 3  //直播流取流正在重连
+    let PLAYER_PLAYBACK_START = 11 //录像回放开始播放
+    let PLAYER_PLAYBACK_STOP = 12   //录像回放结束播放
+    var flag = false
+     let vfcode="at.6wm8ormqcy03shfib5yeb9yyah3r2cp4-171ujmx9ol-0oc00e3-seti9m9p5"
     var orientationLast:UIInterfaceOrientation?=UIInterfaceOrientation.Portrait
     let array=["精选","电视剧","电影","综艺","娱乐","健康","科技","游戏","体育","搞笑"];
     let  hscroll:HScrollView?=HScrollView.init()
-    
+    var homeCell:HomeTopTableViewCell?
+    var player:EZPlayer?
+    lazy var playerView:UIView?={
+        var view=UIView(frame: CGRectMake(0,0,320,240))
+        
+        return view
+    }()
     @IBOutlet var homeTableView: UITableView!
     lazy var  drakBtn:UIButton = {
         
@@ -34,9 +48,65 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
+        if(GlobalKit.shareKit().accessToken != nil)
+        {
+            EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
+            self.addRefreshKit()
+        }
+        else
+        {
+            
+            
+            dispatch_after(UInt64(1), dispatch_get_main_queue(), { () -> Void in
+                EZOpenSDK.openLoginPage({ (accessToken:EZAccessToken!) -> Void in
+                    
+                    GlobalKit.shareKit().accessToken=accessToken.accessToken
+                    self.addRefreshKit()
+                })
+            })
+        }
       //  self.view.addSubview(Waiting())
         // Do any additional setup after loading the view.
     }
+    func addRefreshKit()
+    {
+        EZOpenSDK.getCameraList(0, pageSize: 1) { (cameraList:[AnyObject]!, error:NSError!) -> Void in
+            
+            let camera = cameraList.first as!EZCameraInfo
+            self.player = EZPlayer.createPlayerWithCameraId(camera.cameraId!)
+            self.player?.delegate = self;
+            
+            self.player?.startRealPlay()
+            self.player?.stopVoiceTalk()
+          
+            self.player?.setPlayerView(self.homeCell!.playView)
+            
+            
+        }
+    }
+    func player(player: EZPlayer!, didPlayFailed error: NSError!) {
+        
+    }
+    func player(player: EZPlayer!, didReceviedMessage messageCode: Int) {
+        if(messageCode == PLAYER_REALPLAY_START)
+        {
+            print("开始播放");
+            self.homeTableView.reloadData()
+        }
+        else if (messageCode == PLAYER_NEED_VALIDATE_CODE)
+        {
+            print("需要短信验证")
+            EZOpenSDK.secureSmsValidate("BJLKLK"){
+                (error:NSError!) in
+                self.player?.startRealPlay()
+            }
+            
+            
+            
+        }
+    }
+    
+
     override  func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         //侧滑
@@ -68,7 +138,8 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         //
       NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("statusBarOrientationChange:"), name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
             self.homeTableView.registerNib(UINib(nibName: "HomeTopTableViewCell", bundle: nil), forCellReuseIdentifier:"topcell")
-
+       self.homeCell =  NSBundle.mainBundle().loadNibNamed("HomeTopTableViewCell", owner: self, options: [:]).last as? HomeTopTableViewCell
+      
         
        //模拟数据源
         let numOfFloor=4;
@@ -152,9 +223,6 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         if indexPath.row==0{
             cell = tableView.dequeueReusableCellWithIdentifier("addcell", forIndexPath: indexPath)
          
-           
-
-        
         }else{
             let item:RoomListItem = self.tableSideViewDataSource[indexPath.row-1] as! RoomListItem;
             cell = tableView.dequeueReusableCellWithIdentifier("itemcell", forIndexPath: indexPath)
@@ -173,20 +241,29 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     
     }else if tableView===self.homeTableView{
         if indexPath.row == 0{
-         let cell:HomeTopTableViewCell? = tableView.dequeueReusableCellWithIdentifier("topcell",forIndexPath: indexPath) as? HomeTopTableViewCell
-        let app=UIApplication.sharedApplication().delegate as! AppDelegate
-        if (app.weather != nil) {
-            //设置轮播图
-            (cell!).images = [UIImage(named: "1.jpg")!,UIImage(named: "2.jpg")!,UIImage(named: "3.jpg")!]
-             cell!.setupPage(nil)
-            
-             cell!.currentAddressLabel.text="当前位置:"+(app.weather?.address)!
-             cell!.weatherName.text=(app.weather?.aWeather)!
-             cell!.wind.text=(app.weather?.aWind)!
-             cell!.maxTemp.text="最高"+(app.weather?.aMaxTemp)!+"°C"
-             cell!.minTemp.text="最低"+(app.weather?.aSmallTemp)!+"°C"
-             cell!.weatherIcon.sd_setImageWithURL(NSURL(string: (app.weather?.nightPictureUrl)!))
-        }
+         let cell = self.homeCell
+        
+        //轮播图和摄像头
+            if !flag{
+                //设置轮播图
+                (cell!).images = [UIImage(named: "1.jpg")!,UIImage(named: "2.jpg")!,UIImage(named: "3.jpg")!]
+                cell!.setupPage(nil)
+            }
+      
+           if (app.weather == nil) {
+             weatherWithProvince("北京市", localCity:"北京市") { (weather:WeatherModel) -> () in
+                app.weather=weather
+                self.homeTableView.reloadData()
+              }
+            }else{
+               cell!.currentAddressLabel.text="当前位置:"+(app.weather?.address)!
+               cell!.weatherName.text=(app.weather?.aWeather)!
+               cell!.wind.text=(app.weather?.aWind)!
+               cell!.maxTemp.text="最高"+(app.weather?.aMaxTemp)!+"°C"
+               cell!.minTemp.text="最低"+(app.weather?.aSmallTemp)!+"°C"
+               cell!.weatherIcon.sd_setImageWithURL(NSURL(string: (app.weather?.nightPictureUrl)!))
+             }
+            return cell!
         }else{
         
         
@@ -221,6 +298,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
                 
                 //非菜单选项
                  print("点到具体房间。。")
+          
                 tableView.deselectRowAtIndexPath(indexPath,animated:false)
 
             }

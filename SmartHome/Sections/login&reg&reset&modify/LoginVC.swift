@@ -13,25 +13,31 @@ class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
     @IBOutlet var passText: UITextField!
 
     @IBOutlet var phoneNumBg: UIImageView!
-    var userNameTableView:UITableView?=UITableView.init(frame: CGRectZero, style: UITableViewStyle.Plain)
+   lazy var userNameTableView:UITableView?={
+       print("创建table")
+       let tableView = UITableView(frame: CGRectZero, style: UITableViewStyle.Plain)
+        tableView.hidden=true
+        tableView.delegate=self
+        tableView.dataSource=self
+       tableView.registerNib(UINib(nibName: "userNameCell", bundle: nil), forCellReuseIdentifier: "userNameCell")
+        self.view.addSubview(tableView)
+        return tableView
+    }()
     @IBOutlet var bgImg: UIImageView!
     @IBOutlet var loginBtn: UIButton!
-    var num:Int?
+    
    
+    var userlist:[String:String]?=["":""]
+    var userNames:[String]?=[""]
     override func viewDidLoad() {
 
         super.viewDidLoad()
         self.configView()
-        num=4
+       
       
-        
-      
-       // NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("greetings"), userInfo: nil, repeats: true)
-     
     }
-//   func greetings(){
-//       print(i!++);
-//    }
+    
+ 
     func configView()
     {
         bgImg.image=loginBgImage!
@@ -41,13 +47,7 @@ class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
         self.loginBtn.setBackgroundImage(btnBgImage, forState: UIControlState.Normal)
         self.loginBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
         
-        userNameTableView?.frame=CGRectMake(0, phoneNumBg.frame.height+phoneNumBg.frame.origin.y, phoneNumBg.frame.width, CGFloat(Float(num!*45)))
-        userNameTableView?.hidden=true;
-        userNameTableView?.delegate=self;
-        userNameTableView?.dataSource=self;
-        self.view.addSubview(self.userNameTableView!);
-        self.addTouchDownHideKey()
-     
+               
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -69,7 +69,9 @@ class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
         self.navigationController?.pushViewController(phonevc, animated: true)
     }
     @IBAction func loginTap(sender: AnyObject) {
-
+      let phone = self.phoneText.text?.trimString()
+        let pwd = self.passText.text?.trimString()
+        setDefault(phone!, pwd:pwd!)
         let homevc:HomeVC=HomeVC()
         homevc.tabBarItem.title=NSLocalizedString("首页", comment: "")
         homevc.tabBarItem.image=homeIcon
@@ -97,14 +99,27 @@ class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
         tab.viewControllers=[homeNav,setModelNav,mallNav,mineNav];
         tab.tabBar.tintColor=mainColor
         let createHome = CreatHomeVC()
-        let navigationC = UINavigationController(rootViewController: createHome)
-        self.navigationController?.presentViewController(tab, animated: true, completion:nil)
+        //let navigationC = UINavigationController(rootViewController: createHome)
+
+        app.window?.rootViewController=tab
+        
+     //   self.navigationController?.presentViewController(tab, animated: true, completion:nil)
     }
     @IBAction func onExit(sender: AnyObject) {
+        self.view.endEditing(true)
+        self.userNameTableView?.hidden = true
     }
    
     @IBAction func showUserList(sender: UIButton) {
+         userlist = NSUserDefaults.standardUserDefaults().objectForKey("userList") as? [String:String]
+        userNames?.removeAll()
+        for key in (userlist?.keys)!{
+           userNames?.append(key)
+        }
+        
+         self.userNameTableView?.frame=CGRectMake(2, phoneNumBg.frame.height+phoneNumBg.frame.origin.y, phoneNumBg.frame.width-4, CGFloat(Float((self.userNames?.count)!*35)))
        self.userNameTableView!.hidden = !self.userNameTableView!.hidden
+        self.userNameTableView?.reloadData()
     }
     @IBAction func showPassWord(sender: UIButton) {
         self.passText.secureTextEntry = !self.passText.secureTextEntry
@@ -118,20 +133,36 @@ class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
     //返回某个节中的行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      
-        return num!;
+        return (self.userNames?.count)!
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       
-        return UITableViewCell()
+           let cell:userNameCell? = tableView.dequeueReusableCellWithIdentifier("userNameCell",forIndexPath: indexPath) as? userNameCell
+
+        cell?.tag=indexPath.row
+        print(cell?.tag)
+        cell?.deleteSelf=deleteSelf
+        cell?.userName?.text = self.userNames?[indexPath.row]
+        return cell!
     }
-    //点击事件
+    func deleteSelf(tag:Int){
+        print(tag)
+        self.userlist?.removeValueForKey((self.userNames?[tag])!)
+        self.userNames?.removeAtIndex(tag)
+        self.userNameTableView?.frame=CGRectMake(2, phoneNumBg.frame.height+phoneNumBg.frame.origin.y, phoneNumBg.frame.width-4, CGFloat(Float((self.userNames?.count)!*35)))
+         NSUserDefaults.standardUserDefaults().setObject(userlist, forKey: "userList")
+        self.userNameTableView?.reloadData()
+        
+    }    //点击事件
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
      
-        
+        self.phoneText.text=self.userNames?[indexPath.row]
+        print(self.userlist!)
+        self.passText.text=self.userlist![(self.userNames?[indexPath.row])!]
+        self.userNameTableView?.hidden = true
     }
     //高度
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-       return 45
+       return 35
     }
 }

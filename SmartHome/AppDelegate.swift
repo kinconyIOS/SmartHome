@@ -16,6 +16,8 @@ import CoreData
     var window: UIWindow? = UIWindow.init(frame: UIScreen.mainScreen().bounds)
     var user:UserModel?=UserModel()
     var weather:WeatherModel?
+    //定时器
+    var i=0
     //个推
     var  deviceToken:NSString = ""
     var  gexinPusher:GexinSdk?
@@ -25,7 +27,7 @@ import CoreData
     var  payloadId:NSString? = ""
     //pgyer url
     var updateUrl:NSString = ""
-
+    let EzvizAppKey = "4bdf5701dfaa4e18bd2abe901274ae17"
    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //此处要考虑三种情况
@@ -34,10 +36,15 @@ import CoreData
         self.setUpErrorTest()
         self.registerRemoteNotification()
         self.setUpPgy()
+        //安装网络监测
         self.setUpReach { () -> () in
             showMsg("没有网络")
         }
         self.startGeTuiSdk()
+        
+        EZOpenSDK.initLibWithAppKey(EzvizAppKey)
+        //注册摄像头的序列号和验证码 可以不用输入
+        EZOpenSDK.setValidateCode("BJLKLK", forDeviceSerial: "567350669")
         
         guidevc.didSelectedEnter=didSelectedEnter
         LocationManager.sharedManager().callback={(str:String!)in
@@ -48,12 +55,19 @@ import CoreData
         
         }
         LocationManager.sharedManager().configLocation()
+        
+       // NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("greetings"), userInfo: nil, repeats: true)
         //
         self.window!.rootViewController = guidevc
         self.window!.makeKeyAndVisible();
  
         return true
+        
+        
     }
+      func greetings(){
+          i++
+       }
       func didSelectedEnter(){
         let nav:UINavigationController = UINavigationController(rootViewController: LoginVC())
         self.window!.rootViewController=nav

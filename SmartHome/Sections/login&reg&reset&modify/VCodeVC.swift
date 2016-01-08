@@ -42,6 +42,7 @@ class VCodeVC: UIViewController {
         //传递手机号与验证码
         passvc.phoneNum=phoneNum
         passvc.vcode=vcodeText!.text!.trimString()
+        passvc.setUserType=setUserType
         self.navigationController?.pushViewController(passvc, animated: true)
       
     }
