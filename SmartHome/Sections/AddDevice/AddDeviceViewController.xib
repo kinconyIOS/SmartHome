@@ -24,6 +24,7 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="FZc-99-IPK" secondAttribute="height" multiplier="265:28" constant="-141.96428571428567" id="Ebh-Bv-ONg">
                             <variation key="heightClass=compact" constant="9.4642857142857792"/>
+                            <variation key="heightClass=regular-widthClass=regular" constant="-140.71428571428567"/>
                         </constraint>
                     </constraints>
                 </imageView>
@@ -32,6 +33,7 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="n2v-A7-YCz" secondAttribute="height" multiplier="265:28" constant="-141.96428571428567" id="wzR-BS-hWK">
                             <variation key="heightClass=compact" constant="9.4642857142857792"/>
+                            <variation key="heightClass=regular-widthClass=regular" constant="-140.71428571428567"/>
                         </constraint>
                     </constraints>
                 </imageView>
@@ -61,10 +63,11 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="FnO-FL-9ho" secondAttribute="height" multiplier="265:34" constant="-109.11764705882354" id="CtE-dB-ZNE">
                             <variation key="heightClass=compact" constant="179.26470588235293"/>
+                            <variation key="heightClass=regular-widthClass=regular" constant="-111.76470588235293"/>
                         </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="完成">
+                    <state key="normal" title="添加">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="highlighted">
@@ -119,6 +122,7 @@
                 <constraint firstItem="FnO-FL-9ho" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="35" id="h2R-gC-NWS"/>
                 <constraint firstItem="FZc-99-IPK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="35" id="k6U-OY-u5j">
                     <variation key="heightClass=compact" constant="13"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="24"/>
                 </constraint>
                 <constraint firstItem="Y60-ub-fAy" firstAttribute="trailing" secondItem="FZc-99-IPK" secondAttribute="trailing" constant="-8" id="kIv-h5-WpJ"/>
                 <constraint firstItem="ukB-lO-1sI" firstAttribute="trailing" secondItem="n2v-A7-YCz" secondAttribute="trailing" constant="-8" id="l5x-2l-Ctf"/>
@@ -133,6 +137,7 @@
                 <constraint firstItem="Y60-ub-fAy" firstAttribute="top" secondItem="FZc-99-IPK" secondAttribute="top" constant="7" id="uwO-ai-L0w"/>
                 <constraint firstAttribute="bottom" secondItem="FnO-FL-9ho" secondAttribute="bottom" constant="68" id="v2m-3F-qnR">
                     <variation key="heightClass=compact" constant="21"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="92"/>
                 </constraint>
                 <constraint firstItem="JVW-sz-Jia" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="y2v-v7-qPS">
                     <variation key="heightClass=compact" constant="-52"/>

@@ -74,7 +74,7 @@ class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
         homevc.tabBarItem.title=NSLocalizedString("首页", comment: "")
         homevc.tabBarItem.image=homeIcon
         homevc.tabBarItem.selectedImage=homeIconSelected
-          let homeNav:UINavigationController = UINavigationController(rootViewController: homevc)
+        let homeNav:UINavigationController = UINavigationController(rootViewController: homevc)
         
         let setModelVC:SetModelVC=SetModelVC()
         setModelVC.tabBarItem.title=NSLocalizedString("情景模式", comment: "")

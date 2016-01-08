@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+
 
 enum BuildType {
     case BuildFloor, BuildRoom
@@ -56,9 +58,19 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
     var roomDic: [Building : [Building]] = [Building : [Building]]()
     var dataSource: [Building] = []
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-//        self.view.endEditing(true)
+    func assembleFloor() -> [String : AnyObject] {
+        var mDic: [String : AnyObject] = ["userCode" : ""]
+        var subArr: [[String : String]] = []
+        for floor in floorArr {
+            subArr.append(["floorName" : floor.buildName])
+        }
+        mDic["floorName"] = subArr
+        return mDic
     }
+    
+    
+    
+    
     @IBAction func handleTapTableView(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
@@ -78,7 +90,6 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
         navigationItem.title = "创建我的家"
         navigationController?.navigationBar.setBackgroundImage(UIImage(named: "导航栏L"), forBarMetrics: UIBarMetrics.Default)
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -91,7 +102,6 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
         let floor = Building(buildType: .BuildFloor, buildName: "楼层1", isAddCell: false)
-        floorArr.append(floor)
         dataSource.append(floor)
         let add = Building(buildType: .BuildRoom, buildName: "添加", isAddCell: true)
         add.floor = floor
@@ -99,7 +109,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     @IBAction func handleAddFloor(sender: UIButton) {
-        let floor = Building(buildType: .BuildFloor, buildName: "楼层\(floorArr.count + 1)", isAddCell: false)
+        let floor = Building(buildType: .BuildFloor, buildName: "楼层\(floorArr.count + 2)", isAddCell: false)
         floorArr.append(floor)
         dataSource.append(floor)
         let add = Building(buildType: .BuildRoom, buildName: "添加", isAddCell: true)
@@ -108,6 +118,34 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: dataSource.count - 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Bottom)
     }
     func handleRightItem(barButton: UIBarButtonItem) {
+        
+        /*
+        let parameter = assembleFloor()
+        Alamofire.request(.GET, "http://192.168.1.120:8080/smarthome.IMCPlatform/xingUser/addfloor.action", parameters: parameter).responseJSON { [unowned self] (response) -> Void in
+            
+            if response.result.isFailure {
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                print("error:\(response.result.error)")
+                
+            } else {
+                print("result: \(response.result.value)")
+                Alamofire.request(.GET, "http://192.168.1.120:8080/smarthome.IMCPlatform/xingUser/addroom.action", parameters: nil).responseJSON(completionHandler: { (response) -> Void in
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                    if response.result.isFailure {
+                        print("error:\(response.result.error)")
+                    } else {
+                        print("result: \(response.result.value)")
+                        let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
+                        self.navigationController?.pushViewController(classifyVC, animated: true)
+                    }
+                    
+                })
+                
+            }
+        }
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        */
+        
         let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
         self.navigationController?.pushViewController(classifyVC, animated: true)
     }
@@ -144,9 +182,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
                     UIView.animateWithDuration(0.2, animations: { () -> Void in
                         tableView.contentOffset = CGPointMake(offSet.x, offSet.y + 300 - ScreenHeight + maxY)
                     })
-                    
                 }
-                
             })
             
             
@@ -203,7 +239,6 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
                     })
                 return cell
             }
-            
         }
     }
 
@@ -214,7 +249,6 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
             roomDic[building.floor!]?.insert(build, atIndex: (roomDic[building.floor!]?.endIndex)! - 1)
             dataSource.insert(build, atIndex: indexPath.row)
             tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: indexPath.section)], withRowAnimation: UITableViewRowAnimation.Fade)
-            
         }
         
     }

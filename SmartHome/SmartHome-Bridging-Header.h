@@ -7,6 +7,7 @@
 //
 
 #import "AFNetworking.h"
+#import "MBProgressHUD.h"
 #import "HScrollView.h"
 #import "GuideViewController.h"
 #import "SZLSideView.h"

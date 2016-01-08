@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class AddDeviceViewController: UIViewController {
     @IBOutlet var compeletBtn: UIButton! {
@@ -27,6 +28,13 @@ class AddDeviceViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationItem.title = "添加的主机"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
+        
+    }
+    
+    func handleRightItem(sender: UIBarButtonItem) {
+        self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
+        compeletBlock?()
     }
     
     @IBAction func handleScanning(sender: UITapGestureRecognizer) {
@@ -47,8 +55,10 @@ class AddDeviceViewController: UIViewController {
     private var compeletBlock: (() -> ())?
     
     @IBAction func handleCompelet(sender: UIButton) {
-        self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
-        compeletBlock?()
+        Alamofire.request(.GET, "", parameters: ["" : ""])
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

@@ -126,6 +126,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: - UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tDataSource.count
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -158,7 +159,6 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         if model.type == .Room {
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! EquipTableRoomCell
             if model.isUnfold {
-              
                 model.isUnfold = false
                 cell.unfoldImage.image = UIImage(named: "楼层未按下")
                 var indexPaths = [NSIndexPath]()

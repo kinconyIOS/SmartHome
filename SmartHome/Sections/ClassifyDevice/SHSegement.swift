@@ -23,7 +23,7 @@ class SHSegement: UIView {
     override func layoutSubviews() {
 //        super.layoutSubviews()
         selectLayer.frame = CGRectMake(0, 0, self.bounds.width / 2 , self.bounds.height)
-        selectLayer.backgroundColor = UIColor.lightGrayColor().CGColor
+        selectLayer.backgroundColor = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1).CGColor
         self.layer.addSublayer(selectLayer)
         
         separa.frame = CGRectMake(self.bounds.width / 2, 0, 1, self.bounds.height)
