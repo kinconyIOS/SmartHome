@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class RoomOrEquip {
     enum ItemType {
@@ -49,11 +50,22 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
     var cDataSource: [Equip] = []
     var tDataSource: [RoomOrEquip] = []
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        let parameter = ["userCode" : userCode]
+        Alamofire.request(.GET, "http://192.168.1.120:8080/smarthome.IMCPlatform/xingUser/queryequipment.action", parameters: parameter).responseJSON { (response) -> Void in
+            
+        }
+        
         
         navigationItem.title = "我的设备"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "矢量智能对象"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleBack:"))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "矢量智能对象"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleBack:"))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
         
 //        let room1 = Room(); room1.name = "客厅"
