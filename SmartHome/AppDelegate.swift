@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import Alamofire
 @UIApplicationMain
 
   class AppDelegate: UIResponder, UIApplicationDelegate{
@@ -35,10 +35,11 @@ import CoreData
         let guidevc:GuideViewController = GuideViewController(coverImageNames: ["引导页.jpg","引导页.jpg","引导页.jpg"], backgroundImageNames: nil)
         self.setUpErrorTest()
         self.registerRemoteNotification()
-        self.setUpPgy()
+        
         //安装网络监测
         self.setUpReach { () -> () in
-            showMsg("没有网络")
+            //及时提醒没有网络
+             showMsg("没有网络")
         }
         self.startGeTuiSdk()
         
@@ -55,6 +56,18 @@ import CoreData
         
         }
         LocationManager.sharedManager().configLocation()
+        _ = "{\"userCode\":\"U00318\",\"floorName\":[{\"floorName\":\"1楼\"},{\"floorName\":\"2楼\"}]}"
+//        
+//        let url:String=String(UTF8String:"http://192.168.1.178:8080/smarthome.IMCPlatform/xingUser/addfloor.action")!
+//        
+//        
+//       let  mDic = ["userCode" : "U00318","floorName":"[{\"floorName\":\"1楼\"},{\"floorName\":\"2楼\"}]"]
+//        Alamofire.request(.GET, url, parameters: mDic).responseJSON { (response) -> Void in
+//          print(response)
+//      
+//            
+//        }//net end
+
         
        // NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("greetings"), userInfo: nil, repeats: true)
         //
@@ -65,11 +78,9 @@ import CoreData
         
         
     }
-      func greetings(){
-          i++
-       }
-      func didSelectedEnter(){
-        let nav:UINavigationController = UINavigationController(rootViewController: LoginVC())
+    func didSelectedEnter(){
+        
+        let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
         self.window!.rootViewController=nav
         print("完毕")
     }

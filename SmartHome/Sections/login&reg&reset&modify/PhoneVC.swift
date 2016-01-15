@@ -70,8 +70,8 @@ class PhoneVC: UIViewController {
         print(params)
              manager.GET(url,
             parameters: params,
-            success: { (operation: AFHTTPRequestOperation!,
-                responseObject: AnyObject!) in
+            success: { (operation,
+                responseObject) in
                 
                 print("JSON: " + responseObject.description!)
                 if responseObject != nil && responseObject!["success"]!!.boolValue == true
@@ -83,8 +83,8 @@ class PhoneVC: UIViewController {
                 
                 }
                 },
-            failure: { (operation: AFHTTPRequestOperation!,
-                error: NSError!) in
+            failure: { (operation,
+                error) in
                 print("Error: " + error.localizedDescription)
         })
      }

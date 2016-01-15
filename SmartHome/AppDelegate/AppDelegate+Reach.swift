@@ -33,7 +33,12 @@ extension AppDelegate{
             switch (status) {
             case AFNetworkReachabilityStatus.ReachableViaWWAN:                    print("---AFNetworkReachabilityStatusReachableViaWWAN--");                   break
             case AFNetworkReachabilityStatus.ReachableViaWiFi:                    print("---AFNetworkReachabilityStatusReachableViaWiFi--");                    break
-            case AFNetworkReachabilityStatus.NotReachable:                    noreach()
+            case AFNetworkReachabilityStatus.NotReachable:
+                if UIApplication.sharedApplication().applicationState == UIApplicationState.Active{
+                   noreach()
+                }
+                
+                
                 break
             default:
                 break

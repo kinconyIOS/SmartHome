@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 //根据颜色返回图片
 
 func imageWithColor(color:UIColor)->UIImage
@@ -61,52 +62,52 @@ func weatherWithProvince( administrativeArea:String,localCity:String,complete:Co
         }
 
     //[weaView initAddressName:aStr];
-        let url:String=String(UTF8String: "http://api.map.baidu.com/telematics/v3/weather")!
-        let manager = AFHTTPRequestOperationManager()
+ 
+    //
+       let url:String=String(UTF8String: "http://api.map.baidu.com/telematics/v3/weather")!
+       // let manager = AFHTTPRequestOperationManager()
       let parameters=["location": str!,
                       "output": "json",
                       "ak":"o1NQuijYqFmtMqTQv4AK4XWv"]
+    Alamofire.request(.GET, url, parameters: parameters).responseJSON { (response) -> Void in
+        if(response.result.isSuccess){
+        
+            let responseObject = response.result.value
+            
+            let arr = responseObject!["results"]!![0]["weather_data"] as! NSArray
+            
+            print(arr)
+            for index in 0..<3{
+                
+                let aDict = arr[index]  as! NSDictionary
+                
+                let dayPictureUrl:String = aDict["dayPictureUrl"]! as! String
+                
+                let nightPictureUrl:String = aDict["nightPictureUrl"]! as! String
+                //
+                let  arrayTemp:Array=aDict["temperature"]!.componentsSeparatedByString("~")
+                let aMaxTemp = arrayTemp.first?.trimString()
+                //
+                let range:Range = (arrayTemp.last?.rangeOfString("℃"))!
+                let aSmallTemp = (arrayTemp.last?.substringToIndex(range.startIndex))!.trimString()
+                let aWeather:String = aDict["weather"] as! String
+                let aWind:String = aDict["wind"] as! String
+                
+                
+                
+                let weather=WeatherModel(address:str!,aMaxTemp: aMaxTemp!, aSmallTemp: aSmallTemp, aWeather: aWeather, aWind: aWind, dayPictureUrl: dayPictureUrl, nightPictureUrl: nightPictureUrl)
+                complete(weather)
+            }
+
+        }else{
+        
+        
+        
+        }// if end
+        
+    }//net end
     
-     
-        manager.GET(url,
-            parameters:parameters,
-            success: { (operation: AFHTTPRequestOperation!,
-                responseObject: AnyObject!) in
-            
-              
-                let arr = responseObject["results"]!![0]["weather_data"]
-                
-                for index in 0..<3{
-                    let aDict:NSDictionary = arr!![index]!as!NSDictionary
-            
-                    let dayPictureUrl:String = aDict["dayPictureUrl"]! as! String
-                    
-                    let nightPictureUrl:String = aDict["nightPictureUrl"]! as! String
-                    //
-                    let  arrayTemp:Array=aDict["temperature"]!.componentsSeparatedByString("~")
-                    let aMaxTemp = arrayTemp.first?.trimString()
-                    //
-                    let range:Range = (arrayTemp.last?.rangeOfString("℃"))!
-                    let aSmallTemp = (arrayTemp.last?.substringToIndex(range.startIndex))!.trimString()
-                    let aWeather:String = aDict["weather"] as! String
-                    let aWind:String = aDict["wind"] as! String
-                    
-               
-                
-                    let weather=WeatherModel(address:str!,aMaxTemp: aMaxTemp!, aSmallTemp: aSmallTemp, aWeather: aWeather, aWind: aWind, dayPictureUrl: dayPictureUrl, nightPictureUrl: nightPictureUrl)
-                    complete(weather)
-               
-
-                }
-               
-            },
-            failure: { (operation: AFHTTPRequestOperation!,
-                error: NSError!) in
-                print("Error: " + error.localizedDescription)
-        })
-
-  
-}
+}//func end
 func setDefault(phone:String,pwd:String){
 
     var userlist:[String:String]? = NSUserDefaults.standardUserDefaults().objectForKey("userList") as? [String:String]

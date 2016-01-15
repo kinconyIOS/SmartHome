@@ -30,6 +30,7 @@ class PassWordVC: UIViewController {
         firstPassText.background=textBgImage!
         lastPassText.background=textBgImage!
         doBtn.setBackgroundImage(btnBgImage, forState: UIControlState.Normal)
+        
         self.navigationController!.navigationBar.titleTextAttributes=[NSFontAttributeName:UIFont.systemFontOfSize(19),NSForegroundColorAttributeName:UIColor.whiteColor()]
         self.navigationItem.title = NSLocalizedString("完成注册", comment: "")
         self.navigationController!.navigationBar.tintColor=UIColor.whiteColor()

@@ -19,7 +19,7 @@ class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
         tableView.hidden=true
         tableView.delegate=self
         tableView.dataSource=self
-       tableView.registerNib(UINib(nibName: "userNameCell", bundle: nil), forCellReuseIdentifier: "userNameCell")
+        tableView.registerNib(UINib(nibName: "userNameCell", bundle: nil), forCellReuseIdentifier: "userNameCell")
         self.view.addSubview(tableView)
         return tableView
     }()
@@ -32,6 +32,7 @@ class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+      
         self.configView()
        
       
@@ -76,7 +77,7 @@ class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
         homevc.tabBarItem.title=NSLocalizedString("首页", comment: "")
         homevc.tabBarItem.image=homeIcon
         homevc.tabBarItem.selectedImage=homeIconSelected
-        let homeNav:UINavigationController = UINavigationController(rootViewController: homevc)
+        let homeNav:UINavigationController = AutorotateNavC(rootViewController: homevc)
         
         let setModelVC:SetModelVC=SetModelVC()
         setModelVC.tabBarItem.title=NSLocalizedString("情景模式", comment: "")
@@ -95,15 +96,27 @@ class LoginVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
         minevc.tabBarItem.image=mineIcon
         minevc.tabBarItem.selectedImage=mineIconSelected
         let mineNav:UINavigationController = UINavigationController(rootViewController: minevc)
-        let tab=UITabBarController()
+        let tab=AutoTabC()
         tab.viewControllers=[homeNav,setModelNav,mallNav,mineNav];
         tab.tabBar.tintColor=mainColor
-        let createHome = CreatHomeVC()
+        _ = CreatHomeVC()
+       
+     
         //let navigationC = UINavigationController(rootViewController: createHome)
 
-        app.window?.rootViewController=tab
+     app.window?.rootViewController=tab
+        return 
+//        let createHome = CreatHomeVC(nibName: "CreatHomeVC", bundle: nil)
+        let creatHomeVC = CreatHomeViewController(nibName: "CreatHomeViewController", bundle: nil)
+        let creatNavigationC = UINavigationController(rootViewController: creatHomeVC)
         
-     //   self.navigationController?.presentViewController(tab, animated: true, completion:nil)
+        let addDeviceVC: AddDeviceViewController = AddDeviceViewController(nibName: "AddDeviceViewController", bundle: nil)
+        addDeviceVC.setCompeletBlock { () -> () in
+            UIApplication.sharedApplication().keyWindow?.rootViewController = creatNavigationC
+        }
+        let navigationC = UINavigationController(rootViewController: addDeviceVC)
+        
+        self.navigationController?.presentViewController(navigationC, animated: true, completion:nil)
     }
     @IBAction func onExit(sender: AnyObject) {
         self.view.endEditing(true)

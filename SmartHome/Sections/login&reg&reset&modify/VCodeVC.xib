@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCodeVC" customModule="SmartHome" customModuleProvider="target">
@@ -19,9 +19,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5E-bk-Qib">
-                    <rect key="frame" x="0.0" y="109" width="600" height="30"/>
+                    <rect key="frame" x="0.0" y="109" width="600" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="kjs-bW-e2q"/>
+                        <constraint firstAttribute="height" constant="40" id="kjs-bW-e2q"/>
                     </constraints>
                     <state key="normal" title="下一步"/>
                     <connections>
@@ -37,10 +37,10 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ul-Hi-fbF">
-                    <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ul-Hi-fbF">
+                    <rect key="frame" x="0.0" y="64" width="600" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="QQV-TR-CCa"/>
+                        <constraint firstAttribute="height" constant="40" id="QQV-TR-CCa"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -56,7 +56,7 @@
                 <constraint firstAttribute="trailing" secondItem="n5E-bk-Qib" secondAttribute="trailing" id="abN-08-o1z"/>
                 <constraint firstItem="1dX-kf-2jm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="fW7-xq-VVb"/>
                 <constraint firstItem="1dX-kf-2jm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="35" id="rOg-Y0-ZPM"/>
-                <constraint firstItem="n5E-bk-Qib" firstAttribute="top" secondItem="7Ul-Hi-fbF" secondAttribute="bottom" constant="15" id="v46-Dk-Ytv"/>
+                <constraint firstItem="n5E-bk-Qib" firstAttribute="top" secondItem="7Ul-Hi-fbF" secondAttribute="bottom" constant="5" id="v46-Dk-Ytv"/>
             </constraints>
         </view>
     </objects>

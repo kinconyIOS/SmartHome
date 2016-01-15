@@ -54,8 +54,9 @@ public enum SetUserType:Int{
     case Modify
 }
 //网络请求
-let BaseUrl:String = "http://192.168.1.120:8080/smarthome.IMCPlatform/public5001/"
+let BaseUrl:String = "http://192.168.1.178:8080/smarthome.IMCPlatform/xingUser/"
 let reg:String="registers.action"
 let send:String="send.action"
 let reset:String="forgotpwd.action"
 let modifypwd:String="modifypwd.action"
+let getroom:String="getroom.action"
