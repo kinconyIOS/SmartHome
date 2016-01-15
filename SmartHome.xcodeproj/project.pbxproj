@@ -132,6 +132,8 @@
 		C24FD2D11C18043700B16BF2 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2981C18043700B16BF2 /* UIImageView+HighlightedWebCache.m */; };
 		C24FD2D21C18043700B16BF2 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD29A1C18043700B16BF2 /* UIImageView+WebCache.m */; };
 		C24FD2D31C18043700B16BF2 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */; };
+		C25E4B9C1C46469600178352 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C25E4B9B1C46469600178352 /* Info.plist */; };
+		C29BC7441C461FAF00E933E8 /* Https.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BC7431C461FAF00E933E8 /* Https.swift */; };
 		C29D91D71C3F4938008B49E4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29D91CA1C3F492F008B49E4 /* Alamofire.framework */; };
 		C29D91D81C3F4938008B49E4 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C29D91CA1C3F492F008B49E4 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C29D91F11C3F8F0C008B49E4 /* Equip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D91EE1C3F8F0C008B49E4 /* Equip.swift */; };
@@ -520,6 +522,8 @@
 		C24FD29A1C18043700B16BF2 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		C24FD29B1C18043700B16BF2 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		C25E4B9B1C46469600178352 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C29BC7431C461FAF00E933E8 /* Https.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Https.swift; sourceTree = "<group>"; };
 		C29D91BF1C3F492F008B49E4 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		C29D91EE1C3F8F0C008B49E4 /* Equip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equip.swift; sourceTree = "<group>"; };
 		C29D91EF1C3F8F0C008B49E4 /* Floor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
@@ -666,6 +670,7 @@
 				980A92FF1C17B440009166D0 /* Assets.xcassets */,
 				980A93011C17B440009166D0 /* LaunchScreen.storyboard */,
 				9803539D1C1947DE00A2C6A8 /* Info.plist */,
+				C25E4B9B1C46469600178352 /* Info.plist */,
 				980A92FC1C17B440009166D0 /* SmartHome.xcdatamodeld */,
 			);
 			path = SmartHome;
@@ -768,6 +773,7 @@
 				9806CD401C210FF30038A8E0 /* GuideViewController.m */,
 				98E906BF1C19694100392450 /* Tools.swift */,
 				C2AE33FD1C3BBDEE00D30086 /* DataDeal.swift */,
+				C29BC7431C461FAF00E933E8 /* Https.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1360,6 +1366,7 @@
 				985F9A641C2159FC00FFE955 /* AddRoomCell.xib in Resources */,
 				C2DF38FB1C34C47F00114AE8 /* ChooseIconVC.xib in Resources */,
 				C24FD2B61C18043700B16BF2 /* DeviceIconVC.xib in Resources */,
+				C25E4B9C1C46469600178352 /* Info.plist in Resources */,
 				C2D04EF01C33CB9C00A59345 /* EquipNameCell.xib in Resources */,
 				C2DF38FF1C34C5CB00114AE8 /* ChooseHeaderView.xib in Resources */,
 				C24FD2BC1C18043700B16BF2 /* SetRomeVC.xib in Resources */,
@@ -1476,6 +1483,7 @@
 				984739E31C1AC9A300E80376 /* UIImageView+AFNetworking.m in Sources */,
 				989ECECC1C30C01E00F5867A /* LocationManager.swift in Sources */,
 				C2DF38FA1C34C47F00114AE8 /* ChooseIconVC.swift in Sources */,
+				C29BC7441C461FAF00E933E8 /* Https.swift in Sources */,
 				C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */,
 				C24FD2C11C18043700B16BF2 /* QRCodeReader.m in Sources */,
 				984739E21C1AC9A300E80376 /* UIButton+AFNetworking.m in Sources */,

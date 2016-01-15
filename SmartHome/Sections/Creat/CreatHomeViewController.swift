@@ -58,29 +58,39 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
     var roomDic: [String : [Building]] = [String : [Building]]()
     var dataSource: [Building] = []
     
+    
+    
     //楼层信息组装
     func assembleFloor() -> [String : AnyObject] {
         var mDic: [String : AnyObject] = ["userCode" : userCode]
-        var subArr: [[String : String]] = []
+//        var mDic: [String : AnyObject] = [:]
+        var subArr = [[String : String]]()
         for floor in floorArr {
             subArr.append(["floorName" : floor.buildName])
         }
-        mDic["floorName"] = subArr
+//        mDic["floorName"] = subArr
+//        var mDic: [String : AnyObject] = ["userCode" : "U00318"]
+        mDic["floorName"] = dataDeal.toJSONString(subArr)
+
+        
         return mDic
     }
     
     //房间信息组装
     func assembleRoom(code : [String : String]) -> [String : AnyObject] {
         var mDic: [String : AnyObject] = ["userCode" : userCode]
+//        var mDic: [String : AnyObject] = [:]
         var subArr: [[String : String]] = []
         for key in roomDic.keys {
             for value in roomDic[key]! {
-                var suDic = ["roomName" : value.buildName]
-                suDic["floorCode"] = code[key]
-                subArr.append(suDic)
+                if value != roomDic[key]?.last {
+                    var suDic = ["roomName" : value.buildName]
+                    suDic["floorCode"] = code[key]
+                    subArr.append(suDic)
+                }
             }
         }
-        mDic["roomName"] = subArr
+        mDic["roomName"] = dataDeal.toJSONString(subArr)
         return mDic
     }
     
@@ -138,45 +148,61 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         
         /*
         let parameter = assembleFloor()
-        Alamofire.request(.GET, "http://192.168.1.120:8080/smarthome.IMCPlatform/xingUser/addfloor.action", parameters: parameter).responseJSON { [unowned self] (response) -> Void in
+//        Alamofire.request(<#T##method: Method##Method#>, <#T##URLString: URLStringConvertible##URLStringConvertible#>, parameters: <#T##[String : AnyObject]?#>, encoding: <#T##ParameterEncoding#>, headers: <#T##[String : String]?#>)
+        Alamofire.request(.GET, httpAddFloor, parameters: parameter).responseJSON { [unowned self] (response) -> Void in
             if response.result.isFailure {
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
                 print("error:\(response.result.error)")
                 
             } else {
-                print("result: \(response.result.value)")
-                let dataArr = response.result.value!["data"] as! [[String : String]]
-                var dic = [String : String]()
-                for f in dataArr {
-                    dic[f["floorName"]!] = f["floorCode"]
-                    let floor = Floor(floorID: f["floorCode"]!)
-                    floor.name = f["floorName"]
-                    floor.userCode = userCode
-                    floor.saveFloor()
-                }
-                let roomParameter = self.assembleRoom(dic)
-                
-                Alamofire.request(.GET, "http://192.168.1.120:8080/smarthome.IMCPlatform/xingUser/addroom.action", parameters: roomParameter).responseJSON(completionHandler: { (response) -> Void in
+                print(response.result.value)
+                if response.result.value!["success"] as! Bool != true {
+                    let alert = SHAlertView(title: "提示", message: response.result.value!["message"] as? String, cancleButtonTitle: "取消", confirmButtonTitle: "确定")
+                    alert.show()
                     MBProgressHUD.hideHUDForView(self.view, animated: true)
-                    if response.result.isFailure {
-                        print("error:\(response.result.error)")
-                    } else {
-                        print("result: \(response.result.value)")
-                        let dataArr = response.result.value!["data"] as! [[String : String]]
-                        for r in dataArr {
-                            let room = Room(roomID: r["roomCode"]!)
-                            room.name = r["roomName"]
-                            room.floorCode = r["floorCode"]
-                            room.userCode = userCode
-                            room.saveRoom()
-                        }
-                        
-                        
-                        let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
-                        self.navigationController?.pushViewController(classifyVC, animated: true)
+                } else {
+                    print("result: \(response.result.value)")
+                    let dataArr = response.result.value!["data"] as! [[String : String]]
+                    var dic = [String : String]()
+                    for f in dataArr {
+                        dic[f["floorName"]!] = f["floorCode"]
+                        let floor = Floor(floorID: f["floorCode"]!)
+                        floor.name = f["floorName"]
+                        floor.userCode = userCode
+                        floor.saveFloor()
                     }
                     
-                })
+                    let roomParameter = self.assembleRoom(dic)
+                    
+                    Alamofire.request(.GET, httpAddRoom, parameters: roomParameter).responseJSON(completionHandler: { (response) -> Void in
+                        
+                        if response.result.isFailure {
+                            print("error:\(response.result.error)")
+                            
+                        } else {
+                            if response.result.value!["success"] as! Bool != true {
+                                let alert = SHAlertView(title: "提示", message: response.result.value!["message"] as? String, cancleButtonTitle: "取消", confirmButtonTitle: "确定")
+                                alert.show()
+                                
+                            } else {
+                                print("result: \(response.result.value)")
+                                let dataArr = response.result.value!["data"] as! [[String : String]]
+                                for r in dataArr {
+                                    let room = Room(roomID: r["roomCode"]!)
+                                    room.name = r["roomName"]
+                                    room.floorCode = r["floorCode"]
+                                    room.userCode = userCode
+                                    room.saveRoom()
+                                }
+                                
+                                let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
+                                self.navigationController?.pushViewController(classifyVC, animated: true)
+                            }
+                        }
+                        MBProgressHUD.hideHUDForView(self.view, animated: true)
+                    })
+                    
+                }
                 
             }
         }
