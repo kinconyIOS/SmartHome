@@ -12,7 +12,7 @@ class FloorCell: UITableViewCell {
 
     @IBOutlet var floorName: UITextField!
     @IBOutlet var unfoldBtn: UIButton!
-    var building: Building?
+
     var indexPath: NSIndexPath?
     
     override func awakeFromNib() {
@@ -23,12 +23,16 @@ class FloorCell: UITableViewCell {
     
     private var unfoldBlock: ((isUnfold: Bool) -> ())?
     private var keyboardAdapt: ((index: NSIndexPath) -> ())?
+    private var endEditing: ((String) -> ())?
     
     func configUnfoldBlock(block: (Bool) -> ()) {
         unfoldBlock = block
     }
     func configKeyboardAdpt(block: (index: NSIndexPath) -> ()) {
         keyboardAdapt = block
+    }
+    func configEndEditing(block: (text: String) -> ()) {
+        endEditing = block
     }
     
     @IBAction func exitAction(sender: AnyObject) {
@@ -38,7 +42,7 @@ class FloorCell: UITableViewCell {
         keyboardAdapt?(index: indexPath!)
     }
     @IBAction func editingEnd(sender: UITextField) {
-        building?.buildName = sender.text!
+        endEditing?(sender.text!)
     }
 
     @IBAction func handleUnfold(sender: UIButton) {

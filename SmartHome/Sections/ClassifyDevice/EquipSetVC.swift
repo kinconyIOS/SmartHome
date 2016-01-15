@@ -9,10 +9,12 @@
 import UIKit
 
 class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
-    private var compeletBlock: (()->())?
+    private var compeletBlock: ((Equip)->())?
+    var equip: Equip?
     
-    func configCompeletBlock(compeletBlock: ()->()) {
+    func configCompeletBlock(compeletBlock: (equip: Equip)->()) {
         self.compeletBlock = compeletBlock
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +44,7 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
         self.navigationController?.popViewControllerAnimated(true)
     }
     func handleRightItem(barButton: UIBarButtonItem) {
-        compeletBlock?()
+        compeletBlock?(equip!)
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -87,11 +89,16 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
            
            return cell
         case 2:
-           let cell = tableView.dequeueReusableCellWithIdentifier("equipconfigcell", forIndexPath: indexPath) as! EquipConfigCell
-           cell.cellTitle.text = "所属房间:"
-           cell.cellDetail.text = ""
-           
-           return cell
+            let cell = tableView.dequeueReusableCellWithIdentifier("equipconfigcell", forIndexPath: indexPath) as! EquipConfigCell
+            cell.cellTitle.text = "所属房间:"
+            if equip?.roomCode != "" {
+                let room = dataDeal.searchModel(.Room, byCode: (equip?.roomCode)!) as! Room
+                cell.cellDetail.text = room.name
+            } else {
+                cell.cellDetail.text = ""
+            }
+            
+            return cell
         default:
            let cell = tableView.dequeueReusableCellWithIdentifier("equipnamecell", forIndexPath: indexPath)
            cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -113,14 +120,25 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
             self.navigationController?.pushViewController(choosIconVC, animated: true)
         case 2:
             let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)) as! EquipConfigCell
+            let floorArr = dataDeal.getModels(.Floor) as! [Floor]
+            var codeArr = [String]()
+            var nameArr = [String]()
+            for floor in floorArr {
+                let roomArr = dataDeal.getRoomsByFloor(floor)
+                for room in roomArr {
+                    codeArr.append(room.roomID)
+                    nameArr.append("\(floor.name) \(room.name)")
+                }
+            }
             
-            let chooseAlert = SHChooseAlertView(title: "所属房间", dataSource: ["1楼1房", "2楼2房", "3楼3房"], cancleButtonTitle: "取消", confirmButtonTitle: "确定")
-            chooseAlert.alertAction({ [unowned cell] (alert, buttonIndex) -> () in
+            let chooseAlert = SHChooseAlertView(title: "所属房间", dataSource: nameArr, cancleButtonTitle: "取消", confirmButtonTitle: "确定")
+            chooseAlert.alertAction({ [unowned cell, unowned self] (alert, buttonIndex) -> () in
                 switch buttonIndex {
                 case 0:
                     break
                 case 1:
                     cell.cellDetail.text = alert.selectItem
+                    self.equip?.roomCode = codeArr[alert.selectRow]
                 default:
                     break
                 }

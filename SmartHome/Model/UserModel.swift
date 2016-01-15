@@ -7,6 +7,9 @@
 //
 
 import Foundation
+
+var userCode = "U00318"
+
 class UserModel: NSObject {
     var userCode:String=""
     var userPhone:String=""

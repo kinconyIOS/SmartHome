@@ -180,8 +180,13 @@
 		C24FD2D11C18043700B16BF2 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD2981C18043700B16BF2 /* UIImageView+HighlightedWebCache.m */; };
 		C24FD2D21C18043700B16BF2 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD29A1C18043700B16BF2 /* UIImageView+WebCache.m */; };
 		C24FD2D31C18043700B16BF2 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */; };
+		C25E4B9C1C46469600178352 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C25E4B9B1C46469600178352 /* Info.plist */; };
+		C29BC7441C461FAF00E933E8 /* Https.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BC7431C461FAF00E933E8 /* Https.swift */; };
 		C29D91D71C3F4938008B49E4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29D91CA1C3F492F008B49E4 /* Alamofire.framework */; };
 		C29D91D81C3F4938008B49E4 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C29D91CA1C3F492F008B49E4 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C29D91F11C3F8F0C008B49E4 /* Equip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D91EE1C3F8F0C008B49E4 /* Equip.swift */; };
+		C29D91F21C3F8F0C008B49E4 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D91EF1C3F8F0C008B49E4 /* Floor.swift */; };
+		C29D91F31C3F8F0C008B49E4 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D91F01C3F8F0C008B49E4 /* Room.swift */; };
 		C2AD17D41C2CD33A00AFE71E /* CreatHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AD17D21C2CD33A00AFE71E /* CreatHomeViewController.swift */; };
 		C2AD17D51C2CD33A00AFE71E /* CreatHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AD17D31C2CD33A00AFE71E /* CreatHomeViewController.xib */; };
 		C2AD17D81C2CDD4100AFE71E /* FloorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AD17D61C2CDD4100AFE71E /* FloorCell.swift */; };
@@ -191,13 +196,10 @@
 		C2AE33FB1C3B926300D30086 /* EquipAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE33F91C3B926300D30086 /* EquipAddVC.swift */; };
 		C2AE33FC1C3B926300D30086 /* EquipAddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AE33FA1C3B926300D30086 /* EquipAddVC.xib */; };
 		C2AE33FE1C3BBDEE00D30086 /* DataDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE33FD1C3BBDEE00D30086 /* DataDeal.swift */; };
-		C2C979FC1C3A0BFF00706A07 /* Equip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C979FB1C3A0BFF00706A07 /* Equip.swift */; };
 		C2C979FF1C3A1B2800706A07 /* EquipTableRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C979FD1C3A1B2800706A07 /* EquipTableRoomCell.swift */; };
 		C2C97A001C3A1B2800706A07 /* EquipTableRoomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C979FE1C3A1B2800706A07 /* EquipTableRoomCell.xib */; };
 		C2C97A031C3A1B5500706A07 /* EquipTableEquipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C97A011C3A1B5500706A07 /* EquipTableEquipCell.swift */; };
 		C2C97A041C3A1B5500706A07 /* EquipTableEquipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2C97A021C3A1B5500706A07 /* EquipTableEquipCell.xib */; };
-		C2C97A061C3A496300706A07 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C97A051C3A496300706A07 /* Room.swift */; };
-		C2C97A081C3A497400706A07 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C97A071C3A497400706A07 /* Floor.swift */; };
 		C2CA54781C2A444900B52498 /* AddDeviceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA54771C2A444900B52498 /* AddDeviceAlert.swift */; };
 		C2D04EE11C33A2B300A59345 /* ClassifyHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D04EDF1C33A2B300A59345 /* ClassifyHomeVC.swift */; };
 		C2D04EE21C33A2B300A59345 /* ClassifyHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D04EE01C33A2B300A59345 /* ClassifyHomeVC.xib */; };
@@ -744,7 +746,12 @@
 		C24FD29A1C18043700B16BF2 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		C24FD29B1C18043700B16BF2 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		C24FD29C1C18043700B16BF2 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		C25E4B9B1C46469600178352 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C29BC7431C461FAF00E933E8 /* Https.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Https.swift; sourceTree = "<group>"; };
 		C29D91BF1C3F492F008B49E4 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
+		C29D91EE1C3F8F0C008B49E4 /* Equip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equip.swift; sourceTree = "<group>"; };
+		C29D91EF1C3F8F0C008B49E4 /* Floor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
+		C29D91F01C3F8F0C008B49E4 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		C2AD17D21C2CD33A00AFE71E /* CreatHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatHomeViewController.swift; sourceTree = "<group>"; };
 		C2AD17D31C2CD33A00AFE71E /* CreatHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatHomeViewController.xib; sourceTree = "<group>"; };
 		C2AD17D61C2CDD4100AFE71E /* FloorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorCell.swift; sourceTree = "<group>"; };
@@ -754,13 +761,10 @@
 		C2AE33F91C3B926300D30086 /* EquipAddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipAddVC.swift; sourceTree = "<group>"; };
 		C2AE33FA1C3B926300D30086 /* EquipAddVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipAddVC.xib; sourceTree = "<group>"; };
 		C2AE33FD1C3BBDEE00D30086 /* DataDeal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDeal.swift; sourceTree = "<group>"; };
-		C2C979FB1C3A0BFF00706A07 /* Equip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equip.swift; sourceTree = "<group>"; };
 		C2C979FD1C3A1B2800706A07 /* EquipTableRoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipTableRoomCell.swift; sourceTree = "<group>"; };
 		C2C979FE1C3A1B2800706A07 /* EquipTableRoomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipTableRoomCell.xib; sourceTree = "<group>"; };
 		C2C97A011C3A1B5500706A07 /* EquipTableEquipCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipTableEquipCell.swift; sourceTree = "<group>"; };
 		C2C97A021C3A1B5500706A07 /* EquipTableEquipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipTableEquipCell.xib; sourceTree = "<group>"; };
-		C2C97A051C3A496300706A07 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
-		C2C97A071C3A497400706A07 /* Floor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
 		C2CA54771C2A444900B52498 /* AddDeviceAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceAlert.swift; sourceTree = "<group>"; };
 		C2D04EDF1C33A2B300A59345 /* ClassifyHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassifyHomeVC.swift; sourceTree = "<group>"; };
 		C2D04EE01C33A2B300A59345 /* ClassifyHomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassifyHomeVC.xib; sourceTree = "<group>"; };
@@ -1056,6 +1060,7 @@
 				980A92FF1C17B440009166D0 /* Assets.xcassets */,
 				980A93011C17B440009166D0 /* LaunchScreen.storyboard */,
 				9803539D1C1947DE00A2C6A8 /* Info.plist */,
+				C25E4B9B1C46469600178352 /* Info.plist */,
 				980A92FC1C17B440009166D0 /* SmartHome.xcdatamodeld */,
 			);
 			path = SmartHome;
@@ -1272,10 +1277,8 @@
 				9806CD3F1C210FF30038A8E0 /* GuideViewController.h */,
 				9806CD401C210FF30038A8E0 /* GuideViewController.m */,
 				98E906BF1C19694100392450 /* Tools.swift */,
-				C2C979FB1C3A0BFF00706A07 /* Equip.swift */,
-				C2C97A051C3A496300706A07 /* Room.swift */,
-				C2C97A071C3A497400706A07 /* Floor.swift */,
 				C2AE33FD1C3BBDEE00D30086 /* DataDeal.swift */,
+				C29BC7431C461FAF00E933E8 /* Https.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1283,6 +1286,9 @@
 		98FD77A91C1E5B440079E5A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C29D91EE1C3F8F0C008B49E4 /* Equip.swift */,
+				C29D91EF1C3F8F0C008B49E4 /* Floor.swift */,
+				C29D91F01C3F8F0C008B49E4 /* Room.swift */,
 				98FD77AA1C1E5B530079E5A7 /* UserModel.swift */,
 				9803F63E1C2B97E300CE10C2 /* WeatherModel.swift */,
 			);
@@ -1867,6 +1873,7 @@
 				985F9A641C2159FC00FFE955 /* AddRoomCell.xib in Resources */,
 				C2DF38FB1C34C47F00114AE8 /* ChooseIconVC.xib in Resources */,
 				C24FD2B61C18043700B16BF2 /* DeviceIconVC.xib in Resources */,
+				C25E4B9C1C46469600178352 /* Info.plist in Resources */,
 				C2D04EF01C33CB9C00A59345 /* EquipNameCell.xib in Resources */,
 				984DE79B1C48DD7700D7A76C /* EZMain.storyboard in Resources */,
 				C2DF38FF1C34C5CB00114AE8 /* ChooseHeaderView.xib in Resources */,
@@ -1962,6 +1969,7 @@
 				985F9A6C1C2159FC00FFE955 /* RoomAndRenameVC.swift in Sources */,
 				C2AD17D41C2CD33A00AFE71E /* CreatHomeViewController.swift in Sources */,
 				C24FD2CC1C18043700B16BF2 /* SDWebImagePrefetcher.m in Sources */,
+				C29D91F31C3F8F0C008B49E4 /* Room.swift in Sources */,
 				C24FD2A91C18043700B16BF2 /* PhoneVC.swift in Sources */,
 				C21E15901C18065200C45854 /* FailedVC.swift in Sources */,
 				985F9A821C21632B00FFE955 /* HScrollView.m in Sources */,
@@ -1996,10 +2004,9 @@
 				9867F0631C46383A005527B5 /* HIKLoadViewItem+configPath.m in Sources */,
 				984739E31C1AC9A300E80376 /* UIImageView+AFNetworking.m in Sources */,
 				989ECECC1C30C01E00F5867A /* LocationManager.swift in Sources */,
-				C2C97A081C3A497400706A07 /* Floor.swift in Sources */,
 				C2DF38FA1C34C47F00114AE8 /* ChooseIconVC.swift in Sources */,
+				C29BC7441C461FAF00E933E8 /* Https.swift in Sources */,
 				C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */,
-				C2C979FC1C3A0BFF00706A07 /* Equip.swift in Sources */,
 				C24FD2C11C18043700B16BF2 /* QRCodeReader.m in Sources */,
 				984739E21C1AC9A300E80376 /* UIButton+AFNetworking.m in Sources */,
 				984739E61C1AC9A300E80376 /* UIWebView+AFNetworking.m in Sources */,

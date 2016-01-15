@@ -10,7 +10,6 @@ import UIKit
 
 class RoomCell: UITableViewCell {
 
-    var building: Building?
     var indexPath: NSIndexPath?
     
     func handleEdit(tap: UITapGestureRecognizer) {
@@ -64,15 +63,19 @@ class RoomCell: UITableViewCell {
         
     }
     private var keyboardAdapt: ((index: NSIndexPath) -> ())?
+    private var endEditing: ((String) -> ())?
     func configKeyboardAdpt(block: (index: NSIndexPath) -> ()) {
         keyboardAdapt = block
     }
-    
+    func configEndEditing(block: (text: String) -> ()) {
+        endEditing = block
+    }
     @IBAction func endEditingAction(sender: UITextField) {
-        building?.buildName = sender.text!
+        endEditing?(sender.text!)
     }
     
     @IBAction func exitAction(sender: UITextField) {
+        
     }
     @IBAction func beginEditingAction(sender: UITextField) {
         keyboardAdapt?(index: indexPath!)

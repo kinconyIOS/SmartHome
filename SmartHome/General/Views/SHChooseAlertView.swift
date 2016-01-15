@@ -22,6 +22,7 @@ class SHChooseAlertView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     private let pickerView = UIPickerView()
     
     var selectItem: String?
+    var selectRow: Int = 0
     
     private override init(frame: CGRect) {
         super.init(frame: frame)
@@ -134,6 +135,7 @@ class SHChooseAlertView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectItem = dataSource[row]
+        selectRow = row
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

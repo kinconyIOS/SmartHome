@@ -30,6 +30,12 @@ import Alamofire
     let EzvizAppKey = "4bdf5701dfaa4e18bd2abe901274ae17"
    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        dataDeal.creatUserTable()
+        dataDeal.creatFloorTable()
+        dataDeal.creatRoomTable()
+        dataDeal.creatEquipTable()
+        print(NSHomeDirectory())
         //此处要考虑三种情况
         //1.下载软件第一次安装 2.不是首次且令牌失效 3.不是首次且令牌不失效
         let guidevc:GuideViewController = GuideViewController(coverImageNames: ["引导页.jpg","引导页.jpg","引导页.jpg"], backgroundImageNames: nil)
