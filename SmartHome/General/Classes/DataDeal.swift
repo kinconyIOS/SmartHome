@@ -189,6 +189,7 @@ class DataDeal {
                 newEquip.roomCode = e[roomCode]
                 arr.append(newEquip)
             }
+          
         }
         return arr
         

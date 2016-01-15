@@ -23,7 +23,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
     var cameraId = ""
     let vfcode="at.6wm8ormqcy03shfib5yeb9yyah3r2cp4-171ujmx9ol-0oc00e3-seti9m9p5"
     var orientationLast:UIInterfaceOrientation?=UIInterfaceOrientation.Portrait
-    let array=["精选","电视剧","电影","综艺","娱乐","健康","科技","游戏","体育","搞笑"];
+    var roomArray:[String]?=[]
     let  hscroll:HScrollView?=HScrollView.init()
     var player:EZPlayer?
     
@@ -59,7 +59,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
         hscroll!.frame=CGRectMake(0,20, ScreenWidth-60, 64);
         
         self.navigationItem.titleView=hscroll
-        scrollAddBtn()
+       
         
         //修改导航栏按钮；
         let bbi_r=UIBarButtonItem(image: UIImage(named: ""), style:UIBarButtonItemStyle.Plain, target:self ,action:Selector("showSide"));
@@ -71,48 +71,40 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("statusBarOrientationChange:"), name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
         //    self.homeTableView.registerNib(UINib(nibName: "HomeTopTableViewCell", bundle: nil), forCellReuseIdentifier:"topcell")
         getRoomInfo()
-        //模拟数据源
-//        let numOfFloor=4;
-//        for index in 1...numOfFloor{
-//            let floor = RoomListItem()
-//            floor.name = "\(index)楼"
-//            floor.iconName = "\(index)楼"
-//            floor.isSubItem = false
-//            let room  = RoomListItem()
-//            room.name = "地下室"
-//            room.iconName = "地下室"
-//            room.isSubItem = true
-//            let room2  = RoomListItem()
-//            room2.name = "花园"
-//            room2.iconName="花园"
-//            room2.isSubItem = true
-//            floor.items.addObject(room)
-//            floor.items.addObject(room2)
-//            tableSideViewDataSource.addObject(floor)
-//        }
+
      }
     func getRoomInfo(){
     
-    let url = BaseUrl + getroom
-    let dict = ["userCode":"U00318"]
-        
-    Alamofire.request(.GET, url, parameters: dict).responseJSON { (response) -> Void in
-        if(response.result.isSuccess){
-        let res = response.result.value
-            if res!["success"]!!.boolValue!  {
-            ///todo success
-                print(res)
-                
-            }else{
+
+       let floors = dataDeal.getModels(DataDeal.TableType.Floor) as! Array<Floor>
+        for _floor in floors{
+                     let floor = RoomListItem()
+                       floor.name = _floor.name
+                    floor.iconName = "1楼"
+                      floor.isSubItem = false
+            let rooms = dataDeal.getRoomsByFloor(_floor)
+            for _room in rooms{
             
-            showMsg(res!["message"]! as! String)
+                let room  = RoomListItem()
+                            room.name = _room.name
+                            room.iconName = "地下室"
+                            room.isSubItem = true
+             floor.items.addObject(room)
             
             }
-        
-        }else{
-        
+            tableSideViewDataSource.addObject(floor)
+            
         }
-      }
+        //刷新数据
+        self.sideView?.tableView.reloadData()
+        roomArray=[]
+        let allrooms = dataDeal.getModels(DataDeal.TableType.Room) as! Array<Room>
+        for room in allrooms{
+         roomArray?.append(room.name)
+        }
+        //刷新顶部按钮
+         scrollAddBtn()
+
     }
     func loadEZplay() {
         //加载视频
@@ -242,18 +234,18 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
     //导航栏scollView
     func scrollAddBtn()
     {
-        for index in 1...array.count
+        for index in 0..<roomArray!.count
         {
             let btn:UIButton=UIButton.init(frame: CGRectMake(0, 2, ScreenWidth/6, 30))
             //设置倒角
             btn.layer.cornerRadius=15;
             btn.setTitleColor(UIColor.blackColor(),forState:UIControlState.Normal);
             btn.backgroundColor=UIColor.clearColor()
-            if index==1 {
+            if index==0 {
                 btn.backgroundColor=UIColor.whiteColor();
                 btn.setTitleColor(UIColor.orangeColor(), forState: UIControlState.Normal)
             }
-            btn.setTitle(array[index-1], forState: UIControlState.Normal)
+            btn.setTitle(roomArray![index], forState: UIControlState.Normal)
             btn.tag=index
             
             btn.titleLabel?.font=UIFont.systemFontOfSize(15)

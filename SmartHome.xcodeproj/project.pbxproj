@@ -65,6 +65,9 @@
 		984DE79B1C48DD7700D7A76C /* EZMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984DE79A1C48DD7700D7A76C /* EZMain.storyboard */; };
 		984DE7A01C48DE1100D7A76C /* LightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984DE79E1C48DE1100D7A76C /* LightCell.swift */; };
 		984DE7A11C48DE1100D7A76C /* LightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 984DE79F1C48DE1100D7A76C /* LightCell.xib */; };
+		984DE7B51C48DFA700D7A76C /* Equip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984DE7B21C48DFA700D7A76C /* Equip.swift */; };
+		984DE7B61C48DFA700D7A76C /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984DE7B31C48DFA700D7A76C /* Floor.swift */; };
+		984DE7B71C48DFA700D7A76C /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984DE7B41C48DFA700D7A76C /* Room.swift */; };
 		98539A601C1FBFBB00DA7699 /* Waiting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98539A5F1C1FBFBB00DA7699 /* Waiting.swift */; };
 		98539A621C1FDA0B00DA7699 /* wait.gif in Resources */ = {isa = PBXBuildFile; fileRef = 98539A611C1FDA0B00DA7699 /* wait.gif */; };
 		985F9A631C2159FC00FFE955 /* AddRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985F9A581C2159FC00FFE955 /* AddRoomCell.swift */; };
@@ -184,9 +187,6 @@
 		C29BC7441C461FAF00E933E8 /* Https.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29BC7431C461FAF00E933E8 /* Https.swift */; };
 		C29D91D71C3F4938008B49E4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29D91CA1C3F492F008B49E4 /* Alamofire.framework */; };
 		C29D91D81C3F4938008B49E4 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C29D91CA1C3F492F008B49E4 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C29D91F11C3F8F0C008B49E4 /* Equip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D91EE1C3F8F0C008B49E4 /* Equip.swift */; };
-		C29D91F21C3F8F0C008B49E4 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D91EF1C3F8F0C008B49E4 /* Floor.swift */; };
-		C29D91F31C3F8F0C008B49E4 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D91F01C3F8F0C008B49E4 /* Room.swift */; };
 		C2AD17D41C2CD33A00AFE71E /* CreatHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AD17D21C2CD33A00AFE71E /* CreatHomeViewController.swift */; };
 		C2AD17D51C2CD33A00AFE71E /* CreatHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AD17D31C2CD33A00AFE71E /* CreatHomeViewController.xib */; };
 		C2AD17D81C2CDD4100AFE71E /* FloorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AD17D61C2CDD4100AFE71E /* FloorCell.swift */; };
@@ -563,6 +563,9 @@
 		984DE79A1C48DD7700D7A76C /* EZMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EZMain.storyboard; sourceTree = "<group>"; };
 		984DE79E1C48DE1100D7A76C /* LightCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightCell.swift; sourceTree = "<group>"; };
 		984DE79F1C48DE1100D7A76C /* LightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LightCell.xib; sourceTree = "<group>"; };
+		984DE7B21C48DFA700D7A76C /* Equip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equip.swift; sourceTree = "<group>"; };
+		984DE7B31C48DFA700D7A76C /* Floor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
+		984DE7B41C48DFA700D7A76C /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		98539A5F1C1FBFBB00DA7699 /* Waiting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Waiting.swift; sourceTree = "<group>"; };
 		98539A611C1FDA0B00DA7699 /* wait.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = wait.gif; sourceTree = "<group>"; };
 		985F9A581C2159FC00FFE955 /* AddRoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomCell.swift; sourceTree = "<group>"; };
@@ -749,9 +752,6 @@
 		C25E4B9B1C46469600178352 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C29BC7431C461FAF00E933E8 /* Https.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Https.swift; sourceTree = "<group>"; };
 		C29D91BF1C3F492F008B49E4 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
-		C29D91EE1C3F8F0C008B49E4 /* Equip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equip.swift; sourceTree = "<group>"; };
-		C29D91EF1C3F8F0C008B49E4 /* Floor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
-		C29D91F01C3F8F0C008B49E4 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		C2AD17D21C2CD33A00AFE71E /* CreatHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatHomeViewController.swift; sourceTree = "<group>"; };
 		C2AD17D31C2CD33A00AFE71E /* CreatHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatHomeViewController.xib; sourceTree = "<group>"; };
 		C2AD17D61C2CDD4100AFE71E /* FloorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorCell.swift; sourceTree = "<group>"; };
@@ -1286,9 +1286,9 @@
 		98FD77A91C1E5B440079E5A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C29D91EE1C3F8F0C008B49E4 /* Equip.swift */,
-				C29D91EF1C3F8F0C008B49E4 /* Floor.swift */,
-				C29D91F01C3F8F0C008B49E4 /* Room.swift */,
+				984DE7B21C48DFA700D7A76C /* Equip.swift */,
+				984DE7B31C48DFA700D7A76C /* Floor.swift */,
+				984DE7B41C48DFA700D7A76C /* Room.swift */,
 				98FD77AA1C1E5B530079E5A7 /* UserModel.swift */,
 				9803F63E1C2B97E300CE10C2 /* WeatherModel.swift */,
 			);
@@ -1969,7 +1969,6 @@
 				985F9A6C1C2159FC00FFE955 /* RoomAndRenameVC.swift in Sources */,
 				C2AD17D41C2CD33A00AFE71E /* CreatHomeViewController.swift in Sources */,
 				C24FD2CC1C18043700B16BF2 /* SDWebImagePrefetcher.m in Sources */,
-				C29D91F31C3F8F0C008B49E4 /* Room.swift in Sources */,
 				C24FD2A91C18043700B16BF2 /* PhoneVC.swift in Sources */,
 				C21E15901C18065200C45854 /* FailedVC.swift in Sources */,
 				985F9A821C21632B00FFE955 /* HScrollView.m in Sources */,
@@ -1978,6 +1977,7 @@
 				C24FD2A51C18043700B16BF2 /* LoginVC.swift in Sources */,
 				C24FD2A71C18043700B16BF2 /* PassWordVC.swift in Sources */,
 				984739DC1C1AC9A300E80376 /* AFURLRequestSerialization.m in Sources */,
+				984DE7B71C48DFA700D7A76C /* Room.swift in Sources */,
 				C2DCCC811C28E61600F637F1 /* AddDeviceViewController.swift in Sources */,
 				C24FD2D11C18043700B16BF2 /* UIImageView+HighlightedWebCache.m in Sources */,
 				9867F04E1C4637F1005527B5 /* ViewController+MASAdditions.m in Sources */,
@@ -2011,6 +2011,7 @@
 				984739E21C1AC9A300E80376 /* UIButton+AFNetworking.m in Sources */,
 				984739E61C1AC9A300E80376 /* UIWebView+AFNetworking.m in Sources */,
 				989888EA1C477D6B00B23187 /* AutorotateNavC.swift in Sources */,
+				984DE7B61C48DFA700D7A76C /* Floor.swift in Sources */,
 				C24FD2CE1C18043700B16BF2 /* UIImage+GIF.m in Sources */,
 				9867F0251C4637D1005527B5 /* UIImage+DDKit.m in Sources */,
 				980A92FE1C17B440009166D0 /* SmartHome.xcdatamodeld in Sources */,
@@ -2049,12 +2050,12 @@
 				984739D61C1AC9A300E80376 /* AFHTTPRequestOperation.m in Sources */,
 				9867F0661C46383A005527B5 /* UIImageView+EzvizOpenSDK.m in Sources */,
 				9867F0201C4637D1005527B5 /* NSArray+DDKit.m in Sources */,
-				C2C97A061C3A496300706A07 /* Room.swift in Sources */,
 				C2EC1CA01C2BC99F005030FC /* LQRcodeVC.swift in Sources */,
 				C24FD2C81C18043700B16BF2 /* SDWebImageDecoder.m in Sources */,
 				C21E15941C1806FE00C45854 /* SetModelVC.swift in Sources */,
 				C24FD2D01C18043700B16BF2 /* UIImage+WebP.m in Sources */,
 				9867F0601C46383A005527B5 /* HIKLoadPercentView.m in Sources */,
+				984DE7B51C48DFA700D7A76C /* Equip.swift in Sources */,
 				984739E51C1AC9A300E80376 /* UIRefreshControl+AFNetworking.m in Sources */,
 				C24FD2C71C18043700B16BF2 /* SDWebImageCompat.m in Sources */,
 				C24FD2B31C18043700B16BF2 /* CreateChooseVC.swift in Sources */,
