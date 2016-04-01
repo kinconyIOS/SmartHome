@@ -44,6 +44,10 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
         self.navigationController?.popViewControllerAnimated(true)
     }
     func handleRightItem(barButton: UIBarButtonItem) {
+       
+        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! EquipNameCell
+          equip!.name = (cell.equipName.text?.trimString())!
+        print("\(equip?.name)-\(equip?.icon)-\(equip?.roomCode)")
         compeletBlock?(equip!)
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -85,7 +89,7 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
         case 1:
            let cell = tableView.dequeueReusableCellWithIdentifier("equipimagecell", forIndexPath: indexPath) as! EquipImageCell
            cell.cellTitleLabel.text = "设备图标:"
-           cell.cellIconImage.image = UIImage(named: "灯泡1")
+           cell.cellIconImage.image = UIImage(named:(equip?.icon)!)
            
            return cell
         case 2:
@@ -100,7 +104,7 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
             
             return cell
         default:
-           let cell = tableView.dequeueReusableCellWithIdentifier("equipnamecell", forIndexPath: indexPath)
+           let cell = tableView.dequeueReusableCellWithIdentifier("equipnamecell", forIndexPath: indexPath) as! EquipNameCell
            cell.selectionStyle = UITableViewCellSelectionStyle.None
            return cell
         }
@@ -114,8 +118,9 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! EquipImageCell
             
             let choosIconVC = ChooseIconVC(nibName: "ChooseIconVC", bundle: nil)
-            choosIconVC.chooseImageBlock({ [unowned cell] (image) -> () in
-                cell.cellIconImage.image = image
+            choosIconVC.chooseImageBlock({ [unowned cell] (imageStr) -> () in
+                self.equip?.icon = imageStr
+                cell.cellIconImage.image = UIImage(named: imageStr)
             })
             self.navigationController?.pushViewController(choosIconVC, animated: true)
         case 2:
@@ -126,8 +131,8 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
             for floor in floorArr {
                 let roomArr = dataDeal.getRoomsByFloor(floor)
                 for room in roomArr {
-                    codeArr.append(room.roomID)
-                    nameArr.append("\(floor.name) \(room.name)")
+                    codeArr.append(room.roomCode)
+                    nameArr.append("\(floor.name)   \(room.name)")
                 }
             }
             

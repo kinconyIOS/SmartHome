@@ -25,6 +25,31 @@ class DataDeal {
     
     var floors = [Floor]()
     var rooms = [Room]()
+    func clearAllTable(){
+        let floor = Table("Floors")
+        
+        do {
+            try db?.run(floor.delete())
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        let rooms = Table("Rooms")
+        
+        do {
+            try db?.run(rooms.delete())
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        let equips = Table("Equips")
+        
+        do {
+            try db?.run(equips.delete())
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+
+    
+    }
     
     func creatUserTable() {
         
@@ -78,6 +103,8 @@ class DataDeal {
         let equipIcon = Expression<String>("icon")
         let roomCode = Expression<String>("roomCode")
         let userCode = Expression<String>("userCode")
+        let type = Expression<String>("type")
+        let num =  Expression<String>("num")
         let equip = Table("Equips")
         do {
             try db?.run(equip.create(ifNotExists: true) { (t) -> Void in
@@ -87,6 +114,8 @@ class DataDeal {
                 t.column(equipIcon)
                 t.column(roomCode)
                 t.column(userCode)
+                t.column(type)
+                t.column(num)
                 })
         } catch let error as NSError {
             print(error.localizedDescription)
@@ -104,7 +133,7 @@ class DataDeal {
             let floorName = Expression<String>("name")
             let userCode = Expression<String>("userCode")
             for f in try! db!.prepare(floor.filter(floorCode == code)) {
-                let newFloor = Floor(floorID: f[floorCode])
+                let newFloor = Floor(floorCode: f[floorCode])
                 newFloor.name = f[floorName]
                 newFloor.userCode = f[userCode]
                 return newFloor
@@ -117,7 +146,7 @@ class DataDeal {
             let userCode = Expression<String>("userCode")
             let room = Table("Rooms")
             for r in try! db!.prepare(room.filter(roomCode == code)) {
-                let newRoom = Room(roomID: r[roomCode])
+                let newRoom = Room(roomCode: r[roomCode])
                 newRoom.name = r[roomName]
                 newRoom.userCode = r[userCode]
                 newRoom.floorCode = r[floorCode]
@@ -130,6 +159,8 @@ class DataDeal {
             let equipIcon = Expression<String>("icon")
             let roomCode = Expression<String>("roomCode")
             let userCode = Expression<String>("userCode")
+            let type = Expression<String>("type")
+            let num =  Expression<String>("num")
             let equip = Table("Equips")
             for e in try! db!.prepare(equip.filter(equipCode == code)) {
                 let newEquip = Equip(equipID: e[equipCode])
@@ -137,6 +168,9 @@ class DataDeal {
                 newEquip.icon = e[equipIcon]
                 newEquip.userCode = e[userCode]
                 newEquip.roomCode = e[roomCode]
+                newEquip.type = e[type]
+                newEquip.num = e[num]
+               
                 return newEquip
             }
         }
@@ -154,7 +188,7 @@ class DataDeal {
             let floorName = Expression<String>("name")
             let userCode = Expression<String>("userCode")
             for f in try! db!.prepare(floor) {
-                let newFloor = Floor(floorID: f[floorCode])
+                let newFloor = Floor(floorCode: f[floorCode])
                 newFloor.name = f[floorName]
                 newFloor.userCode = f[userCode]
                 arr.append(newFloor)
@@ -167,7 +201,7 @@ class DataDeal {
             let userCode = Expression<String>("userCode")
             let room = Table("Rooms")
             for r in try! db!.prepare(room) {
-                let newRoom = Room(roomID: r[roomCode])
+                let newRoom = Room(roomCode: r[roomCode])
                 newRoom.name = r[roomName]
                 newRoom.userCode = r[userCode]
                 newRoom.floorCode = r[floorCode]
@@ -180,6 +214,8 @@ class DataDeal {
             let equipIcon = Expression<String>("icon")
             let roomCode = Expression<String>("roomCode")
             let userCode = Expression<String>("userCode")
+            let type = Expression<String>("type")
+            let num =  Expression<String>("num")
             let equip = Table("Equips")
             for e in try! db!.prepare(equip) {
                 let newEquip = Equip(equipID: e[equipCode])
@@ -187,6 +223,8 @@ class DataDeal {
                 newEquip.icon = e[equipIcon]
                 newEquip.userCode = e[userCode]
                 newEquip.roomCode = e[roomCode]
+                newEquip.type = e[type]
+                newEquip.num = e[num]
                 arr.append(newEquip)
             }
           
@@ -207,7 +245,7 @@ class DataDeal {
             let floorName = Expression<String>("name")
             let userCode = Expression<String>("userCode")
             do {
-                try db?.run(floor.insert(or: .Replace, floorCode <- f.floorID, floorName <- f.name, userCode <- f.userCode))
+                try db?.run(floor.insert(or: .Replace, floorCode <- f.floorCode, floorName <- f.name, userCode <- f.userCode))
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
@@ -220,7 +258,7 @@ class DataDeal {
             let userCode = Expression<String>("userCode")
             let room = Table("Rooms")
             do {
-                try db?.run(room.insert(or: .Replace, roomCode <- r.roomID, roomName <- r.name, userCode <- r.userCode, floorCode <- r.floorCode))
+                try db?.run(room.insert(or: .Replace, roomCode <- r.roomCode, roomName <- r.name, userCode <- r.userCode, floorCode <- r.floorCode))
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
@@ -232,9 +270,11 @@ class DataDeal {
             let equipIcon = Expression<String>("icon")
             let roomCode = Expression<String>("roomCode")
             let userCode = Expression<String>("userCode")
+            let type = Expression<String>("type")
+            let num = Expression<String>("num")
             let equip = Table("Equips")
             do {
-                try db?.run(equip.insert(or: .Replace, equipCode <- e.equipID, equipName <- e.name, userCode <- e.userCode, roomCode <- e.roomCode, equipIcon <- e.icon))
+                try db?.run(equip.insert(or: .Replace, equipCode <- e.equipID, equipName <- e.name, userCode <- e.userCode, roomCode <- e.roomCode, equipIcon <- e.icon,type <- e.type,num <- e.num))
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
@@ -242,7 +282,53 @@ class DataDeal {
             break
         }
     }
+    func deleteModel( type:TableType, model: AnyObject)
+    {
     
+    switch type {
+    case .User:
+    
+    break
+    case .Floor where model is Floor:
+    let f = model as! Floor
+    let floor = Table("Floors")
+    let floorCode = Expression<String>("code")
+ 
+    do {
+        try db?.run(floor.filter(floorCode == f.floorCode).delete())
+    } catch let error as NSError {
+    print(error.localizedDescription)
+    }
+    
+    case .Room where model is Room:
+    let r = model as! Room
+    let roomCode = Expression<String>("code")
+ 
+    let room = Table("Rooms")
+    do {
+    try db?.run(room.filter(roomCode == r.roomCode).delete())
+    } catch let error as NSError {
+    print(error.localizedDescription)
+    }
+    
+    case .Equip where model is Equip:
+    let e = model as! Equip
+    let equipCode = Expression<String>("code")
+   
+    let equip = Table("Equips")
+    do {
+    try db?.run(equip.filter(equipCode == e.equipID).delete())
+    } catch let error as NSError {
+    print(error.localizedDescription)
+    }
+    default:
+    break
+    }
+
+    
+    
+    
+    }
     func updateModel(type: TableType, model: AnyObject) {
         switch type {
         case .User:
@@ -255,7 +341,7 @@ class DataDeal {
             let floorName = Expression<String>("name")
             let userCode = Expression<String>("userCode")
             do {
-                try db?.run(floor.filter(floorCode == f.floorID).update(floorName <- f.name,userCode <- f.userCode))
+                try db?.run(floor.filter(floorCode == f.floorCode).update(floorName <- f.name,userCode <- f.userCode))
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
@@ -268,7 +354,7 @@ class DataDeal {
             let userCode = Expression<String>("userCode")
             let room = Table("Rooms")
             do {
-                try db?.run(room.filter(roomCode == r.roomID).update(roomName <- r.name, userCode <- r.userCode, floorCode <- r.floorCode))
+                try db?.run(room.filter(roomCode == r.roomCode).update(roomName <- r.name, userCode <- r.userCode, floorCode <- r.floorCode))
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
@@ -280,9 +366,12 @@ class DataDeal {
             let equipIcon = Expression<String>("icon")
             let roomCode = Expression<String>("roomCode")
             let userCode = Expression<String>("userCode")
+               let type = Expression<String>("type")
+                    let num = Expression<String>("num")
+            
             let equip = Table("Equips")
             do {
-                try db?.run(equip.filter(equipCode == e.equipID).update(equipName <- e.name, userCode <- e.userCode, roomCode <- e.roomCode, equipIcon <- e.icon))
+                try db?.run(equip.filter(equipCode == e.equipID).update(equipName <- e.name, userCode <- e.userCode, roomCode <- e.roomCode, equipIcon <- e.icon,type <- e.type,num <- e.num))
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
@@ -313,8 +402,8 @@ class DataDeal {
         let floorCode = Expression<String>("floorCode")
         let userCode = Expression<String>("userCode")
         let room = Table("Rooms")
-        for r in try! db!.prepare(room.filter(floorCode == floor.floorID)) {
-            let newRoom = Room(roomID: r[roomCode])
+        for r in try! db!.prepare(room.filter(floorCode == floor.floorCode)) {
+            let newRoom = Room(roomCode: r[roomCode])
             newRoom.name = r[roomName]
             newRoom.floorCode = r[floorCode]
             newRoom.userCode = r[userCode]
@@ -330,13 +419,18 @@ class DataDeal {
         let equipIcon = Expression<String>("icon")
         let roomCode = Expression<String>("roomCode")
         let userCode = Expression<String>("userCode")
+        let type = Expression<String>("type")
+         let num =  Expression<String>("num")
         let equip = Table("Equips")
-        for e in try! db!.prepare(equip.filter(roomCode == room.roomID)) {
+        
+        for e in try! db!.prepare(equip.filter(roomCode == room.roomCode)) {
             let newEquip = Equip(equipID: e[equipCode])
             newEquip.name = e[equipName]
             newEquip.icon = e[equipIcon]
             newEquip.roomCode = e[roomCode]
             newEquip.userCode = e[userCode]
+            newEquip.type = e[type]
+            newEquip.num = e[num]
             arr.append(newEquip)
         }
         return arr

@@ -7,8 +7,7 @@
 //
 
 import UIKit
-let AFAppDotNetAPIBaseURLString:String = "https://www.baidu.com/"
-typealias NoReach = ()->()
+
 extension AppDelegate{
     func registerRemoteNotification()
     {
@@ -22,30 +21,5 @@ extension AppDelegate{
             UIApplication.sharedApplication().registerForRemoteNotificationTypes(types)
         }
     }
-    
-    func setUpReach(noreach:NoReach)
-    {
-        let sessionManager =  AFHTTPSessionManager(baseURL:NSURL(string: AFAppDotNetAPIBaseURLString))
-        
-            sessionManager.securityPolicy = AFSecurityPolicy(pinningMode:AFSSLPinningMode.None)
-            
-        sessionManager.reachabilityManager.setReachabilityStatusChangeBlock { (status:AFNetworkReachabilityStatus ) -> Void in
-            switch (status) {
-            case AFNetworkReachabilityStatus.ReachableViaWWAN:                    print("---AFNetworkReachabilityStatusReachableViaWWAN--");                   break
-            case AFNetworkReachabilityStatus.ReachableViaWiFi:                    print("---AFNetworkReachabilityStatusReachableViaWiFi--");                    break
-            case AFNetworkReachabilityStatus.NotReachable:
-                if UIApplication.sharedApplication().applicationState == UIApplicationState.Active{
-                   noreach()
-                }
-                
-                
-                break
-            default:
-                break
-            }
-
-        }
-        
-        
-    }
+   
 }

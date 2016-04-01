@@ -29,8 +29,8 @@ typedef void (^DidSelectedEnter)();
 
 
 - (id)initWithCoverImageNames:(NSArray*)coverNames backgroundImageNames:(NSArray*)bgNames;
-//
-//
+////
+////
 //- (id)initWithCoverImageNames:(NSArray*)coverNames backgroundImageNames:(NSArray*)bgNames button:(UIButton*)button;
 
 @end

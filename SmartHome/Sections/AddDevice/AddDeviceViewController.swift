@@ -9,7 +9,10 @@
 import UIKit
 import Alamofire
 
-class AddDeviceViewController: UIViewController {
+class AddDeviceViewController: UIViewController ,QRCodeReaderDelegate{
+    static let myreader=QRCodeReaderViewController(cancelButtonTitle:"取消识别")
+
+    var onceToken:dispatch_once_t = 0
     @IBOutlet var compeletBtn: UIButton! {
         didSet {
             compeletBtn.layer.cornerRadius = 5
@@ -17,7 +20,7 @@ class AddDeviceViewController: UIViewController {
         }
     }
     @IBOutlet var serialNumberTF: UITextField!
-
+    var deviceCode = ""
     @IBOutlet var nicknameTF: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +41,41 @@ class AddDeviceViewController: UIViewController {
     }
     
     @IBAction func handleScanning(sender: UITapGestureRecognizer) {
-        let qrCodeScan = LQRcodeVC()
-        qrCodeScan.setCompeletBlock { (resultString) -> () in
-            print(resultString)
-            qrCodeScan.stopScanning()
-            let alertView = AddDeviceAlert(success: true)
-            alertView.show()
+      
+        
+            if (QRCodeReader.supportsMetadataObjectTypes([AVMetadataObjectTypeQRCode])) {
+                
+              AddDeviceViewController.myreader.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+                AddDeviceViewController.myreader.delegate = self
+                AddDeviceViewController.myreader.setCompletionWithBlock({ (resultAsString) -> Void in
+                     print(resultAsString)
+                })   
+
+
+                self.presentViewController(AddDeviceViewController.myreader, animated: true, completion: nil)
+               
+              
+            
+                
+               
+            }
+            else {
+                print("设备不支持照相功能")
+            }
         }
-        self.presentViewController(qrCodeScan, animated: true, completion: nil)
+        
+//- #pragma mark - QRCodeReader Delegate Methods
+    func reader(reader: QRCodeReaderViewController!, didScanResult result: String!) {
+        self.deviceCode = result
+        self.serialNumberTF.text = result
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
+    func readerDidCancel(reader: QRCodeReaderViewController!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+
+    }
+            
+    
     
     func setCompeletBlock(block: () -> ()) {
         self.compeletBlock = block
@@ -55,16 +84,20 @@ class AddDeviceViewController: UIViewController {
     private var compeletBlock: (() -> ())?
     
     @IBAction func handleCompelet(sender: UIButton) {
-        Alamofire.request(.GET, "", parameters: ["" : ""])
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        if self.deviceCode == ""
+        {
+        return
+        }
+        let parameters = ["deviceCode":self.deviceCode,"userCode":"U00318"]
+       BaseHttpService.sendRequestAccess(shaom_do, parameters: parameters) { (anyObject) -> () in
+        print(anyObject)
+        }
+     
         
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+  
     @IBAction func exitKeyboard(sender: UITextField) {
         
     }
@@ -75,16 +108,6 @@ class AddDeviceViewController: UIViewController {
         self.nicknameTF.resignFirstResponder()
     }
 
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ 
 
 }

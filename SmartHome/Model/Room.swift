@@ -8,19 +8,24 @@
 
 import Foundation
 class Room {
-    let roomID: String
+    let roomCode: String
     var userCode: String = ""
     var floorCode: String = ""
     var name: String = ""
-    init(roomID: String) {
-        self.roomID = roomID
+    init(roomCode: String) {
+        self.roomCode = roomCode
     }
     
     func saveRoom() {
-        if dataDeal.searchModel(.Room, byCode: self.roomID) != nil {
+        if dataDeal.searchModel(.Room, byCode: self.roomCode) != nil {
             dataDeal.updateModel(.Room, model: self)
         } else {
             dataDeal.insertModel(.Room, model: self)
         }
+    }
+    func delete() {
+        if dataDeal.searchModel(.Room, byCode: self.roomCode) != nil {
+            dataDeal.deleteModel(.Room, model: self)
+        } 
     }
 }

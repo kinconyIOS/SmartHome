@@ -30,30 +30,41 @@ import Alamofire
     let EzvizAppKey = "4bdf5701dfaa4e18bd2abe901274ae17"
    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        self.window!.makeKeyAndVisible();
         dataDeal.creatUserTable()
         dataDeal.creatFloorTable()
         dataDeal.creatRoomTable()
         dataDeal.creatEquipTable()
         print(NSHomeDirectory())
-        //此处要考虑三种情况
+        
+
+        
+       
+        //进入界面此处要考虑三种情况
         //1.下载软件第一次安装 2.不是首次且令牌失效 3.不是首次且令牌不失效
+        //  数据更新
+        //第一次安装会走引导页
+        let isNotFirst = NSUserDefaults.standardUserDefaults().objectForKey("isNotFirstComming")?.boolValue
+        if isNotFirst == nil || isNotFirst == false {
         let guidevc:GuideViewController = GuideViewController(coverImageNames: ["引导页.jpg","引导页.jpg","引导页.jpg"], backgroundImageNames: nil)
+            guidevc.didSelectedEnter=didSelectedEnter
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isNotFirstComming")
+            self.window!.rootViewController = guidevc
+        }else{
+            //直接进入登陆界面
+        didSelectedEnter()
+        }
         self.setUpErrorTest()
         self.registerRemoteNotification()
         
-        //安装网络监测
-        self.setUpReach { () -> () in
-            //及时提醒没有网络
-             showMsg("没有网络")
-        }
+    
         self.startGeTuiSdk()
         
         EZOpenSDK.initLibWithAppKey(EzvizAppKey)
         //注册摄像头的序列号和验证码 可以不用输入
         EZOpenSDK.setValidateCode("BJLKLK", forDeviceSerial: "567350669")
         
-        guidevc.didSelectedEnter=didSelectedEnter
+       
         LocationManager.sharedManager().callback={(str:String!)in
             //天气预报 闭包回调
             weatherWithProvince("北京市", localCity:str) { (weather:WeatherModel) -> () in
@@ -62,28 +73,12 @@ import Alamofire
         
         }
         LocationManager.sharedManager().configLocation()
-        _ = "{\"userCode\":\"U00318\",\"floorName\":[{\"floorName\":\"1楼\"},{\"floorName\":\"2楼\"}]}"
-//        
-//        let url:String=String(UTF8String:"http://192.168.1.178:8080/smarthome.IMCPlatform/xingUser/addfloor.action")!
-//        
-//        
-//       let  mDic = ["userCode" : "U00318","floorName":"[{\"floorName\":\"1楼\"},{\"floorName\":\"2楼\"}]"]
-//        Alamofire.request(.GET, url, parameters: mDic).responseJSON { (response) -> Void in
-//          print(response)
-//      
-//            
-//        }//net end
-
-        
-       // NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("greetings"), userInfo: nil, repeats: true)
-        //
-        self.window!.rootViewController = guidevc
-        self.window!.makeKeyAndVisible();
- 
         return true
         
         
     }
+   
+
     func didSelectedEnter(){
         
         let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))

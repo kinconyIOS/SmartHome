@@ -41,9 +41,9 @@ class SHChooseAlertView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         alertView.backgroundColor = UIColor.whiteColor()
         switch UIDevice.currentDevice().orientation {
         case .LandscapeLeft, .LandscapeRight:
-            alertView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.height * 0.77, UIScreen.mainScreen().bounds.height * 0.77 * 0.64)
+            alertView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.height * 0.88, UIScreen.mainScreen().bounds.height * 0.88 * 0.64)
         default:
-            alertView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width * 0.77, UIScreen.mainScreen().bounds.width * 0.77 * 0.64)
+            alertView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width * 0.88, UIScreen.mainScreen().bounds.width * 0.88 * 0.64)
         }
         alertView.center = CGPointMake(UIScreen.mainScreen().bounds.width / 2, UIScreen.mainScreen().bounds.height / 2)
         

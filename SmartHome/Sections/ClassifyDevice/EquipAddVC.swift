@@ -55,7 +55,7 @@ class EquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
         self.navigationController?.popViewControllerAnimated(true)
     }
     func handleRightItem(barButton: UIBarButtonItem) {
-//        compeletBlock?(equip)
+       // compeletBlock?(equip)
         self.navigationController?.popViewControllerAnimated(true)
     }
     override func didReceiveMemoryWarning() {
@@ -113,9 +113,10 @@ class EquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
             let cell = tableView.cellForRowAtIndexPath(indexPath) as! EquipImageCell
             
             let choosIconVC = ChooseIconVC(nibName: "ChooseIconVC", bundle: nil)
-            choosIconVC.chooseImageBlock({ [unowned cell, unowned self] (image) -> () in
-                cell.cellIconImage.image = image
-//                self.equip.icon = image.accessibilityIdentifier
+            choosIconVC.chooseImageBlock( { [unowned self,unowned cell] (imageName) -> () in
+             
+                cell.cellIconImage.image = UIImage(named: imageName)
+             //self.equip.icon = imageName
                 })
             self.navigationController?.pushViewController(choosIconVC, animated: true)
         case 3:

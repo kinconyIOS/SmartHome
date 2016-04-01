@@ -9,12 +9,12 @@
 import UIKit
 import Alamofire
 class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPlayerDelegate{
-    let PLAYER_NEED_VALIDATE_CODE = -1 //播放需要安全验证
-    let PLAYER_REALPLAY_START = 1   //直播开始
-    let PLAYER_VIDEOLEVEL_CHANGE = 2 //直播流清晰度切换中
-    let PLAYER_STREAM_RECONNECT = 3  //直播流取流正在重连
-    let PLAYER_PLAYBACK_START = 11 //录像回放开始播放
-    let PLAYER_PLAYBACK_STOP = 12   //录像回放结束播放
+    let PLAYER_NEED_VALIDATE_CODE = -1   //播放需要安全验证
+    let PLAYER_REALPLAY_START     = 1    //直播开始
+    let PLAYER_VIDEOLEVEL_CHANGE  = 2    //直播流清晰度切换中
+    let PLAYER_STREAM_RECONNECT   = 3    //直播流取流正在重连
+    let PLAYER_PLAYBACK_START     = 11   //录像回放开始播放
+    let PLAYER_PLAYBACK_STOP      = 12   //录像回放结束播放
     
     var sideView:SZLSideView?
     var headView : HomeTopView?
@@ -24,7 +24,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
     let vfcode="at.6wm8ormqcy03shfib5yeb9yyah3r2cp4-171ujmx9ol-0oc00e3-seti9m9p5"
     var orientationLast:UIInterfaceOrientation?=UIInterfaceOrientation.Portrait
     var roomArray:[String]?=[]
-    let  hscroll:HScrollView?=HScrollView.init()
+   
     var player:EZPlayer?
     
     @IBOutlet var homeTableView: UITableView!
@@ -56,10 +56,10 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
     }
     func configView(){
         self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
-        hscroll!.frame=CGRectMake(0,20, ScreenWidth-60, 64);
-        
-        self.navigationItem.titleView=hscroll
-       
+        ////标题栏去掉
+        // hscroll!.frame=CGRectMake(0,20, ScreenWidth-60, 64);
+       // self.navigationItem.titleView=hscroll
+       self.navigationItem.title = "首页"
         
         //修改导航栏按钮；
         let bbi_r=UIBarButtonItem(image: UIImage(named: ""), style:UIBarButtonItemStyle.Plain, target:self ,action:Selector("showSide"));
@@ -75,7 +75,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
      }
     func getRoomInfo(){
     
-
+        tableSideViewDataSource.removeAllObjects();
        let floors = dataDeal.getModels(DataDeal.TableType.Floor) as! Array<Floor>
         for _floor in floors{
                      let floor = RoomListItem()
@@ -97,14 +97,6 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
         }
         //刷新数据
         self.sideView?.tableView.reloadData()
-        roomArray=[]
-        let allrooms = dataDeal.getModels(DataDeal.TableType.Room) as! Array<Room>
-        for room in allrooms{
-         roomArray?.append(room.name)
-        }
-        //刷新顶部按钮
-         scrollAddBtn()
-
     }
     func loadEZplay() {
         //加载视频
@@ -132,15 +124,16 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
     func addRefreshKit()
     {
         EZOpenSDK.getCameraList(0, pageSize: 1) { (cameraList:[AnyObject]!, error:NSError!) -> Void in
-            
-            let camera = cameraList.first as!EZCameraInfo
-            self.cameraId = camera.cameraId
-            self.player = EZPlayer.createPlayerWithCameraId(camera.cameraId!)
+            if (cameraList != nil && cameraList.count > 0){
+            let camera:EZCameraInfo? = cameraList.first as? EZCameraInfo
+            self.cameraId = camera!.cameraId
+            self.player = EZPlayer.createPlayerWithCameraId(camera!.cameraId!)
             self.player?.delegate = self;
             
             self.player?.startRealPlay()
            
             self.player?.setPlayerView(self.headView?.playView)
+            }
            }
     }
     
@@ -151,7 +144,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
         flag = false
         //加载
         loadEZplay()
-      //侧滑
+        //侧滑
         if sideView==nil{
             sideView = NSBundle.mainBundle().loadNibNamed("SZLSideView", owner: self, options: nil)[0] as? SZLSideView
             sideView!.frame=CGRectMake(ScreenWidth, 0, sideView!.frame.size.width,ScreenHeight);
@@ -161,13 +154,14 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
          sideView?.hidden = false
         if headView == nil{
             headView = NSBundle.mainBundle().loadNibNamed("HomeTopView", owner:self, options: nil)[0] as? HomeTopView
-            
-          //  headView!.frame=;
+          
             self.homeTableView.tableHeaderView = headView
-              self.homeTableView.tableHeaderView?.frame=CGRectMake(0, 0, ScreenWidth,ScreenWidth)
+            self.homeTableView.tableHeaderView?.frame=CGRectMake(0, 0, ScreenWidth,ScreenWidth)
+            // 设置画面点击事件
             headView?.playView.userInteractionEnabled = true
             let tapGR = UITapGestureRecognizer(target: self, action: "tapHandler:")
             headView?.playView.addGestureRecognizer(tapGR)
+            
             headView?.backgroundColor=UIColor.brownColor()
             //设置轮播图
             headView!.images = [UIImage(named: "轮播1")!,UIImage(named: "轮播2")!,UIImage(named: "轮播3")!]
@@ -190,9 +184,9 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
         
         self.tabBarController!.view.addSubview(sideView!)
     }
-    //////手势处理函数
+    //////手势处理函数 点击进入摄像头详情界面
     func tapHandler(sender:UITapGestureRecognizer) {
-        ///////todo....
+        //
                     let storyBoard=UIStoryboard(name: "EZMain", bundle: nil);
                     let livePlayViewController = storyBoard.instantiateViewControllerWithIdentifier("EZLivePlayViewController") as! EZLivePlayViewController
                     livePlayViewController.cameraId = self.cameraId
@@ -231,35 +225,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
             }
         }
     }
-    //导航栏scollView
-    func scrollAddBtn()
-    {
-        for index in 0..<roomArray!.count
-        {
-            let btn:UIButton=UIButton.init(frame: CGRectMake(0, 2, ScreenWidth/6, 30))
-            //设置倒角
-            btn.layer.cornerRadius=15;
-            btn.setTitleColor(UIColor.blackColor(),forState:UIControlState.Normal);
-            btn.backgroundColor=UIColor.clearColor()
-            if index==0 {
-                btn.backgroundColor=UIColor.whiteColor();
-                btn.setTitleColor(UIColor.orangeColor(), forState: UIControlState.Normal)
-            }
-            btn.setTitle(roomArray![index], forState: UIControlState.Normal)
-            btn.tag=index
-            
-            btn.titleLabel?.font=UIFont.systemFontOfSize(15)
-            btn.addTarget(self,action: Selector("newTap:"), forControlEvents: UIControlEvents.TouchUpInside)
-            hscroll?.addButton(btn, with: 45)
-        }
-    }
-    func newTap(btn:UIButton)
-    {
-        hscroll?.clearColor();
-        btn.setTitleColor(UIColor.orangeColor(), forState: UIControlState.Normal)
-        btn.backgroundColor=UIColor.whiteColor();
-        // selectMenuId=(int)btn.tag-1;
-    }
+   
     // MARK: - Table view data source
     //返回节的个数
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -408,7 +374,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
             
             orientationLast=UIInterfaceOrientation.LandscapeRight
             sideView!.frame=CGRectMake(ScreenHeight-(ScreenWidth-sideView!.frame.origin.x),-35, sideView!.frame.size.width,ScreenWidth+35);
-            hscroll!.frame=CGRectMake(0,20, ScreenHeight-60, 64);
+            
             self.drakBtn.frame=CGRectMake(0, 31,ScreenHeight, ScreenWidth)
             
         }
@@ -418,15 +384,14 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate ,EZPla
         {
             orientationLast=UIInterfaceOrientation.Portrait
             sideView!.frame=CGRectMake(ScreenWidth-(ScreenHeight-sideView!.frame.origin.x), 0, sideView!.frame.size.width,ScreenHeight);
-            hscroll!.frame=CGRectMake(0,20, ScreenWidth-60, 64);
+          
             self.drakBtn.frame=CGRectMake(0, 64, ScreenWidth,ScreenHeight)
         }
         
         
         if (orientation == UIInterfaceOrientation.PortraitUpsideDown)
             
-        {
-            
+        { 
             //
             
         }

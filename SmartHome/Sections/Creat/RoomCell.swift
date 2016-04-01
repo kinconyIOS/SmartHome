@@ -11,19 +11,19 @@ import UIKit
 class RoomCell: UITableViewCell {
 
     var indexPath: NSIndexPath?
-    
+    var lastText:String?
     func handleEdit(tap: UITapGestureRecognizer) {
         
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        let frame = CGRectMake(ScreenWidth, 0, self.contentView.frame.size.height / 4 * 3, self.contentView.frame.size.height)
-        editView = EditView(frame: frame)
-        let tap = UITapGestureRecognizer(target: self, action: Selector("handleEdit:"))
-        editView!.addGestureRecognizer(tap)
-        self.addSubview(editView!)
+//        // Initialization code
+//        let frame = CGRectMake(ScreenWidth, 0, self.contentView.frame.size.height / 4 * 3, self.contentView.frame.size.height)
+//        editView = EditView(frame: frame)
+//        let tap = UITapGestureRecognizer(target: self, action: Selector("handleEdit:"))
+//        editView!.addGestureRecognizer(tap)
+//        self.addSubview(editView!)
         
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipe:"))
         leftSwipe.direction = UISwipeGestureRecognizerDirection.Left
@@ -71,6 +71,10 @@ class RoomCell: UITableViewCell {
         endEditing = block
     }
     @IBAction func endEditingAction(sender: UITextField) {
+        if sender.text?.trimString() == ""
+        {
+            sender.text = self.lastText
+        }
         endEditing?(sender.text!)
     }
     
@@ -78,6 +82,8 @@ class RoomCell: UITableViewCell {
         
     }
     @IBAction func beginEditingAction(sender: UITextField) {
+        self.lastText = sender.text
+        print("\(sender.text)")
         keyboardAdapt?(index: indexPath!)
     }
     override func setSelected(selected: Bool, animated: Bool) {

@@ -13,7 +13,9 @@ class Equip {
     var userCode: String = ""
     var roomCode: String = ""
     var name: String = ""
+    var type: String = ""
     var icon: String = ""
+    var num:String = ""
     init(equipID: String) {
         self.equipID = equipID
     }
@@ -22,6 +24,12 @@ class Equip {
             dataDeal.updateModel(.Equip, model: self)
         } else {
             dataDeal.insertModel(.Equip, model: self)
+        }
+        
+    }
+    func delete(){
+        if dataDeal.searchModel(.Equip, byCode: self.equipID) != nil {
+            dataDeal.deleteModel(.Equip, model: self)
         }
         
     }

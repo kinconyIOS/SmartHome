@@ -89,8 +89,8 @@ class HomeTopView: UIView ,UIScrollViewDelegate{
             var rect:CGRect = self.scrollView.frame
             rect.origin.x = originX
             rect.origin.y = 0
-            rect.size.width = self.scrollView.frame.size.width
-            rect.size.height = self.scrollView.frame.size.height
+            rect.size.width = ScreenWidth//self.scrollView.frame.size.width
+            rect.size.height = ScreenWidth//self.scrollView.frame.size.height
             pImageView.frame = rect
             //设置图片内容的显示模式()
             pImageView.contentMode = UIViewContentMode.ScaleToFill
@@ -98,7 +98,7 @@ class HomeTopView: UIView ,UIScrollViewDelegate{
             pImageView.layer.masksToBounds=true
             self.scrollView.addSubview(pImageView)
             //下一张视图的x坐标:offset为:self.scrollView.frame.size.width.
-            originX = originX + self.scrollView.frame.size.width
+            originX = originX + ScreenWidth
             //记录scrollView内imageView的个数
             pages++
         }

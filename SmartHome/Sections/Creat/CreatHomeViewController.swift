@@ -61,37 +61,30 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     //楼层信息组装
-    func assembleFloor() -> [String : AnyObject] {
-        var mDic: [String : AnyObject] = ["userCode" : userCode]
-//        var mDic: [String : AnyObject] = [:]
+    func assembleFloor() -> String {
         var subArr = [[String : String]]()
         for floor in floorArr {
             subArr.append(["floorName" : floor.buildName])
         }
-//        mDic["floorName"] = subArr
-//        var mDic: [String : AnyObject] = ["userCode" : "U00318"]
-        mDic["floorName"] = dataDeal.toJSONString(subArr)
-
         
-        return mDic
+        return dataDeal.toJSONString(subArr)
     }
     
     //房间信息组装
-    func assembleRoom(code : [String : String]) -> [String : AnyObject] {
-        var mDic: [String : AnyObject] = ["userCode" : userCode]
-//        var mDic: [String : AnyObject] = [:]
+    func assembleRoom() -> String {
+    
         var subArr: [[String : String]] = []
         for key in roomDic.keys {
             for value in roomDic[key]! {
                 if value != roomDic[key]?.last {
                     var suDic = ["roomName" : value.buildName]
-                    suDic["floorCode"] = code[key]
+                    suDic["floorName"] = key
                     subArr.append(suDic)
                 }
             }
         }
-        mDic["roomName"] = dataDeal.toJSONString(subArr)
-        return mDic
+       
+        return dataDeal.toJSONString(subArr)
     }
     
     
@@ -125,15 +118,38 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.registerNib(UINib(nibName: "RoomCell", bundle: nil), forCellReuseIdentifier: "roomcell")
         tableView.registerNib(UINib(nibName: "AddRoomCell", bundle: nil), forCellReuseIdentifier: "addroomcell")
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
-        let floor = Building(buildType: .BuildFloor, buildName: "楼层1", isAddCell: false)
-        floorArr.append(floor)
-        dataSource.append(floor)
-        let add = Building(buildType: .BuildRoom, buildName: "添加", isAddCell: true)
-        add.floor = floor
-        roomDic[floor.buildName] = [add]
+        self.getRoomInfoForCreate()
     }
+    func getRoomInfoForCreate(){
+        
+        //得到所有floor
+        let floors = dataDeal.getModels(DataDeal.TableType.Floor) as! Array<Floor>
+        for _floor in floors{
+            let floor = Building(buildType: .BuildFloor, buildName:  _floor.name, isAddCell: false)
+            floorArr.append(floor)
+            dataSource.append(floor)
+            let rooms = dataDeal.getRoomsByFloor(_floor)
+           
+             var roomArr: [Building] = []
+            for _room in rooms{
+                let room = Building(buildType: .BuildRoom, buildName: _room.name, isAddCell: false)
+                print(room.buildName)
+                room.floor = floor
+                roomArr.append(room)
+               
+                
+            }
+            let add = Building(buildType: .BuildRoom, buildName: "添加", isAddCell: true)
+            add.floor = floor
+            roomArr.append(add)
+            roomDic[floor.buildName] = roomArr
+           
+            
+        }
+       
 
+        
+    }
     @IBAction func handleAddFloor(sender: UIButton) {
         let floor = Building(buildType: .BuildFloor, buildName: "楼层\(floorArr.count + 1)", isAddCell: false)
         floorArr.append(floor)
@@ -146,81 +162,47 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
     }
     func handleRightItem(barButton: UIBarButtonItem) {
         
-        /*
-        let parameter = assembleFloor()
-//        Alamofire.request(<#T##method: Method##Method#>, <#T##URLString: URLStringConvertible##URLStringConvertible#>, parameters: <#T##[String : AnyObject]?#>, encoding: <#T##ParameterEncoding#>, headers: <#T##[String : String]?#>)
-        Alamofire.request(.GET, httpAddFloor, parameters: parameter).responseJSON { [unowned self] (response) -> Void in
-            if response.result.isFailure {
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
-                print("error:\(response.result.error)")
-                
-            } else {
-                print(response.result.value)
-                if response.result.value!["success"] as! Bool != true {
-                    let alert = SHAlertView(title: "提示", message: response.result.value!["message"] as? String, cancleButtonTitle: "取消", confirmButtonTitle: "确定")
-                    alert.show()
-                    MBProgressHUD.hideHUDForView(self.view, animated: true)
-                } else {
-                    print("result: \(response.result.value)")
-                    let dataArr = response.result.value!["data"] as! [[String : String]]
-                    var dic = [String : String]()
-                    for f in dataArr {
-                        dic[f["floorName"]!] = f["floorCode"]
-                        let floor = Floor(floorID: f["floorCode"]!)
-                        floor.name = f["floorName"]
-                        floor.userCode = userCode
-                        floor.saveFloor()
+        var parameter: [String : AnyObject] = ["userCode" : userCode]
+        parameter["roomInfo"] = assembleRoom()
+        parameter["floorInfo"] = assembleFloor()
+        print( parameter["roomInfo"])
+         print( parameter["floorInfo"])
+        BaseHttpService .sendRequestAccess(updatinfo, parameters: parameter) { (back) -> () in
+            updateRoomInfo({ () -> () in
+                // 更新一个版本号上传到服务器上面
+                let f = NSUserDefaults.standardUserDefaults().objectForKey( "RoomInfoVersionNumber")?.floatValue
+                setNetRoomInfoVersionNumber(f!, andComplete: {
+                    
+                    NSUserDefaults.standardUserDefaults().setFloat(f!+1, forKey: "RoomInfoVersionNumber")
+                    let addDeviceVC: AddDeviceViewController = AddDeviceViewController(nibName: "AddDeviceViewController", bundle: nil)
+                    addDeviceVC.setCompeletBlock { [unowned self]() -> () in
+                        let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
+                        self.navigationController?.pushViewController(classifyVC, animated: true)
                     }
-                    
-                    let roomParameter = self.assembleRoom(dic)
-                    
-                    Alamofire.request(.GET, httpAddRoom, parameters: roomParameter).responseJSON(completionHandler: { (response) -> Void in
-                        
-                        if response.result.isFailure {
-                            print("error:\(response.result.error)")
-                            
-                        } else {
-                            if response.result.value!["success"] as! Bool != true {
-                                let alert = SHAlertView(title: "提示", message: response.result.value!["message"] as? String, cancleButtonTitle: "取消", confirmButtonTitle: "确定")
-                                alert.show()
-                                
-                            } else {
-                                print("result: \(response.result.value)")
-                                let dataArr = response.result.value!["data"] as! [[String : String]]
-                                for r in dataArr {
-                                    let room = Room(roomID: r["roomCode"]!)
-                                    room.name = r["roomName"]
-                                    room.floorCode = r["floorCode"]
-                                    room.userCode = userCode
-                                    room.saveRoom()
-                                }
-                                
-                                let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
-                                self.navigationController?.pushViewController(classifyVC, animated: true)
-                            }
-                        }
-                        MBProgressHUD.hideHUDForView(self.view, animated: true)
-                    })
-                    
-                }
-                
-            }
+                    self.navigationController?.pushViewController(addDeviceVC, animated: true)
+                   
+                })
+                })
+           
+            
+           
         }
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        */
-        
-        let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
-        self.navigationController?.pushViewController(classifyVC, animated: true)
+
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+ 
     
     func checkDuplicateName(text: String) -> Bool {
         for floor in floorArr {
             if text == floor.buildName {
+                return false
+            }
+        }
+        return true
+    }
+    func checkDuplicateRoomName(text: String,floorName:String) -> Bool {
+        
+        for room in roomDic[floorName]! {
+            if text == room.buildName {
                 return false
             }
         }
@@ -245,19 +227,18 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
             
             cell.configEndEditing({ [unowned self, unowned cell] (text) -> () in
                 let oldName = building.buildName
-                if text == "" {
-                    let alert = SHAlertView(title: "提示", message: "楼层名不能为空", cancleButtonTitle: "取消", confirmButtonTitle: "确定")
-                    cell.floorName.text = oldName
-                    alert.show()
-                }
-                if self.checkDuplicateName(text) {
+                if text.trimString() == "" {
+                     cell.floorName.text = oldName
+               
+                }else if self.checkDuplicateName(text) {
                     building.buildName = text
                     self.roomDic[text] = self.roomDic[oldName]
                     self.roomDic.removeValueForKey(oldName)
                 } else if text != oldName {
-                    let alert = SHAlertView(title: "提示", message: "楼层名重复", cancleButtonTitle: "取消", confirmButtonTitle: "确定")
+                  
                     cell.floorName.text = oldName
-                    alert.show()
+                      showMsg("楼层名已存在")
+                    
                 }
             })
             
@@ -314,7 +295,22 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
                 
                 cell.configEndEditing({ (text) -> () in
-                    building.buildName = text
+                    let oldName = building.buildName
+                    if text.trimString() == "" {
+                        cell.roomName.text = oldName
+                        
+                    
+                    }else if self.checkDuplicateRoomName(text,floorName: (building.floor?.buildName)!) {
+                        building.buildName = text
+                       
+                    } else if text != oldName {
+                       
+                        cell.roomName.text = oldName
+                         showMsg("房间名已存在")
+                        
+                    }
+
+                   
                 })
                 cell.configKeyboardAdpt({ [unowned self] (index: NSIndexPath) -> () in
                     let nowCell = self.tableView.cellForRowAtIndexPath(index)
@@ -339,6 +335,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         if building.isAddCell {
 
             let build = Building(buildType: .BuildRoom, buildName: "房间\((roomDic[building.floor!.buildName]?.count)!)", isAddCell: false)
+            build.floor = building.floor
             roomDic[building.floor!.buildName]?.insert(build, atIndex: (roomDic[building.floor!.buildName]?.endIndex)! - 1)
             dataSource.insert(build, atIndex: indexPath.row)
 //            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: indexPath.section)], withRowAnimation: UITableViewRowAnimation.Fade)
@@ -347,9 +344,51 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 50
+    }
     
-    
-    /*
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+          let building = dataSource[indexPath.row]
+        if building.isAddCell{
+        return false
+        }
+        return true
+    }
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        return "删除"
+    }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let building = dataSource[indexPath.row]
+        if building.buildType == BuildType.BuildRoom
+        {
+            let correctArray = getRemoveIndex(building,array: (roomDic[building.floor!.buildName])!)
+            //从原数组中删除指定元素
+            
+            for index in correctArray{
+                roomDic[building.floor!.buildName]?.removeAtIndex(index)
+            }
+       //
+        }else
+        {
+            let correctArray = getRemoveIndex(building,array:floorArr)
+            //从原数组中删除指定元素
+           if roomDic.keys.contains(building.buildName)
+             {
+                roomDic.removeValueForKey(building.buildName)
+            }
+            for index in correctArray{
+                floorArr.removeAtIndex(index)
+            }
+        }
+     
+        dataSource.removeAtIndex(indexPath.row)
+        //            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: indexPath.section)], withRowAnimation: UITableViewRowAnimation.Fade)
+        self.tableView.reloadData()
+        
+    }
+    //获取正确的删除索引
+      /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

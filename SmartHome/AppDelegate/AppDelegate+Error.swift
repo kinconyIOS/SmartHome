@@ -23,7 +23,7 @@ extension AppDelegate{
                 
                 //1.管理器
                 
-                let manager =  AFHTTPRequestOperationManager()
+               
                 
                 //   获得设备列表
                 
@@ -32,13 +32,7 @@ extension AppDelegate{
                 
                 let url1 = "http://120.27.137.65:8080/smarthome.IMCPlatform/xingErrorr/report.action"
                 print(url1)
-                
-                manager.GET(url1, parameters:dict, success:{(operation:AFHTTPRequestOperation!,  responseObject:AnyObject! )in
-   
-                    NSUserDefaults.standardUserDefaults().setObject("", forKey: "error.log")
-                }, failure: {( operation:AFHTTPRequestOperation!, error:NSError!)
-                    in
-                })
+              
                 
                 
                 

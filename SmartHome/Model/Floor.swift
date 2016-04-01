@@ -8,19 +8,26 @@
 
 import Foundation
 class Floor {
-    let floorID: String
+    let floorCode: String  //floorCode
     var userCode: String = ""
     var name: String = ""
-    init(floorID: String) {
-        self.floorID = floorID
+    init(floorCode: String) {
+        self.floorCode = floorCode
     }
     
     func saveFloor() {
-        if dataDeal.searchModel(.Floor, byCode: self.floorID) != nil {
+        if dataDeal.searchModel(.Floor, byCode: self.floorCode) != nil {
             dataDeal.updateModel(.Floor, model: self)
         } else {
             dataDeal.insertModel(.Floor, model: self)
         }
+    }
+    func delete(){
+        if dataDeal.searchModel(.Floor, byCode: self.floorCode) != nil {
+            dataDeal.deleteModel(.Floor, model: self)
+        } 
+
+    
     }
     
     

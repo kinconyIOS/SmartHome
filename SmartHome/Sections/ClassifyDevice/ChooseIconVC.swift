@@ -11,8 +11,8 @@ import UIKit
 
 class ChooseIconVC: UICollectionViewController {
     
-    var itemDataSource: [String : [String]] = ["家用灯" : ["灯泡1", "灯泡2", "灯泡3"], "智能窗帘" : ["窗帘1", "窗帘2", "窗帘3"]]
-    var sectionDataSource: [String] = ["家用灯", "智能窗帘"]
+    var itemDataSource: [String : [String]] = ["为你的设备选取图标" : ["调光灯泡", "开关灯泡", "普通灯泡", "挂式空调", "立式空调","中央空调", "窗帘", "电视"]]
+    var sectionDataSource: [String] = ["为你的设备选取图标"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,16 +85,15 @@ class ChooseIconVC: UICollectionViewController {
     
     // MARK: UICollectionViewDelegate
     
-    private var imageAction: ((image: UIImage) -> ())?
+    private var imageAction: ((imageName:String) -> ())?
     
-    func chooseImageBlock(block: (image: UIImage) -> ()) {
+    func chooseImageBlock(block: (imageName:String) -> ()) {
         imageAction = block
     }
     
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! EquipCollectionCell
-        imageAction?(image: cell.equipImage.image!)
+        imageAction?(imageName:itemDataSource[sectionDataSource[indexPath.section]]![indexPath.item])
         self.navigationController?.popViewControllerAnimated(true)
     }
     

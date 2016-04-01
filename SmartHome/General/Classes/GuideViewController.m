@@ -23,6 +23,7 @@
 {
     if (self = [super init]) {
         [self initSelfWithCoverNames:coverNames backgroundImageNames:bgNames];
+        
     }
     return self;
 }

@@ -29,7 +29,7 @@ let textBgImage:UIImage?=textImage!.stretchableImageWithLeftCapWidth((Int)(textI
 //导航栏背景
 let navBgImage:UIImage? = UIImage(named: "导航栏L")
 //登陆界面背景
-let loginBgImage:UIImage? = UIImage(named: "背景.png")
+let loginBgImage:UIImage? = UIImage(named: "loginBg.png")
 //登陆注册等按钮背景
 let btnBgImage:UIImage? = UIImage(named: "登陆.png")
  //首页
@@ -53,10 +53,3 @@ public enum SetUserType:Int{
     case Reset
     case Modify
 }
-//网络请求
-let BaseUrl:String = "http://192.168.1.178:8080/smarthome.IMCPlatform/xingUser/"
-let reg:String="registers.action"
-let send:String="send.action"
-let reset:String="forgotpwd.action"
-let modifypwd:String="modifypwd.action"
-let getroom:String="getroom.action"

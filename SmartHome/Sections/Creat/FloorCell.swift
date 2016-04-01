@@ -12,7 +12,7 @@ class FloorCell: UITableViewCell {
 
     @IBOutlet var floorName: UITextField!
     @IBOutlet var unfoldBtn: UIButton!
-
+    var lastText:String?
     var indexPath: NSIndexPath?
     
     override func awakeFromNib() {
@@ -39,9 +39,14 @@ class FloorCell: UITableViewCell {
         
     }
     @IBAction func editingBeginAction(sender: UITextField) {
+        self.lastText = sender.text
         keyboardAdapt?(index: indexPath!)
     }
     @IBAction func editingEnd(sender: UITextField) {
+        if sender.text?.trimString() == ""
+        {
+            sender.text = self.lastText
+        }
         endEditing?(sender.text!)
     }
 

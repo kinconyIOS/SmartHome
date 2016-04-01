@@ -9,14 +9,21 @@
 import UIKit
 import Alamofire
 
-class RoomOrEquip {
+class FloorOrRoomOrEquip {
     enum ItemType {
-        case Room, Equip, Add
+        case Floor,Room, Equip, Add
     }
+     var floor:Floor?
     var room: Room?
     var equip: Equip?
     var addRoom: Room?
     var type: ItemType {
+        if floor != nil {
+            return .Floor
+        }
+        if equip != nil {
+            return .Equip
+        }
         if room != nil {
             return .Room
         }
@@ -26,7 +33,8 @@ class RoomOrEquip {
         return .Add
     }
     var isUnfold: Bool = false
-    init(room: Room?, equip: Equip?) {
+    init(floor:Floor?,room: Room?, equip: Equip?) {
+        self.floor = floor
         self.room = room
         self.equip = equip
     }
@@ -37,6 +45,8 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet var tableView: UITableView!
     @IBOutlet var deviceSegement: SHSegement! {
         didSet {
+            deviceSegement.backgroundColor = UIColor(red: 230 / 255.0, green: 230 / 255.0, blue: 230 / 255.0, alpha: 1)
+
             deviceSegement.leftLabel.text = "未分类"
             deviceSegement.rightLabel.text = "已分类"
             deviceSegement.selectAction(.Left) { [unowned self] () -> () in
@@ -53,7 +63,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
     }
 
     var cDataSource: [Equip] = []
-    var tDataSource: [RoomOrEquip] = []
+    var tDataSource: [FloorOrRoomOrEquip] = []
     var tDic: [String : [Equip]] = [:]
     
     override func viewWillAppear(animated: Bool) {
@@ -62,50 +72,103 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func reloadUnClassifyDataSource() {
-        self.cDataSource = []
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        getUnEquips()
+       
+        
         let parameter = ["userCode" : userCode]
-        Alamofire.request(.GET, httpQueryUnclassifyEquip, parameters: parameter).responseJSON { [unowned self] (response) -> Void in
-            if response.result.isFailure {
-                print(response.result.error)
-                
-            } else {
-                if response.result.value!["success"] as! Bool != true {
-                    let alert = SHAlertView(title: "提示", message: response.result.value!["message"] as? String, cancleButtonTitle: "取消", confirmButtonTitle: "确定")
-                    alert.show()
-                    
-                } else {
-                    print(response.result.value)
-                    let arr = response.result.value!["data"] as! [[String : AnyObject]]
-                    for e in arr {
-                        let equip = Equip(equipID: e["deviceCode"] as! String)
-                        equip.name = e["nickName"] as! String
-                        equip.userCode = userCode
-                        equip.saveEquip()
-                        self.cDataSource.append(equip)
-                    }
-                    
+        BaseHttpService.sendRequestAccess(unclassifyEquip_do, parameters: parameter) { (data) -> () in
+            let arr = data as! [[String : AnyObject]]
+            print(arr)
+             self.cDataSource = []
+            for e in arr {
+                let equip = Equip(equipID: e["deviceAddress"] as! String)
+                equip.userCode = e["userCode"] as! String
+                equip.type = e["deviceType"] as! String
+                equip.num  = e["deviceNum"] as! String
+                equip.icon  = e["icon"] as! String
+
+                if equip.icon == ""{
+                equip.icon = getIconByType(equip.type)
                 }
+                equip.saveEquip()
+                self.cDataSource.append(equip)
             }
             self.collectionView.reloadData()
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
-            
         }
+        
     }
+    func getUnEquips(){
+       self.cDataSource = []
+        //先去更新数据库 再从数据库中解析
+        let equips = dataDeal.getModels(.Equip) as! [Equip]
+        for equip in equips
+        {
+            if  equip.roomCode == ""{
+             self.cDataSource.append(equip)
+            }
+        }
+            
+        self.collectionView.reloadData()
+     
+    }
+    
     func reloadClassifyDataSource() {
-        self.tDic.removeAll()
-        self.tDataSource.removeAll()
-        let rooms = dataDeal.getModels(.Room) as! [Room]
-        for room in rooms {
-            let r = RoomOrEquip(room: room, equip: nil)
-            self.tDataSource.append(r)
-            let equips = dataDeal.getEquipsByRoom(room)
-            self.tDic[room.roomID] = equips
+    
+       self.getRoomInfoFotClassify()
+        
+        let parameter = ["userCode" : userCode]
+        BaseHttpService.sendRequestAccess(classifyEquip_do, parameters: parameter) { (data) -> () in
+            print(data)
+            if data.count != 0{
+            
+            let arr = data as! [[String : AnyObject]]
+            for e in arr {
+                let equip = Equip(equipID: e["deviceAddress"] as! String)
+                equip.name = e["nickName"] as! String
+                equip.roomCode = e["roomCode"] as! String
+                equip.userCode = e["userCode"] as! String
+                equip.type = e["deviceType"] as! String
+                equip.num  = e["deviceNum"] as! String
+                equip.icon  = e["icon"] as! String
+                if equip.icon == ""{
+                    equip.icon = getIconByType(equip.type)
+                }
+                equip.saveEquip()
+               
+            }
+              
+            }
+            //先去更新数据库 再从数据库中解析
+          self.getRoomInfoFotClassify()
+            
         }
         
         self.tableView.reloadData()
+            
+        
+     
     }
-    
+    func getRoomInfoFotClassify(){
+        self.tDic.removeAll()
+        self.tDataSource.removeAll()
+        //先去更新数据库 再从数据库中解析
+        let floors = dataDeal.getModels(.Floor) as! [Floor]
+        for floor in floors
+        {
+            let f = FloorOrRoomOrEquip(floor: floor,room: nil, equip: nil)
+            self.tDataSource.append(f)
+            let rooms = dataDeal.getRoomsByFloor(floor)
+            for room in rooms {
+                let r = FloorOrRoomOrEquip(floor: nil,room: room, equip: nil)
+                self.tDataSource.append(r)
+                let equips = dataDeal.getEquipsByRoom(room)
+                self.tDic[room.roomCode] = equips
+            }
+            
+            
+        }
+        self.tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,13 +181,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "矢量智能对象"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleBack:"))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
         
-//        let room1 = Room(); room1.name = "客厅"
-//        room1.equips = [Equip(), Equip(), Equip()]
-//        let room2 = Room(); room2.name = "厨房"
-//        room2.equips = [Equip(), Equip()]
-//        let room3 = Room(); room3.name = "卧室"
-//        room3.equips = [Equip(), Equip(), Equip()]
-//        tDataSource = [RoomOrEquip(room: room1, equip: nil), RoomOrEquip(room: room2, equip: nil), RoomOrEquip(room: room3, equip: nil)]
+
         
         // Do any additional setup after loading the view.
         self.collectionView.delegate = self
@@ -143,6 +200,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         self.tableView.registerNib(UINib(nibName: "EquipTableRoomCell", bundle: nil), forCellReuseIdentifier: "equiptableroomcell")
         self.tableView.registerNib(UINib(nibName: "EquipTableEquipCell", bundle: nil), forCellReuseIdentifier: "equiptableequipcell")
         self.tableView.registerNib(UINib(nibName: "AddRoomCell", bundle: nil), forCellReuseIdentifier: "addroomcell")
+          self.tableView.registerNib(UINib(nibName: "EquipTableFloorCell", bundle: nil), forCellReuseIdentifier: "equiptablefloorcell")
         
     }
     
@@ -151,6 +209,35 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
     }
     func handleRightItem(barButton: UIBarButtonItem) {
         
+        let homevc:HomeVC=HomeVC(nibName: "HomeVC", bundle: nil)
+        homevc.tabBarItem.title=NSLocalizedString("首页", comment: "")
+        homevc.tabBarItem.image=homeIcon
+        homevc.tabBarItem.selectedImage=homeIconSelected
+        let homeNav:UINavigationController = AutorotateNavC(rootViewController: homevc)
+        
+        let setModelVC:SetModelVC=SetModelVC(nibName: "SetModelVC", bundle: nil)
+        setModelVC.tabBarItem.title=NSLocalizedString("情景模式", comment: "")
+        setModelVC.tabBarItem.image=modelIcon
+        setModelVC.tabBarItem.selectedImage=modelIconSelected
+        let setModelNav:UINavigationController = UINavigationController(rootViewController: setModelVC)
+        
+        let mallvc:MallVC=MallVC(nibName: "MallVC", bundle: nil)
+        mallvc.tabBarItem.title=NSLocalizedString("商城", comment: "")
+        mallvc.tabBarItem.image=mallIcon
+        mallvc.tabBarItem.selectedImage=mallIconSelected
+        let mallNav:UINavigationController = UINavigationController(rootViewController:mallvc)
+        
+        let minevc:MineVC=MineVC(nibName: "MineVC", bundle: nil)
+        minevc.tabBarItem.title=NSLocalizedString("我的", comment: "")
+        minevc.tabBarItem.image=mineIcon
+        minevc.tabBarItem.selectedImage=mineIconSelected
+        let mineNav:UINavigationController = UINavigationController(rootViewController: minevc)
+        let tab=AutoTabC()
+        tab.viewControllers=[homeNav,setModelNav,mallNav,mineNav];
+        tab.tabBar.tintColor=mainColor
+        //  let navigationC = UINavigationController(rootViewController: addDeviceVC)
+        
+        UIApplication.sharedApplication().keyWindow?.rootViewController = tab
     }
 
     override func didReceiveMemoryWarning() {
@@ -176,6 +263,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         let equip = cDataSource[indexPath.row]
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("equipcollectioncell", forIndexPath: indexPath) as! EquipCollectionCell
         cell.equipName.text = equip.name
+        cell.equipImage.image = UIImage(named: equip.icon)
         return cell
     }
     // MARK: - UICollectionViewDelegate
@@ -184,7 +272,17 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
             let equipSetVC = EquipSetVC(nibName: "EquipSetVC", bundle: nil)
             equipSetVC.equip = cDataSource[indexPath.row]
             equipSetVC.configCompeletBlock({ [unowned self] (equip) -> () in
-                equip.saveEquip()
+               equip.saveEquip()
+                //添加设备
+                  let parameter = ["userCode" : userCode,
+                    "roomCode":equip.roomCode,
+                    "deviceAddress":equip.equipID,
+                    "nickName":equip.name,
+                    "ico":equip.icon]
+                BaseHttpService.sendRequestAccess(addEq_do, parameters:  parameter, success: { (data) -> () in
+                    
+                })
+                //上传更新设备
                 for i in 0..<self.cDataSource.count {
                     if self.cDataSource[i].equipID == equip.equipID {
                         self.cDataSource.removeAtIndex(i)
@@ -206,11 +304,17 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let model = tDataSource[indexPath.row]
         switch model.type {
+        case .Floor:
+            let cell = tableView.dequeueReusableCellWithIdentifier("equiptablefloorcell", forIndexPath: indexPath) as! EquipTableFloorCell
+            let floor = dataDeal.searchModel(.Floor, byCode: (model.floor?.floorCode)!) as! Floor
+            let floorName = floor.name
+            cell.roomName.text = "\(floorName)"
+            return cell
         case .Room:
             let cell = tableView.dequeueReusableCellWithIdentifier("equiptableroomcell", forIndexPath: indexPath) as! EquipTableRoomCell
-            let floor = dataDeal.searchModel(.Floor, byCode: model.room!.floorCode) as! Floor
-            let floorName = floor.name
-            cell.roomName.text = "\(floorName) \(model.room!.name)"
+     
+        
+            cell.roomName.text = "\(model.room!.name)"
             if model.isUnfold {
                 cell.unfoldImage.image = UIImage(named: "楼层按下")
             } else {
@@ -220,6 +324,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         case .Equip:
             let cell = tableView.dequeueReusableCellWithIdentifier("equiptableequipcell", forIndexPath: indexPath) as! EquipTableEquipCell
             cell.nameLabel.text = model.equip!.name
+            cell.iconImage.image = UIImage(named: model.equip!.icon)
             return cell
         case .Add:
             let cell = tableView.dequeueReusableCellWithIdentifier("addroomcell", forIndexPath: indexPath) as! AddRoomCell
@@ -238,12 +343,12 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
                 model.isUnfold = false
                 cell.unfoldImage.image = UIImage(named: "楼层未按下")
                 var indexPaths = [NSIndexPath]()
-                for i in 0..<(tDic[model.room!.roomID]?.count)! {
+                for i in 0..<(tDic[model.room!.roomCode]?.count)! {
                     let subIndexPath = NSIndexPath(forRow: indexPath.row + 1 + i, inSection: 0)
                     indexPaths.append(subIndexPath)
                 }
-                indexPaths.append(NSIndexPath(forRow: indexPath.row + 1 + (tDic[model.room!.roomID]?.count)!, inSection: 0))
-                tDataSource.removeRange(Range(start: indexPath.row + 1, end: indexPath.row + 1 + (tDic[model.room!.roomID]?.count)! + 1))
+                indexPaths.append(NSIndexPath(forRow: indexPath.row + 1 + (tDic[model.room!.roomCode]?.count)!, inSection: 0))
+                tDataSource.removeRange(Range(start: indexPath.row + 1, end: indexPath.row + 1 + (tDic[model.room!.roomCode]?.count)! + 1))
                 
                 tableView.reloadData()
             } else {
@@ -251,15 +356,15 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
                 model.isUnfold = true
                 cell.unfoldImage.image = UIImage(named: "楼层按下")
                 var indexPaths = [NSIndexPath]()
-                var equips = [RoomOrEquip]()
-                for i in 0..<(tDic[model.room!.roomID]?.count)! {
+                var equips = [FloorOrRoomOrEquip]()
+                for i in 0..<(tDic[model.room!.roomCode]?.count)! {
                     let subIndexPath = NSIndexPath(forRow: indexPath.row + 1 + i, inSection: 0)
                     indexPaths.append(subIndexPath)
-                    equips.append(RoomOrEquip(room: nil, equip: tDic[model.room!.roomID]?[i]))
+                    equips.append(FloorOrRoomOrEquip(floor:nil,room: nil, equip: tDic[model.room!.roomCode]?[i]))
                 }
                 
-                indexPaths.append(NSIndexPath(forRow: indexPath.row + 1 + (tDic[model.room!.roomID]?.count)!, inSection: 0))
-                let add = RoomOrEquip(room: nil, equip: nil)
+                indexPaths.append(NSIndexPath(forRow: indexPath.row + 1 + (tDic[model.room!.roomCode]?.count)!, inSection: 0))
+                let add = FloorOrRoomOrEquip(floor:nil,room: nil, equip: nil)
                 add.addRoom = model.room
                 equips.append(add)
                 tDataSource.insertContentsOf(equips, at: indexPath.row + 1)
@@ -270,23 +375,21 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         if model.type == .Add {
             let equipAddVC = EquipAddVC(nibName: "EquipAddVC", bundle: nil)
             equipAddVC.configCompeletBlock({ [unowned self, unowned indexPath] (equip) -> () in
-                self.tDic[model.addRoom!.roomID]?.append(equip)
-                self.tDataSource.insert(RoomOrEquip(room: nil, equip: equip), atIndex: indexPath.row)
+                self.tDic[model.addRoom!.roomCode]?.append(equip)
+                self.tDataSource.insert(FloorOrRoomOrEquip(floor:nil,room: nil, equip: equip), atIndex: indexPath.row)
                 self.tableView.reloadData()
             })
             self.navigationController?.pushViewController(equipAddVC, animated: true)
         }
         
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let model = tDataSource[indexPath.row]
+        if model.type == .Floor  {
+            return 30
+        }
+        return 44
     }
-    */
+ 
 
 }

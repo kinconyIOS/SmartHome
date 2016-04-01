@@ -56,7 +56,7 @@ class LQRcodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         scanLayer.frame = CGRectMake(0, 0, boxView.frame.width, 1)
         scanLayer.backgroundColor = UIColor.blueColor().CGColor
         boxView.layer.addSublayer(scanLayer)
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: Selector("moveScanLayer:"), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("moveScanLayer:"), userInfo: nil, repeats: true)
         timer!.fire()
         captureSession?.startRunning()
         
@@ -82,7 +82,7 @@ class LQRcodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func moveScanLayer(timer: NSTimer) {
-        print("dddd")
+        
         var frame = scanLayer.frame
         if boxView.frame.height < scanLayer.frame.origin.y {
             frame.origin.y = 0

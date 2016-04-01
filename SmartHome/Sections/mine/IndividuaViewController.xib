@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IndividuaViewController" customModule="SmartHome" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="xPX-ee-PmT" id="1Qw-AG-q3l"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="walk" destination="7Hf-eN-YgJ" id="pTS-ob-UzZ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xPX-ee-PmT">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="280"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="240" id="Q6k-up-w5k"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Q6k-up-w5k"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="Q6k-up-w5k"/>
+                        </mask>
+                    </variation>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Hf-eN-YgJ">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="68L-Lc-SA4"/>
+                    </constraints>
+                    <state key="normal" title="退出登录" backgroundImage="圆角矩形_确定">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="68L-Lc-SA4"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="68L-Lc-SA4"/>
+                        </mask>
+                    </variation>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="7Hf-eN-YgJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="3dw-V9-53f"/>
+                <constraint firstAttribute="trailing" secondItem="xPX-ee-PmT" secondAttribute="trailing" id="CHO-Az-fNq"/>
+                <constraint firstItem="7Hf-eN-YgJ" firstAttribute="top" secondItem="xPX-ee-PmT" secondAttribute="bottom" constant="39" id="DA6-Tn-Obi"/>
+                <constraint firstAttribute="bottom" secondItem="xPX-ee-PmT" secondAttribute="bottom" constant="320" id="LUZ-Ge-Z3V"/>
+                <constraint firstItem="xPX-ee-PmT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ugb-b8-1lG"/>
+                <constraint firstItem="xPX-ee-PmT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="19" id="aW0-Nj-GZL"/>
+                <constraint firstItem="xPX-ee-PmT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="36" id="cbw-GR-8Bb">
+                    <variation key="heightClass=regular-widthClass=compact" constant="13"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="7Hf-eN-YgJ" secondAttribute="trailing" constant="40" id="g7s-gm-Hw2"/>
+                <constraint firstItem="xPX-ee-PmT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hDk-Ox-X8S"/>
+                <constraint firstAttribute="trailing" secondItem="xPX-ee-PmT" secondAttribute="trailing" constant="21" id="iAr-0Q-4yx">
+                    <variation key="heightClass=regular-widthClass=compact" constant="14"/>
+                </constraint>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="7Hf-eN-YgJ"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="3dw-V9-53f"/>
+                    <exclude reference="DA6-Tn-Obi"/>
+                    <exclude reference="g7s-gm-Hw2"/>
+                    <exclude reference="aW0-Nj-GZL"/>
+                    <exclude reference="cbw-GR-8Bb"/>
+                    <exclude reference="iAr-0Q-4yx"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="7Hf-eN-YgJ"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="3dw-V9-53f"/>
+                    <include reference="DA6-Tn-Obi"/>
+                    <include reference="g7s-gm-Hw2"/>
+                    <exclude reference="CHO-Az-fNq"/>
+                    <exclude reference="LUZ-Ge-Z3V"/>
+                    <exclude reference="Ugb-b8-1lG"/>
+                    <include reference="aW0-Nj-GZL"/>
+                    <include reference="cbw-GR-8Bb"/>
+                    <exclude reference="hDk-Ox-X8S"/>
+                    <include reference="iAr-0Q-4yx"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="圆角矩形_确定" width="281" height="45"/>
+    </resources>
+</document>
