@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最新评论(408)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lwe-6a-6Rb">
-                        <rect key="frame" x="8" y="8" width="125" height="22"/>
+                        <rect key="frame" x="16" y="8" width="125" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="dqD-tR-6Jh"/>
                             <constraint firstAttribute="width" constant="125" id="hZ2-Yr-9oo"/>
@@ -27,22 +27,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="精神病犯了" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZqH-Ig-tme">
-                        <rect key="frame" x="56" y="40" width="129" height="27"/>
+                        <rect key="frame" x="69" y="40" width="129" height="27"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="27" id="BUE-ug-COl"/>
                             <constraint firstAttribute="width" secondItem="ZqH-Ig-tme" secondAttribute="height" multiplier="43:9" id="OeN-XQ-Qab"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.44313725490196076" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="不错不错不错" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ppp-Wi-Q6c">
-                        <rect key="frame" x="8" y="78" width="364" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="dSv-Mf-b7V"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="背景.png" translatesAutoresizingMaskIntoConstraints="NO" id="KKx-9g-XcB">
@@ -59,7 +50,7 @@
                             <constraint firstAttribute="width" secondItem="7WQ-Rg-wIX" secondAttribute="height" multiplier="42:13" id="i7b-fY-DDb"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="向左" translatesAutoresizingMaskIntoConstraints="NO" id="oUx-d2-oHM">
@@ -70,29 +61,38 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="背景.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q5r-Ew-Lj5">
-                        <rect key="frame" x="8" y="34" width="40" height="40"/>
+                        <rect key="frame" x="16" y="34" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="TVy-r6-4dZ"/>
                             <constraint firstAttribute="height" constant="40" id="dXr-NP-Tdk"/>
                             <constraint firstAttribute="width" secondItem="Q5r-Ew-Lj5" secondAttribute="height" multiplier="1:1" id="qdR-Uk-p5w"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="不错不错不错" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ppp-Wi-Q6c">
+                        <rect key="frame" x="17" y="78" width="364" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="dSv-Mf-b7V"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="7WQ-Rg-wIX" firstAttribute="top" secondItem="oUx-d2-oHM" secondAttribute="bottom" constant="11" id="1GT-1W-CmN"/>
                     <constraint firstItem="Q5r-Ew-Lj5" firstAttribute="top" secondItem="Lwe-6a-6Rb" secondAttribute="bottom" constant="4" id="7OA-i5-z3a"/>
-                    <constraint firstItem="Q5r-Ew-Lj5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="DTq-Jm-nMa"/>
+                    <constraint firstItem="Q5r-Ew-Lj5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="DTq-Jm-nMa"/>
                     <constraint firstItem="Lwe-6a-6Rb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="GxR-rr-roS"/>
                     <constraint firstItem="7WQ-Rg-wIX" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="IET-qD-x4Z"/>
-                    <constraint firstItem="Ppp-Wi-Q6c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="L5z-54-drX"/>
+                    <constraint firstItem="Ppp-Wi-Q6c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="9" id="L5z-54-drX"/>
                     <constraint firstItem="Ppp-Wi-Q6c" firstAttribute="top" secondItem="Q5r-Ew-Lj5" secondAttribute="bottom" constant="4" id="OK5-qS-b95"/>
-                    <constraint firstItem="ZqH-Ig-tme" firstAttribute="leading" secondItem="Q5r-Ew-Lj5" secondAttribute="trailing" constant="8" id="aOw-eu-fNB"/>
+                    <constraint firstItem="ZqH-Ig-tme" firstAttribute="leading" secondItem="Q5r-Ew-Lj5" secondAttribute="trailing" constant="13" id="aOw-eu-fNB"/>
                     <constraint firstItem="oUx-d2-oHM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="bHR-hw-5qN"/>
                     <constraint firstAttribute="trailingMargin" secondItem="KKx-9g-XcB" secondAttribute="trailing" constant="79" id="bkO-lr-GHy"/>
                     <constraint firstItem="oUx-d2-oHM" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="cZP-FG-tDC"/>
                     <constraint firstItem="ZqH-Ig-tme" firstAttribute="top" secondItem="Lwe-6a-6Rb" secondAttribute="bottom" constant="10" id="cgG-ac-JI0"/>
-                    <constraint firstItem="Lwe-6a-6Rb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ps7-ky-8cJ"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Ppp-Wi-Q6c" secondAttribute="trailing" constant="18" id="pyo-aM-mgv"/>
+                    <constraint firstItem="Lwe-6a-6Rb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="ps7-ky-8cJ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Ppp-Wi-Q6c" secondAttribute="trailing" constant="9" id="pyo-aM-mgv"/>
                     <constraint firstItem="KKx-9g-XcB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="28" id="rEb-78-rOD"/>
                 </constraints>
             </tableViewCellContentView>
@@ -104,6 +104,6 @@
     </objects>
     <resources>
         <image name="向左" width="8" height="15"/>
-        <image name="背景.png" width="320" height="568"/>
+        <image name="背景.png" width="33" height="20"/>
     </resources>
 </document>

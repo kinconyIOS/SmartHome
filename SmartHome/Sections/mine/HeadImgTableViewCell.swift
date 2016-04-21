@@ -14,6 +14,10 @@ class HeadImgTableViewCell: UITableViewCell {
     @IBOutlet var leab: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        HeadImg.layer.cornerRadius = 12.0
+        HeadImg.layer.masksToBounds = true
+        HeadImg.layer.borderWidth = 3
+        HeadImg.layer.borderColor = UIColor.groupTableViewBackgroundColor().CGColor
         // Initialization code
     }
 

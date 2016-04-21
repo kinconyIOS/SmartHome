@@ -47,7 +47,7 @@
                     <rect key="frame" x="26" y="181" width="423" height="30"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" secureTextEntry="YES"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                     <connections>
                         <action selector="onExit:" destination="-1" eventType="editingDidEndOnExit" id="DCQ-qB-AqH"/>
                     </connections>

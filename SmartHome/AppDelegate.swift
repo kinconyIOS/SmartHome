@@ -37,12 +37,8 @@ import Alamofire
         dataDeal.creatEquipTable()
         print(NSHomeDirectory())
         
-
-        
-       
-        //进入界面此处要考虑三种情况
-        //1.下载软件第一次安装 2.不是首次且令牌失效 3.不是首次且令牌不失效
-        //  数据更新
+     
+    
         //第一次安装会走引导页
         let isNotFirst = NSUserDefaults.standardUserDefaults().objectForKey("isNotFirstComming")?.boolValue
         if isNotFirst == nil || isNotFirst == false {
@@ -51,8 +47,9 @@ import Alamofire
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isNotFirstComming")
             self.window!.rootViewController = guidevc
         }else{
-            //直接进入登陆界面
-        didSelectedEnter()
+            
+            //非第一次登陆，直接进入登陆界面
+            secondLogin()
         }
         self.setUpErrorTest()
         self.registerRemoteNotification()
@@ -78,11 +75,48 @@ import Alamofire
         
     }
    
-
+    func secondLogin(){
+   
+        let homevc:HomeVC=HomeVC(nibName: "HomeVC", bundle: nil)
+        homevc.tabBarItem.title=NSLocalizedString("首页", comment: "")
+        homevc.tabBarItem.image=homeIcon
+        homevc.tabBarItem.selectedImage=homeIconSelected
+        let homeNav:UINavigationController = AutorotateNavC(rootViewController: homevc)
+        
+        let setModelVC:SetModelVC=SetModelVC(nibName: "SetModelVC", bundle: nil)
+        setModelVC.tabBarItem.title=NSLocalizedString("情景模式", comment: "")
+        setModelVC.tabBarItem.image=modelIcon
+        setModelVC.tabBarItem.selectedImage=modelIconSelected
+        let setModelNav:UINavigationController = UINavigationController(rootViewController: setModelVC)
+        
+        let mallvc:MallVC=MallVC(nibName: "MallVC", bundle: nil)
+        mallvc.tabBarItem.title=NSLocalizedString("商城", comment: "")
+        mallvc.tabBarItem.image=mallIcon
+        mallvc.tabBarItem.selectedImage=mallIconSelected
+        let mallNav:UINavigationController = UINavigationController(rootViewController:mallvc)
+        
+        let minevc:MineVC=MineVC(nibName: "MineVC", bundle: nil)
+        minevc.tabBarItem.title=NSLocalizedString("我的", comment: "")
+        minevc.tabBarItem.image=mineIcon
+        minevc.tabBarItem.selectedImage=mineIconSelected
+        let mineNav:UINavigationController = UINavigationController(rootViewController: minevc)
+        let tab=AutoTabC()
+        tab.viewControllers=[homeNav,setModelNav,mallNav,mineNav];
+        tab.tabBar.tintColor=mainColor
+        
+        self.window!.rootViewController = tab
+          //  数据更新
+        readRoomInfo {
+            
+            let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("RoomInfoVersionNumber")
+            print("当前的楼层信息版本号为:\(localnum)")
+        }
+    }
     func didSelectedEnter(){
         
         let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
         self.window!.rootViewController=nav
+     
         print("完毕")
     }
 

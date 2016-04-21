@@ -21,9 +21,11 @@ func ==(lhs: Building, rhs: Building) -> Bool {
 class Building : Hashable {
     var buildType = BuildType.BuildRoom
     var buildName: String = ""
+    var buildCode: String = ""
     var isAddCell = false
     var floor: Building?
     var isUnfold: Bool = false
+    
     
     init(buildType: BuildType, buildName: String, isAddCell: Bool) {
         self.buildType = buildType
@@ -39,7 +41,7 @@ class Building : Hashable {
 
 class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
 
-    
+    var isSimple = false
     @IBOutlet var tableView: UITableView! {
         didSet{
             tableView.delegate = self
@@ -64,7 +66,8 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
     func assembleFloor() -> String {
         var subArr = [[String : String]]()
         for floor in floorArr {
-            subArr.append(["floorName" : floor.buildName])
+            subArr.append(["floorName" : floor.buildName,"floorCode" : floor.buildCode])
+           
         }
         
         return dataDeal.toJSONString(subArr)
@@ -79,6 +82,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
                 if value != roomDic[key]?.last {
                     var suDic = ["roomName" : value.buildName]
                     suDic["floorName"] = key
+                    suDic["roomCode"] = value.buildCode
                     subArr.append(suDic)
                 }
             }
@@ -126,6 +130,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         let floors = dataDeal.getModels(DataDeal.TableType.Floor) as! Array<Floor>
         for _floor in floors{
             let floor = Building(buildType: .BuildFloor, buildName:  _floor.name, isAddCell: false)
+           floor.buildCode = _floor.floorCode
             floorArr.append(floor)
             dataSource.append(floor)
             let rooms = dataDeal.getRoomsByFloor(_floor)
@@ -133,6 +138,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
              var roomArr: [Building] = []
             for _room in rooms{
                 let room = Building(buildType: .BuildRoom, buildName: _room.name, isAddCell: false)
+                room.buildCode = _room.roomCode
                 print(room.buildName)
                 room.floor = floor
                 roomArr.append(room)
@@ -168,18 +174,25 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         print( parameter["roomInfo"])
          print( parameter["floorInfo"])
         BaseHttpService .sendRequestAccess(updatinfo, parameters: parameter) { (back) -> () in
+            
             updateRoomInfo({ () -> () in
                 // 更新一个版本号上传到服务器上面
-                let f = NSUserDefaults.standardUserDefaults().objectForKey( "RoomInfoVersionNumber")?.floatValue
+                var f = NSUserDefaults.standardUserDefaults().objectForKey( "RoomInfoVersionNumber")?.floatValue
+                if f == nil{ f = 0}
                 setNetRoomInfoVersionNumber(f!, andComplete: {
                     
                     NSUserDefaults.standardUserDefaults().setFloat(f!+1, forKey: "RoomInfoVersionNumber")
+                    if self.isSimple {
+                        showMsg("保存成功");
+                    return
+                    }
                     let addDeviceVC: AddDeviceViewController = AddDeviceViewController(nibName: "AddDeviceViewController", bundle: nil)
                     addDeviceVC.setCompeletBlock { [unowned self]() -> () in
                         let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
                         self.navigationController?.pushViewController(classifyVC, animated: true)
                     }
                     self.navigationController?.pushViewController(addDeviceVC, animated: true)
+                        
                    
                 })
                 })
@@ -345,7 +358,14 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        let building = dataSource[indexPath.row]
+        if building.buildType == BuildType.BuildRoom
+        {
+            return 45
+        }else{
+            return 56
+        }
+
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -362,31 +382,73 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         let building = dataSource[indexPath.row]
         if building.buildType == BuildType.BuildRoom
         {
-            let correctArray = getRemoveIndex(building,array: (roomDic[building.floor!.buildName])!)
-            //从原数组中删除指定元素
-            
-            for index in correctArray{
-                roomDic[building.floor!.buildName]?.removeAtIndex(index)
+            if building.buildCode != ""{
+            let parameter = ["roomCode" :building.buildCode]
+            BaseHttpService .sendRequestAccess(deleteroom_do, parameters: parameter) { (back) -> () in
             }
+            }
+                let correctArray = getRemoveIndex(building,array: (self.roomDic[building.floor!.buildName])!)
+                //从原数组中删除指定元素
+                
+                for index in correctArray{
+                    self.roomDic[building.floor!.buildName]?.removeAtIndex(index)
+                }
+                self.dataSource.removeAtIndex(indexPath.row)
+                self.tableView.reloadData()
+          
+          
        //
         }else
-        {
-            let correctArray = getRemoveIndex(building,array:floorArr)
-            //从原数组中删除指定元素
-           if roomDic.keys.contains(building.buildName)
-             {
-                roomDic.removeValueForKey(building.buildName)
-            }
-            for index in correctArray{
-                floorArr.removeAtIndex(index)
-            }
+        {    if building.buildCode != ""{
+
+             let parameter = ["floorCode" :building.buildCode]
+                BaseHttpService .sendRequestAccess(deleteroom_do, parameters: parameter) {(back) -> () in
+                }
+             }
+                if(building.isUnfold){
+                    print("房间打开");
+                    let correctArray = getRemoveIndex(building,array:self.floorArr)
+                    //从原数组中删除指定元素
+                    
+                    if self.roomDic.keys.contains(building.buildName)
+                    {
+                        //var indexPaths = [NSIndexPath]()
+                        let arr = self.roomDic[building.buildName]
+                        
+                        for _ in 0 ..< arr!.count+1
+                        {
+                            self.dataSource.removeAtIndex(indexPath.row)
+                        }
+                        self.roomDic.removeValueForKey(building.buildName)
+                        
+                    }
+                    for index in correctArray{
+                        self.floorArr.removeAtIndex(index)
+                    }
+                    self.tableView.reloadData()
+                    return
+                }
+                let correctArray = getRemoveIndex(building,array:self.floorArr)
+                //从原数组中删除指定元素
+                if self.roomDic.keys.contains(building.buildName)
+                {
+                    self.roomDic.removeValueForKey(building.buildName)
+                }
+                for index in correctArray{
+                    self.floorArr.removeAtIndex(index)
+                }
+                self.dataSource.removeAtIndex(indexPath.row)
+                self.tableView.reloadData()
+            
+            
         }
      
-        dataSource.removeAtIndex(indexPath.row)
+       
         //            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: indexPath.section)], withRowAnimation: UITableViewRowAnimation.Fade)
-        self.tableView.reloadData()
+        
         
     }
+    
     //获取正确的删除索引
       /*
     // MARK: - Navigation

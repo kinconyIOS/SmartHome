@@ -7,12 +7,14 @@
 //
 
 import UIKit
-
+import Alamofire
 class IndividuaViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-    var tabArr = ["头像","名称","签名","修改性别"];
-    var usreArr = ["haha","签名","男"]
+    var tabArr = ["头像","名称","签名","修改性别","选择城市"];
+    var usreArr = ["haha","签名","男","杭州"]
+    var sunData:SunDataPicker? = SunDataPicker.init(frame: CGRectMake(0, 100,ScreenWidth-20 , (ScreenWidth-20)*3/3))
     var cellArr = [OtherTableViewCell]()//存放cell
     var cellI:Int = 0
+    var areas:NSDictionary?
     @IBOutlet var walk: UIButton!
     @IBOutlet var tableView: UITableView!
     var cellImg:HeadImgTableViewCell?
@@ -23,10 +25,16 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
         tableView.layer.masksToBounds = true
         tableView.dataSource = self;
         tableView.delegate = self;
+        //选择学校界面初始化
+        sunData?.title.text = "选择城市"
         //显示导航栏
         self.navigationController?.navigationBarHidden=false
         self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
         self.navigationItem.title = "个人信息"
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        // self.navigationItem.backBarButtonItem?.tintColor = UIColor.whiteColor()
+        
         //拉出cell
         tableView.registerNib(UINib(nibName:"HeadImgTableViewCell", bundle: nil), forCellReuseIdentifier:"Head")
         tableView.registerNib(UINib(nibName:"OtherTableViewCell", bundle: nil), forCellReuseIdentifier:"Other")
@@ -59,15 +67,16 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section==0 && indexPath.row==0{
             //          PersonalCell 自定cell
-             cellImg = tableView.dequeueReusableCellWithIdentifier("Head") as? HeadImgTableViewCell
+            cellImg = tableView.dequeueReusableCellWithIdentifier("Head") as? HeadImgTableViewCell
             //cell 箭头
             cellImg!.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             cellImg?.HeadImg.image = UIImage(named: "我的头像")
             cellImg!.leab!.text = tabArr[indexPath.row]
+           
             return cellImg!
         }
         else{
-             cell = tableView.dequeueReusableCellWithIdentifier("Other") as? OtherTableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("Other") as? OtherTableViewCell
             //cell 箭头
             cell!.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             cell!.information.text = usreArr[indexPath.row-1]
@@ -75,11 +84,12 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
             cellArr.append(cell!)
             return cell!
         }
-
+        
     }
     //行高
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
-        return 60
+        if indexPath.row == 0   {return 96}
+        return 48
     }
     //点击事件
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -115,33 +125,111 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
             actionSheet!.tag = 320;
             actionSheet?.showInView(self.tableView)
             break
+        case 4:
+            let path = NSBundle.mainBundle().pathForResource("mJson", ofType: "json")
+            var jsonstr:String?
+            do {
+                jsonstr = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
+            } catch let error as NSError{
+                print(error.localizedDescription)
+            }
+            var jsondata = jsonstr?.dataUsingEncoding(NSUTF8StringEncoding)
+            do {
+                self.areas = try NSJSONSerialization.JSONObjectWithData(jsondata! , options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            } catch let error as NSError{
+                print(error.localizedDescription)
+            }
+            self.sunData?.setNumberOfComponents(3, SET: self.areas, addTarget:self.navigationController!.view , complete: { (one, two, three) -> Void in
+                var a = "\(one),\(two),\(three)"
+                print(a)
+                let parameters=["city":a]
+                BaseHttpService.sendRequestAccess(GetUserCity, parameters:parameters) { (response) -> () in
+                    print(response)
+                    self.usreArr[3] = "\(two)-\(three)"
+                }
+            })
+            break
         default:
             break
         }
         
     }
+    override func viewWillAppear(animated: Bool) {
+        //获取用户信息
+        let parameters=["userCode":userCode]
+        BaseHttpService .sendRequestAccess(GetUser, parameters:parameters) { (response) -> () in
+            print("获取用户信息=\(response)")
+            if (response["city"] as! String) == ""{
+                self.usreArr[3] = "杭州"
+            }else{
+                self.usreArr[3] = (response["city"] as? String)!
+            }
+            if (response["signature"] as! String) == ""{
+                self.usreArr[1] = "亲还没设置签名！"
+            }else{
+                self.usreArr[1] = (response["signature"] as? String)!
+            }
+            if (response["userName"] as! String) == ""{
+                self.usreArr[0] = "亲还没设置名字！"
+            }else{
+                self.usreArr[0] = (response["userName"] as? String)!
+            }
+            if (response["userSex"] as! String) == ""{
+                self.usreArr[2] = "男"
+            }else{
+                if (response["userSex"] as? String) == "0"{
+                    self.usreArr[2] = "男"
+                }else if (response["userSex"] as? String) == "1"{
+                    self.usreArr[2] = "女"
+                }
+                
+            }
+            //图片
+            if (response["headPic"] as! String) == ""{
+                
+            }else{
+                let str = imgUrl+(response["headPic"]as!String)
+                self.cellImg!.HeadImg.sd_setImageWithURL(NSURL(string: str))
+                // self.ImaName.setImage(self.imgView1?.image, forState: UIControlState.Normal)
+                
+                self.cellImg!.HeadImg.contentMode = UIViewContentMode.ScaleToFill
+                //self.Sex.text = response["userSex"] as? String
+            }
+        }
+        tableView.reloadData()
+        
+    }
     //闭包函数
     func somsomeFunctionThatTakesAClosure(string:String) -> Void{
         print(string)
-        cellArr[cellI].leab?.text = string
+        cellArr[cellI].information?.text = string
     }
     //选择照片男女
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         if actionSheet.tag == 310{
             if buttonIndex==1{
-               self.LoaclPhoto()
+                self.LoaclPhoto()
             }else if buttonIndex==2{
-               self.takePhoto()
+                self.takePhoto()
             }
         }else if actionSheet.tag == 320{
             if buttonIndex==0{
-                cell!.information.text = "男"
+                cellArr[2].information.text = "男"
+                let parameters=["userSex":"0"]
+                BaseHttpService.sendRequestAccess(GetUserSex, parameters:parameters) { (response) -> () in
+                    print(response)
+                }
+                
             }else if buttonIndex==1{
-                cell!.information.text = "女"
+                cellArr[2].information.text = "女"
+                let parameters=["userSex":"1"]
+                BaseHttpService.sendRequestAccess(GetUserSex, parameters:parameters) { (response) -> () in
+                    print(response)
+                }
             }
         }
     }
-
+    
     //打开相机
     func takePhoto(a:Void){
         let sourceType:UIImagePickerControllerSourceType = UIImagePickerControllerSourceType.Camera
@@ -169,18 +257,27 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
     //获取图片
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         cellImg!.HeadImg.image = image;
+        saveImage(image, imageName: "1236")
         //dismissViewControllerAnimated:YES completion:nil
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
-    /*
+    func saveImage(currentImage:UIImage,imageName:NSString){
+        let imageData:NSData = UIImageJPEGRepresentation(currentImage, 0.5)!
+  
+        BaseHttpService.saveImageAccess(imageData) { (back) -> () in
+            
+        }
+        
+        //开始上传操作
+    }
+        /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

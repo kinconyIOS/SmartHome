@@ -31,13 +31,12 @@ class AddDeviceViewController: UIViewController ,QRCodeReaderDelegate{
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationItem.title = "添加的主机"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "跳过", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
         
     }
     
     func handleRightItem(sender: UIBarButtonItem) {
-        self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
-        compeletBlock?()
+        self.compeletBlock?()
     }
     
     @IBAction func handleScanning(sender: UITapGestureRecognizer) {
@@ -86,11 +85,14 @@ class AddDeviceViewController: UIViewController ,QRCodeReaderDelegate{
     @IBAction func handleCompelet(sender: UIButton) {
         if self.deviceCode == ""
         {
+            showMsg("请扫入二维码");
         return
         }
-        let parameters = ["deviceCode":self.deviceCode,"userCode":"U00318"]
-       BaseHttpService.sendRequestAccess(shaom_do, parameters: parameters) { (anyObject) -> () in
+        let parameters = ["deviceCode":self.deviceCode,]
+        BaseHttpService.sendRequestAccess(shaom_do, parameters: parameters) {[unowned self] (anyObject) -> () in
         print(anyObject)
+        self.navigationController?.dismissViewControllerAnimated(false, completion: nil)
+        self.compeletBlock?()
         }
      
         

@@ -13,7 +13,17 @@ class AutorotateNavC: UINavigationController {
            if   self.topViewController!.isKindOfClass(EZLivePlayViewController.classForCoder()){
             return true
         }
+        if   Wrapper().kindsOfHTPlayCamerViewController(self){
+            return true
+        }
         return false
+    }
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        if   Wrapper().kindsOfHTPlayCamerViewController(self){
+               print("yes0")
+            return UIInterfaceOrientationMask.LandscapeLeft
+        }
+        return UIInterfaceOrientationMask.Portrait
     }
   
 }

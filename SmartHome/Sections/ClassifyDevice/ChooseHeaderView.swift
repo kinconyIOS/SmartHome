@@ -9,7 +9,8 @@
 import UIKit
 
 class ChooseHeaderView: UICollectionReusableView {
-
+    
+   
     @IBOutlet var viewTitleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

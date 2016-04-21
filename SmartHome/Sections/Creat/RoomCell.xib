@@ -3,23 +3,27 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="roomcell" rowHeight="44" id="KGk-i7-Jjw" customClass="RoomCell" customModule="SmartHome" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="roomcell" rowHeight="45" id="KGk-i7-Jjw" customClass="RoomCell" customModule="SmartHome" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoS-YN-Lz0">
-                        <rect key="frame" x="0.0" y="49" width="320" height="2"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="客厅" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gi3-RH-tnb">
-                        <rect key="frame" x="83" y="11" width="155" height="30"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5w-mM-y30">
+                        <rect key="frame" x="38" y="6" width="244" height="33"/>
+                        <color key="backgroundColor" red="0.18431372549019609" green="0.80784313725490198" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="房间" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gi3-RH-tnb">
+                        <rect key="frame" x="69" y="10" width="172" height="25"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
@@ -29,12 +33,22 @@
                         </connections>
                     </textField>
                 </subviews>
-                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="gi3-RH-tnb" secondAttribute="bottom" constant="2" id="1Eh-MA-I7V"/>
+                    <constraint firstItem="L5w-mM-y30" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-2" id="7cX-IY-aUQ"/>
+                    <constraint firstItem="L5w-mM-y30" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="2" id="7y9-ec-uJa"/>
+                    <constraint firstItem="gi3-RH-tnb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="61" id="Ad9-eg-CmV"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="gi3-RH-tnb" secondAttribute="trailing" constant="71" id="SXT-On-b38"/>
+                    <constraint firstItem="gi3-RH-tnb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="VXJ-WE-v4p"/>
+                    <constraint firstItem="L5w-mM-y30" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="lbd-rP-hIZ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="L5w-mM-y30" secondAttribute="trailing" constant="30" id="t1E-cI-CRq"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="roomName" destination="gi3-RH-tnb" id="8By-5e-sXG"/>
             </connections>
-            <point key="canvasLocation" x="385" y="219"/>
+            <point key="canvasLocation" x="385" y="216.5"/>
         </tableViewCell>
     </objects>
 </document>

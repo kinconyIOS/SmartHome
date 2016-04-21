@@ -10,6 +10,7 @@
 
 @interface SZLSideView : UIView
 @property (weak,nonatomic) id<UITableViewDataSource,UITableViewDelegate> delegate;
+@property (nonatomic) BOOL isOpen;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 -(void)setDelegate:(id<UITableViewDataSource,UITableViewDelegate>)delegate
 ;

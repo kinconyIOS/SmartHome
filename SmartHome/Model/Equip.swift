@@ -7,8 +7,10 @@
 //
 
 import Foundation
-
-class Equip {
+func ==(lhs: Equip, rhs: Equip) -> Bool {
+    return lhs.hashValue == rhs.hashValue
+}
+class Equip : Hashable{
     let equipID: String
     var userCode: String = ""
     var roomCode: String = ""
@@ -32,5 +34,9 @@ class Equip {
             dataDeal.deleteModel(.Equip, model: self)
         }
         
+    }
+    var hashValue: Int {
+       
+        return "\(equipID),\(userCode),\(roomCode),\(icon),\(type),\(num),\(name)".hashValue
     }
 }

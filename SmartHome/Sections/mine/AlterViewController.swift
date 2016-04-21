@@ -28,7 +28,21 @@ class AlterViewController: UIViewController,UITextFieldDelegate {
     }
     //提交数据
     func selectRightAction(butt:UIButton)->Void{
-    
+       
+        if self.alteText == "修改姓名"{
+            let parameters=["userName":textField.text!]
+            BaseHttpService.sendRequestAccess(GetUserName, parameters:parameters) { (response) -> () in
+                print(response)
+            }
+        }else if self.alteText == "修改签名"{
+            let parameters=["signature":textField.text!]
+            BaseHttpService.sendRequestAccess(GetUserSignature, parameters:parameters) { (response) -> () in
+                print(response)
+            }
+            
+        }
+        
+        self.navigationController?.popViewControllerAnimated(true)
         self.myClosure?(textField.text!)
     }
     //键盘消失

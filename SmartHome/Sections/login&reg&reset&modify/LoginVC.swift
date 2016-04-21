@@ -46,7 +46,7 @@ class LoginVC: UIViewController  {
             self.vcodeBtn.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
         self.passText.becomeFirstResponder()
 
-        BaseHttpService.sendRequest(sendCode_do, parameters: ["userPhone":phone!,"type":"1"]) { (any:AnyObject) -> () in
+        BaseHttpService.sendRequest(sendCode_do, parameters: ["userPhone":phone!]) { (any:AnyObject) -> () in
         
             print(any)
         }
@@ -57,7 +57,7 @@ class LoginVC: UIViewController  {
     
     func doTimer(){
         
-        time = 30
+        time = 90
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "timerFireMethod:", userInfo: nil, repeats:true);
         timer!.fire()
     }
@@ -103,98 +103,88 @@ class LoginVC: UIViewController  {
       
       let phone = self.phoneText.text?.trimString()
       let pwd = self.passText.text?.trimString()
+        
+        BaseHttpService.sendRequest(login_do, parameters: ["userPhone":phone!,"verifyCode":pwd!]) { [unowned self](any:AnyObject) -> () in
+            if any["success"] as! Bool == true{
+                 BaseHttpService.setAccessToken(any["data"]!!["accessToken"] as!String)
+                 BaseHttpService.setRefreshAccessToken(any["data"]!!["refreshToken"] as!String)
+                 BaseHttpService.setUserCode(any["data"]!!["userCode"] as!String)
+              self.loginSuccess()
+                
+            } else{
+                showMsg(any["message"] as! String)
+                
+            }//失效
+
+            print(any)
+        }
+        
         //保存到本地
-        setDefault(phone!, pwd:pwd!)
+        //  setDefault(phone!, pwd:pwd!)
         //登陆到服务器
         
+    
+        
+        
+    }
+    func loginSuccess(){
         //读取房间信息
         readRoomInfo {
             
             let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("RoomInfoVersionNumber")
             print("当前的楼层信息版本号为:\(localnum)")
-            if true{
-               
+            let isSecond = NSUserDefaults.standardUserDefaults().objectForKey("isSecondLogin")?.boolValue
+            if
+                isSecond == nil
+            {
                 
+                NSUserDefaults.standardUserDefaults().setObject(true, forKey: "isSecondLogin")
                 
                 let creatHomeVC = CreatHomeViewController(nibName: "CreatHomeViewController", bundle: nil)
                 let creatNavigationC = UINavigationController(rootViewController: creatHomeVC)
-               UIApplication.sharedApplication().keyWindow?.rootViewController = creatNavigationC
-
-            
+                UIApplication.sharedApplication().keyWindow?.rootViewController = creatNavigationC
+                
+                
             }else{
-            let homevc:HomeVC=HomeVC(nibName: "HomeVC", bundle: nil)
-            homevc.tabBarItem.title=NSLocalizedString("首页", comment: "")
-            homevc.tabBarItem.image=homeIcon
-            homevc.tabBarItem.selectedImage=homeIconSelected
-            let homeNav:UINavigationController = AutorotateNavC(rootViewController: homevc)
-            
-            let setModelVC:SetModelVC=SetModelVC(nibName: "SetModelVC", bundle: nil)
-            setModelVC.tabBarItem.title=NSLocalizedString("情景模式", comment: "")
-            setModelVC.tabBarItem.image=modelIcon
-            setModelVC.tabBarItem.selectedImage=modelIconSelected
-            let setModelNav:UINavigationController = UINavigationController(rootViewController: setModelVC)
-            
-            let mallvc:MallVC=MallVC(nibName: "MallVC", bundle: nil)
-            mallvc.tabBarItem.title=NSLocalizedString("商城", comment: "")
-            mallvc.tabBarItem.image=mallIcon
-            mallvc.tabBarItem.selectedImage=mallIconSelected
-            let mallNav:UINavigationController = UINavigationController(rootViewController:mallvc)
-            
-            let minevc:MineVC=MineVC(nibName: "MineVC", bundle: nil)
-            minevc.tabBarItem.title=NSLocalizedString("我的", comment: "")
-            minevc.tabBarItem.image=mineIcon
-            minevc.tabBarItem.selectedImage=mineIconSelected
-            let mineNav:UINavigationController = UINavigationController(rootViewController: minevc)
-            let tab=AutoTabC()
-            tab.viewControllers=[homeNav,setModelNav,mallNav,mineNav];
-            tab.tabBar.tintColor=mainColor
-                      //  let navigationC = UINavigationController(rootViewController: addDeviceVC)
-            
-            UIApplication.sharedApplication().keyWindow?.rootViewController = tab
+                let homevc:HomeVC=HomeVC(nibName: "HomeVC", bundle: nil)
+                homevc.tabBarItem.title=NSLocalizedString("首页", comment: "")
+                homevc.tabBarItem.image=homeIcon
+                homevc.tabBarItem.selectedImage=homeIconSelected
+                let homeNav:UINavigationController = AutorotateNavC(rootViewController: homevc)
+                
+                let setModelVC:SetModelVC=SetModelVC(nibName: "SetModelVC", bundle: nil)
+                setModelVC.tabBarItem.title=NSLocalizedString("情景模式", comment: "")
+                setModelVC.tabBarItem.image=modelIcon
+                setModelVC.tabBarItem.selectedImage=modelIconSelected
+                let setModelNav:UINavigationController = UINavigationController(rootViewController: setModelVC)
+                
+                let mallvc:MallVC=MallVC(nibName: "MallVC", bundle: nil)
+                mallvc.tabBarItem.title=NSLocalizedString("商城", comment: "")
+                mallvc.tabBarItem.image=mallIcon
+                mallvc.tabBarItem.selectedImage=mallIconSelected
+                let mallNav:UINavigationController = UINavigationController(rootViewController:mallvc)
+                
+                let minevc:MineVC=MineVC(nibName: "MineVC", bundle: nil)
+                minevc.tabBarItem.title=NSLocalizedString("我的", comment: "")
+                minevc.tabBarItem.image=mineIcon
+                minevc.tabBarItem.selectedImage=mineIconSelected
+                let mineNav:UINavigationController = UINavigationController(rootViewController: minevc)
+                let tab=AutoTabC()
+                tab.viewControllers=[homeNav,setModelNav,mallNav,mineNav];
+                tab.tabBar.tintColor=mainColor
+                //  let navigationC = UINavigationController(rootViewController: addDeviceVC)
+                
+                UIApplication.sharedApplication().keyWindow?.rootViewController = tab
             }
         }
-        
-        
+    
+    
     }
     @IBAction func onExit(sender: AnyObject) {
         self.view.endEditing(true)
        // self.userNameTableView?.hidden = true
     }
-    typealias CompletereadRoomInfo = () -> ()
-    func readRoomInfo(complete:CompletereadRoomInfo)
-    {
-        // 获取本地版本
-        let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("RoomInfoVersionNumber")
-      
-        // 读取服务器版本
-        dareNetRoomInfoVersionNumber {  f in
-            if   f != localnum // 判断是否更新
-            {
-             // 更新（如需）
-                print("更新房间信息")
-                updateRoomInfo({ () -> () in
-                // 更新一个版本号上传到服务器上面
-                
-                 setNetRoomInfoVersionNumber(f, andComplete: {
-                     complete()
-                    NSUserDefaults.standardUserDefaults().setFloat(f+1, forKey: "RoomInfoVersionNumber")
-                    
-                 })
-             })
-              
-            }else{
-             complete()
-            
-            }
-        }
-       
-       
-        
-        // 本地设置为最新的版本号
-        
-       
-    }
-    @IBAction func showUserList(sender: UIButton) {
+       @IBAction func showUserList(sender: UIButton) {
         userlist = NSUserDefaults.standardUserDefaults().objectForKey("userList") as? [String:String]
         userNames?.removeAll()
         for key in (userlist?.keys)!{
@@ -204,24 +194,7 @@ class LoginVC: UIViewController  {
     }
  
     
-    typealias CompleteRoomInfoNumber = (Float) -> ()
-    func dareNetRoomInfoVersionNumber(complete:CompleteRoomInfoNumber){
-    
-    
-      
-        let parameters=["userCode":"U00318"]
-        
-        
-        //读取服务器版本号。
-        BaseHttpService .sendRequestAccess(getversion_do, parameters: parameters) { (response) -> () in
-          
-           complete((response["version"]!?.floatValue)!)//处理版本号
-        }
-   
-    
-    }
-  
-       // MARK: - Table view data source
+         // MARK: - Table view data source
     //返回节的个数
 //    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 //        

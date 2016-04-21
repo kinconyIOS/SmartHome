@@ -10,7 +10,11 @@ import UIKit
 
 class AutoTabC: UITabBarController {
     override func shouldAutorotate() -> Bool {
-        print("yes0")
+     
         return (self.selectedViewController?.shouldAutorotate())!
     }
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+         return (self.selectedViewController?.supportedInterfaceOrientations())!
+    }
+  
 }

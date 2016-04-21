@@ -19,11 +19,7 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    
         navigationItem.title = "我的设备"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "矢量智能对象"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleBack:"))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
@@ -47,7 +43,7 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
        
         let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! EquipNameCell
           equip!.name = (cell.equipName.text?.trimString())!
-        print("\(equip?.name)-\(equip?.icon)-\(equip?.roomCode)")
+        print("--\(equip?.name)-\(equip?.icon)-\(equip?.roomCode)")
         compeletBlock?(equip!)
         self.navigationController?.popViewControllerAnimated(true)
     }

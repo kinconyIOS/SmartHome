@@ -17,6 +17,7 @@ class FloorOrRoomOrEquip {
     var room: Room?
     var equip: Equip?
     var addRoom: Room?
+
     var type: ItemType {
         if floor != nil {
             return .Floor
@@ -64,11 +65,13 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
 
     var cDataSource: [Equip] = []
     var tDataSource: [FloorOrRoomOrEquip] = []
-    var tDic: [String : [Equip]] = [:]
+    var tDic: [String : [Equip]] = [String : [Equip]]()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.setHidesBackButton(true, animated: false)
+        self.reloadUnClassifyDataSource()
+        self.reloadClassifyDataSource()
+       // self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     func reloadUnClassifyDataSource() {
@@ -240,10 +243,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         UIApplication.sharedApplication().keyWindow?.rootViewController = tab
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+   
     
     // MARK: - UICollectionView data Source
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -272,7 +272,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
             let equipSetVC = EquipSetVC(nibName: "EquipSetVC", bundle: nil)
             equipSetVC.equip = cDataSource[indexPath.row]
             equipSetVC.configCompeletBlock({ [unowned self] (equip) -> () in
-               equip.saveEquip()
+              
                 //添加设备
                   let parameter = ["userCode" : userCode,
                     "roomCode":equip.roomCode,
@@ -280,7 +280,8 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
                     "nickName":equip.name,
                     "ico":equip.icon]
                 BaseHttpService.sendRequestAccess(addEq_do, parameters:  parameter, success: { (data) -> () in
-                    
+                    print(data)
+                    equip.saveEquip()
                 })
                 //上传更新设备
                 for i in 0..<self.cDataSource.count {
@@ -373,13 +374,36 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         }
         
         if model.type == .Add {
-            let equipAddVC = EquipAddVC(nibName: "EquipAddVC", bundle: nil)
-            equipAddVC.configCompeletBlock({ [unowned self, unowned indexPath] (equip) -> () in
-                self.tDic[model.addRoom!.roomCode]?.append(equip)
-                self.tDataSource.insert(FloorOrRoomOrEquip(floor:nil,room: nil, equip: equip), atIndex: indexPath.row)
-                self.tableView.reloadData()
-            })
-            self.navigationController?.pushViewController(equipAddVC, animated: true)
+               let equipTypeChoseTVC = EquipTypeChoseTVC()
+            equipTypeChoseTVC.roomCode = model.addRoom!.roomCode
+          self.navigationController?.pushViewController(equipTypeChoseTVC, animated: true)
+//            let equipAddVC = EquipAddVC(nibName: "EquipAddVC", bundle: nil)
+//            equipAddVC.equip = Equip(equipID: randomCode())
+//            equipAddVC.equip?.num = "1"
+//            equipAddVC.equip?.roomCode = model.addRoom!.roomCode
+//            equipAddVC.equipIndex = indexPath
+//            equipAddVC.configCompeletBlock({ [unowned self] (equip,indexPath) -> () in
+//                 equip.saveEquip()
+//                //添加设备
+//                let parameter = ["userCode" : userCode,
+//                    "roomCode":equip.roomCode,
+//                    "deviceAddress":equip.equipID,
+//                    "nickName":equip.name,
+//                    "ico":equip.icon,
+//                "deviceType":equip.type]
+//                print("\(parameter)")
+//                BaseHttpService.sendRequestAccess(addEq_do, parameters:  parameter, success: { (data) -> () in
+//                    print(data)
+//                   
+//                })
+//
+//                self.tDic[model.addRoom!.roomCode]?.append(equip)
+//               print("\(indexPath.row)")
+//               self.tDataSource.insert(FloorOrRoomOrEquip(floor:nil,room: nil, equip: equip), atIndex: indexPath.row)
+//                
+//                self.tableView.reloadData()
+//            })
+//            self.navigationController?.pushViewController(equipAddVC, animated: true)
         }
         
     }
@@ -390,6 +414,39 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         }
         return 44
     }
- 
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+         let model = tDataSource[indexPath.row]
+        if model.type == .Floor || model.type == .Room || model.type == .Add{
+            return false
+        }
+        return true
+    }
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        return "删除"
+    }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let model = tDataSource[indexPath.row]
+        //从数据库删除该设备
+        model.equip?.delete()
+            if model.equip?.equipID != ""{
+                let parameter = ["deviceAddress" :model.equip!.equipID]
+                BaseHttpService.sendRequestAccess(deletedevice_do, parameters: parameter) { (back) -> () in
+                }
+            }
+        let arr:[Equip] = tDic[(model.equip?.roomCode)!]!
+        print(arr)
+            let correctArray = getRemoveIndex(model.equip!,array:arr)
+            //从原数组中删除指定元素
+            
+            for index in correctArray{
+               tDic[model.equip!.roomCode]!.removeAtIndex(index)
+            }
+            self.tDataSource.removeAtIndex(indexPath.row)
+            self.tableView.reloadData()
+            
+        
+        
+    }
+
 
 }

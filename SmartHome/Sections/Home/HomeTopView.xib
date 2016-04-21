@@ -11,13 +11,13 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Tc-Ol-PVV">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9f-p7-R9A">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Tc-Ol-PVV">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </scrollView>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dkx-9g-utC">
                     <rect key="frame" x="280" y="559" width="40" height="37"/>
                     <constraints>
@@ -103,10 +103,8 @@
                 <constraint firstItem="Nmp-EW-3Cf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="6Sx-JH-RbH"/>
                 <constraint firstItem="lMi-Zj-6k3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="7cc-wg-Inp"/>
                 <constraint firstAttribute="trailing" secondItem="A9f-p7-R9A" secondAttribute="trailing" id="Ap4-JN-ziG"/>
-                <constraint firstAttribute="trailing" secondItem="4Tc-Ol-PVV" secondAttribute="trailing" id="Ehz-BT-kzc"/>
                 <constraint firstItem="kWX-ix-KQd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="290" id="Ejj-9x-UXB"/>
                 <constraint firstItem="Nmp-EW-3Cf" firstAttribute="top" secondItem="Hh4-fR-Zzu" secondAttribute="bottom" constant="2" id="F3J-Xk-QTN"/>
-                <constraint firstAttribute="bottom" secondItem="4Tc-Ol-PVV" secondAttribute="bottom" id="Jkj-Ik-0WK"/>
                 <constraint firstItem="kWX-ix-KQd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="L5U-xZ-zk5"/>
                 <constraint firstItem="hTF-KO-3Ow" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="L8Q-da-p96"/>
                 <constraint firstAttribute="bottom" secondItem="Nmp-EW-3Cf" secondAttribute="bottom" constant="20" id="On4-Cp-ENn"/>
@@ -116,18 +114,17 @@
                 <constraint firstItem="hvQ-qj-ZSR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="c5C-ns-Qf3"/>
                 <constraint firstItem="Hh4-fR-Zzu" firstAttribute="top" secondItem="b66-u8-nZf" secondAttribute="bottom" constant="3" id="eCj-tE-tAj"/>
                 <constraint firstItem="kWX-ix-KQd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eEu-dj-I4S"/>
-                <constraint firstItem="4Tc-Ol-PVV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iWw-fP-Fnj"/>
                 <constraint firstAttribute="trailing" secondItem="kWX-ix-KQd" secondAttribute="trailing" id="ihZ-uR-vU2"/>
                 <constraint firstAttribute="bottom" secondItem="dkx-9g-utC" secondAttribute="bottom" constant="4" id="n8u-Rl-wRf"/>
                 <constraint firstItem="dkx-9g-utC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pnJ-yo-wxd"/>
                 <constraint firstItem="b66-u8-nZf" firstAttribute="top" secondItem="lMi-Zj-6k3" secondAttribute="bottom" constant="1" id="qHS-HG-oJw"/>
-                <constraint firstItem="4Tc-Ol-PVV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qcC-j2-00p"/>
                 <constraint firstItem="A9f-p7-R9A" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rcw-a6-w5q"/>
                 <constraint firstItem="Hh4-fR-Zzu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="tJm-nz-XmQ"/>
                 <constraint firstAttribute="bottom" secondItem="A9f-p7-R9A" secondAttribute="bottom" id="upf-1k-ivy"/>
                 <constraint firstAttribute="trailing" secondItem="kWX-ix-KQd" secondAttribute="trailing" id="xcS-s9-dLe"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="Ejj-9x-UXB"/>

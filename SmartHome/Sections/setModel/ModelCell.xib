@@ -12,11 +12,24 @@
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="84" height="83"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgE-AJ-qAi">
+                        <rect key="frame" x="0.0" y="0.0" width="84" height="83"/>
+                    </button>
+                </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" red="0.1960784314" green="0.73333333329999995" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="RgE-AJ-qAi" secondAttribute="bottom" id="ORF-Yt-Guh"/>
+                <constraint firstItem="RgE-AJ-qAi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Yg5-Kd-nqL"/>
+                <constraint firstAttribute="trailing" secondItem="RgE-AJ-qAi" secondAttribute="trailing" id="hYI-iK-yyR"/>
+                <constraint firstItem="RgE-AJ-qAi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="l8B-Sa-YQd"/>
+            </constraints>
             <size key="customSize" width="84" height="83"/>
-            <point key="canvasLocation" x="363" y="198.5"/>
+            <connections>
+                <outlet property="but" destination="RgE-AJ-qAi" id="Y2e-Su-rod"/>
+            </connections>
+            <point key="canvasLocation" x="444" y="278.5"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -13,11 +13,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cge-XN-LN8">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="2xR-fi-6tC"/>
@@ -28,26 +28,13 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Cge-XN-LN8" secondAttribute="trailing" id="Aky-jn-LNu"/>
-                <constraint firstItem="Cge-XN-LN8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="RxT-wa-zye"/>
-                <constraint firstAttribute="bottom" secondItem="Cge-XN-LN8" secondAttribute="bottom" id="kaf-tZ-ZZm"/>
-                <constraint firstItem="Cge-XN-LN8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wcS-aU-Bxh"/>
+                <constraint firstItem="Cge-XN-LN8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SFo-vq-yW7"/>
+                <constraint firstItem="Cge-XN-LN8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eaY-5h-hlw"/>
+                <constraint firstAttribute="bottom" secondItem="Cge-XN-LN8" secondAttribute="bottom" id="jx1-F6-jd2"/>
+                <constraint firstAttribute="trailing" secondItem="Cge-XN-LN8" secondAttribute="trailing" id="yp3-r8-MwW"/>
             </constraints>
-            <connections>
-                <outletCollection property="gestureRecognizers" destination="t98-XO-b1k" appends="YES" id="rTL-t3-zbn"/>
-                <outletCollection property="gestureRecognizers" destination="oI1-Lz-fZq" appends="YES" id="Ash-WK-NWc"/>
-            </connections>
-            <point key="canvasLocation" x="195" y="264"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="417" y="244"/>
         </view>
-        <swipeGestureRecognizer direction="right" id="t98-XO-b1k">
-            <connections>
-                <action selector="closeSideViewGesture:" destination="-1" id="Jhf-Hq-FmR"/>
-            </connections>
-        </swipeGestureRecognizer>
-        <swipeGestureRecognizer direction="left" id="oI1-Lz-fZq">
-            <connections>
-                <action selector="openSideViewGesture:" destination="-1" id="yM6-Xa-LEY"/>
-            </connections>
-        </swipeGestureRecognizer>
     </objects>
 </document>

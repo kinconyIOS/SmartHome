@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoveCommodityViewController" customModule="SmartHome" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="sbe-wK-5tT" id="mlZ-W5-IEU"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sbe-wK-5tT">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="sbe-wK-5tT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CWD-h2-RQm"/>
+                <constraint firstAttribute="trailing" secondItem="sbe-wK-5tT" secondAttribute="trailing" id="Zba-xo-4Iq"/>
+                <constraint firstItem="sbe-wK-5tT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="sOx-KP-TZ5"/>
+                <constraint firstAttribute="bottom" secondItem="sbe-wK-5tT" secondAttribute="bottom" id="wNd-fq-Ih7"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

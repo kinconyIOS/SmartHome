@@ -48,6 +48,7 @@ class HomeTopView: UIView ,UIScrollViewDelegate{
     //改变滚动视图的方法实现
     func setupPage()
     {
+        self.scrollView.frame = self.frame
         //设置委托
         self.scrollView.delegate = self
         //设置背景颜色
@@ -89,8 +90,8 @@ class HomeTopView: UIView ,UIScrollViewDelegate{
             var rect:CGRect = self.scrollView.frame
             rect.origin.x = originX
             rect.origin.y = 0
-            rect.size.width = ScreenWidth//self.scrollView.frame.size.width
-            rect.size.height = ScreenWidth//self.scrollView.frame.size.height
+            rect.size.width = self.scrollView.frame.size.width
+            rect.size.height = self.scrollView.frame.size.height
             pImageView.frame = rect
             //设置图片内容的显示模式()
             pImageView.contentMode = UIViewContentMode.ScaleToFill
@@ -98,7 +99,7 @@ class HomeTopView: UIView ,UIScrollViewDelegate{
             pImageView.layer.masksToBounds=true
             self.scrollView.addSubview(pImageView)
             //下一张视图的x坐标:offset为:self.scrollView.frame.size.width.
-            originX = originX + ScreenWidth
+            originX = originX + self.scrollView.frame.size.width
             //记录scrollView内imageView的个数
             pages++
         }
@@ -113,15 +114,16 @@ class HomeTopView: UIView ,UIScrollViewDelegate{
         self.pageControl.tag = 110
         //设置滚动视图的位置
         self.scrollView.contentSize=CGSizeMake(originX, 0)
+        print("originX为:\(originX)");
     }
     //改变页码的方法实现
     func changePage(sender:AnyObject)
     {
-        //NSLog(@"指示器的当前索引值为:%li",(long)self.pageControl.currentPage);
+      print("指示器的当前索引值为:\(self.pageControl.currentPage)*\(self.frame.size.width)");
         //获取当前视图的页码
-        var rect:CGRect  = self.scrollView.frame
+        var rect:CGRect  = CGRectMake(self.frame.origin.x, 0, ScreenWidth, ScreenWidth  / 2)
         //设置视图的横坐标，一幅图为320*460，横坐标一次增加或减少320像素
-        rect.origin.x = (CGFloat)(self.pageControl.currentPage) * (self.scrollView.frame.size.width)
+        rect.origin.x = (CGFloat)(self.pageControl.currentPage) * ScreenWidth
         //设置视图纵坐标为0
         rect.origin.y = 0
         //scrollView可视区域
@@ -133,7 +135,7 @@ class HomeTopView: UIView ,UIScrollViewDelegate{
     func scrollViewDidEndDecelerating(scrollView:UIScrollView)
     {
         //获取当前视图的宽度
-        let pageWith:CGFloat = scrollView.frame.size.width
+        let pageWith:CGFloat = ScreenWidth
         //根据scrolView的左右滑动,对pageCotrol的当前指示器进行切换(设置currentPage)
         let page = floor((scrollView.contentOffset.x - pageWith/2)/pageWith)+1;
         //切换改变页码，小圆点

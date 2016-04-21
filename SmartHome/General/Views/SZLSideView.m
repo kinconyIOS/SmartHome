@@ -18,7 +18,7 @@
         self.tableView.showsHorizontalScrollIndicator = NO;
         self.tableView.showsVerticalScrollIndicator = NO;
    
-   
+    self.isOpen = NO;
       
     }
     return self;
@@ -34,6 +34,7 @@
 
 - (void)closeTap {
     NSLog(@"close");
+      self.isOpen =  !self.isOpen;;
     //close
     [UIView beginAnimations:@"closeSide" context:nil];
     [UIView setAnimationDuration:0.30f];
@@ -44,6 +45,7 @@
 - (void)openTap {
     //open
        NSLog(@"open");
+    self.isOpen =  !self.isOpen;
     [UIView beginAnimations:@"openSide" context:nil];
     [UIView setAnimationDuration:0.30f];
     self.frame=CGRectMake([UIScreen mainScreen].bounds.size.width-self.frame.size.width, self.frame.origin.y, self.frame.size.width,  self.frame.size.height);

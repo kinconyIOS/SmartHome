@@ -7,9 +7,10 @@
 //
 
 import UIKit
-
+typealias completeEquipName = (String?) -> ()
 class EquipNameCell: UITableViewCell {
 
+     var complete:completeEquipName?
     @IBOutlet var equipName: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,7 +18,7 @@ class EquipNameCell: UITableViewCell {
     }
 
     @IBAction func exitEndAction(sender: UITextField) {
-        
+        self.complete!(sender.text)
     }
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

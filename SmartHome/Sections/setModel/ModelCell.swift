@@ -9,7 +9,8 @@
 import UIKit
 
 class ModelCell: UICollectionViewCell {
-
+    
+    @IBOutlet weak var but: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

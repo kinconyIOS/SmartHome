@@ -1,78 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="KGk-i7-Jjw" customClass="PersonalCell" customModule="SmartHome" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="62" id="KGk-i7-Jjw" customClass="PersonalCell" customModule="SmartHome" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ode-ME-TWv">
-                        <rect key="frame" x="8" y="8" width="78" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="78" id="6Qy-m6-Bjm"/>
-                            <constraint firstAttribute="width" secondItem="Ode-ME-TWv" secondAttribute="height" multiplier="13:5" id="lvd-cV-wPb"/>
-                            <constraint firstAttribute="height" constant="30" id="uSB-CU-J9J"/>
-                        </constraints>
-                        <state key="normal" image="购物车"/>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的已购" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GB-d2-ela">
-                        <rect key="frame" x="13" y="45" width="73" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="73" id="UAK-ub-tmH"/>
-                            <constraint firstAttribute="height" constant="21" id="lgr-e8-Kjr"/>
-                            <constraint firstAttribute="width" secondItem="6GB-d2-ela" secondAttribute="height" multiplier="73:21" id="ppY-YS-ZGW"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的收藏" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPq-cp-7s1">
-                        <rect key="frame" x="229" y="45" width="73" height="21"/>
+                        <rect key="frame" x="200" y="32" width="73" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Ona-XV-cXP"/>
                             <constraint firstAttribute="width" secondItem="gPq-cp-7s1" secondAttribute="height" multiplier="73:21" id="gPP-PA-I0C"/>
                             <constraint firstAttribute="width" constant="73" id="xPN-W9-fpa"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nbo-hY-mqB">
-                        <rect key="frame" x="229" y="8" width="73" height="30"/>
+                        <rect key="frame" x="157" y="1" width="141" height="29"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="N5u-qJ-cMK"/>
-                            <constraint firstAttribute="width" secondItem="Nbo-hY-mqB" secondAttribute="height" multiplier="73:30" id="mIC-cS-8Nn"/>
-                            <constraint firstAttribute="width" constant="73" id="r1D-zJ-5P9"/>
+                            <constraint firstAttribute="height" constant="29" id="N5u-qJ-cMK"/>
+                            <constraint firstAttribute="width" secondItem="Nbo-hY-mqB" secondAttribute="height" multiplier="73:30" constant="70.433333333333337" id="mIC-cS-8Nn"/>
+                            <constraint firstAttribute="width" constant="141" id="r1D-zJ-5P9"/>
                         </constraints>
                         <state key="normal" image="收藏"/>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ode-ME-TWv">
+                        <rect key="frame" x="8" y="0.0" width="141" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="141" id="6Qy-m6-Bjm"/>
+                            <constraint firstAttribute="width" secondItem="Ode-ME-TWv" secondAttribute="height" multiplier="13:5" constant="57.799999999999997" id="lvd-cV-wPb"/>
+                            <constraint firstAttribute="height" constant="32" id="uSB-CU-J9J"/>
+                        </constraints>
+                        <state key="normal" image="购物车"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的已购" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GB-d2-ela">
+                        <rect key="frame" x="53" y="32" width="73" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="73" id="UAK-ub-tmH"/>
+                            <constraint firstAttribute="height" constant="21" id="lgr-e8-Kjr"/>
+                            <constraint firstAttribute="width" secondItem="6GB-d2-ela" secondAttribute="height" multiplier="73:21" id="ppY-YS-ZGW"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="gPq-cp-7s1" firstAttribute="top" secondItem="Nbo-hY-mqB" secondAttribute="bottom" constant="7" id="1cG-3y-qjb"/>
+                    <constraint firstItem="gPq-cp-7s1" firstAttribute="top" secondItem="Nbo-hY-mqB" secondAttribute="bottom" constant="2" id="1cG-3y-qjb"/>
                     <constraint firstItem="Ode-ME-TWv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="LI5-sl-h4a"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Nbo-hY-mqB" secondAttribute="trailing" constant="10" id="NTy-qi-Ahm"/>
-                    <constraint firstItem="Nbo-hY-mqB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="evS-9X-fio"/>
-                    <constraint firstItem="6GB-d2-ela" firstAttribute="top" secondItem="Ode-ME-TWv" secondAttribute="bottom" constant="7" id="f3M-No-sf4"/>
-                    <constraint firstItem="6GB-d2-ela" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="hbn-5I-ydR"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="gPq-cp-7s1" secondAttribute="trailing" constant="10" id="oRY-N5-3j2"/>
-                    <constraint firstItem="Ode-ME-TWv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ujS-ZM-TRg"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Nbo-hY-mqB" secondAttribute="trailing" constant="14" id="NTy-qi-Ahm"/>
+                    <constraint firstItem="Nbo-hY-mqB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-7" id="evS-9X-fio"/>
+                    <constraint firstItem="6GB-d2-ela" firstAttribute="top" secondItem="Ode-ME-TWv" secondAttribute="bottom" id="f3M-No-sf4"/>
+                    <constraint firstItem="6GB-d2-ela" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="45" id="hbn-5I-ydR"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="gPq-cp-7s1" secondAttribute="trailing" constant="39" id="oRY-N5-3j2"/>
+                    <constraint firstItem="Ode-ME-TWv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="ujS-ZM-TRg"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="Collection" destination="Nbo-hY-mqB" id="gWU-GN-pf1"/>
                 <outlet property="ShoppingCart" destination="Ode-ME-TWv" id="h9k-x0-9v0"/>
             </connections>
-            <point key="canvasLocation" x="327" y="238.5"/>
+            <point key="canvasLocation" x="327" y="238"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -21,19 +21,19 @@ class EquipTableEquipCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let frame = CGRectMake(ScreenWidth, 0, self.contentView.frame.size.height / 4 * 3, self.contentView.frame.size.height)
-        editView = EditView(frame: frame)
-        let tap = UITapGestureRecognizer(target: self, action: Selector("handleEdit:"))
-        editView!.addGestureRecognizer(tap)
-        self.addSubview(editView!)
-        
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipe:"))
-        leftSwipe.direction = UISwipeGestureRecognizerDirection.Left
-        self.addGestureRecognizer(leftSwipe)
-        
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipe:"))
-        rightSwipe.direction = UISwipeGestureRecognizerDirection.Right
-        self.addGestureRecognizer(rightSwipe)
+//        let frame = CGRectMake(ScreenWidth, 0, self.contentView.frame.size.height / 4 * 3, self.contentView.frame.size.height)
+//        editView = EditView(frame: frame)
+//        let tap = UITapGestureRecognizer(target: self, action: Selector("handleEdit:"))
+//        editView!.addGestureRecognizer(tap)
+//        self.addSubview(editView!)
+//        
+//        let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipe:"))
+//        leftSwipe.direction = UISwipeGestureRecognizerDirection.Left
+//        self.addGestureRecognizer(leftSwipe)
+//        
+//        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipe:"))
+//        rightSwipe.direction = UISwipeGestureRecognizerDirection.Right
+//        self.addGestureRecognizer(rightSwipe)
     }
     
     func handleEdit(tap: UITapGestureRecognizer) {

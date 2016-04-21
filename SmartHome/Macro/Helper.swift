@@ -139,7 +139,7 @@ func setDefault(phone:String,pwd:String){
     
 }
 
-func getRemoveIndex<T: Equatable>(value: T, array: [T]) -> [Int]{
+func getRemoveIndex<AnyObject: Equatable>(value: AnyObject, array: [AnyObject]) -> [Int]{
     var indexArray = [Int]()
     
     var correctArray = [Int]()
@@ -161,7 +161,7 @@ func getRemoveIndex<T: Equatable>(value: T, array: [T]) -> [Int]{
         
         //指定值索引减去索引数组的索引
         
-        var correctIndex = originIndex - index
+        let correctIndex = originIndex - index
         
         
         
@@ -198,9 +198,13 @@ func getIconByType(type:String)->String
 typealias CompleteUpdateRoomInfo = () -> ()
 func updateRoomInfo(complete:CompleteUpdateRoomInfo){
     DataDeal.sharedDataDeal.clearAllTable()
-    let parameters=["userCode":"U00318"];
+    let parameters=["":""];
     BaseHttpService .sendRequestAccess(getroom_do, parameters: parameters) { (anyObject) -> () in
         print(anyObject)
+        if anyObject.count <= 0{
+            complete()
+            return
+        }
         let floorInfo = anyObject[0]["floorInfo"]
         for dic in (floorInfo as!NSArray)
         {
@@ -223,17 +227,80 @@ func updateRoomInfo(complete:CompleteUpdateRoomInfo){
     }
     
 }
+typealias CompletereadRoomInfo = () -> ()
+func readRoomInfo(complete:CompletereadRoomInfo)
+{
+    // 获取本地版本
+    let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("RoomInfoVersionNumber")
+    
+    // 读取服务器版本
+    dareNetRoomInfoVersionNumber {  f in
+        if   f != localnum // 判断是否更新
+        {
+            // 更新（如需）
+            print("更新房间信息")
+            updateRoomInfo({ () -> () in
+                // 更新一个版本号上传到服务器上面
+                
+                setNetRoomInfoVersionNumber(f, andComplete: {
+                    complete()
+                    NSUserDefaults.standardUserDefaults().setFloat(f+1, forKey: "RoomInfoVersionNumber")
+                    
+                })
+            })
+            
+        }else{
+            complete()
+            
+        }
+    }
+    // 本地设置为最新的版本号
+}
 
 typealias CompleteNOtoNet = () -> ()
 func setNetRoomInfoVersionNumber(f:Float,andComplete complete:CompleteNOtoNet){
     
-    let parameters=["userCode":"U00318","version": Float(floatLiteral: f+1)];
-    //读取服务器版本号。
+    let parameters=["version": Float(floatLiteral: f+1)];
+    //设置服务器版本号。
     BaseHttpService .sendRequestAccess(setversion_do, parameters: parameters) { (response) -> () in
         
         complete()
     }
     
     
+}
+
+typealias CompleteRoomInfoNumber = (Float) -> ()
+func dareNetRoomInfoVersionNumber(complete:CompleteRoomInfoNumber){
+    
+    
+    
+    let parameters=["":""]
+    
+    
+    //读取服务器版本号。
+    BaseHttpService .sendRequestAccess(getversion_do, parameters: parameters) { (response) -> () in
+        
+        complete((response["version"]!?.floatValue)!)//处理版本号
+    }
+    
+    
+}
+
+
+func randomCode()->String
+{
+    let kNumber = 10;
+    let sourceStr:NSString="0123456789";
+    var resultStr = ""
+    srand(UInt32(time(nil)))
+    
+    for   _ in  0..<kNumber
+    {
+        let index = Int(rand())%sourceStr.length;
+        let oneStr = sourceStr.substringWithRange(NSMakeRange(index, 1))
+        resultStr += oneStr
+    }
+    return resultStr
 }
 

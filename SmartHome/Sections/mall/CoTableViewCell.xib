@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="305" id="KGk-i7-Jjw" customClass="CoTableViewCell" customModule="SmartHome" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="342" height="305"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="342" height="304"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4k-an-43f">
+                        <rect key="frame" x="8" y="8" width="155" height="140"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="140" id="7wy-yI-wEN"/>
+                            <constraint firstAttribute="width" secondItem="p4k-an-43f" secondAttribute="height" multiplier="31:28" id="ABJ-fG-mpe"/>
+                        </constraints>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07p-M1-M0m">
+                        <rect key="frame" x="179" y="156" width="155" height="140"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="07p-M1-M0m" secondAttribute="height" multiplier="31:28" id="DUx-Vv-tz1"/>
+                            <constraint firstAttribute="height" constant="140" id="gNw-AQ-Lfv"/>
+                        </constraints>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKu-cO-u86">
+                        <rect key="frame" x="179" y="8" width="155" height="140"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="oKu-cO-u86" secondAttribute="height" multiplier="31:28" id="kq1-rt-cxn"/>
+                            <constraint firstAttribute="height" constant="140" id="oHN-6W-dgx"/>
+                        </constraints>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9s-0c-RgQ">
+                        <rect key="frame" x="8" y="156" width="155" height="140"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="140" id="8BU-xZ-ii9"/>
+                            <constraint firstAttribute="width" secondItem="G9s-0c-RgQ" secondAttribute="height" multiplier="31:28" id="8uM-ge-6v3"/>
+                        </constraints>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="07p-M1-M0m" firstAttribute="top" secondItem="oKu-cO-u86" secondAttribute="bottom" constant="8" id="1NM-YR-RzA"/>
+                    <constraint firstItem="p4k-an-43f" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="3Ky-jM-t5Y"/>
+                    <constraint firstItem="G9s-0c-RgQ" firstAttribute="width" secondItem="p4k-an-43f" secondAttribute="width" id="A3A-wM-FrQ"/>
+                    <constraint firstItem="07p-M1-M0m" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="C69-as-tZk"/>
+                    <constraint firstItem="oKu-cO-u86" firstAttribute="height" secondItem="p4k-an-43f" secondAttribute="height" id="LFA-JN-MfE"/>
+                    <constraint firstItem="oKu-cO-u86" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="LpM-Nh-7ao"/>
+                    <constraint firstItem="oKu-cO-u86" firstAttribute="width" secondItem="p4k-an-43f" secondAttribute="width" id="LwY-g9-eoB"/>
+                    <constraint firstItem="07p-M1-M0m" firstAttribute="leading" secondItem="G9s-0c-RgQ" secondAttribute="trailing" constant="16" id="NQI-cu-Exm"/>
+                    <constraint firstItem="p4k-an-43f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Zsi-er-0FA"/>
+                    <constraint firstItem="G9s-0c-RgQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="aUk-a4-L3m"/>
+                    <constraint firstItem="G9s-0c-RgQ" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="cK2-bO-ipg"/>
+                    <constraint firstItem="G9s-0c-RgQ" firstAttribute="height" secondItem="p4k-an-43f" secondAttribute="height" id="eGG-mm-gpc"/>
+                    <constraint firstItem="07p-M1-M0m" firstAttribute="height" secondItem="G9s-0c-RgQ" secondAttribute="height" id="h89-p7-UFE"/>
+                    <constraint firstItem="07p-M1-M0m" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="jQ6-u0-0Do"/>
+                    <constraint firstItem="07p-M1-M0m" firstAttribute="top" secondItem="oKu-cO-u86" secondAttribute="bottom" constant="8" id="m6y-4c-chs"/>
+                    <constraint firstItem="G9s-0c-RgQ" firstAttribute="top" secondItem="p4k-an-43f" secondAttribute="bottom" constant="8" id="p3c-5Y-dlz"/>
+                    <constraint firstItem="07p-M1-M0m" firstAttribute="width" secondItem="G9s-0c-RgQ" secondAttribute="width" id="qoK-Ly-tzj"/>
+                    <constraint firstItem="oKu-cO-u86" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="yge-FP-FwO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="but1" destination="p4k-an-43f" id="gaP-LA-oDa"/>
+                <outlet property="but2" destination="oKu-cO-u86" id="JQW-2W-w7l"/>
+                <outlet property="but3" destination="G9s-0c-RgQ" id="Hk2-lm-FuS"/>
+                <outlet property="but4" destination="07p-M1-M0m" id="gFx-i0-pgy"/>
+            </connections>
+            <point key="canvasLocation" x="433" y="368.5"/>
+        </tableViewCell>
+    </objects>
+</document>

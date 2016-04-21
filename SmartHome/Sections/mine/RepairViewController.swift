@@ -21,7 +21,10 @@ class RepairViewController: UIViewController {
         self.navigationItem.title = "一键报修"
         // Do any additional setup after loading the view.
     }
-
+    //键盘消失
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     @IBAction func Submit(sender: AnyObject) {
         
         //返回
