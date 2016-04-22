@@ -17,7 +17,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     let PLAYER_PLAYBACK_STOP      = 12   //录像回放结束播放
     
     var sideView:SZLSideView?
-
+    var head  = 1
     var cameraId = ""
     let vfcode="at.6wm8ormqcy03shfib5yeb9yyah3r2cp4-171ujmx9ol-0oc00e3-seti9m9p5"
     var orientationLast:UIInterfaceOrientation?=UIInterfaceOrientation.Portrait
@@ -120,6 +120,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         self.navigationController?.pushViewController(cameraType, animated: true)
     }
     func getRoomInfo(){
+        print("刷新侧滑菜单")
         tableSideViewDataSource.removeAllObjects()
         
         let floors = dataDeal.getModels(DataDeal.TableType.Floor) as! Array<Floor>
@@ -149,6 +150,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         for room in allrooms{
             roomArray?.append(room.name)
         }
+         print("刷新侧滑菜单")
         //刷新顶部按钮
         // scrollAddBtn()
         
@@ -178,7 +180,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     override  func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
        //刷新房间信息
-         getRoomInfo()
+        getRoomInfo()
         //加载
        //  loadEZplay()
         //侧滑
@@ -231,6 +233,9 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         if tableView===self.homeTableView && section == 2{
             return deviceDataSource.count
         }
+        if tableView===self.homeTableView && section == 0{
+            return head
+        }
         return 1;
     }
     
@@ -260,21 +265,24 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
             
             
         }else if tableView===self.homeTableView{
-          
             if indexPath.section == 0
             {
                 cell = self.homeTableView.dequeueReusableCellWithIdentifier("HeadCell", forIndexPath: indexPath)
-                 (cell as! HeadCell).configHeadView()
-                 (cell as! HeadCell).myScorllView.web_images = [NSURL(string: "")!,NSURL(string: "")!]
+                (cell as! HeadCell).configHeadView()
+                (cell as! HeadCell).myScorllView.web_images = [NSURL(string: "")!,NSURL(string: "")!]
                 (cell as! HeadCell).myScorllView.images = [UIImage(named: "lb1")!,UIImage(named: "lb2")!]
                 (cell as! HeadCell).myScorllView.setupPage()
-              
+                
+                
                 return cell!
                 
             }
+         
             if indexPath.section == 1
             {
                 cell = self.homeTableView.dequeueReusableCellWithIdentifier("RecentModelCell", forIndexPath: indexPath)
+                cell?.backgroundColor = UIColor.whiteColor()
+                tableView.bringSubviewToFront(cell!)
                 return cell!
                 
             }
@@ -282,16 +290,22 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
             if equip.type == "1"||judgeType(equip.type, type: "1")
             {
                  cell = self.homeTableView.dequeueReusableCellWithIdentifier("LightCell", forIndexPath: indexPath)
+                 cell?.backgroundColor = UIColor.whiteColor()
+                 tableView.bringSubviewToFront(cell!)
                 (cell as!LightCell).setModel(equip)
             }
             else if equip.type == "2" || equip.type == "4"||judgeType(equip.type, type: "3")||judgeType(equip.type, type: "2")
             {
              cell = self.homeTableView.dequeueReusableCellWithIdentifier("ModulateCell", forIndexPath: indexPath)
+                 cell?.backgroundColor = UIColor.whiteColor()
+                 tableView.bringSubviewToFront(cell!)
                  (cell as! ModulateCell).setModel(equip)
             }
             else{
             
                 cell = self.homeTableView.dequeueReusableCellWithIdentifier("UnkownCell", forIndexPath: indexPath)
+                 cell?.backgroundColor = UIColor.whiteColor()
+                 tableView.bringSubviewToFront(cell!)
                 //(cell as! UnkownCell).setModel(equip)
             
             }
@@ -409,13 +423,28 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         return 28
     }
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel(frame: CGRectMake(0,0,ScreenWidth,28))
+        let label = UILabel(frame: CGRectMake(0,0,80,28))
          label.textColor = UIColor.grayColor()
         label.font = UIFont.systemFontOfSize(13.0)
-        switch(section){
-        case 0:  label.text = ""
        
-        case 1:  label.text = "  最近使用"
+        let view = UIView(frame:  CGRectMake(0,0,ScreenWidth,28))
+        view.addSubview(label)
+        switch(section){
+        case 0:
+            
+            label.text = ""
+           
+            break
+        case 1:
+            
+            label.text = "  最近使用"
+            let btn = UIButton(frame:  CGRectMake(80,0,ScreenWidth-160,28))
+                btn.setImage(UIImage(named: "楼层按下"), forState: UIControlState.Normal)
+                btn.setImage(UIImage(named: "楼层未按下"), forState: UIControlState.Selected)
+            btn.addTarget(self, action: Selector("open:"), forControlEvents: UIControlEvents.TouchUpInside)
+            view.addSubview(btn)
+            break
+            
         default: label.text = "  房间设备"
         
         }
@@ -423,7 +452,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         
         
         
-        return label
+        return view
     }
     //手势识别
   
@@ -434,7 +463,36 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         sideView?.hidden = true
     }
     
-//    //MARK-转屏适配-optional
+    func open(sender:UIButton){
+    sender.selected = !sender.selected
+        if sender.selected
+        {
+            removeOneCell()
+        }else{
+            addOneCell()
+        }
+    print("点击----")
+    }
+   func addOneCell()
+     {
+        head = 1
+        self.homeTableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Middle)
+      
+        
+      
+    }
+    func removeOneCell()
+    {
+        
+
+        head = 0
+        self.homeTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Middle)
+      
+   
+      
+    }
+    
+  //    //MARK-转屏适配-optional
 //    func statusBarOrientationChange(notification:NSNotification)
 //        
 //    {

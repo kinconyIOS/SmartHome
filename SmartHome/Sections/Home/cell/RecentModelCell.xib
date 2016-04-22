@@ -24,6 +24,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="tat-Sj-Syb" secondAttribute="bottom" id="5X5-Es-Rbe"/>
                     <constraint firstAttribute="trailing" secondItem="tat-Sj-Syb" secondAttribute="trailing" id="FAu-ae-ykK"/>

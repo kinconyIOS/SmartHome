@@ -12,6 +12,7 @@ func ==(lhs: Equip, rhs: Equip) -> Bool {
 }
 class Equip : Hashable{
     let equipID: String
+    var hostDeviceCode: String = "unload"
     var userCode: String = ""
     var roomCode: String = ""
     var name: String = ""

@@ -18,6 +18,7 @@ class EquipNameCell: UITableViewCell {
     }
 
     @IBAction func exitEndAction(sender: UITextField) {
+        if sender.text == nil  { sender.text = "" }
         self.complete!(sender.text)
     }
     override func setSelected(selected: Bool, animated: Bool) {

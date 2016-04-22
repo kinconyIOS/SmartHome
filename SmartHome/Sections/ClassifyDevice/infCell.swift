@@ -10,6 +10,8 @@ import UIKit
 
 class infCell: UICollectionViewCell ,UIActionSheetDelegate  {
 
+    
+    var inf:Infrared?
     //var model:<type>?
     //---------------
     //声明一个闭包
@@ -38,6 +40,13 @@ class infCell: UICollectionViewCell ,UIActionSheetDelegate  {
     }
     
     //func setModel--- change view
+    func setinf(inf:Infrared){
+        self.inf = inf
+        self.but.setTitle(inf.name, forState: UIControlState.Normal)
+        self.but.titleLabel?.font = UIFont.systemFontOfSize(13.0)
+    }
+    
+    
     func tapped(button:UIButton){
         print("aacc")
     }

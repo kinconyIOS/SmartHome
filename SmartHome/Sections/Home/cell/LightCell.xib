@@ -80,6 +80,7 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="nameLabel" destination="OCc-YC-g5J" id="E6r-tk-i69"/>
                 <outletCollection property="btns" destination="evO-Ae-6Lw" collectionClass="NSMutableArray" id="adJ-RP-SIN"/>

@@ -11,15 +11,18 @@ import UIKit
 class EquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
     var equip: Equip?
     var equipIndex :NSIndexPath?
+    var NameText:String?//导航栏名
+    var EquType:Int?//类型
+
+     var arr = [String]()
     private var compeletBlock: ((Equip,NSIndexPath)->())?
     
     func configCompeletBlock(compeletBlock: (equip: Equip,indexPath:NSIndexPath)->()) {
         self.compeletBlock = compeletBlock
     }
     
-    var NameText:String?//导航栏名
-    var EquType:Int?//类型
     
+       var sunData:SunDataPicker? = SunDataPicker.init(frame: CGRectMake(0, 100,ScreenWidth-20 , (ScreenWidth-20)*3/3))
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,10 +39,31 @@ class EquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
         tap.delegate = self
         self.tableView.addGestureRecognizer(tap)
         
-        BaseHttpService.sendRequestAccess(getallhost_do, parameters: [:]) { (back) -> () in
-            print(back)
-        }
+        BaseHttpService.sendRequestAccess(getallhost_do, parameters: [:]) { [unowned self](back) -> () in
+              print(back)
+           
+            if(back.count <= 0)
+            {return}
+            for dic in back as![[String:String]]
+            {
+                    print(dic )
+             self.arr.append(dic["deviceCode"]!)
+            }
+            print(self.arr)
+            if self.arr.count >= 1
+            {
+               self.equip?.hostDeviceCode = (self.arr[0] as? String)!
+            }else
+            {
+               self.equip?.hostDeviceCode  = "load"
+            }
+            if self.arr.count <= 1
+            {
+                self.tableView.reloadData();
+            }
+       
         
+          }
     }
     
     func handleTap(tap: UITapGestureRecognizer) {
@@ -58,15 +82,33 @@ class EquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
     }
     func handleRightItem(barButton: UIBarButtonItem) {
         self.equip!.saveEquip()
-        //添加设备
+  
+    
+        if self.equip!.name == ""
+        {
+            showMsg("类型不能为空")
+            return
+        }
+        if self.equip!.type == ""
+        {
+            showMsg("类型不能为空")
+            return
+        }
+        if self.equip!.hostDeviceCode == "load"
+        {
+            showMsg("请先扫描主机")
+            return
+        }
+             //添加设备
         let parameter = ["userCode" : userCode,
             "roomCode":self.equip!.roomCode,
             "deviceAddress":self.equip!.equipID,
             "nickName":self.equip!.name,
             "ico":self.equip!.icon,
-            "deviceType":self.equip!.type]
+            "deviceType":self.equip!.type,
+            "deviceCode":self.equip!.hostDeviceCode]
         print("\(parameter)")
-        BaseHttpService.sendRequestAccess(addEq_do, parameters:  parameter, success: { (data) -> () in
+        BaseHttpService.sendRequestAccess(addEq_do, parameters:parameter, success: { (data) -> () in
             print(data)
             
         })
@@ -85,7 +127,13 @@ class EquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+      if self.arr.count <= 1
+      {
+        return 3
+      }
+        
         return 4
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,7 +156,10 @@ class EquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
                 let cell = tableView.dequeueReusableCellWithIdentifier("equipnamecell", forIndexPath: indexPath) as! EquipNameCell
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
                 cell.complete = {[unowned self](name)in
-                    self.equip?.name = name!
+                    print(name)
+
+                    
+                self.equip?.name = name!
                 }
                 return cell
             case 2:
@@ -183,6 +234,11 @@ class EquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
                     })
                 self.navigationController?.pushViewController(choosIconVC, animated: true)
             case 3:
+                self.sunData?.title.text = "选择主机"
+                self.sunData?.setNumberOfComponents(1, SET:self.arr, addTarget:self.navigationController!.view) {[unowned self] (one, two, three) -> Void in
+                    self.equip?.hostDeviceCode = one
+                  
+                }
                 break
             default:
                 break

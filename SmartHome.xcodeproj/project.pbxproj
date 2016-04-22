@@ -7,62 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		980344C61CC774960016F345 /* infCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344C21CC774960016F345 /* infCell.swift */; };
-		980344C71CC774960016F345 /* infCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344C31CC774960016F345 /* infCell.xib */; };
-		980344C81CC774960016F345 /* InfraredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344C41CC774960016F345 /* InfraredViewController.swift */; };
-		980344C91CC774960016F345 /* InfraredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344C51CC774960016F345 /* InfraredViewController.xib */; };
-		980345041CC775280016F345 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344CE1CC775280016F345 /* CommentTableViewCell.swift */; };
-		980345051CC775280016F345 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344CF1CC775280016F345 /* CommentTableViewCell.xib */; };
-		980345061CC775280016F345 /* CommodityImgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344D01CC775280016F345 /* CommodityImgTableViewCell.swift */; };
-		980345071CC775280016F345 /* CommodityImgTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344D11CC775280016F345 /* CommodityImgTableViewCell.xib */; };
-		980345081CC775280016F345 /* CommodityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344D21CC775280016F345 /* CommodityTableViewCell.swift */; };
-		980345091CC775280016F345 /* CommodityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344D31CC775280016F345 /* CommodityTableViewCell.xib */; };
-		9803450A1CC775280016F345 /* CoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344D41CC775280016F345 /* CoTableViewCell.swift */; };
-		9803450B1CC775280016F345 /* CoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344D51CC775280016F345 /* CoTableViewCell.xib */; };
-		9803450C1CC775280016F345 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344D61CC775280016F345 /* DetailsViewController.swift */; };
-		9803450D1CC775280016F345 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344D71CC775280016F345 /* DetailsViewController.xib */; };
-		9803450E1CC775280016F345 /* EavTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344D81CC775280016F345 /* EavTableViewCell.swift */; };
-		9803450F1CC775280016F345 /* EavTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344D91CC775280016F345 /* EavTableViewCell.xib */; };
-		980345101CC775280016F345 /* EvaluateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344DA1CC775280016F345 /* EvaluateViewController.swift */; };
-		980345111CC775280016F345 /* EvaluateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344DB1CC775280016F345 /* EvaluateViewController.xib */; };
-		980345121CC775280016F345 /* MallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344DC1CC775280016F345 /* MallVC.swift */; };
-		980345131CC775280016F345 /* MallVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344DD1CC775280016F345 /* MallVC.xib */; };
-		980345141CC775280016F345 /* ParameterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344DE1CC775280016F345 /* ParameterTableViewCell.swift */; };
-		980345151CC775280016F345 /* ParameterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344DF1CC775280016F345 /* ParameterTableViewCell.xib */; };
-		980345161CC775280016F345 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344E01CC775280016F345 /* PriceTableViewCell.swift */; };
-		980345171CC775280016F345 /* PriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344E11CC775280016F345 /* PriceTableViewCell.xib */; };
-		980345181CC775280016F345 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344E21CC775280016F345 /* PurchaseTableViewCell.swift */; };
-		980345191CC775280016F345 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344E31CC775280016F345 /* PurchaseTableViewCell.xib */; };
-		9803451A1CC775280016F345 /* ty1.png in Resources */ = {isa = PBXBuildFile; fileRef = 980344E41CC775280016F345 /* ty1.png */; };
-		9803451B1CC775280016F345 /* ty2.png in Resources */ = {isa = PBXBuildFile; fileRef = 980344E51CC775280016F345 /* ty2.png */; };
-		9803451C1CC775280016F345 /* ty3.png in Resources */ = {isa = PBXBuildFile; fileRef = 980344E61CC775280016F345 /* ty3.png */; };
-		9803451D1CC775280016F345 /* ty4.png in Resources */ = {isa = PBXBuildFile; fileRef = 980344E71CC775280016F345 /* ty4.png */; };
-		9803451E1CC775280016F345 /* 透明图片.png in Resources */ = {isa = PBXBuildFile; fileRef = 980344E81CC775280016F345 /* 透明图片.png */; };
-		9803451F1CC775280016F345 /* AlterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344EA1CC775280016F345 /* AlterViewController.swift */; };
-		980345201CC775280016F345 /* AlterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344EB1CC775280016F345 /* AlterViewController.xib */; };
-		980345211CC775280016F345 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344EC1CC775280016F345 /* FeedbackViewController.swift */; };
-		980345221CC775280016F345 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344ED1CC775280016F345 /* FeedbackViewController.xib */; };
-		980345231CC775280016F345 /* HeadImgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344EE1CC775280016F345 /* HeadImgTableViewCell.swift */; };
-		980345241CC775280016F345 /* HeadImgTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344EF1CC775280016F345 /* HeadImgTableViewCell.xib */; };
-		980345251CC775280016F345 /* IndividuaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344F01CC775280016F345 /* IndividuaViewController.swift */; };
-		980345261CC775280016F345 /* IndividuaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344F11CC775280016F345 /* IndividuaViewController.xib */; };
-		980345271CC775280016F345 /* LoveCommodityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344F21CC775280016F345 /* LoveCommodityViewController.swift */; };
-		980345281CC775280016F345 /* LoveCommodityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344F31CC775280016F345 /* LoveCommodityViewController.xib */; };
-		980345291CC775280016F345 /* MineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344F41CC775280016F345 /* MineVC.swift */; };
-		9803452A1CC775280016F345 /* MineVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344F51CC775280016F345 /* MineVC.xib */; };
-		9803452B1CC775280016F345 /* OtherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344F61CC775280016F345 /* OtherTableViewCell.swift */; };
-		9803452C1CC775280016F345 /* OtherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344F71CC775280016F345 /* OtherTableViewCell.xib */; };
-		9803452D1CC775280016F345 /* PersonalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980344F81CC775280016F345 /* PersonalCell.swift */; };
-		9803452E1CC775280016F345 /* PersonalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980344F91CC775280016F345 /* PersonalCell.xib */; };
-		9803452F1CC775280016F345 /* Edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 980344FB1CC775280016F345 /* Edit@2x.png */; };
-		980345301CC775280016F345 /* House@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 980344FC1CC775280016F345 /* House@2x.png */; };
-		980345311CC775280016F345 /* List@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 980344FD1CC775280016F345 /* List@2x.png */; };
-		980345321CC775280016F345 /* Power-Of@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 980344FE1CC775280016F345 /* Power-Of@2x.png */; };
-		980345331CC775280016F345 /* Refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 980344FF1CC775280016F345 /* Refresh@2x.png */; };
-		980345341CC775280016F345 /* Tools@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 980345001CC775280016F345 /* Tools@2x.png */; };
-		980345351CC775280016F345 /* User@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 980345011CC775280016F345 /* User@2x.png */; };
-		980345361CC775280016F345 /* RepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980345021CC775280016F345 /* RepairViewController.swift */; };
-		980345371CC775280016F345 /* RepairViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980345031CC775280016F345 /* RepairViewController.xib */; };
 		980345451CC775650016F345 /* but1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 980345391CC775650016F345 /* but1@2x.png */; };
 		980345461CC775650016F345 /* but2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9803453A1CC775650016F345 /* but2@2x.png */; };
 		980345471CC775650016F345 /* but3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9803453B1CC775650016F345 /* but3@2x.png */; };
@@ -123,6 +67,64 @@
 		980474701C23B54000B3966D /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9804746E1C23B54000B3966D /* AddCell.swift */; };
 		980474711C23B54000B3966D /* AddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9804746F1C23B54000B3966D /* AddCell.xib */; };
 		9805CB711CBF9C1800C6B97F /* MyScorllView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9805CB701CBF9C1800C6B97F /* MyScorllView.m */; };
+		980681751CC8C92A006B16EF /* AlterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806815A1CC8C92A006B16EF /* AlterViewController.swift */; };
+		980681761CC8C92A006B16EF /* AlterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9806815B1CC8C92A006B16EF /* AlterViewController.xib */; };
+		980681771CC8C92A006B16EF /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806815C1CC8C92A006B16EF /* FeedbackViewController.swift */; };
+		980681781CC8C92A006B16EF /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9806815D1CC8C92A006B16EF /* FeedbackViewController.xib */; };
+		980681791CC8C92A006B16EF /* HeadImgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806815E1CC8C92A006B16EF /* HeadImgTableViewCell.swift */; };
+		9806817A1CC8C92A006B16EF /* HeadImgTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9806815F1CC8C92A006B16EF /* HeadImgTableViewCell.xib */; };
+		9806817B1CC8C92A006B16EF /* IndividuaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681601CC8C92A006B16EF /* IndividuaViewController.swift */; };
+		9806817C1CC8C92A006B16EF /* IndividuaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681611CC8C92A006B16EF /* IndividuaViewController.xib */; };
+		9806817D1CC8C92A006B16EF /* LoveCommodityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681621CC8C92A006B16EF /* LoveCommodityViewController.swift */; };
+		9806817E1CC8C92A006B16EF /* LoveCommodityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681631CC8C92A006B16EF /* LoveCommodityViewController.xib */; };
+		9806817F1CC8C92A006B16EF /* MineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681641CC8C92A006B16EF /* MineVC.swift */; };
+		980681801CC8C92A006B16EF /* MineVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681651CC8C92A006B16EF /* MineVC.xib */; };
+		980681811CC8C92A006B16EF /* mJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 980681661CC8C92A006B16EF /* mJson.json */; };
+		980681821CC8C92A006B16EF /* OtherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681671CC8C92A006B16EF /* OtherTableViewCell.swift */; };
+		980681831CC8C92A006B16EF /* OtherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681681CC8C92A006B16EF /* OtherTableViewCell.xib */; };
+		980681841CC8C92A006B16EF /* PersonalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681691CC8C92A006B16EF /* PersonalCell.swift */; };
+		980681851CC8C92A006B16EF /* PersonalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9806816A1CC8C92A006B16EF /* PersonalCell.xib */; };
+		980681861CC8C92A006B16EF /* Edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9806816C1CC8C92A006B16EF /* Edit@2x.png */; };
+		980681871CC8C92A006B16EF /* House@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9806816D1CC8C92A006B16EF /* House@2x.png */; };
+		980681881CC8C92A006B16EF /* List@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9806816E1CC8C92A006B16EF /* List@2x.png */; };
+		980681891CC8C92A006B16EF /* Power-Of@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9806816F1CC8C92A006B16EF /* Power-Of@2x.png */; };
+		9806818A1CC8C92A006B16EF /* Refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 980681701CC8C92A006B16EF /* Refresh@2x.png */; };
+		9806818B1CC8C92A006B16EF /* Tools@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 980681711CC8C92A006B16EF /* Tools@2x.png */; };
+		9806818C1CC8C92A006B16EF /* User@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 980681721CC8C92A006B16EF /* User@2x.png */; };
+		9806818D1CC8C92A006B16EF /* RepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681731CC8C92A006B16EF /* RepairViewController.swift */; };
+		9806818E1CC8C92A006B16EF /* RepairViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681741CC8C92A006B16EF /* RepairViewController.xib */; };
+		980681901CC8C968006B16EF /* Infrared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806818F1CC8C968006B16EF /* Infrared.swift */; };
+		980681951CC8C9B1006B16EF /* infCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681911CC8C9B1006B16EF /* infCell.swift */; };
+		980681961CC8C9B1006B16EF /* infCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681921CC8C9B1006B16EF /* infCell.xib */; };
+		980681971CC8C9B1006B16EF /* InfraredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681931CC8C9B1006B16EF /* InfraredViewController.swift */; };
+		980681981CC8C9B1006B16EF /* InfraredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681941CC8C9B1006B16EF /* InfraredViewController.xib */; };
+		980681B51CC8CAAD006B16EF /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806819A1CC8CAAD006B16EF /* CommentTableViewCell.swift */; };
+		980681B61CC8CAAD006B16EF /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9806819B1CC8CAAD006B16EF /* CommentTableViewCell.xib */; };
+		980681B71CC8CAAD006B16EF /* CommodityImgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806819C1CC8CAAD006B16EF /* CommodityImgTableViewCell.swift */; };
+		980681B81CC8CAAD006B16EF /* CommodityImgTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9806819D1CC8CAAD006B16EF /* CommodityImgTableViewCell.xib */; };
+		980681B91CC8CAAD006B16EF /* CommodityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806819E1CC8CAAD006B16EF /* CommodityTableViewCell.swift */; };
+		980681BA1CC8CAAD006B16EF /* CommodityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9806819F1CC8CAAD006B16EF /* CommodityTableViewCell.xib */; };
+		980681BB1CC8CAAD006B16EF /* CoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681A01CC8CAAD006B16EF /* CoTableViewCell.swift */; };
+		980681BC1CC8CAAD006B16EF /* CoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681A11CC8CAAD006B16EF /* CoTableViewCell.xib */; };
+		980681BD1CC8CAAD006B16EF /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681A21CC8CAAD006B16EF /* DetailsViewController.swift */; };
+		980681BE1CC8CAAD006B16EF /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681A31CC8CAAD006B16EF /* DetailsViewController.xib */; };
+		980681BF1CC8CAAD006B16EF /* EavTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681A41CC8CAAD006B16EF /* EavTableViewCell.swift */; };
+		980681C01CC8CAAD006B16EF /* EavTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681A51CC8CAAD006B16EF /* EavTableViewCell.xib */; };
+		980681C11CC8CAAD006B16EF /* EvaluateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681A61CC8CAAD006B16EF /* EvaluateViewController.swift */; };
+		980681C21CC8CAAD006B16EF /* EvaluateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681A71CC8CAAD006B16EF /* EvaluateViewController.xib */; };
+		980681C31CC8CAAD006B16EF /* MallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681A81CC8CAAD006B16EF /* MallVC.swift */; };
+		980681C41CC8CAAD006B16EF /* MallVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681A91CC8CAAD006B16EF /* MallVC.xib */; };
+		980681C51CC8CAAD006B16EF /* ParameterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681AA1CC8CAAD006B16EF /* ParameterTableViewCell.swift */; };
+		980681C61CC8CAAD006B16EF /* ParameterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681AB1CC8CAAD006B16EF /* ParameterTableViewCell.xib */; };
+		980681C71CC8CAAD006B16EF /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681AC1CC8CAAD006B16EF /* PriceTableViewCell.swift */; };
+		980681C81CC8CAAD006B16EF /* PriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681AD1CC8CAAD006B16EF /* PriceTableViewCell.xib */; };
+		980681C91CC8CAAD006B16EF /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980681AE1CC8CAAD006B16EF /* PurchaseTableViewCell.swift */; };
+		980681CA1CC8CAAD006B16EF /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980681AF1CC8CAAD006B16EF /* PurchaseTableViewCell.xib */; };
+		980681CB1CC8CAAD006B16EF /* ty1.png in Resources */ = {isa = PBXBuildFile; fileRef = 980681B01CC8CAAD006B16EF /* ty1.png */; };
+		980681CC1CC8CAAD006B16EF /* ty2.png in Resources */ = {isa = PBXBuildFile; fileRef = 980681B11CC8CAAD006B16EF /* ty2.png */; };
+		980681CD1CC8CAAD006B16EF /* ty3.png in Resources */ = {isa = PBXBuildFile; fileRef = 980681B21CC8CAAD006B16EF /* ty3.png */; };
+		980681CE1CC8CAAD006B16EF /* ty4.png in Resources */ = {isa = PBXBuildFile; fileRef = 980681B31CC8CAAD006B16EF /* ty4.png */; };
+		980681CF1CC8CAAD006B16EF /* 透明图片.png in Resources */ = {isa = PBXBuildFile; fileRef = 980681B41CC8CAAD006B16EF /* 透明图片.png */; };
 		9806CD481C2124C90038A8E0 /* 引导页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9806CD471C2124C90038A8E0 /* 引导页.jpg */; };
 		980A92F61C17B440009166D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980A92F51C17B440009166D0 /* AppDelegate.swift */; };
 		980A92FB1C17B440009166D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 980A92F91C17B440009166D0 /* Main.storyboard */; };
@@ -560,62 +562,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		980344C21CC774960016F345 /* infCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infCell.swift; sourceTree = "<group>"; };
-		980344C31CC774960016F345 /* infCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = infCell.xib; sourceTree = "<group>"; };
-		980344C41CC774960016F345 /* InfraredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfraredViewController.swift; sourceTree = "<group>"; };
-		980344C51CC774960016F345 /* InfraredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfraredViewController.xib; sourceTree = "<group>"; };
-		980344CE1CC775280016F345 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
-		980344CF1CC775280016F345 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
-		980344D01CC775280016F345 /* CommodityImgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommodityImgTableViewCell.swift; sourceTree = "<group>"; };
-		980344D11CC775280016F345 /* CommodityImgTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommodityImgTableViewCell.xib; sourceTree = "<group>"; };
-		980344D21CC775280016F345 /* CommodityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommodityTableViewCell.swift; sourceTree = "<group>"; };
-		980344D31CC775280016F345 /* CommodityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommodityTableViewCell.xib; sourceTree = "<group>"; };
-		980344D41CC775280016F345 /* CoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoTableViewCell.swift; sourceTree = "<group>"; };
-		980344D51CC775280016F345 /* CoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoTableViewCell.xib; sourceTree = "<group>"; };
-		980344D61CC775280016F345 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		980344D71CC775280016F345 /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
-		980344D81CC775280016F345 /* EavTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EavTableViewCell.swift; sourceTree = "<group>"; };
-		980344D91CC775280016F345 /* EavTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EavTableViewCell.xib; sourceTree = "<group>"; };
-		980344DA1CC775280016F345 /* EvaluateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateViewController.swift; sourceTree = "<group>"; };
-		980344DB1CC775280016F345 /* EvaluateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EvaluateViewController.xib; sourceTree = "<group>"; };
-		980344DC1CC775280016F345 /* MallVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MallVC.swift; sourceTree = "<group>"; };
-		980344DD1CC775280016F345 /* MallVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MallVC.xib; sourceTree = "<group>"; };
-		980344DE1CC775280016F345 /* ParameterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterTableViewCell.swift; sourceTree = "<group>"; };
-		980344DF1CC775280016F345 /* ParameterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParameterTableViewCell.xib; sourceTree = "<group>"; };
-		980344E01CC775280016F345 /* PriceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
-		980344E11CC775280016F345 /* PriceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceTableViewCell.xib; sourceTree = "<group>"; };
-		980344E21CC775280016F345 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
-		980344E31CC775280016F345 /* PurchaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseTableViewCell.xib; sourceTree = "<group>"; };
-		980344E41CC775280016F345 /* ty1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ty1.png; sourceTree = "<group>"; };
-		980344E51CC775280016F345 /* ty2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ty2.png; sourceTree = "<group>"; };
-		980344E61CC775280016F345 /* ty3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ty3.png; sourceTree = "<group>"; };
-		980344E71CC775280016F345 /* ty4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ty4.png; sourceTree = "<group>"; };
-		980344E81CC775280016F345 /* 透明图片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "透明图片.png"; sourceTree = "<group>"; };
-		980344EA1CC775280016F345 /* AlterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlterViewController.swift; sourceTree = "<group>"; };
-		980344EB1CC775280016F345 /* AlterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlterViewController.xib; sourceTree = "<group>"; };
-		980344EC1CC775280016F345 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
-		980344ED1CC775280016F345 /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
-		980344EE1CC775280016F345 /* HeadImgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadImgTableViewCell.swift; sourceTree = "<group>"; };
-		980344EF1CC775280016F345 /* HeadImgTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadImgTableViewCell.xib; sourceTree = "<group>"; };
-		980344F01CC775280016F345 /* IndividuaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividuaViewController.swift; sourceTree = "<group>"; };
-		980344F11CC775280016F345 /* IndividuaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndividuaViewController.xib; sourceTree = "<group>"; };
-		980344F21CC775280016F345 /* LoveCommodityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoveCommodityViewController.swift; sourceTree = "<group>"; };
-		980344F31CC775280016F345 /* LoveCommodityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoveCommodityViewController.xib; sourceTree = "<group>"; };
-		980344F41CC775280016F345 /* MineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineVC.swift; sourceTree = "<group>"; };
-		980344F51CC775280016F345 /* MineVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineVC.xib; sourceTree = "<group>"; };
-		980344F61CC775280016F345 /* OtherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherTableViewCell.swift; sourceTree = "<group>"; };
-		980344F71CC775280016F345 /* OtherTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherTableViewCell.xib; sourceTree = "<group>"; };
-		980344F81CC775280016F345 /* PersonalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalCell.swift; sourceTree = "<group>"; };
-		980344F91CC775280016F345 /* PersonalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalCell.xib; sourceTree = "<group>"; };
-		980344FB1CC775280016F345 /* Edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Edit@2x.png"; sourceTree = "<group>"; };
-		980344FC1CC775280016F345 /* House@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "House@2x.png"; sourceTree = "<group>"; };
-		980344FD1CC775280016F345 /* List@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "List@2x.png"; sourceTree = "<group>"; };
-		980344FE1CC775280016F345 /* Power-Of@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Power-Of@2x.png"; sourceTree = "<group>"; };
-		980344FF1CC775280016F345 /* Refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Refresh@2x.png"; sourceTree = "<group>"; };
-		980345001CC775280016F345 /* Tools@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tools@2x.png"; sourceTree = "<group>"; };
-		980345011CC775280016F345 /* User@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "User@2x.png"; sourceTree = "<group>"; };
-		980345021CC775280016F345 /* RepairViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepairViewController.swift; sourceTree = "<group>"; };
-		980345031CC775280016F345 /* RepairViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepairViewController.xib; sourceTree = "<group>"; };
 		980345391CC775650016F345 /* but1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "but1@2x.png"; sourceTree = "<group>"; };
 		9803453A1CC775650016F345 /* but2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "but2@2x.png"; sourceTree = "<group>"; };
 		9803453B1CC775650016F345 /* but3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "but3@2x.png"; sourceTree = "<group>"; };
@@ -687,6 +633,64 @@
 		9804746F1C23B54000B3966D /* AddCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCell.xib; sourceTree = "<group>"; };
 		9805CB6F1CBF9C1800C6B97F /* MyScorllView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyScorllView.h; sourceTree = "<group>"; };
 		9805CB701CBF9C1800C6B97F /* MyScorllView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyScorllView.m; sourceTree = "<group>"; };
+		9806815A1CC8C92A006B16EF /* AlterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlterViewController.swift; sourceTree = "<group>"; };
+		9806815B1CC8C92A006B16EF /* AlterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlterViewController.xib; sourceTree = "<group>"; };
+		9806815C1CC8C92A006B16EF /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		9806815D1CC8C92A006B16EF /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
+		9806815E1CC8C92A006B16EF /* HeadImgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadImgTableViewCell.swift; sourceTree = "<group>"; };
+		9806815F1CC8C92A006B16EF /* HeadImgTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadImgTableViewCell.xib; sourceTree = "<group>"; };
+		980681601CC8C92A006B16EF /* IndividuaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividuaViewController.swift; sourceTree = "<group>"; };
+		980681611CC8C92A006B16EF /* IndividuaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndividuaViewController.xib; sourceTree = "<group>"; };
+		980681621CC8C92A006B16EF /* LoveCommodityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoveCommodityViewController.swift; sourceTree = "<group>"; };
+		980681631CC8C92A006B16EF /* LoveCommodityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoveCommodityViewController.xib; sourceTree = "<group>"; };
+		980681641CC8C92A006B16EF /* MineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineVC.swift; sourceTree = "<group>"; };
+		980681651CC8C92A006B16EF /* MineVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineVC.xib; sourceTree = "<group>"; };
+		980681661CC8C92A006B16EF /* mJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mJson.json; sourceTree = "<group>"; };
+		980681671CC8C92A006B16EF /* OtherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherTableViewCell.swift; sourceTree = "<group>"; };
+		980681681CC8C92A006B16EF /* OtherTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherTableViewCell.xib; sourceTree = "<group>"; };
+		980681691CC8C92A006B16EF /* PersonalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalCell.swift; sourceTree = "<group>"; };
+		9806816A1CC8C92A006B16EF /* PersonalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalCell.xib; sourceTree = "<group>"; };
+		9806816C1CC8C92A006B16EF /* Edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Edit@2x.png"; sourceTree = "<group>"; };
+		9806816D1CC8C92A006B16EF /* House@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "House@2x.png"; sourceTree = "<group>"; };
+		9806816E1CC8C92A006B16EF /* List@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "List@2x.png"; sourceTree = "<group>"; };
+		9806816F1CC8C92A006B16EF /* Power-Of@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Power-Of@2x.png"; sourceTree = "<group>"; };
+		980681701CC8C92A006B16EF /* Refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Refresh@2x.png"; sourceTree = "<group>"; };
+		980681711CC8C92A006B16EF /* Tools@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tools@2x.png"; sourceTree = "<group>"; };
+		980681721CC8C92A006B16EF /* User@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "User@2x.png"; sourceTree = "<group>"; };
+		980681731CC8C92A006B16EF /* RepairViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepairViewController.swift; sourceTree = "<group>"; };
+		980681741CC8C92A006B16EF /* RepairViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepairViewController.xib; sourceTree = "<group>"; };
+		9806818F1CC8C968006B16EF /* Infrared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Infrared.swift; sourceTree = "<group>"; };
+		980681911CC8C9B1006B16EF /* infCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infCell.swift; sourceTree = "<group>"; };
+		980681921CC8C9B1006B16EF /* infCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = infCell.xib; sourceTree = "<group>"; };
+		980681931CC8C9B1006B16EF /* InfraredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfraredViewController.swift; sourceTree = "<group>"; };
+		980681941CC8C9B1006B16EF /* InfraredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfraredViewController.xib; sourceTree = "<group>"; };
+		9806819A1CC8CAAD006B16EF /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		9806819B1CC8CAAD006B16EF /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		9806819C1CC8CAAD006B16EF /* CommodityImgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommodityImgTableViewCell.swift; sourceTree = "<group>"; };
+		9806819D1CC8CAAD006B16EF /* CommodityImgTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommodityImgTableViewCell.xib; sourceTree = "<group>"; };
+		9806819E1CC8CAAD006B16EF /* CommodityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommodityTableViewCell.swift; sourceTree = "<group>"; };
+		9806819F1CC8CAAD006B16EF /* CommodityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommodityTableViewCell.xib; sourceTree = "<group>"; };
+		980681A01CC8CAAD006B16EF /* CoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoTableViewCell.swift; sourceTree = "<group>"; };
+		980681A11CC8CAAD006B16EF /* CoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoTableViewCell.xib; sourceTree = "<group>"; };
+		980681A21CC8CAAD006B16EF /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		980681A31CC8CAAD006B16EF /* DetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
+		980681A41CC8CAAD006B16EF /* EavTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EavTableViewCell.swift; sourceTree = "<group>"; };
+		980681A51CC8CAAD006B16EF /* EavTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EavTableViewCell.xib; sourceTree = "<group>"; };
+		980681A61CC8CAAD006B16EF /* EvaluateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluateViewController.swift; sourceTree = "<group>"; };
+		980681A71CC8CAAD006B16EF /* EvaluateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EvaluateViewController.xib; sourceTree = "<group>"; };
+		980681A81CC8CAAD006B16EF /* MallVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MallVC.swift; sourceTree = "<group>"; };
+		980681A91CC8CAAD006B16EF /* MallVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MallVC.xib; sourceTree = "<group>"; };
+		980681AA1CC8CAAD006B16EF /* ParameterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterTableViewCell.swift; sourceTree = "<group>"; };
+		980681AB1CC8CAAD006B16EF /* ParameterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParameterTableViewCell.xib; sourceTree = "<group>"; };
+		980681AC1CC8CAAD006B16EF /* PriceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
+		980681AD1CC8CAAD006B16EF /* PriceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceTableViewCell.xib; sourceTree = "<group>"; };
+		980681AE1CC8CAAD006B16EF /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
+		980681AF1CC8CAAD006B16EF /* PurchaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseTableViewCell.xib; sourceTree = "<group>"; };
+		980681B01CC8CAAD006B16EF /* ty1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ty1.png; sourceTree = "<group>"; };
+		980681B11CC8CAAD006B16EF /* ty2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ty2.png; sourceTree = "<group>"; };
+		980681B21CC8CAAD006B16EF /* ty3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ty3.png; sourceTree = "<group>"; };
+		980681B31CC8CAAD006B16EF /* ty4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ty4.png; sourceTree = "<group>"; };
+		980681B41CC8CAAD006B16EF /* 透明图片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "透明图片.png"; sourceTree = "<group>"; };
 		9806CD471C2124C90038A8E0 /* 引导页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "引导页.jpg"; sourceTree = "<group>"; };
 		980A92F21C17B440009166D0 /* SmartHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		980A92F51C17B440009166D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1398,80 +1402,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		980344CD1CC775280016F345 /* mall */ = {
-			isa = PBXGroup;
-			children = (
-				980344CE1CC775280016F345 /* CommentTableViewCell.swift */,
-				980344CF1CC775280016F345 /* CommentTableViewCell.xib */,
-				980344D01CC775280016F345 /* CommodityImgTableViewCell.swift */,
-				980344D11CC775280016F345 /* CommodityImgTableViewCell.xib */,
-				980344D21CC775280016F345 /* CommodityTableViewCell.swift */,
-				980344D31CC775280016F345 /* CommodityTableViewCell.xib */,
-				980344D41CC775280016F345 /* CoTableViewCell.swift */,
-				980344D51CC775280016F345 /* CoTableViewCell.xib */,
-				980344D61CC775280016F345 /* DetailsViewController.swift */,
-				980344D71CC775280016F345 /* DetailsViewController.xib */,
-				980344D81CC775280016F345 /* EavTableViewCell.swift */,
-				980344D91CC775280016F345 /* EavTableViewCell.xib */,
-				980344DA1CC775280016F345 /* EvaluateViewController.swift */,
-				980344DB1CC775280016F345 /* EvaluateViewController.xib */,
-				980344DC1CC775280016F345 /* MallVC.swift */,
-				980344DD1CC775280016F345 /* MallVC.xib */,
-				980344DE1CC775280016F345 /* ParameterTableViewCell.swift */,
-				980344DF1CC775280016F345 /* ParameterTableViewCell.xib */,
-				980344E01CC775280016F345 /* PriceTableViewCell.swift */,
-				980344E11CC775280016F345 /* PriceTableViewCell.xib */,
-				980344E21CC775280016F345 /* PurchaseTableViewCell.swift */,
-				980344E31CC775280016F345 /* PurchaseTableViewCell.xib */,
-				980344E41CC775280016F345 /* ty1.png */,
-				980344E51CC775280016F345 /* ty2.png */,
-				980344E61CC775280016F345 /* ty3.png */,
-				980344E71CC775280016F345 /* ty4.png */,
-				980344E81CC775280016F345 /* 透明图片.png */,
-			);
-			path = mall;
-			sourceTree = "<group>";
-		};
-		980344E91CC775280016F345 /* mine */ = {
-			isa = PBXGroup;
-			children = (
-				980344EA1CC775280016F345 /* AlterViewController.swift */,
-				980344EB1CC775280016F345 /* AlterViewController.xib */,
-				980344EC1CC775280016F345 /* FeedbackViewController.swift */,
-				980344ED1CC775280016F345 /* FeedbackViewController.xib */,
-				980344EE1CC775280016F345 /* HeadImgTableViewCell.swift */,
-				980344EF1CC775280016F345 /* HeadImgTableViewCell.xib */,
-				980344F01CC775280016F345 /* IndividuaViewController.swift */,
-				980344F11CC775280016F345 /* IndividuaViewController.xib */,
-				980344F21CC775280016F345 /* LoveCommodityViewController.swift */,
-				980344F31CC775280016F345 /* LoveCommodityViewController.xib */,
-				980344F41CC775280016F345 /* MineVC.swift */,
-				980344F51CC775280016F345 /* MineVC.xib */,
-				980344F61CC775280016F345 /* OtherTableViewCell.swift */,
-				980344F71CC775280016F345 /* OtherTableViewCell.xib */,
-				980344F81CC775280016F345 /* PersonalCell.swift */,
-				980344F91CC775280016F345 /* PersonalCell.xib */,
-				980344FA1CC775280016F345 /* qiutu */,
-				980345021CC775280016F345 /* RepairViewController.swift */,
-				980345031CC775280016F345 /* RepairViewController.xib */,
-			);
-			path = mine;
-			sourceTree = "<group>";
-		};
-		980344FA1CC775280016F345 /* qiutu */ = {
-			isa = PBXGroup;
-			children = (
-				980344FB1CC775280016F345 /* Edit@2x.png */,
-				980344FC1CC775280016F345 /* House@2x.png */,
-				980344FD1CC775280016F345 /* List@2x.png */,
-				980344FE1CC775280016F345 /* Power-Of@2x.png */,
-				980344FF1CC775280016F345 /* Refresh@2x.png */,
-				980345001CC775280016F345 /* Tools@2x.png */,
-				980345011CC775280016F345 /* User@2x.png */,
-			);
-			path = qiutu;
-			sourceTree = "<group>";
-		};
 		980345381CC775650016F345 /* setModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1530,13 +1460,89 @@
 			name = cell;
 			sourceTree = "<group>";
 		};
+		980681591CC8C92A006B16EF /* mine */ = {
+			isa = PBXGroup;
+			children = (
+				9806815A1CC8C92A006B16EF /* AlterViewController.swift */,
+				9806815B1CC8C92A006B16EF /* AlterViewController.xib */,
+				9806815C1CC8C92A006B16EF /* FeedbackViewController.swift */,
+				9806815D1CC8C92A006B16EF /* FeedbackViewController.xib */,
+				9806815E1CC8C92A006B16EF /* HeadImgTableViewCell.swift */,
+				9806815F1CC8C92A006B16EF /* HeadImgTableViewCell.xib */,
+				980681601CC8C92A006B16EF /* IndividuaViewController.swift */,
+				980681611CC8C92A006B16EF /* IndividuaViewController.xib */,
+				980681621CC8C92A006B16EF /* LoveCommodityViewController.swift */,
+				980681631CC8C92A006B16EF /* LoveCommodityViewController.xib */,
+				980681641CC8C92A006B16EF /* MineVC.swift */,
+				980681651CC8C92A006B16EF /* MineVC.xib */,
+				980681661CC8C92A006B16EF /* mJson.json */,
+				980681671CC8C92A006B16EF /* OtherTableViewCell.swift */,
+				980681681CC8C92A006B16EF /* OtherTableViewCell.xib */,
+				980681691CC8C92A006B16EF /* PersonalCell.swift */,
+				9806816A1CC8C92A006B16EF /* PersonalCell.xib */,
+				9806816B1CC8C92A006B16EF /* qiutu */,
+				980681731CC8C92A006B16EF /* RepairViewController.swift */,
+				980681741CC8C92A006B16EF /* RepairViewController.xib */,
+			);
+			path = mine;
+			sourceTree = "<group>";
+		};
+		9806816B1CC8C92A006B16EF /* qiutu */ = {
+			isa = PBXGroup;
+			children = (
+				9806816C1CC8C92A006B16EF /* Edit@2x.png */,
+				9806816D1CC8C92A006B16EF /* House@2x.png */,
+				9806816E1CC8C92A006B16EF /* List@2x.png */,
+				9806816F1CC8C92A006B16EF /* Power-Of@2x.png */,
+				980681701CC8C92A006B16EF /* Refresh@2x.png */,
+				980681711CC8C92A006B16EF /* Tools@2x.png */,
+				980681721CC8C92A006B16EF /* User@2x.png */,
+			);
+			path = qiutu;
+			sourceTree = "<group>";
+		};
+		980681991CC8CAAD006B16EF /* mall */ = {
+			isa = PBXGroup;
+			children = (
+				9806819A1CC8CAAD006B16EF /* CommentTableViewCell.swift */,
+				9806819B1CC8CAAD006B16EF /* CommentTableViewCell.xib */,
+				9806819C1CC8CAAD006B16EF /* CommodityImgTableViewCell.swift */,
+				9806819D1CC8CAAD006B16EF /* CommodityImgTableViewCell.xib */,
+				9806819E1CC8CAAD006B16EF /* CommodityTableViewCell.swift */,
+				9806819F1CC8CAAD006B16EF /* CommodityTableViewCell.xib */,
+				980681A01CC8CAAD006B16EF /* CoTableViewCell.swift */,
+				980681A11CC8CAAD006B16EF /* CoTableViewCell.xib */,
+				980681A21CC8CAAD006B16EF /* DetailsViewController.swift */,
+				980681A31CC8CAAD006B16EF /* DetailsViewController.xib */,
+				980681A41CC8CAAD006B16EF /* EavTableViewCell.swift */,
+				980681A51CC8CAAD006B16EF /* EavTableViewCell.xib */,
+				980681A61CC8CAAD006B16EF /* EvaluateViewController.swift */,
+				980681A71CC8CAAD006B16EF /* EvaluateViewController.xib */,
+				980681A81CC8CAAD006B16EF /* MallVC.swift */,
+				980681A91CC8CAAD006B16EF /* MallVC.xib */,
+				980681AA1CC8CAAD006B16EF /* ParameterTableViewCell.swift */,
+				980681AB1CC8CAAD006B16EF /* ParameterTableViewCell.xib */,
+				980681AC1CC8CAAD006B16EF /* PriceTableViewCell.swift */,
+				980681AD1CC8CAAD006B16EF /* PriceTableViewCell.xib */,
+				980681AE1CC8CAAD006B16EF /* PurchaseTableViewCell.swift */,
+				980681AF1CC8CAAD006B16EF /* PurchaseTableViewCell.xib */,
+				980681B01CC8CAAD006B16EF /* ty1.png */,
+				980681B11CC8CAAD006B16EF /* ty2.png */,
+				980681B21CC8CAAD006B16EF /* ty3.png */,
+				980681B31CC8CAAD006B16EF /* ty4.png */,
+				980681B41CC8CAAD006B16EF /* 透明图片.png */,
+			);
+			path = mall;
+			sourceTree = "<group>";
+		};
 		9806CD461C2124970038A8E0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				98040F9F1CBF29C400BBF1B3 /* icon */,
 				9806CD471C2124C90038A8E0 /* 引导页.jpg */,
 			);
-			path = Resources;
+			name = Resources;
+			path = ../../Resources;
 			sourceTree = "<group>";
 		};
 		980A92E91C17B440009166D0 = {
@@ -1584,7 +1590,6 @@
 				989ECED91C3128FD00F5867A /* AppDelegate */,
 				98FD77AC1C1E694B0079E5A7 /* SmartHome-Bridging-Header.h */,
 				980A92F51C17B440009166D0 /* AppDelegate.swift */,
-				9806CD461C2124970038A8E0 /* Resources */,
 				98FD77A91C1E5B440079E5A7 /* Model */,
 				C24FD2361C18043600B16BF2 /* General */,
 				C24FD2411C18043600B16BF2 /* Macro */,
@@ -2451,6 +2456,7 @@
 		98FD77A91C1E5B440079E5A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9806818F1CC8C968006B16EF /* Infrared.swift */,
 				984DE7B21C48DFA700D7A76C /* Equip.swift */,
 				984DE7B31C48DFA700D7A76C /* Floor.swift */,
 				984DE7B41C48DFA700D7A76C /* Room.swift */,
@@ -2543,9 +2549,9 @@
 		C24FD2451C18043600B16BF2 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				980681991CC8CAAD006B16EF /* mall */,
+				980681591CC8C92A006B16EF /* mine */,
 				980345381CC775650016F345 /* setModel */,
-				980344CD1CC775280016F345 /* mall */,
-				980344E91CC775280016F345 /* mine */,
 				C2D04EDE1C33A28C00A59345 /* ClassifyDevice */,
 				C2DCCC7E1C28E5A200F637F1 /* AddDevice */,
 				C21E15961C181B3200C45854 /* Creat */,
@@ -2729,10 +2735,11 @@
 				983142C31CB65BB900F75C8F /* ChoseDeviceTypeVC.swift */,
 				983142C41CB65BB900F75C8F /* ChoseDeviceTypeVC.xib */,
 				98FFF98B1CC5C24A00EC4876 /* EquipTypeChoseTVC.swift */,
-				980344C21CC774960016F345 /* infCell.swift */,
-				980344C31CC774960016F345 /* infCell.xib */,
-				980344C41CC774960016F345 /* InfraredViewController.swift */,
-				980344C51CC774960016F345 /* InfraredViewController.xib */,
+				980681911CC8C9B1006B16EF /* infCell.swift */,
+				980681921CC8C9B1006B16EF /* infCell.xib */,
+				980681931CC8C9B1006B16EF /* InfraredViewController.swift */,
+				980681941CC8C9B1006B16EF /* InfraredViewController.xib */,
+				9806CD461C2124970038A8E0 /* Resources */,
 			);
 			path = ClassifyDevice;
 			sourceTree = "<group>";
@@ -2999,20 +3006,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				980345281CC775280016F345 /* LoveCommodityViewController.xib in Resources */,
+				9806817E1CC8C92A006B16EF /* LoveCommodityViewController.xib in Resources */,
 				98040FBC1CBF29C400BBF1B3 /* Icon-76@3x.png in Resources */,
-				9803450F1CC775280016F345 /* EavTableViewCell.xib in Resources */,
 				980E29611CAE14B3006A4034 /* EquipNameCell.xib in Resources */,
 				98312AAD1CBB52F4002E1C83 /* CameraCell.xib in Resources */,
+				980681CA1CC8CAAD006B16EF /* PurchaseTableViewCell.xib in Resources */,
 				98040FC81CBF29C400BBF1B3 /* iTunesArtwork in Resources */,
-				980345201CC775280016F345 /* AlterViewController.xib in Resources */,
+				980681761CC8C92A006B16EF /* AlterViewController.xib in Resources */,
 				C2DCCC821C28E61600F637F1 /* AddDeviceViewController.xib in Resources */,
-				9803452A1CC775280016F345 /* MineVC.xib in Resources */,
-				9803451C1CC775280016F345 /* ty3.png in Resources */,
+				980681801CC8C92A006B16EF /* MineVC.xib in Resources */,
 				980474691C23B51B00B3966D /* ItemCell.xib in Resources */,
+				980681C21CC8CAAD006B16EF /* EvaluateViewController.xib in Resources */,
 				C24FD2BA1C18043700B16BF2 /* SetFloor.xib in Resources */,
-				980345191CC775280016F345 /* PurchaseTableViewCell.xib in Resources */,
-				9803451A1CC775280016F345 /* ty1.png in Resources */,
+				9806818B1CC8C92A006B16EF /* Tools@2x.png in Resources */,
 				9803454C1CC775650016F345 /* but8@2x.png in Resources */,
 				980345481CC775650016F345 /* but4@2x.png in Resources */,
 				98312BDC1CBB6B50002E1C83 /* ico2.png in Resources */,
@@ -3020,28 +3026,25 @@
 				98040FC31CBF29C400BBF1B3 /* Icon-Spotlight-40.png in Resources */,
 				983142C61CB65BB900F75C8F /* ChoseDeviceTypeVC.xib in Resources */,
 				980345471CC775650016F345 /* but3@2x.png in Resources */,
-				9803450D1CC775280016F345 /* DetailsViewController.xib in Resources */,
 				98BC64FF1CBB912500F0AAEF /* right.png in Resources */,
+				980681CE1CC8CAAD006B16EF /* ty4.png in Resources */,
 				98312BDF1CBB6B50002E1C83 /* ico4.png in Resources */,
 				98BC64F91CBB90A600F0AAEF /* list_camera.png in Resources */,
 				C2D04EE21C33A2B300A59345 /* ClassifyHomeVC.xib in Resources */,
 				98040FC91CBF29C400BBF1B3 /* iTunesArtwork@2x in Resources */,
 				98312BE21CBB6B50002E1C83 /* ico6.png in Resources */,
-				980345301CC775280016F345 /* House@2x.png in Resources */,
-				980345091CC775280016F345 /* CommodityTableViewCell.xib in Resources */,
-				980345051CC775280016F345 /* CommentTableViewCell.xib in Resources */,
-				980345241CC775280016F345 /* HeadImgTableViewCell.xib in Resources */,
+				9806817A1CC8C92A006B16EF /* HeadImgTableViewCell.xib in Resources */,
 				98312BE61CBB6B50002E1C83 /* ptz_audio_off.png in Resources */,
 				C24FD2B41C18043700B16BF2 /* CreateChooseVC.xib in Resources */,
-				980344C91CC774960016F345 /* InfraredViewController.xib in Resources */,
+				9806818E1CC8C92A006B16EF /* RepairViewController.xib in Resources */,
 				98040FBA1CBF29C400BBF1B3 /* Icon-76.png in Resources */,
 				98040FBB1CBF29C400BBF1B3 /* Icon-76@2x.png in Resources */,
 				98040FBE1CBF29C400BBF1B3 /* Icon-Small-50.png in Resources */,
 				C2D04EEC1C33C98E00A59345 /* EquipSetVC.xib in Resources */,
 				98BC64FB1CBB90C800F0AAEF /* up.png in Resources */,
 				98BC65031CBB91CA00F0AAEF /* yusheCell.xib in Resources */,
+				980681CB1CC8CAAD006B16EF /* ty1.png in Resources */,
 				98D9FAD61CAD460500D90D0C /* Default-568h@2x.png in Resources */,
-				980345351CC775280016F345 /* User@2x.png in Resources */,
 				C24FD2A41C18043700B16BF2 /* HomeVC.xib in Resources */,
 				98312BDE1CBB6B50002E1C83 /* ico3on.png in Resources */,
 				9803454B1CC775650016F345 /* but7@2x.png in Resources */,
@@ -3051,21 +3054,20 @@
 				98312AB11CBB52F4002E1C83 /* EZMain.storyboard in Resources */,
 				985F9A641C2159FC00FFE955 /* AddRoomCell.xib in Resources */,
 				98312BE51CBB6B50002E1C83 /* microphone_off.png in Resources */,
+				980681C61CC8CAAD006B16EF /* ParameterTableViewCell.xib in Resources */,
 				C2DF38FB1C34C47F00114AE8 /* ChooseIconVC.xib in Resources */,
 				980345461CC775650016F345 /* but2@2x.png in Resources */,
-				980345371CC775280016F345 /* RepairViewController.xib in Resources */,
 				C24FD2B61C18043700B16BF2 /* DeviceIconVC.xib in Resources */,
-				9803452E1CC775280016F345 /* PersonalCell.xib in Resources */,
 				C2DF38FF1C34C5CB00114AE8 /* ChooseHeaderView.xib in Resources */,
 				98312BE11CBB6B50002E1C83 /* ico5.png in Resources */,
+				980681981CC8C9B1006B16EF /* InfraredViewController.xib in Resources */,
 				98A3DB4E1CB4FFEE0064474C /* ModulateCell.xib in Resources */,
-				9803452F1CC775280016F345 /* Edit@2x.png in Resources */,
-				980345311CC775280016F345 /* List@2x.png in Resources */,
-				980345071CC775280016F345 /* CommodityImgTableViewCell.xib in Resources */,
+				980681C81CC8CAAD006B16EF /* PriceTableViewCell.xib in Resources */,
+				980681851CC8C92A006B16EF /* PersonalCell.xib in Resources */,
 				98040FB61CBF29C400BBF1B3 /* Icon-60@2x.png in Resources */,
-				980345341CC775280016F345 /* Tools@2x.png in Resources */,
+				980681961CC8C9B1006B16EF /* infCell.xib in Resources */,
+				9806818A1CC8C92A006B16EF /* Refresh@2x.png in Resources */,
 				C24FD2BC1C18043700B16BF2 /* SetRomeVC.xib in Resources */,
-				9803452C1CC775280016F345 /* OtherTableViewCell.xib in Resources */,
 				C2AD17D51C2CD33A00AFE71E /* CreatHomeViewController.xib in Resources */,
 				98040FC21CBF29C400BBF1B3 /* Icon-Small@3x.png in Resources */,
 				98312BF41CBB6B50002E1C83 /* Shader.vsh in Resources */,
@@ -3074,6 +3076,7 @@
 				982606E71CBE459E00FB8F57 /* UnkownCell.xib in Resources */,
 				98312BDA1CBB6B50002E1C83 /* audio.png in Resources */,
 				98312C0D1CBB6B50002E1C83 /* JK_LineTableViewCell.xib in Resources */,
+				980681861CC8C92A006B16EF /* Edit@2x.png in Resources */,
 				C24FD2B81C18043700B16BF2 /* SetDeviceVC.xib in Resources */,
 				98312BE01CBB6B50002E1C83 /* ico4on.png in Resources */,
 				C2C97A001C3A1B2800706A07 /* EquipTableRoomCell.xib in Resources */,
@@ -3082,50 +3085,53 @@
 				9803454A1CC775650016F345 /* but6@2x.png in Resources */,
 				980474711C23B54000B3966D /* AddCell.xib in Resources */,
 				98312BF31CBB6B50002E1C83 /* Shader.fsh in Resources */,
+				980681C41CC8CAAD006B16EF /* MallVC.xib in Resources */,
 				980345491CC775650016F345 /* but5@2x.png in Resources */,
 				98A3DB3A1CB4FDD50064474C /* MJRefresh.bundle in Resources */,
 				98040FB51CBF29C400BBF1B3 /* Icon-60.png in Resources */,
 				C2AD17D91C2CDD4100AFE71E /* FloorCell.xib in Resources */,
-				980345321CC775280016F345 /* Power-Of@2x.png in Resources */,
 				98040FC71CBF29C400BBF1B3 /* Icon@2x.png in Resources */,
 				98539A621C1FDA0B00DA7699 /* wait.gif in Resources */,
-				9803450B1CC775280016F345 /* CoTableViewCell.xib in Resources */,
 				980345451CC775650016F345 /* but1@2x.png in Resources */,
-				980345151CC775280016F345 /* ParameterTableViewCell.xib in Resources */,
+				980681891CC8C92A006B16EF /* Power-Of@2x.png in Resources */,
 				C24FD2A61C18043700B16BF2 /* LoginVC.xib in Resources */,
+				980681B61CC8CAAD006B16EF /* CommentTableViewCell.xib in Resources */,
 				9847F0931C194F09005D72A9 /* InfoPlist.strings in Resources */,
 				980A93031C17B440009166D0 /* LaunchScreen.storyboard in Resources */,
+				980681CC1CC8CAAD006B16EF /* ty2.png in Resources */,
 				98B58FD41CB7A89600E7A409 /* RecentModelCell.xib in Resources */,
 				98040FC41CBF29C400BBF1B3 /* Icon-Spotlight-40@2x.png in Resources */,
+				980681811CC8C92A006B16EF /* mJson.json in Resources */,
+				980681831CC8C92A006B16EF /* OtherTableViewCell.xib in Resources */,
 				98040FC11CBF29C400BBF1B3 /* Icon-Small@2x.png in Resources */,
 				98312BDD1CBB6B50002E1C83 /* ico3.png in Resources */,
-				980345131CC775280016F345 /* MallVC.xib in Resources */,
-				9803451B1CC775280016F345 /* ty2.png in Resources */,
 				98312BE41CBB6B50002E1C83 /* micro_on.png in Resources */,
 				980353A71C19499E00A2C6A8 /* Localizable.strings in Resources */,
-				980345171CC775280016F345 /* PriceTableViewCell.xib in Resources */,
-				980345111CC775280016F345 /* EvaluateViewController.xib in Resources */,
 				98040FBF1CBF29C400BBF1B3 /* Icon-Small-50@2x.png in Resources */,
+				980681BA1CC8CAAD006B16EF /* CommodityTableViewCell.xib in Resources */,
 				98040FB91CBF29C400BBF1B3 /* Icon-72@2x.png in Resources */,
 				98312BDB1CBB6B50002E1C83 /* ico1.png in Resources */,
 				980A93001C17B440009166D0 /* Assets.xcassets in Resources */,
+				9806818C1CC8C92A006B16EF /* User@2x.png in Resources */,
 				98040FB71CBF29C400BBF1B3 /* Icon-60@3x.png in Resources */,
+				980681B81CC8CAAD006B16EF /* CommodityImgTableViewCell.xib in Resources */,
 				9803454E1CC775650016F345 /* ModelCell.xib in Resources */,
 				9806CD481C2124C90038A8E0 /* 引导页.jpg in Resources */,
+				980681781CC8C92A006B16EF /* FeedbackViewController.xib in Resources */,
+				980681BE1CC8CAAD006B16EF /* DetailsViewController.xib in Resources */,
 				C2C97A041C3A1B5500706A07 /* EquipTableEquipCell.xib in Resources */,
-				980345221CC775280016F345 /* FeedbackViewController.xib in Resources */,
 				C21E15911C18065200C45854 /* FailedVC.xib in Resources */,
 				C21E158D1C18063B00C45854 /* SuccessVC.xib in Resources */,
+				980681881CC8C92A006B16EF /* List@2x.png in Resources */,
 				98312C0F1CBB6B50002E1C83 /* JK_ViewController.xib in Resources */,
-				9803451E1CC775280016F345 /* 透明图片.png in Resources */,
 				985C63A01CB4EF1A00A4D4DA /* LightCell.xib in Resources */,
 				C24FD2B21C18043700B16BF2 /* AllDeviceListVC.xib in Resources */,
+				980681C01CC8CAAD006B16EF /* EavTableViewCell.xib in Resources */,
 				98040FC61CBF29C400BBF1B3 /* Icon.png in Resources */,
 				98312AAF1CBB52F4002E1C83 /* CameraCollectionView.xib in Resources */,
-				980344C71CC774960016F345 /* infCell.xib in Resources */,
 				C2D04EE81C33BBC600A59345 /* EquipCollectionCell.xib in Resources */,
 				98312BE31CBB6B50002E1C83 /* ico6s.png in Resources */,
-				9803451D1CC775280016F345 /* ty4.png in Resources */,
+				980681CF1CC8CAAD006B16EF /* 透明图片.png in Resources */,
 				98CEDA6B1CC61961007CF18C /* 楼层未按下.png in Resources */,
 				C2AE33FC1C3B926300D30086 /* EquipAddVC.xib in Resources */,
 				98040FC51CBF29C400BBF1B3 /* Icon-Spotlight-40@3x.png in Resources */,
@@ -3135,11 +3141,13 @@
 				980345501CC775650016F345 /* SetModelVC.xib in Resources */,
 				98040FB81CBF29C400BBF1B3 /* Icon-72.png in Resources */,
 				98A3DB521CB50DA20064474C /* HeadCell.xib in Resources */,
-				980345261CC775280016F345 /* IndividuaViewController.xib in Resources */,
-				980345331CC775280016F345 /* Refresh@2x.png in Resources */,
+				9806817C1CC8C92A006B16EF /* IndividuaViewController.xib in Resources */,
+				980681CD1CC8CAAD006B16EF /* ty3.png in Resources */,
 				980A92FB1C17B440009166D0 /* Main.storyboard in Resources */,
+				980681871CC8C92A006B16EF /* House@2x.png in Resources */,
 				98BC65051CBB924900F0AAEF /* vidicon.png in Resources */,
 				C2D04EF41C33CBCA00A59345 /* EquipConfigCell.xib in Resources */,
+				980681BC1CC8CAAD006B16EF /* CoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3183,12 +3191,16 @@
 				C2D04EE11C33A2B300A59345 /* ClassifyHomeVC.swift in Sources */,
 				980345681CC776FF0016F345 /* NSString+Contains.m in Sources */,
 				98764C2D1CAA1AC600DC1368 /* UIButton+AFNetworking.m in Sources */,
+				980681C91CC8CAAD006B16EF /* PurchaseTableViewCell.swift in Sources */,
 				980345621CC776EA0016F345 /* Tools.swift in Sources */,
 				983142C51CB65BB900F75C8F /* ChoseDeviceTypeVC.swift in Sources */,
 				98B58FD31CB7A89600E7A409 /* RecentModelCell.swift in Sources */,
 				C2D04EE71C33BBC600A59345 /* EquipCollectionCell.swift in Sources */,
+				980681C71CC8CAAD006B16EF /* PriceTableViewCell.swift in Sources */,
 				C24FD2D21C18043700B16BF2 /* UIImageView+WebCache.m in Sources */,
+				980681821CC8C92A006B16EF /* OtherTableViewCell.swift in Sources */,
 				980345611CC776EA0016F345 /* Https.swift in Sources */,
+				980681771CC8C92A006B16EF /* FeedbackViewController.swift in Sources */,
 				98312AB41CBB52F4002E1C83 /* EZRecordCell.m in Sources */,
 				98312ACC1CBB52F4002E1C83 /* MASConstraint.m in Sources */,
 				C24FD2B91C18043700B16BF2 /* SetFloor.swift in Sources */,
@@ -3200,17 +3212,16 @@
 				98312ABB1CBB52F4002E1C83 /* DACircularProgressView.m in Sources */,
 				98312ACB1CBB52F4002E1C83 /* MASCompositeConstraint.m in Sources */,
 				C2AD17D41C2CD33A00AFE71E /* CreatHomeViewController.swift in Sources */,
-				980345231CC775280016F345 /* HeadImgTableViewCell.swift in Sources */,
+				980681C31CC8CAAD006B16EF /* MallVC.swift in Sources */,
 				98312C001CBB6B50002E1C83 /* mytoast.m in Sources */,
+				980681751CC8C92A006B16EF /* AlterViewController.swift in Sources */,
 				98312AC61CBB52F4002E1C83 /* UIView+DDKit.m in Sources */,
 				98312AC21CBB52F4002E1C83 /* UIImage+DDKit.m in Sources */,
-				980345161CC775280016F345 /* PriceTableViewCell.swift in Sources */,
+				9806818D1CC8C92A006B16EF /* RepairViewController.swift in Sources */,
 				C24FD2CC1C18043700B16BF2 /* SDWebImagePrefetcher.m in Sources */,
 				98312AD01CBB52F4002E1C83 /* MASViewConstraint.m in Sources */,
 				98764C251CAA1AC600DC1368 /* AFSecurityPolicy.m in Sources */,
-				980345291CC775280016F345 /* MineVC.swift in Sources */,
 				98312BFA1CBB6B50002E1C83 /* CircleBuf.mm in Sources */,
-				980345211CC775280016F345 /* FeedbackViewController.swift in Sources */,
 				98764C271CAA1AC600DC1368 /* AFURLRequestSerialization.m in Sources */,
 				98312BF51CBB6B50002E1C83 /* Adpcm.mm in Sources */,
 				C21E15901C18065200C45854 /* FailedVC.swift in Sources */,
@@ -3229,10 +3240,12 @@
 				C24FD2D11C18043700B16BF2 /* UIImageView+HighlightedWebCache.m in Sources */,
 				98312AD61CBB52F4002E1C83 /* MWCaptionView.m in Sources */,
 				989ECEFB1C313FA500F5867A /* AppDelegate+Error.swift in Sources */,
+				980681B91CC8CAAD006B16EF /* CommodityTableViewCell.swift in Sources */,
 				98312BFC1CBB6B50002E1C83 /* CustomToast.m in Sources */,
 				C24FD2C21C18043700B16BF2 /* QRCodeReaderView.m in Sources */,
 				98312C081CBB6B50002E1C83 /* RecPathManagement.m in Sources */,
 				98764C2C1CAA1AC600DC1368 /* UIAlertView+AFNetworking.m in Sources */,
+				980681BF1CC8CAAD006B16EF /* EavTableViewCell.swift in Sources */,
 				98312AAE1CBB52F4002E1C83 /* CameraCollectionView.swift in Sources */,
 				980474651C23A52D00B3966D /* RoomListItem.swift in Sources */,
 				98312ABD1CBB52F4002E1C83 /* NSArray+DDKit.m in Sources */,
@@ -3240,7 +3253,6 @@
 				980474621C23931200B3966D /* SZLSideView.m in Sources */,
 				98BC64F71CBB865000F0AAEF /* Wrapper.mm in Sources */,
 				98312ACF1CBB52F4002E1C83 /* MASViewAttribute.m in Sources */,
-				980345271CC775280016F345 /* LoveCommodityViewController.swift in Sources */,
 				C24FD2B71C18043700B16BF2 /* SetDeviceVC.swift in Sources */,
 				98312AB91CBB52F4002E1C83 /* NSDate-Utilities.m in Sources */,
 				98312AD71CBB52F4002E1C83 /* MWGridCell.m in Sources */,
@@ -3257,15 +3269,15 @@
 				98312AC01CBB52F4002E1C83 /* UIButton+DDKit.m in Sources */,
 				989276051C321AA000FAEF5E /* AppDelegate+GeTui.swift in Sources */,
 				C24FD2BB1C18043700B16BF2 /* SetRomeVC.swift in Sources */,
+				980681951CC8C9B1006B16EF /* infCell.swift in Sources */,
 				98FFF98C1CC5C24A00EC4876 /* EquipTypeChoseTVC.swift in Sources */,
 				98764C241CAA1AC600DC1368 /* AFNetworkReachabilityManager.m in Sources */,
 				989ECECC1C30C01E00F5867A /* LocationManager.swift in Sources */,
 				98312ADC1CBB52F4002E1C83 /* MWTapDetectingView.m in Sources */,
+				980681791CC8C92A006B16EF /* HeadImgTableViewCell.swift in Sources */,
 				C2DF38FA1C34C47F00114AE8 /* ChooseIconVC.swift in Sources */,
 				98764C311CAA1AC600DC1368 /* UIWebView+AFNetworking.m in Sources */,
-				980345061CC775280016F345 /* CommodityImgTableViewCell.swift in Sources */,
 				C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */,
-				980345361CC775280016F345 /* RepairViewController.swift in Sources */,
 				98312AEA1CBB52F4002E1C83 /* UITableView+FDKeyedHeightCache.m in Sources */,
 				C24FD2C11C18043700B16BF2 /* QRCodeReader.m in Sources */,
 				9803454F1CC775650016F345 /* SetModelVC.swift in Sources */,
@@ -3275,16 +3287,11 @@
 				984DE7B61C48DFA700D7A76C /* Floor.swift in Sources */,
 				98312C011CBB6B50002E1C83 /* PCMPlayer.mm in Sources */,
 				C24FD2CE1C18043700B16BF2 /* UIImage+GIF.m in Sources */,
-				9803450A1CC775280016F345 /* CoTableViewCell.swift in Sources */,
 				98312C051CBB6B50002E1C83 /* PPPPChannel.mm in Sources */,
 				980A92FE1C17B440009166D0 /* SmartHome.xcdatamodeld in Sources */,
-				980345121CC775280016F345 /* MallVC.swift in Sources */,
 				C24FD2C01C18043700B16BF2 /* QRCameraSwitchButton.m in Sources */,
-				9803450E1CC775280016F345 /* EavTableViewCell.swift in Sources */,
 				C2CA54781C2A444900B52498 /* AddDeviceAlert.swift in Sources */,
 				98312BF81CBB6B50002E1C83 /* CameraListMgt.mm in Sources */,
-				9803452B1CC775280016F345 /* OtherTableViewCell.swift in Sources */,
-				980345251CC775280016F345 /* IndividuaViewController.swift in Sources */,
 				C24FD2B51C18043700B16BF2 /* DeviceIconVC.swift in Sources */,
 				C24FD2CF1C18043700B16BF2 /* UIImage+MultiFormat.m in Sources */,
 				980345671CC776FF0016F345 /* NSDictionary+Ping.m in Sources */,
@@ -3294,14 +3301,12 @@
 				98312BE71CBB6B50002E1C83 /* HTPlayCamerViewController.mm in Sources */,
 				C24FD2CA1C18043700B16BF2 /* SDWebImageDownloaderOperation.m in Sources */,
 				98A3DB441CB4FDD50064474C /* UIScrollView+MJRefresh.m in Sources */,
-				980345041CC775280016F345 /* CommentTableViewCell.swift in Sources */,
 				98312C071CBB6B50002E1C83 /* RecPathDBUtils.mm in Sources */,
 				98764C261CAA1AC600DC1368 /* AFURLConnectionOperation.m in Sources */,
 				980474701C23B54000B3966D /* AddCell.swift in Sources */,
+				980681BD1CC8CAAD006B16EF /* DetailsViewController.swift in Sources */,
 				98312BF91CBB6B50002E1C83 /* CgiPacket.cpp in Sources */,
-				980344C61CC774960016F345 /* infCell.swift in Sources */,
 				C21031131C27D7140039B96C /* SHAlertView.swift in Sources */,
-				980344C81CC774960016F345 /* InfraredViewController.swift in Sources */,
 				C2DF38FE1C34C5CB00114AE8 /* ChooseHeaderView.swift in Sources */,
 				98312BFF1CBB6B50002E1C83 /* MyAudioSession.mm in Sources */,
 				98312AD11CBB52F4002E1C83 /* NSArray+MASAdditions.m in Sources */,
@@ -3310,30 +3315,33 @@
 				98312ABC1CBB52F4002E1C83 /* DALabeledCircularProgressView.m in Sources */,
 				C2DF39031C34FF0100114AE8 /* SHChooseAlertView.swift in Sources */,
 				983FE2E91C1821B6004B89CE /* Helper.swift in Sources */,
-				9803452D1CC775280016F345 /* PersonalCell.swift in Sources */,
 				C24FD2A21C18043700B16BF2 /* GlobalVariables.swift in Sources */,
 				C2AE33FB1C3B926300D30086 /* EquipAddVC.swift in Sources */,
 				98A3DB3C1CB4FDD50064474C /* MJRefreshConst.m in Sources */,
+				9806817F1CC8C92A006B16EF /* MineVC.swift in Sources */,
 				C2D04EE41C33A48F00A59345 /* SHSegement.swift in Sources */,
 				98764C211CAA1AC600DC1368 /* AFHTTPRequestOperation.m in Sources */,
 				98312AC81CBB52F4002E1C83 /* DDCollectionViewFlowLayout.m in Sources */,
 				C24FD2B11C18043700B16BF2 /* AllDeviceListVC.swift in Sources */,
-				980345081CC775280016F345 /* CommodityTableViewCell.swift in Sources */,
+				980681971CC8C9B1006B16EF /* InfraredViewController.swift in Sources */,
 				98312AC11CBB52F4002E1C83 /* UIColor+DDKit.m in Sources */,
 				98312C041CBB6B50002E1C83 /* PicPathManagement.m in Sources */,
+				980681BB1CC8CAAD006B16EF /* CoTableViewCell.swift in Sources */,
 				C2DCFD8D1C3E0133005A8368 /* MBProgressHUD.m in Sources */,
 				98A3DB401CB4FDD50064474C /* MJRefreshHeader.m in Sources */,
-				9803451F1CC775280016F345 /* AlterViewController.swift in Sources */,
 				98312AD91CBB52F4002E1C83 /* MWPhoto.m in Sources */,
 				C2EC1CA01C2BC99F005030FC /* LQRcodeVC.swift in Sources */,
 				9803455E1CC776EA0016F345 /* DataDeal.swift in Sources */,
 				98312ABA1CBB52F4002E1C83 /* UIImageView+EzvizOpenSDK.m in Sources */,
+				980681C11CC8CAAD006B16EF /* EvaluateViewController.swift in Sources */,
 				98312AB21CBB52F4002E1C83 /* Aspects.m in Sources */,
 				98312BF21CBB6B50002E1C83 /* HTCameraStatus.mm in Sources */,
+				9806817D1CC8C92A006B16EF /* LoveCommodityViewController.swift in Sources */,
 				C24FD2C81C18043700B16BF2 /* SDWebImageDecoder.m in Sources */,
 				98312BFE1CBB6B50002E1C83 /* LocalPlayback.mm in Sources */,
 				98312AB51CBB52F4002E1C83 /* HIKLoadPercentView.m in Sources */,
 				98312AD41CBB52F4002E1C83 /* ViewController+MASAdditions.m in Sources */,
+				9806817B1CC8C92A006B16EF /* IndividuaViewController.swift in Sources */,
 				98764C231CAA1AC600DC1368 /* AFHTTPSessionManager.m in Sources */,
 				982606FB1CBE4EB100FB8F57 /* CameraTypeTVC.swift in Sources */,
 				C24FD2D01C18043700B16BF2 /* UIImage+WebP.m in Sources */,
@@ -3352,13 +3360,11 @@
 				98312C061CBB6B50002E1C83 /* PPPPChannelManagement.mm in Sources */,
 				C24FD2C31C18043700B16BF2 /* QRCodeReaderViewController.m in Sources */,
 				C2C979FF1C3A1B2800706A07 /* EquipTableRoomCell.swift in Sources */,
-				980345101CC775280016F345 /* EvaluateViewController.swift in Sources */,
 				9803454D1CC775650016F345 /* ModelCell.swift in Sources */,
 				98312AB71CBB52F4002E1C83 /* HIKLoadViewItem+configPath.m in Sources */,
 				98764C221CAA1AC600DC1368 /* AFHTTPRequestOperationManager.m in Sources */,
-				980345141CC775280016F345 /* ParameterTableViewCell.swift in Sources */,
+				980681841CC8C92A006B16EF /* PersonalCell.swift in Sources */,
 				985C639F1CB4EF1A00A4D4DA /* LightCell.swift in Sources */,
-				9803450C1CC775280016F345 /* DetailsViewController.swift in Sources */,
 				C24FD2C91C18043700B16BF2 /* SDWebImageDownloader.m in Sources */,
 				98312ADA1CBB52F4002E1C83 /* MWPhotoBrowser.m in Sources */,
 				98312AD81CBB52F4002E1C83 /* MWGridViewController.m in Sources */,
@@ -3369,7 +3375,8 @@
 				C24FD2C41C18043700B16BF2 /* MKAnnotationView+WebCache.m in Sources */,
 				98312AC51CBB52F4002E1C83 /* UISegmentedControl+DDKit.m in Sources */,
 				98312ADE1CBB52F4002E1C83 /* UIImage+MWPhotoBrowser.m in Sources */,
-				980345181CC775280016F345 /* PurchaseTableViewCell.swift in Sources */,
+				980681B71CC8CAAD006B16EF /* CommodityImgTableViewCell.swift in Sources */,
+				980681C51CC8CAAD006B16EF /* ParameterTableViewCell.swift in Sources */,
 				989276091C32267D00FAEF5E /* AppDelegate+Reach.swift in Sources */,
 				98764BFA1CAA0C8F00DC1368 /* BaseHttpService.swift in Sources */,
 				98312C0A1CBB6B50002E1C83 /* SearchListMgt.mm in Sources */,
@@ -3382,12 +3389,14 @@
 				C2AD17D81C2CDD4100AFE71E /* FloorCell.swift in Sources */,
 				98312BFD1CBB6B50002E1C83 /* H264Decoder.mm in Sources */,
 				985F9A631C2159FC00FFE955 /* AddRoomCell.swift in Sources */,
+				980681B51CC8CAAD006B16EF /* CommentTableViewCell.swift in Sources */,
 				98312ADB1CBB52F4002E1C83 /* MWTapDetectingImageView.m in Sources */,
 				985F9A6F1C215B6E00FFE955 /* EditView.swift in Sources */,
 				98FD77AB1C1E5B530079E5A7 /* UserModel.swift in Sources */,
 				98312C0B1CBB6B50002E1C83 /* UIImage+UIImageExtras.m in Sources */,
 				98312AC31CBB52F4002E1C83 /* UIImageView+DDKit.m in Sources */,
 				C2C97A031C3A1B5500706A07 /* EquipTableEquipCell.swift in Sources */,
+				980681901CC8C968006B16EF /* Infrared.swift in Sources */,
 				98312ADD1CBB52F4002E1C83 /* MWZoomingScrollView.m in Sources */,
 				C24FD2C61C18043700B16BF2 /* SDImageCache.m in Sources */,
 			);

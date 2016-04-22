@@ -200,7 +200,7 @@ func updateRoomInfo(complete:CompleteUpdateRoomInfo){
     DataDeal.sharedDataDeal.clearAllTable()
     let parameters=["":""];
     BaseHttpService .sendRequestAccess(getroom_do, parameters: parameters) { (anyObject) -> () in
-        print(anyObject)
+     
         if anyObject.count <= 0{
             complete()
             return
@@ -223,6 +223,7 @@ func updateRoomInfo(complete:CompleteUpdateRoomInfo){
             r.saveRoom()
             
         }
+        print("更新房间信息")
         complete()
     }
     
@@ -242,7 +243,7 @@ func readRoomInfo(complete:CompletereadRoomInfo)
             updateRoomInfo({ () -> () in
                 // 更新一个版本号上传到服务器上面
                 
-                setNetRoomInfoVersionNumber(f, andComplete: {
+                setNetRoomInfoVersionNumber(f+1, andComplete: {
                     complete()
                     NSUserDefaults.standardUserDefaults().setFloat(f+1, forKey: "RoomInfoVersionNumber")
                     
@@ -260,7 +261,7 @@ func readRoomInfo(complete:CompletereadRoomInfo)
 typealias CompleteNOtoNet = () -> ()
 func setNetRoomInfoVersionNumber(f:Float,andComplete complete:CompleteNOtoNet){
     
-    let parameters=["version": Float(floatLiteral: f+1)];
+    let parameters=["version": Float(floatLiteral: f)];
     //设置服务器版本号。
     BaseHttpService .sendRequestAccess(setversion_do, parameters: parameters) { (response) -> () in
         

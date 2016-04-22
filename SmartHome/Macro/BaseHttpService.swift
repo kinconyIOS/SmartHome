@@ -27,7 +27,10 @@ class BaseHttpService: NSObject {
                 print("网路问题-error:\(response.result.error)")
                 
             } else {
-              
+                if (response.result.value!as![String:AnyObject]).keys.contains("statusCode"){
+                    print("服务器返回异常数据")
+                    return;
+                }
                successBlock(response.result.value! )
              
             }
@@ -87,22 +90,38 @@ class BaseHttpService: NSObject {
                 
             } else {
                  print("\(url)-\(response.result.value)")
+
+            
+                if (response.result.value!as![String:AnyObject]).keys.contains("statusCode"){
+                     print("服务器返回异常数据")
+                    return;
+                }
                 if response.result.value!["success"] as! Bool == true{
                
                  successBlock(response.result.value!["data"]!!)
                
                  } else{
                     print(response.result.value!["message"]as!String)
-                   if response.result.value!["message"]as!String != "超时了" || response.result.value!["message"]as!String != "没有找到该编号"{
-                       print("\(url)-\(response.result.value)")
+                   if response.result.value!["message"]as!String != "超时了" {
+                    
+                    if response.result.value!["message"]as!String == "没有找到该编号"
+                        
+                    {
+                        print("重新登录吧!没有找到该编号")
+                        
+                        let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
+                        app.window!.rootViewController=nav
+                        
+                    }
                 //不是超时的其他问题
                     return
                 
                    }
+                    
                 //失效
                  print("accessToken已经失效了重新获取!")
                sendRequest(refreshToken_do, parameters: ["refreshToken":refreshAccessToken(),"userCode":userCode()]) { (any:AnyObject) -> () in
-            print(any)
+               
                 if any["success"]as! Bool == true
                 {
                     //得到新的accessToken 和 refreshToken 保存

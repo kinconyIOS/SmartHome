@@ -102,6 +102,13 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
         default:
            let cell = tableView.dequeueReusableCellWithIdentifier("equipnamecell", forIndexPath: indexPath) as! EquipNameCell
            cell.selectionStyle = UITableViewCellSelectionStyle.None
+           cell.complete =  {[unowned self] (name)in
+            print(name)
+            
+            
+            self.equip?.name = name!
+           }
+
            return cell
         }
     }

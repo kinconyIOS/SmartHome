@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rd5-5T-CfU">
-                    <rect key="frame" x="8" y="23" width="584" height="569"/>
+                    <rect key="frame" x="8" y="15" width="584" height="569"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="X8h-sR-fyr">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -28,10 +28,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="rd5-5T-CfU" secondAttribute="bottom" constant="8" id="2Pf-2s-Ycw"/>
+                <constraint firstAttribute="bottom" secondItem="rd5-5T-CfU" secondAttribute="bottom" constant="16" id="2Pf-2s-Ycw"/>
                 <constraint firstAttribute="trailing" secondItem="rd5-5T-CfU" secondAttribute="trailing" constant="8" id="H9K-85-LIp"/>
                 <constraint firstItem="rd5-5T-CfU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="qo0-lL-wf7"/>
-                <constraint firstItem="rd5-5T-CfU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="23" id="xG9-yx-VMH"/>
+                <constraint firstItem="rd5-5T-CfU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="xG9-yx-VMH"/>
             </constraints>
         </view>
     </objects>

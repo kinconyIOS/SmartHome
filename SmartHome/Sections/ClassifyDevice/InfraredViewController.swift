@@ -11,12 +11,14 @@ import UIKit
 class InfraredViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate{
     //modeltag
     var iTag:Int = 0
+    var cellArr:[String] = ["aa","bb","cc","dd"]
     @IBOutlet weak var MyCollection: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title="红外设备"
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(imageLiteral: "透明图片.png"), forBarMetrics: UIBarMetrics.Default)
-
+       // self.navigationController!.navigationBar.setBackgroundImage(UIImage(imageLiteral: "透明图片.png"), forBarMetrics: UIBarMetrics.Default)
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         //MyCollection.layer.masksToBounds = true
         // Do any additional setup after loading the view.
     }
@@ -47,7 +49,7 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
     
     //定义展示的UICollectionViewCell的个数
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6;
+        return cellArr.count+1;
     }
     //定义展示的Section的个数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -55,19 +57,23 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
     }
     //每个UICollectionView展示的内容
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-      
+       
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("inf", forIndexPath: indexPath) as? infCell
     
-        if indexPath.row == 5{
+        if indexPath.row == cellArr.count{
             cell?.but.setBackgroundImage(UIImage(imageLiteral: "红外线添加"), forState: UIControlState.Normal)
             
         }
         else{
+             let infCell1:Infrared = Infrared.init(aname: cellArr[indexPath.row])
             cell?.but.setBackgroundImage(UIImage(imageLiteral: "红外线"), forState: UIControlState.Normal)
             cell?.tag = iTag
             iTag++
             cell!.myClosure = somsomeFunctionThatTakesAClosure
             cell?.addLongPass()
+            //cell?.but.titleLabel?.font = UIFont.systemFontOfSize(13.0)
+            //cell?.but.setTitle(cellArr[indexPath.row], forState: UIControlState.Normal)
+            cell?.setinf(infCell1)
             
         }
         return cell!
@@ -75,7 +81,8 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
     //闭包函数
     func somsomeFunctionThatTakesAClosure(string:Int) -> Void{
         print(string)
-        
+        cellArr.removeAtIndex(string)
+        MyCollection.reloadData()
     }
     //    #pragma mark --UICollectionViewDelegate
     //UICollectionView被选中时调用的方法

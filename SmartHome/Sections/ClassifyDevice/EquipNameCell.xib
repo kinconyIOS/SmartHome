@@ -26,7 +26,9 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
+                            <action selector="exitEndAction:" destination="KGk-i7-Jjw" eventType="editingDidEnd" id="308-Bc-W7P"/>
                             <action selector="exitEndAction:" destination="KGk-i7-Jjw" eventType="editingDidEndOnExit" id="YFy-q8-Ckc"/>
+                            <action selector="exitEndAction:" destination="KGk-i7-Jjw" eventType="editingChanged" id="aYG-Fl-ple"/>
                         </connections>
                     </textField>
                 </subviews>

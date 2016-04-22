@@ -130,7 +130,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         let floors = dataDeal.getModels(DataDeal.TableType.Floor) as! Array<Floor>
         for _floor in floors{
             let floor = Building(buildType: .BuildFloor, buildName:  _floor.name, isAddCell: false)
-           floor.buildCode = _floor.floorCode
+            floor.buildCode = _floor.floorCode
             floorArr.append(floor)
             dataSource.append(floor)
             let rooms = dataDeal.getRoomsByFloor(_floor)
@@ -145,6 +145,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
                
                 
             }
+            
             let add = Building(buildType: .BuildRoom, buildName: "添加", isAddCell: true)
             add.floor = floor
             roomArr.append(add)
@@ -171,15 +172,17 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         var parameter: [String : AnyObject] = ["userCode" : userCode]
         parameter["roomInfo"] = assembleRoom()
         parameter["floorInfo"] = assembleFloor()
-        print( parameter["roomInfo"])
-         print( parameter["floorInfo"])
+        print("------\(parameter["roomInfo"])")
+        print("------\(parameter["floorInfo"])")
         BaseHttpService .sendRequestAccess(updatinfo, parameters: parameter) { (back) -> () in
             
             updateRoomInfo({ () -> () in
                 // 更新一个版本号上传到服务器上面
                 var f = NSUserDefaults.standardUserDefaults().objectForKey( "RoomInfoVersionNumber")?.floatValue
-                if f == nil{ f = 0}
-                setNetRoomInfoVersionNumber(f!, andComplete: {
+                if f == nil{ f
+                    = 0
+                }
+                setNetRoomInfoVersionNumber(f!+1, andComplete: {
                     
                     NSUserDefaults.standardUserDefaults().setFloat(f!+1, forKey: "RoomInfoVersionNumber")
                     if self.isSimple {
