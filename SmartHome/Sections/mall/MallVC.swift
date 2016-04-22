@@ -49,6 +49,7 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             BaseHttpService .sendRequestAccess(Commodity_display, parameters:["":""]) { [unowned self](response) -> () in
                 print(response)
                 self.shoppingList=response as! NSArray
+                print(self.shoppingList)
                 self.tableView.reloadData()
                 self.tableView.footer.endRefreshing();
             }
@@ -79,26 +80,26 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             return cell1!
             
         }
-        cell = tableView.dequeueReusableCellWithIdentifier("Commod") as? CommodityTableViewCell
-        cell!.commodityImg.image = UIImage(named: "窗帘")
-        for index1 in shoppingList{
-            let str = imgUrl+(index1["picturesShow"]as!String)
+       // let model:Model=shoppingList[indexPath.row-1];
+        //cell.setModel(model)
+            cell = tableView.dequeueReusableCellWithIdentifier("Commod") as? CommodityTableViewCell
+            let str = imgUrl+(shoppingList[indexPath.row-1]["picturesShow"]as!String)
             print("\(str)")
             cell?.commodityImg.sd_setImageWithURL(NSURL(string: str))
             cell?.commodityImg?.contentMode = UIViewContentMode.ScaleToFill
-            cell?.commdityID = index1["id"]
+            cell?.commdityID = shoppingList[indexPath.row-1]["id"]
 //            if ((index1["salesVolumeDegree"] as? Int) != 0)
 //            {
 //                cell?.aaa.hidden = true
 //            }
-            if (index1["salesVolumeDegree"] as? String) != "0"{
+            if (shoppingList[indexPath.row-1]["salesVolumeDegree"] as? String) != "0"{
                 cell?.aaa.hidden = true
             }
-            cell?.commdityIntroduce.text = index1["goodsIntroduce"] as? String
-            cell?.commdityName.text = index1["goodsTitle"] as? String
-            cell?.commdityPrice.text = index1["goodsPrice"] as? String
+            cell?.commdityIntroduce.text = shoppingList[indexPath.row-1]["goodsIntroduce"] as? String
+            cell?.commdityName.text = shoppingList[indexPath.row-1]["goodsTitle"] as? String
+            cell?.commdityPrice.text = shoppingList[indexPath.row-1]["goodsPrice"] as? String
             cell!.selectionStyle = UITableViewCellSelectionStyle.None
-        }
+       
         return cell!
     }
     //行高

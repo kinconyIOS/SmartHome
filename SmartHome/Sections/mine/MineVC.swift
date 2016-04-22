@@ -48,7 +48,7 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate{
         BaseHttpService .sendRequestAccess(GetUser, parameters:parameters) { (response) -> () in
             print("获取用户信息=\(response)")
             if (response["city"] as! String) == ""{
-                self.City.text = "杭州"
+                self.City.text = " "
             }else{
                 self.City.text = response["city"] as? String
             }
@@ -63,7 +63,7 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate{
                 self.Name.text = response["userName"] as? String
             }
             if (response["userSex"] as! String) == ""{
-                self.Sex.text = "男"
+                self.Sex.text = " "
             }else{
                 if (response["userSex"] as? String) == "0"{
                     self.Sex.text = "男"

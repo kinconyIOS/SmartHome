@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 class IndividuaViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     var tabArr = ["头像","名称","签名","修改性别","选择城市"];
-    var usreArr = ["haha","签名","男","杭州"]
+    var usreArr = [" "," "," "," "]
     var sunData:SunDataPicker? = SunDataPicker.init(frame: CGRectMake(0, 100,ScreenWidth-20 , (ScreenWidth-20)*3/3))
     var cellArr = [OtherTableViewCell]()//存放cell
     var cellI:Int = 0
@@ -133,14 +133,14 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
             } catch let error as NSError{
                 print(error.localizedDescription)
             }
-            var jsondata = jsonstr?.dataUsingEncoding(NSUTF8StringEncoding)
+            let jsondata = jsonstr?.dataUsingEncoding(NSUTF8StringEncoding)
             do {
-                self.areas = try NSJSONSerialization.JSONObjectWithData(jsondata! , options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                self.areas = try NSJSONSerialization.JSONObjectWithData(jsondata! , options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
             } catch let error as NSError{
                 print(error.localizedDescription)
             }
             self.sunData?.setNumberOfComponents(3, SET: self.areas, addTarget:self.navigationController!.view , complete: { (one, two, three) -> Void in
-                var a = "\(one),\(two),\(three)"
+                let a = "\(one),\(two),\(three)"
                 print(a)
                 let parameters=["city":a]
                 BaseHttpService.sendRequestAccess(GetUserCity, parameters:parameters) { (response) -> () in
@@ -160,22 +160,22 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
         BaseHttpService .sendRequestAccess(GetUser, parameters:parameters) { (response) -> () in
             print("获取用户信息=\(response)")
             if (response["city"] as! String) == ""{
-                self.usreArr[3] = "杭州"
+                self.usreArr[3] = " "
             }else{
                 self.usreArr[3] = (response["city"] as? String)!
             }
             if (response["signature"] as! String) == ""{
-                self.usreArr[1] = "亲还没设置签名！"
+                self.usreArr[1] = " "
             }else{
                 self.usreArr[1] = (response["signature"] as? String)!
             }
             if (response["userName"] as! String) == ""{
-                self.usreArr[0] = "亲还没设置名字！"
+                self.usreArr[0] = " "
             }else{
                 self.usreArr[0] = (response["userName"] as? String)!
             }
             if (response["userSex"] as! String) == ""{
-                self.usreArr[2] = "男"
+                self.usreArr[2] = " "
             }else{
                 if (response["userSex"] as? String) == "0"{
                     self.usreArr[2] = "男"
@@ -195,9 +195,9 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
                 self.cellImg!.HeadImg.contentMode = UIViewContentMode.ScaleToFill
                 //self.Sex.text = response["userSex"] as? String
             }
+           //self.tableView.reloadData()
         }
-        tableView.reloadData()
-        
+        self.tableView.reloadData()
     }
     //闭包函数
     func somsomeFunctionThatTakesAClosure(string:String) -> Void{
