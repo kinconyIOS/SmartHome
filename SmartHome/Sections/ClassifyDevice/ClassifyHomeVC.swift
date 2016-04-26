@@ -274,7 +274,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
             equipSetVC.configCompeletBlock({ [unowned self] (equip) -> () in
               
                 //添加设备
-                  let parameter = ["userCode" : userCode,
+                  let parameter = [
                     "roomCode":equip.roomCode,
                     "deviceAddress":equip.equipID,
                     "nickName":equip.name,

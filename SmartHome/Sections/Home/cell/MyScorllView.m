@@ -12,6 +12,7 @@
 //[self setupPage];
 #import "MyScorllView.h"
 #import "UIImageView+WebCache.h"
+
 @interface MyScorllView()<UIScrollViewDelegate>
 @property (strong, nonatomic)  UIScrollView *scrollView;
 

@@ -122,7 +122,32 @@ class DataDeal {
         }
         
     }
-    
+    func searchSXTModel(byRoomCode code: String) ->[Equip]{
+             var arr = [Equip]()
+       
+            let equipCode = Expression<String>("code")
+            let equipName = Expression<String>("name")
+            let equipIcon = Expression<String>("icon")
+            let roomCode = Expression<String>("roomCode")
+            let userCode = Expression<String>("userCode")
+            let type = Expression<String>("type")
+            let num =  Expression<String>("num")
+            let equip = Table("Equips")
+          
+            for e in try! db!.prepare(equip.filter(roomCode == code && type  == "100"))
+            {
+                let newEquip = Equip(equipID: e[equipCode])
+                newEquip.name = e[equipName]
+                newEquip.icon = e[equipIcon]
+                newEquip.userCode = e[userCode]
+                newEquip.roomCode = e[roomCode]
+                newEquip.type = e[type]
+                newEquip.num = e[num]
+                arr.append(newEquip)
+            }
+       
+        return arr
+    }
     func searchModel(type: TableType, byCode code: String) ->AnyObject? {
         switch type {
         case .User:
@@ -423,7 +448,7 @@ class DataDeal {
          let num =  Expression<String>("num")
         let equip = Table("Equips")
         
-        for e in try! db!.prepare(equip.filter(roomCode == room.roomCode)) {
+        for e in try! db!.prepare(equip.filter(roomCode == room.roomCode && type != "100")) {
             let newEquip = Equip(equipID: e[equipCode])
             newEquip.name = e[equipName]
             newEquip.icon = e[equipIcon]

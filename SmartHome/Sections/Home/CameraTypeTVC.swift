@@ -11,6 +11,7 @@ import UIKit
 class CameraTypeTVC: UITableViewController {
 
         let dataSource = ["普通摄像头","萤石摄像头"]
+        var roomCode:String = ""
         override func viewDidLoad() {
             super.viewDidLoad()
             self.navigationItem.title = "选择摄像头种类"
@@ -56,7 +57,7 @@ class CameraTypeTVC: UITableViewController {
             case 0:
               
                 let w = Wrapper()
-                w.push(self)
+                w.push(self,roomCode: self.roomCode)
                
                 break
             default:

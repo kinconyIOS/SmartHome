@@ -16,6 +16,7 @@
     NSDictionary *_moblieDict;
     NSMutableArray *dataArray;
 }
+@property (nonatomic,strong)NSString *roomCode;
 @property  CPPPPChannelManagement* m_PPPPChannelMgt;
 @property (nonatomic, retain) NSTimer* searchTimer;
 //@property (nonatomic, retain) NSCondition* m_PPPPChannelMgtCondition;

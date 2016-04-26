@@ -47,8 +47,8 @@ class LightCell: UITableViewCell {
         {
             if btn.tag <= num{
             btn.hidden = false
-              btn.setImage(UIImage(named:e.icon), forState: UIControlState.Normal)
-              btn.setImage(UIImage(named:e.icon), forState: UIControlState.Selected)
+              btn.setImage(UIImage(named:"普通灯泡"), forState: UIControlState.Normal)
+              btn.setImage(UIImage(named:"dark"), forState: UIControlState.Selected)
             }else
             {
              btn.hidden = true

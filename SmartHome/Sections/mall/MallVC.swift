@@ -87,7 +87,7 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             print("\(str)")
             cell?.commodityImg.sd_setImageWithURL(NSURL(string: str))
             cell?.commodityImg?.contentMode = UIViewContentMode.ScaleToFill
-            cell?.commdityID = shoppingList[indexPath.row-1]["id"]
+            cell!.commdityID = shoppingList[indexPath.row-1]["id"] as!Int
 //            if ((index1["salesVolumeDegree"] as? Int) != 0)
 //            {
 //                cell?.aaa.hidden = true
@@ -99,7 +99,7 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             cell?.commdityName.text = shoppingList[indexPath.row-1]["goodsTitle"] as? String
             cell?.commdityPrice.text = shoppingList[indexPath.row-1]["goodsPrice"] as? String
             cell!.selectionStyle = UITableViewCellSelectionStyle.None
-       
+            cell?.myClosure = somsomeFunctionThatTakesAClosure
         return cell!
     }
     //行高
@@ -109,6 +109,16 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         }
         return 90
     }
+    //收藏
+    //闭包函数
+    func somsomeFunctionThatTakesAClosure(string:Int) -> Void{
+        print(string)
+        let parameters=["id":string]
+        BaseHttpService .sendRequestAccess(Add_Shopping, parameters:parameters) { (response) -> () in
+            print(response)
+        }
+    }
+
 //    //分区头
 //    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        return " "
@@ -118,7 +128,7 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         let view1:DetailsViewController=DetailsViewController(nibName: "DetailsViewController", bundle: nil)
         view1.hidesBottomBarWhenPushed=true
         let Id1 = shoppingList[indexPath.row-1]
-        view1.coID = Id1["id"] as? String
+        view1.coID = Id1["id"] as? Int
         self.navigationController?.pushViewController(view1, animated: true)
     }
    

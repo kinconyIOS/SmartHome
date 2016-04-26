@@ -50,7 +50,7 @@ class EquipTypeChoseTVC: UITableViewController {
    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch(indexPath.row){
         case 0:
-            let equipAddVC = EquipAddVC(nibName: "EquipAddVC", bundle: nil)
+            let equipAddVC = ShotEquipAddVC()
             equipAddVC.equip = Equip(equipID: randomCode())
             equipAddVC.equip?.num = "1"
             equipAddVC.equip?.roomCode = self.roomCode!
@@ -59,7 +59,7 @@ class EquipTypeChoseTVC: UITableViewController {
             self.navigationController?.pushViewController(equipAddVC, animated:true)
             break
         case 1:
-            let equipAddVC = EquipAddVC(nibName: "EquipAddVC", bundle: nil)
+            let equipAddVC = RedEquipAddVC()
             equipAddVC.equip = Equip(equipID: randomCode())
             equipAddVC.equip?.num = "1"
             equipAddVC.equip?.roomCode = self.roomCode!
@@ -67,6 +67,13 @@ class EquipTypeChoseTVC: UITableViewController {
             equipAddVC.EquType = indexPath.row
             equipAddVC.hidesBottomBarWhenPushed=true
             self.navigationController?.pushViewController(equipAddVC, animated:true)
+            break
+        case 3:
+            let cameraType = CameraTypeTVC();
+               cameraType.roomCode = self.roomCode!
+            cameraType.hidesBottomBarWhenPushed
+                = true
+            self.navigationController?.pushViewController(cameraType, animated: true)
             break
         default:
             showMsg("暂未开放敬请期待")

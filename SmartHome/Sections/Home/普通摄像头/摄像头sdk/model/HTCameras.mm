@@ -14,8 +14,6 @@
 @synthesize PassWord;
 @synthesize deviceName;
 @synthesize deviceType;
-@synthesize floor;
-@synthesize floorName;
 @synthesize roomId;
-@synthesize roomName;
+
 @end

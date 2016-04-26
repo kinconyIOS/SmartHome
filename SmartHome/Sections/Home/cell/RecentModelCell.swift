@@ -10,13 +10,14 @@ import UIKit
 
 class RecentModelCell: UITableViewCell ,UICollectionViewDataSource,UICollectionViewDelegate{
     @IBOutlet var collectionView: UICollectionView!
-     var arr = [UIImage(imageLiteral: "but1.png"),UIImage(imageLiteral: "but2.png"),UIImage(imageLiteral: "but3.png"),UIImage(imageLiteral: "but4.png"),UIImage(imageLiteral: "but5.png"),UIImage(imageLiteral: "but6.png"),UIImage(imageLiteral: "but7.png"),UIImage(imageLiteral: "but8.png"),]
+  var arr = [UIImage(imageLiteral: "icon1.png"),UIImage(imageLiteral: "icon2.png"),UIImage(imageLiteral: "icon3.png"),UIImage(imageLiteral: "icon4.png"),UIImage(imageLiteral: "icon5.png"),UIImage(imageLiteral: "icon6.png"),UIImage(imageLiteral: "icon7.png"),UIImage(imageLiteral: "icon8.png"),]
+    var name = ["回家","上班","娱乐","就餐","回家","上班","娱乐","就餐"]
     override func awakeFromNib() {
         super.awakeFromNib()
         let layout:UICollectionViewFlowLayout=UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionViewScrollDirection.Horizontal
         layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5)
-        layout.itemSize = CGSizeMake(ScreenWidth / 4 - 10, ScreenWidth / 4 - 10);
+        layout.itemSize = CGSizeMake(ScreenWidth / 4.5 - 10, ScreenWidth / 4.5 - 10);
         self.collectionView.collectionViewLayout = layout
         self.collectionView.backgroundColor = UIColor.whiteColor()
         self.collectionView.delegate = self
@@ -40,7 +41,8 @@ class RecentModelCell: UITableViewCell ,UICollectionViewDataSource,UICollectionV
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("model_cell", forIndexPath: indexPath) as? ModelCell
-        cell?.but.setImage(arr[indexPath.row], forState: UIControlState.Normal)
+        cell?.icon.image = arr[indexPath.row]
+        cell?.name.text = name[indexPath.row]
         return cell!
     }
     

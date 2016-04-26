@@ -22,7 +22,7 @@
                             <constraint firstAttribute="width" constant="67" id="S9w-wi-5Jv"/>
                             <constraint firstAttribute="height" constant="20" id="e3v-Oh-5Fs"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.63921568627450975" green="0.63921568627450975" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>

@@ -8,6 +8,7 @@
 
 #import "JK_ViewController.h"
 #import "JK_LineTableViewCell.h"
+
 //#import "MonitorViewController.h"
 
 #import "HTCameras.h"
@@ -80,11 +81,8 @@
         cameras.ID = did;
         cameras.deviceName = name;
         cameras.PassWord = @"hificat";
-        cameras.deviceType = @"123";
-        cameras.floor = 0;
-        cameras.floorName = @"";
-        cameras.roomId = 0;
-        cameras.roomName = @"";
+        cameras.deviceType = @"100";
+        cameras.roomId =  @"";
          [dataArray addObject:cameras];
     }
    
@@ -126,21 +124,27 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"JK_LineTableViewCell" owner:self options:nil] objectAtIndex:0];
     }
      HTCameras *cam4= [dataArray objectAtIndex:[indexPath row]];
-    cell.titleLabel.text =   cam4.deviceName;
+    cam4.roomId = self.roomCode;
+    [cell setModel:cam4];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HTCameras *cam4= [dataArray objectAtIndex:[indexPath row]];
 
+//    CameraVC *c = [CameraVC new];\
+    c.cameraID = cam4.ID;
+//    c.m_PPPPChannelMgt = nil;
+//    c.username = cam4.Name;
+//    c.password = cam4.PassWord;
+     HTCameras *cam4= [dataArray objectAtIndex:[indexPath row]];
     HTPlayCamerViewController *playViewController = [[HTPlayCamerViewController alloc] initWithNibName:@"HTPlayCamerViewController" bundle:[NSBundle mainBundle]];
         
     playViewController.cameraID = cam4.ID;
     playViewController.m_PPPPChannelMgt = nil;
     playViewController.username = cam4.Name;
     playViewController.password = cam4.PassWord;
-
+    
     [self.navigationController pushViewController:playViewController animated:YES];
 }
 

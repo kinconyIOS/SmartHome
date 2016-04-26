@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
+class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
     let PLAYER_NEED_VALIDATE_CODE = -1   //播放需要安全验证
     let PLAYER_REALPLAY_START     = 1    //直播开始
     let PLAYER_VIDEOLEVEL_CHANGE  = 2    //直播流清晰度切换中
@@ -19,6 +19,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     var sideView:SZLSideView?
     var head  = 1
     var cameraId = ""
+    var headCell:HeadCell?
     let vfcode="at.6wm8ormqcy03shfib5yeb9yyah3r2cp4-171ujmx9ol-0oc00e3-seti9m9p5"
     var orientationLast:UIInterfaceOrientation?=UIInterfaceOrientation.Portrait
     var roomArray:[String]?=[]
@@ -28,6 +29,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     var tableSideViewDataSource:NSMutableArray = NSMutableArray(capacity: 10)
     
         var deviceDataSource = []
+     var sxtData = [Equip]()
     
     @IBOutlet var homeTableView: UITableView!
     lazy var  drakBtn:UIButton = {
@@ -62,7 +64,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
    
     }
     func configView(){
-        self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
+      
         ////标题栏去掉
         // hscroll!.frame=CGRectMake(0,20, ScreenWidth-60, 64);
         // self.navigationItem.titleView=hscroll
@@ -114,6 +116,13 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     }
     //摄像头
     func showEZ(){
+//        if(sxtData.count <= 0){
+//            return
+//        }
+//        
+        
+        
+       
         let cameraType = CameraTypeTVC();
         cameraType.hidesBottomBarWhenPushed
             = true
@@ -179,6 +188,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
 
     override  func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+          self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
        //刷新房间信息
         getRoomInfo()
         //加载
@@ -238,7 +248,10 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         }
         return 1;
     }
-    
+    //轮播摄像头的点击事件
+//    func scrollPassTouch(dict: [NSObject : AnyObject]!) {
+//        Wrapper().pushCamera(self, dict: dict)
+//    }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell:UITableViewCell?
@@ -266,15 +279,32 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
             
         }else if tableView===self.homeTableView{
             if indexPath.section == 0
+                //摄像头及天气预报
             {
-                cell = self.homeTableView.dequeueReusableCellWithIdentifier("HeadCell", forIndexPath: indexPath)
-                (cell as! HeadCell).configHeadView()
-                (cell as! HeadCell).myScorllView.web_images = [NSURL(string: "")!,NSURL(string: "")!]
-                (cell as! HeadCell).myScorllView.images = [UIImage(named: "lb1")!,UIImage(named: "lb2")!]
-                (cell as! HeadCell).myScorllView.setupPage()
+//                headCell = self.homeTableView.dequeueReusableCellWithIdentifier("HeadCell", forIndexPath: indexPath) as? HeadCell
+//                headCell!.configHeadView()
+//                headCell!.myScorllView.images = [UIImage(named: "lb1")!,UIImage(named: "lb2")!]
+//                headCell!.myScorllView.setupPage()
                 
+                headCell = self.homeTableView.dequeueReusableCellWithIdentifier("HeadCell", forIndexPath: indexPath) as? HeadCell
+                                headCell!.configHeadView()
                 
-                return cell!
+
+                var cameras = [HTCameras]()
+                for equip in sxtData
+                {
+                    let  c = HTCameras()
+                    c.ID = equip.equipID;
+                    c.Name = "admin"
+                    c.PassWord = "hificat"
+                    cameras.append(c)
+                }
+              
+                headCell!.myScorllView.dataArray = cameras
+                headCell!.myScorllView.config()
+                headCell!.myScorllView.setupPage()
+
+                return headCell!
                 
             }
          
@@ -311,6 +341,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
             }
          
         }
+        cell?.selectionStyle = UITableViewCellSelectionStyle.None
         return cell!
     }
     func judgeType(str:String,type:String)->Bool
@@ -352,7 +383,8 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
                         item.isOpen = true;
                     }
                 } else {
-                      self.deviceDataSource = dataDeal.getEquipsByRoom(Room(roomCode: item.roomCode))
+                    self.deviceDataSource = dataDeal.getEquipsByRoom(Room(roomCode: item.roomCode))
+                    self.sxtData = dataDeal.searchSXTModel(byRoomCode: item.roomCode)
                     //非菜单选项
                     print("点到具体房间。。\(item.roomCode)..\(self.deviceDataSource.count)")
                     
@@ -392,18 +424,22 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if tableView===self.homeTableView{
             if indexPath.section == 0{
-            return ScreenWidth  * 0.55
+            return ScreenWidth  * 139 / 320
             }
             if indexPath.section == 1
             {
                 return 65
             }
             let equip = deviceDataSource[indexPath.row] as! Equip
-            if equip.type == "1"
+        
+
+            if equip.type == "1" || judgeType(equip.type, type: "1")
+
             {
                 return 85
             }
-            else if equip.type == "2" || equip.type == "4"
+            else if equip.type == "2" || equip.type == "4"||judgeType(equip.type, type: "3")||judgeType(equip.type, type: "2")
+
             {
                 return 47
             }
@@ -420,14 +456,14 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         if section == 0{
         return 0.001
         }
-        return 28
+        return 30
     }
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel(frame: CGRectMake(0,0,80,28))
+        let label = UILabel(frame: CGRectMake(0,0,60,30))
          label.textColor = UIColor.grayColor()
         label.font = UIFont.systemFontOfSize(13.0)
        
-        let view = UIView(frame:  CGRectMake(0,0,ScreenWidth,28))
+        let view = UIView(frame:  CGRectMake(0,0,ScreenWidth,30))
         view.addSubview(label)
         switch(section){
         case 0:
@@ -437,10 +473,10 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
             break
         case 1:
             
-            label.text = "  最近使用"
-            let btn = UIButton(frame:  CGRectMake(80,0,ScreenWidth-160,28))
-                btn.setImage(UIImage(named: "楼层按下"), forState: UIControlState.Normal)
-                btn.setImage(UIImage(named: "楼层未按下"), forState: UIControlState.Selected)
+            label.text = "  情景模式"
+            let btn = UIButton(frame:  CGRectMake(60,0,ScreenWidth-120,30))
+                btn.setImage(UIImage(named: "hua2"), forState: UIControlState.Normal)
+                btn.setImage(UIImage(named: "hua1"), forState: UIControlState.Selected)
             btn.addTarget(self, action: Selector("open:"), forControlEvents: UIControlEvents.TouchUpInside)
             view.addSubview(btn)
             break
@@ -448,9 +484,6 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         default: label.text = "  房间设备"
         
         }
-        
-        
-        
         
         return view
     }
@@ -461,7 +494,11 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         sideView?.closeTap()
         self.drakBtn.hidden=true
         sideView?.hidden = true
-    }
+          }
+  
+          //  headCell!.myScorllView.clearVedio()
+
+  
     
     func open(sender:UIButton){
     sender.selected = !sender.selected
@@ -471,6 +508,7 @@ class HomeVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         }else{
             addOneCell()
         }
+        
     print("点击----")
     }
    func addOneCell()

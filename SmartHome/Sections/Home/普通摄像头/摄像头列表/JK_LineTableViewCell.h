@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HTCameras.h"
 
 @interface JK_LineTableViewCell : UITableViewCell
 @property (retain, nonatomic) IBOutlet UILabel *titleLabel;
+-(void)setModel:(HTCameras *)camera;
 @end
 
 /*

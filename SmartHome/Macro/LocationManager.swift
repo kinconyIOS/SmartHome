@@ -9,17 +9,18 @@
 import UIKit
 import CoreLocation
 typealias CallbackCityName=(String!)->()
-class LocationManager: NSObject,CLLocationManagerDelegate{
+class MyLocationManager:NSObject,
+CLLocationManagerDelegate{
    var currentlocation:CLLocationManager?
     var callback:CallbackCityName?
  
-    class func sharedManager()->LocationManager{
+    class func sharedManager()->MyLocationManager{
         struct YRSingleton{
-            static var sharedAccountManagerInstance:LocationManager? = nil;
+            static var sharedAccountManagerInstance:MyLocationManager? = nil;
             static var predicate:dispatch_once_t = 0
         }
        dispatch_once(&YRSingleton.predicate,{
-        YRSingleton.sharedAccountManagerInstance = LocationManager()
+        YRSingleton.sharedAccountManagerInstance = MyLocationManager()
         })
       
         return YRSingleton.sharedAccountManagerInstance!;

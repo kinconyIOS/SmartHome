@@ -19,6 +19,8 @@ class RepairViewController: UIViewController {
         self.navigationController?.navigationBarHidden=false
         self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
         self.navigationItem.title = "一键报修"
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
     }
     //键盘消失
@@ -26,7 +28,11 @@ class RepairViewController: UIViewController {
         self.view.endEditing(true)
     }
     @IBAction func Submit(sender: AnyObject) {
-        
+        //----提交数据
+        let parameters  = ["deviceCode":"","userPhone":UserIphooe.text,"userAddr":UserAddress.text,"msg":UserContent.text];
+        BaseHttpService .sendRequestAccess(Add_Repair, parameters:parameters) { (response) -> () in
+            print(response)
+        }
         //返回
         self.navigationController?.popToRootViewControllerAnimated(true)
     }

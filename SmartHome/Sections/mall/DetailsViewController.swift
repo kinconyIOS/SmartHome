@@ -15,8 +15,8 @@ class DetailsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var cellPrice:PriceTableViewCell?//商品价格
     var cellComment:CommentTableViewCell?//商品评级
     var cellpur:PurchaseTableViewCell?//购买
-    var coID:String?//商品ID
-    var dic = Dictionary<String,String>()
+    var coID:Int?//商品ID
+    var dic = Dictionary<String,AnyObject>()
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +35,8 @@ class DetailsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         print(coID)
         BaseHttpService .sendRequestAccess(Commdity_di, parameters:["id":coID!]) { (response) -> () in
-            print(response)
-            self.dic = (response as? Dictionary)!
+            print("\(response)")
+            self.dic = (response as! [String : AnyObject])
             self.tableView.reloadData()
         }
     }
@@ -63,14 +63,14 @@ class DetailsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         case 1:
             cellpara =
                 tableView.dequeueReusableCellWithIdentifier("Parameter", forIndexPath: indexPath) as? ParameterTableViewCell
-            cellpara?.goodColor.text = dic["goodsColor"]//颜色
-            cellpara?.goodSize.text = dic["goodsSize"]//规格
-            cellpara?.workingVoltage.text = dic["workingVoltage"]//电压
-            cellpara?.powerConsunmption.text = dic["powerConsumption"]//功率
-            cellpara?.materialGood.text = dic["materialGoods"]//材质
-            cellpara?.commUnicatuinMode.text = dic["communicatuinMode"]//通讯方式
-            cellpara?.workingTemperature.text = dic["workingTemperature"]//温度
-            cellpara?.workingHumidity.text = dic["workingHumidity"]//湿度
+            cellpara?.goodColor.text = dic["goodsColor"] as? String//颜色
+            cellpara?.goodSize.text = dic["goodsSize"] as? String//规格
+            cellpara?.workingVoltage.text = dic["workingVoltage"] as? String//电压
+            cellpara?.powerConsunmption.text = dic["powerConsumption"] as? String//功率
+            cellpara?.materialGood.text = dic["materialGoods"] as? String//材质
+            cellpara?.commUnicatuinMode.text = dic["communicatuinMode"] as? String//通讯方式
+            cellpara?.workingTemperature.text = dic["workingTemperature"] as? String//温度
+            cellpara?.workingHumidity.text = dic["workingHumidity"] as? String//湿度
             
             cellpara!.selectionStyle = UITableViewCellSelectionStyle.None
             return cellpara!
@@ -78,8 +78,8 @@ class DetailsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         case 2:
             cellPrice = tableView.dequeueReusableCellWithIdentifier("Price", forIndexPath: indexPath) as? PriceTableViewCell
             cellPrice!.selectionStyle = UITableViewCellSelectionStyle.None
-            cellPrice?.goodTitle.text = dic["goodsTitle"]//名字
-            cellPrice?.goodPrice.text = dic["goodsPrice"]//价格
+            cellPrice?.goodTitle.text = dic["goodsTitle"] as? String//名字
+            cellPrice?.goodPrice.text = dic["goodsPrice"] as? String//价格
             return cellPrice!
         case 3:
             cellComment = tableView.dequeueReusableCellWithIdentifier("Comment", forIndexPath: indexPath) as? CommentTableViewCell
@@ -133,7 +133,7 @@ class DetailsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         if indexPath.section == 3{
             let view:EvaluateViewController=EvaluateViewController(nibName: "EvaluateViewController", bundle: nil)
             view.hidesBottomBarWhenPushed=true
-            self.navigationController?.pushViewController(view, animated: true)
+           // self.navigationController?.pushViewController(view, animated: true)
         }
     }
 

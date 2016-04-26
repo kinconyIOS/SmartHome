@@ -10,8 +10,8 @@ import UIKit
 
 class InfraredViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate{
     //modeltag
-    var iTag:Int = 0
-    var cellArr:[String] = ["aa","bb","cc","dd"]
+    var strArr:[String] = ["0","1","2","3"]
+    var cellArr = []
     @IBOutlet weak var MyCollection: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
     
     //定义展示的UICollectionViewCell的个数
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellArr.count+1;
+        return strArr.count+1;
     }
     //定义展示的Section的个数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -59,35 +59,48 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("inf", forIndexPath: indexPath) as? infCell
-    
-        if indexPath.row == cellArr.count{
+        if indexPath.row == strArr.count{
             cell?.but.setBackgroundImage(UIImage(imageLiteral: "红外线添加"), forState: UIControlState.Normal)
-            
+            cell?.but.setTitle("", forState: UIControlState.Normal)
         }
         else{
-             let infCell1:Infrared = Infrared.init(aname: cellArr[indexPath.row])
+             let infCell1:Infrared = Infrared.init(aname: strArr[indexPath.row])
             cell?.but.setBackgroundImage(UIImage(imageLiteral: "红外线"), forState: UIControlState.Normal)
-            cell?.tag = iTag
-            iTag++
+            cell?.tag = indexPath.row
             cell!.myClosure = somsomeFunctionThatTakesAClosure
+            cell?.xiugai = xiugai
             cell?.addLongPass()
             //cell?.but.titleLabel?.font = UIFont.systemFontOfSize(13.0)
             //cell?.but.setTitle(cellArr[indexPath.row], forState: UIControlState.Normal)
             cell?.setinf(infCell1)
             
         }
+        //cellArr.addObject(cell!)
+       // cellArr.indexOfObject(cell!)
         return cell!
     }
     //闭包函数
     func somsomeFunctionThatTakesAClosure(string:Int) -> Void{
         print(string)
-        cellArr.removeAtIndex(string)
+        //cellArr.removeObject(cellArr[string])
+        strArr.removeAtIndex(string)
+        
+        MyCollection.reloadData()
+    }
+    
+    //闭包函数修改
+    func xiugai(string:Int,str:String) -> Void{
+        print(string)
+        //cellArr.removeObject(cellArr[string])
+        //strArr.removeAtIndex(string)
+        print("int = \(string) string=\(str)")
+        strArr[string] = str
         MyCollection.reloadData()
     }
     //    #pragma mark --UICollectionViewDelegate
     //UICollectionView被选中时调用的方法
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+    
     }
     
     //返回这个UICollectionView是否可以被选择

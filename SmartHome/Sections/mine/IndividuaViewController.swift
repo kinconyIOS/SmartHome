@@ -14,11 +14,14 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
     var sunData:SunDataPicker? = SunDataPicker.init(frame: CGRectMake(0, 100,ScreenWidth-20 , (ScreenWidth-20)*3/3))
     var cellArr = [OtherTableViewCell]()//存放cell
     var cellI:Int = 0
+    var curentImage:UIImage?//图片
+    var city:String?//城市
+    var sex:String?//男女
     var areas:NSDictionary?
     @IBOutlet var walk: UIButton!
     @IBOutlet var tableView: UITableView!
-    var cellImg:HeadImgTableViewCell?
-    var cell:OtherTableViewCell?
+//    var cellImg:HeadImgTableViewCell?
+//    var cell:OtherTableViewCell?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.layer.cornerRadius = 6.0
@@ -67,20 +70,79 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section==0 && indexPath.row==0{
             //          PersonalCell 自定cell
-            cellImg = tableView.dequeueReusableCellWithIdentifier("Head") as? HeadImgTableViewCell
+         let  cellImg = tableView.dequeueReusableCellWithIdentifier("Head") as? HeadImgTableViewCell
             //cell 箭头
             cellImg!.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             cellImg?.HeadImg.image = UIImage(named: "我的头像")
+            cellImg!.HeadImg.contentMode = UIViewContentMode.ScaleToFill
             cellImg!.leab!.text = tabArr[indexPath.row]
-           
+            if self.curentImage != nil{
+                //选择图片
+            cellImg?.HeadImg.image = self.curentImage
+            }else if app.user?.headPic != ""{
+                if app.user?.headPic != nil{
+                    let str = imgUrl+(app.user?.headPic)!
+                    cellImg!.HeadImg.sd_setImageWithURL(NSURL(string: str))
+                }
+            
+            }
+
             return cellImg!
         }
         else{
-            cell = tableView.dequeueReusableCellWithIdentifier("Other") as? OtherTableViewCell
+           
+         let cell = tableView.dequeueReusableCellWithIdentifier("Other") as? OtherTableViewCell
             //cell 箭头
             cell!.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            cell!.information.text = usreArr[indexPath.row-1]
-            cell!.leab!.text = tabArr[indexPath.row]
+//            cell!.information.text = usreArr[indexPath.row-1]
+//            cell!.leab!.text = tabArr[indexPath.row]
+           
+            switch(indexPath.row){
+            
+            case 1:
+                cell!.information.text = app.user?.userName
+                if app.user?.userName != nil{
+                    self.usreArr[0] = (app.user?.userName)!
+                }
+                cell?.leab.text = tabArr[indexPath.row]
+                break
+            case 2:
+                cell!.information.text = app.user?.signature
+                cell?.leab.text = tabArr[indexPath.row]
+                if app.user?.userName != nil{
+                    self.usreArr[1] = (app.user?.signature)!
+                }
+                break
+            case 3:
+                if self.sex != nil
+                {
+                    cell!.information.text = self.sex
+                    cell?.leab.text = tabArr[indexPath.row]
+                }else
+                {
+                     cell!.information.text = app.user?.userSex
+                     cell?.leab.text = tabArr[indexPath.row]
+                }
+//                cell!.information.text = app.user?.userSex
+//                cell?.leab.text = tabArr[indexPath.row]
+                break
+            case 4:
+                if self.city != nil
+                {
+                    cell!.information.text = self.city
+                    cell?.leab.text = tabArr[indexPath.row]
+                }
+                else
+                {
+                    cell!.information.text = app.user?.city
+                    cell?.leab.text = tabArr[indexPath.row]
+                }
+               
+                break
+                //case sign
+            default :
+                break
+            }
             cellArr.append(cell!)
             return cell!
         }
@@ -100,6 +162,7 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
             actionSheet?.showInView(self.tableView)
             break
         case 1:
+
             //从xib拉去
             let indvc:AlterViewController=AlterViewController(nibName: "AlterViewController", bundle: nil)
             indvc.alteText = "修改姓名";
@@ -145,7 +208,9 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
                 let parameters=["city":a]
                 BaseHttpService.sendRequestAccess(GetUserCity, parameters:parameters) { (response) -> () in
                     print(response)
-                    self.usreArr[3] = "\(two)-\(three)"
+                    //self.usreArr[3] = "\(two)-\(three)"
+                    self.city = "\(two)-\(three)"
+                    self.tableView.reloadData()
                 }
             })
             break
@@ -159,45 +224,13 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
         let parameters=["userCode":userCode]
         BaseHttpService .sendRequestAccess(GetUser, parameters:parameters) { (response) -> () in
             print("获取用户信息=\(response)")
-            if (response["city"] as! String) == ""{
-                self.usreArr[3] = " "
-            }else{
-                self.usreArr[3] = (response["city"] as? String)!
-            }
-            if (response["signature"] as! String) == ""{
-                self.usreArr[1] = " "
-            }else{
-                self.usreArr[1] = (response["signature"] as? String)!
-            }
-            if (response["userName"] as! String) == ""{
-                self.usreArr[0] = " "
-            }else{
-                self.usreArr[0] = (response["userName"] as? String)!
-            }
-            if (response["userSex"] as! String) == ""{
-                self.usreArr[2] = " "
-            }else{
-                if (response["userSex"] as? String) == "0"{
-                    self.usreArr[2] = "男"
-                }else if (response["userSex"] as? String) == "1"{
-                    self.usreArr[2] = "女"
-                }
-                
-            }
-            //图片
-            if (response["headPic"] as! String) == ""{
-                
-            }else{
-                let str = imgUrl+(response["headPic"]as!String)
-                self.cellImg!.HeadImg.sd_setImageWithURL(NSURL(string: str))
-                // self.ImaName.setImage(self.imgView1?.image, forState: UIControlState.Normal)
-                
-                self.cellImg!.HeadImg.contentMode = UIViewContentMode.ScaleToFill
-                //self.Sex.text = response["userSex"] as? String
-            }
-           //self.tableView.reloadData()
+            app.user = UserModel(dict: response as! [String:AnyObject])
+            print(app.user?.userName)
+             self.tableView.reloadData()
+
         }
-        self.tableView.reloadData()
+
+       
     }
     //闭包函数
     func somsomeFunctionThatTakesAClosure(string:String) -> Void{
@@ -215,16 +248,20 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
         }else if actionSheet.tag == 320{
             if buttonIndex==0{
                 cellArr[2].information.text = "男"
-                let parameters=["userSex":"0"]
+                let parameters=["userSex":"男"]
                 BaseHttpService.sendRequestAccess(GetUserSex, parameters:parameters) { (response) -> () in
                     print(response)
+                    self.sex = "男"
+                    self.tableView.reloadData()
                 }
                 
             }else if buttonIndex==1{
                 cellArr[2].information.text = "女"
-                let parameters=["userSex":"1"]
+                let parameters=["userSex":"女"]
                 BaseHttpService.sendRequestAccess(GetUserSex, parameters:parameters) { (response) -> () in
                     print(response)
+                    self.sex = "女"
+                    self.tableView.reloadData()
                 }
             }
         }
@@ -256,7 +293,9 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
     }
     //获取图片
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        cellImg!.HeadImg.image = image;
+        self.curentImage = image;
+ 
+        self.tableView.reloadData()
         saveImage(image, imageName: "1236")
         //dismissViewControllerAnimated:YES completion:nil
         self.dismissViewControllerAnimated(true, completion: nil)

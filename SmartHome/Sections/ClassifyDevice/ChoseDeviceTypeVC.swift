@@ -65,7 +65,7 @@ class ChoseDeviceTypeVC: UIViewController {
       //  let hz = hzBtn.titleLabel?.text
       //  let ohm = ohmBtn.titleLabel?.text
         let str = type!// + " " + code! + " " + hz! + " " + ohm!
-        self.compeletBlock!(str,type_value+code_value*100+hz_value*10+ohm_value)
+        self.compeletBlock!(str,type_value*1000+code_value*100+hz_value*10+ohm_value)
         self.navigationController?.popViewControllerAnimated(true)
     
     }
@@ -145,17 +145,17 @@ class ChoseDeviceTypeVC: UIViewController {
         {
         case 200:
             typeBtn.setTitle(typeDataSource[indexPath.row], forState: UIControlState.Normal)
-            type_value = (indexPath.row + 1)  * 1000
+            type_value = indexPath.row + 1
             break
             
         case 201:
             codeBtn.setTitle(codeDataSource[indexPath.row], forState: UIControlState.Normal)
-            code_value = (indexPath.row + 1)  * 100
+            code_value = indexPath.row + 1
             break
             
         case 202:
             hzBtn.setTitle(hzDataSource[indexPath.row], forState: UIControlState.Normal)
-            hz_value = (indexPath.row + 1) * 10
+            hz_value = indexPath.row + 1
             break
             
         default:

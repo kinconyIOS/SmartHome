@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @interface Wrapper : NSObject
--(void)push:(UIViewController *)view;
+-(void)push:(UIViewController *)view roomCode:(NSString *)roomCode;
 -(BOOL)kindsOfHTPlayCamerViewController:(UINavigationController *)view;
+-(void)pushCamera:(UIViewController *)view dict:(NSDictionary *)dict;
 @end

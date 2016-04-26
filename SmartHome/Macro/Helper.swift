@@ -113,7 +113,7 @@ func weatherWithProvince( administrativeArea:String,localCity:String,complete:Co
                 
                 
                 
-                let weather=WeatherModel(address:str!,aMaxTemp: aMaxTemp!, aSmallTemp: aSmallTemp, aWeather: aWeather, aWind: aWind, dayPictureUrl: dayPictureUrl, nightPictureUrl: nightPictureUrl)
+                let weather=WeatherModel(address:str!,aMaxTemp: aMaxTemp!, aSmallTemp: aSmallTemp, aWeather: aWeather, aWind: aWind)
                 complete(weather)
             }
 

@@ -16,7 +16,12 @@ class OtherTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+//    func setUser1(u:UserModify){
+//        
+//        self.user = u
+//        self.leab.text = u.name
+//        self.information.text = u.sex
+//    }
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

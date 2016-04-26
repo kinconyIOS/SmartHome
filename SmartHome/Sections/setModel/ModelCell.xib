@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,21 +14,34 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="84" height="83"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgE-AJ-qAi">
-                        <rect key="frame" x="0.0" y="0.0" width="84" height="83"/>
-                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Sv-DT-baG">
+                        <rect key="frame" x="0.0" y="64" width="84" height="19"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ITP-nM-Q21">
+                        <rect key="frame" x="10" y="0.0" width="64" height="64"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ITP-nM-Q21" secondAttribute="height" multiplier="1:1" id="5cm-vG-LcL"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="RgE-AJ-qAi" secondAttribute="bottom" id="ORF-Yt-Guh"/>
-                <constraint firstItem="RgE-AJ-qAi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Yg5-Kd-nqL"/>
-                <constraint firstAttribute="trailing" secondItem="RgE-AJ-qAi" secondAttribute="trailing" id="hYI-iK-yyR"/>
-                <constraint firstItem="RgE-AJ-qAi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="l8B-Sa-YQd"/>
+                <constraint firstItem="ITP-nM-Q21" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="3dj-1I-fjU"/>
+                <constraint firstAttribute="bottom" secondItem="2Sv-DT-baG" secondAttribute="bottom" id="5A2-iZ-OeB"/>
+                <constraint firstItem="ITP-nM-Q21" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ecp-oG-0CH"/>
+                <constraint firstItem="ITP-nM-Q21" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="IXF-cz-A9E"/>
+                <constraint firstItem="2Sv-DT-baG" firstAttribute="top" secondItem="ITP-nM-Q21" secondAttribute="bottom" id="fDh-nU-esx"/>
+                <constraint firstAttribute="trailing" secondItem="2Sv-DT-baG" secondAttribute="trailing" id="sZu-3X-cUi"/>
+                <constraint firstItem="2Sv-DT-baG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="upl-cH-2lD"/>
             </constraints>
             <size key="customSize" width="84" height="83"/>
             <connections>
-                <outlet property="but" destination="RgE-AJ-qAi" id="Y2e-Su-rod"/>
+                <outlet property="icon" destination="ITP-nM-Q21" id="kj1-59-X31"/>
+                <outlet property="name" destination="2Sv-DT-baG" id="awT-8f-hWT"/>
             </connections>
             <point key="canvasLocation" x="444" y="278.5"/>
         </collectionViewCell>

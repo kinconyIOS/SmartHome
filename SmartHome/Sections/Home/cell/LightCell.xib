@@ -37,22 +37,22 @@
                             <action selector="switchTapWith:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pYU-2v-NAw"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCc-YC-g5J">
-                        <rect key="frame" x="99" y="56" width="123" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="18" id="4iN-9h-JUm"/>
-                            <constraint firstAttribute="width" constant="123" id="xT7-Yj-Y3m"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncX-kz-eq7">
                         <rect key="frame" x="177" y="13" width="34" height="34"/>
                         <connections>
                             <action selector="switchTapWith:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="yh9-BG-hFb"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCc-YC-g5J">
+                        <rect key="frame" x="102" y="55" width="123" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="4iN-9h-JUm"/>
+                            <constraint firstAttribute="width" constant="123" id="xT7-Yj-Y3m"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="h2g-Yv-eZd" secondAttribute="trailing" constant="27" id="2bq-jZ-GzY"/>
@@ -84,9 +84,9 @@
             <connections>
                 <outlet property="nameLabel" destination="OCc-YC-g5J" id="E6r-tk-i69"/>
                 <outletCollection property="btns" destination="evO-Ae-6Lw" collectionClass="NSMutableArray" id="adJ-RP-SIN"/>
-                <outletCollection property="btns" destination="Ww6-Ci-Jfw" id="2td-fB-ypi"/>
-                <outletCollection property="btns" destination="ncX-kz-eq7" id="FlE-p5-H7h"/>
-                <outletCollection property="btns" destination="h2g-Yv-eZd" id="24v-cb-YSh"/>
+                <outletCollection property="btns" destination="Ww6-Ci-Jfw" collectionClass="NSMutableArray" id="2td-fB-ypi"/>
+                <outletCollection property="btns" destination="ncX-kz-eq7" collectionClass="NSMutableArray" id="FlE-p5-H7h"/>
+                <outletCollection property="btns" destination="h2g-Yv-eZd" collectionClass="NSMutableArray" id="24v-cb-YSh"/>
             </connections>
             <point key="canvasLocation" x="271" y="256.5"/>
         </tableViewCell>

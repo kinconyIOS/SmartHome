@@ -10,12 +10,14 @@
 import UIKit
 class AutorotateNavC: UINavigationController {
     override func shouldAutorotate() -> Bool {
-           if   self.topViewController!.isKindOfClass(EZLivePlayViewController.classForCoder()){
+      if   self.topViewController!.isKindOfClass(EZLivePlayViewController.classForCoder()){
             return true
         }
-        if   Wrapper().kindsOfHTPlayCamerViewController(self){
+      if   Wrapper().kindsOfHTPlayCamerViewController(self){
+             print("yes0")
             return true
-        }
+       }
+          print("no0")
         return false
     }
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {

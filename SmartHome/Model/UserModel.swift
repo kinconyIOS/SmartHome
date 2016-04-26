@@ -11,9 +11,13 @@ import Foundation
 var userCode = "U00318"
 
 class UserModel: NSObject {
-    var userCode:String=""
-    var userPhone:String=""
+    var userName:String? = ""//姓名
+    var userSex: String? = "" //男女
+    var headPic:String? = ""//图片
+    var signature:String? = ""//签名
+    var city:String? = ""//城市
     
+ 
     convenience init(dict:[String : AnyObject]) {
         self.init()
         self.setValuesForKeysWithDictionary(dict)

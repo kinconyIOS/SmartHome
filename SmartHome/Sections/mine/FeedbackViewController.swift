@@ -16,7 +16,7 @@ class FeedbackViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden=false
         self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
-        self.navigationItem.title = "一键报修"
+        self.navigationItem.title = "意见反馈"
         let itm = UIBarButtonItem(title: "提交", style: UIBarButtonItemStyle.Plain, target: self, action: "selectRightAction:")
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()

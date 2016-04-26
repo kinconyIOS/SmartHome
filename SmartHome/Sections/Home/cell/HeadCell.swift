@@ -10,7 +10,7 @@ import UIKit
 
 class HeadCell: UITableViewCell {
    
-   var myScorllView: MyScorllView!
+   var myScorllView: MySxtScorllView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,32 +21,22 @@ class HeadCell: UITableViewCell {
     }
     func configHeadView(){
         if myScorllView == nil{
-            myScorllView = MyScorllView(frame: CGRectMake(0,0,self.frame.size.width,self.frame.size.height))
+            myScorllView = MySxtScorllView(frame: CGRectMake(0,0,self.frame.size.width,self.frame.size.height))
             self.addSubview(myScorllView)
+        }else{
+            
         }
     }
-//
-//            headView = NSBundle.mainBundle().loadNibNamed("HomeTopView", owner:self, options: nil)[0] as? HomeTopView
-//            headView!.frame = CGRectMake(0, 0, self.frame.width,self.frame.height)
-//      
-//            //设置轮播图
-//            headView?.images = [UIImage(named: "lb1")!,UIImage(named: "lb2")!]
-//            headView?.setupPage()
-//            //设置轮播图和摄像头
-//            
-//            //设置天气
-//            if (app.weather == nil) {
-//                weatherWithProvince("北京市", localCity:"北京市") { (weather:WeatherModel) -> () in
-//                    app.weather = weather
-//                    self.headView?.setWeatherModel(weather)
-//                }
-//            }else{
-//                self.headView?.setWeatherModel(app.weather!)
-//            }
-//            self.addSubview(headView!)
-//        
-//        
-//    }
+    func setWeatherModel(model:WeatherModel){
+       // self.currentAddressLabel.text="当前位置:"+(model.address)
+        //self.weatherName.text=(model.aWeather)
+       // self.wind.text=(model.aWind)
+     
+        //self.minTemp.text="最低"+(model.aSmallTemp)+"°C"
+       
+        
+    }
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

@@ -12,7 +12,7 @@ class SetModelVC: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     
     @IBOutlet var modelCollectionView: UICollectionView!
     
-    var arr = [UIImage(imageLiteral: "but1.png"),UIImage(imageLiteral: "but2.png"),UIImage(imageLiteral: "but3.png"),UIImage(imageLiteral: "but4.png"),UIImage(imageLiteral: "but5.png"),UIImage(imageLiteral: "but6.png"),UIImage(imageLiteral: "but7.png"),UIImage(imageLiteral: "but8.png"),]
+    var arr = [UIImage(imageLiteral: "icon1.png"),UIImage(imageLiteral: "icon2.png"),UIImage(imageLiteral: "icon3.png"),UIImage(imageLiteral: "icon4.png"),UIImage(imageLiteral: "icon5.png"),UIImage(imageLiteral: "icon6.png"),UIImage(imageLiteral: "icon7.png"),UIImage(imageLiteral: "icon8.png"),]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class SetModelVC: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         //
         //        }
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("model_cell", forIndexPath: indexPath) as? ModelCell
-        cell?.but.setImage(arr[indexPath.row], forState: UIControlState.Normal)
+        cell?.icon.image = arr[indexPath.row]
         return cell!
     }
     

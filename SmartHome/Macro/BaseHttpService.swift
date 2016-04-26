@@ -17,8 +17,7 @@ class BaseHttpService: NSObject {
         print(dic.ping()+app_secret)
        
         let head_dict:[String:String]? = ["timestamp":timeStamp(),"nonce":randomNumAndLetter(),"sign":sign]
-        
-   
+
    
         Alamofire.request(.POST, url, parameters:dic as? [String : AnyObject], encoding:.URL , headers: head_dict).responseJSON(completionHandler: { (response) -> Void in
             

@@ -8,9 +8,9 @@
 
 import Foundation
 
-let baseUrl = "http://lifusheng.wicp.net:21916/smarthome.IMCPlatform/xingUser/"
+let baseUrl = "http://120.27.137.65/smarthome.IMCPlatform/xingUser/"
 //tupian
-let imgUrl = "http://lifusheng.wicp.net:21916/smarthome.IMCPlatform/"
+let imgUrl = "http://120.27.137.65/smarthome.IMCPlatform/"
 ////添加楼层
 //let addFloor_do = "\(baseUrl)addfloor.action"
 ////添加房间
@@ -65,3 +65,12 @@ let GetUserSignature="\(baseUrl)setsignature.action"
 let GetUserCity="\(baseUrl)setcity.action"
 //上传图片
 let GetUserFileupload="\(baseUrl)fileupload.action"
+//----------
+//添加购物车
+let Add_Shopping="\(baseUrl)addshoppingcart.action"
+//获取购物车商品
+let Set_QueryShopping="\(baseUrl)queryshoppingcart.action"
+//删除购物车商品
+let Dele_shopoing = "\(baseUrl)delectshoppingcart.action"
+//一键报修
+let Add_Repair = "\(baseUrl)addRepair.action"

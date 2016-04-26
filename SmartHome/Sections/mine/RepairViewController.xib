@@ -34,7 +34,7 @@
                                 <constraint firstAttribute="height" constant="30" id="uiy-6i-X1Y"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,7 +61,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-oQ-gVb">
-                            <rect key="frame" x="62" y="8" width="520" height="162"/>
+                            <rect key="frame" x="62" y="1" width="520" height="162"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="520" id="2vf-IA-Ceu"/>
@@ -77,7 +77,7 @@
                         <constraint firstItem="TpZ-7Z-kqN" firstAttribute="top" secondItem="CRQ-XV-4hI" secondAttribute="top" constant="8" id="RO1-gT-H8N"/>
                         <constraint firstAttribute="height" constant="178" id="bEG-16-HDe"/>
                         <constraint firstAttribute="trailing" secondItem="GJf-oQ-gVb" secondAttribute="trailing" constant="18" id="em9-45-qYh"/>
-                        <constraint firstItem="GJf-oQ-gVb" firstAttribute="top" secondItem="CRQ-XV-4hI" secondAttribute="top" constant="8" id="sSO-pf-ByR"/>
+                        <constraint firstItem="GJf-oQ-gVb" firstAttribute="top" secondItem="CRQ-XV-4hI" secondAttribute="top" constant="1" id="sSO-pf-ByR"/>
                         <constraint firstItem="GJf-oQ-gVb" firstAttribute="leading" secondItem="TpZ-7Z-kqN" secondAttribute="trailing" constant="8" id="z2g-uo-Z0K"/>
                     </constraints>
                 </view>

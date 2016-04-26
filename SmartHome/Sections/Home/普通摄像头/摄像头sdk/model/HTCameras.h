@@ -14,8 +14,6 @@
 @property (nonatomic, strong) NSString *PassWord;
 @property (nonatomic, strong) NSString *deviceName;
 @property (nonatomic, strong) NSString *deviceType;
-@property int floor;
-@property (nonatomic, strong) NSString *floorName;
-@property int roomId;
-@property (nonatomic, strong) NSString *roomName;
+@property (nonatomic, strong) NSString *roomId;
+
 @end

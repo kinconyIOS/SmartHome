@@ -16,6 +16,7 @@ class ModulateCell: UITableViewCell {
     var equip:Equip?
     override func awakeFromNib() {
         super.awakeFromNib()
+        slider.setThumbImage(UIImage(named: "silder"), forState: UIControlState.Normal)
         // Initialization code
     }
     

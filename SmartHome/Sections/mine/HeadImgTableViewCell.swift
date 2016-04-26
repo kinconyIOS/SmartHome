@@ -10,8 +10,8 @@ import UIKit
 
 class HeadImgTableViewCell: UITableViewCell {
     @IBOutlet var HeadImg: UIImageView!
-
     @IBOutlet var leab: UILabel!
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         HeadImg.layer.cornerRadius = 12.0
@@ -20,7 +20,8 @@ class HeadImgTableViewCell: UITableViewCell {
         HeadImg.layer.borderColor = UIColor.groupTableViewBackgroundColor().CGColor
         // Initialization code
     }
-
+    
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

@@ -34,16 +34,7 @@ class HomeTopView: UIView ,UIScrollViewDelegate{
         super.init(frame: frame)
     }
     
-    func setWeatherModel(model:WeatherModel){
-        self.currentAddressLabel.text="当前位置:"+(model.address)
-        self.weatherName.text=(model.aWeather)
-        self.wind.text=(model.aWind)
-        self.maxTemp.text="最高"+(model.aMaxTemp)+"°C"
-        self.minTemp.text="最低"+(model.aSmallTemp)+"°C"
-        self.weatherIcon!.sd_setImageWithURL(NSURL(string: (model.nightPictureUrl)))
-        
-    }
-    
+   
     
     //改变滚动视图的方法实现
     func setupPage()

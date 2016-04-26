@@ -7,10 +7,10 @@
 //
 
 import Foundation
-func ==(lhs: Equip, rhs: Equip) -> Bool {
-    return lhs.hashValue == rhs.hashValue
-}
-class Equip : Hashable{
+//func ==(lhs: Equip, rhs: Equip) -> Bool {
+//    return lhs.hashValue == rhs.hashValue
+//}
+class Equip : NSObject{
     let equipID: String
     var hostDeviceCode: String = "unload"
     var userCode: String = ""
@@ -36,8 +36,9 @@ class Equip : Hashable{
         }
         
     }
-    var hashValue: Int {
-       
-        return "\(equipID),\(userCode),\(roomCode),\(icon),\(type),\(num),\(name)".hashValue
-    }
+    
+//    var hashValue: Int {
+//       
+//        return "\(equipID),\(userCode),\(roomCode),\(icon),\(type),\(num),\(name)".hashValue
+//    }
 }

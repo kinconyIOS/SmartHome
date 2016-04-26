@@ -62,14 +62,14 @@ import Alamofire
         EZOpenSDK.setValidateCode("BJLKLK", forDeviceSerial: "567350669")
         
        
-        LocationManager.sharedManager().callback={(str:String!)in
+        MyLocationManager.sharedManager().callback={(str:String!)in
             //天气预报 闭包回调
             weatherWithProvince("北京市", localCity:str) { (weather:WeatherModel) -> () in
                 self.weather=weather
             }
         
         }
-        LocationManager.sharedManager().configLocation()
+        MyLocationManager.sharedManager().configLocation()
         return true
         
         
@@ -81,7 +81,7 @@ import Alamofire
         homevc.tabBarItem.title=NSLocalizedString("首页", comment: "")
         homevc.tabBarItem.image=homeIcon
         homevc.tabBarItem.selectedImage=homeIconSelected
-        let homeNav:UINavigationController = AutorotateNavC(rootViewController: homevc)
+        let homeNav:AutorotateNavC = AutorotateNavC(rootViewController: homevc)
         
         let setModelVC:SetModelVC=SetModelVC(nibName: "SetModelVC", bundle: nil)
         setModelVC.tabBarItem.title=NSLocalizedString("情景模式", comment: "")

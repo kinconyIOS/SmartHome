@@ -8,7 +8,7 @@
 
 import UIKit
 
-class infCell: UICollectionViewCell ,UIActionSheetDelegate  {
+class infCell: UICollectionViewCell ,UIActionSheetDelegate,UIAlertViewDelegate  {
 
     
     var inf:Infrared?
@@ -18,11 +18,18 @@ class infCell: UICollectionViewCell ,UIActionSheetDelegate  {
     var myClosure:callbackfunc?
     //块
     typealias callbackfunc = (Int)->()
+
     //下面这个方法需要传入上个界面的someFunctionThatTakesAClosure函数指针
     func completeBlock(chName:callbackfunc)->Void{
         
     }
     //--------------------
+    //修改
+    typealias xiu = (Int,String)->()
+    var xiugai:xiu?
+    func revisions(name:xiu)->Void{
+    }
+    //--------------
     var longPressGR:UILongPressGestureRecognizer?
     @IBOutlet weak var but: UIButton!
     override func awakeFromNib() {
@@ -72,12 +79,33 @@ class infCell: UICollectionViewCell ,UIActionSheetDelegate  {
             //删除
             break
         case 2:
+            let alert = UIAlertView(title:"提示",message:"请输入名字",delegate:self,cancelButtonTitle:"确定",otherButtonTitles:"取消")
+            alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
+            
+            alert.show()
             //修改
             break
         default:
             break
         }
         self.addGestureRecognizer(longPressGR!)
+    }
+    //修改
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        //self.but.setTitle(alertView.textFieldAtIndex(0)!.text, forState: UIControlState.Normal)
+        if buttonIndex == 0{
+            inf?.name = alertView.textFieldAtIndex(0)!.text!
+            self.xiugai?(self.tag,(inf?.name)!)
+        }
+        
+    }
+    //键盘消失
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.endEditing(true)
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
 }

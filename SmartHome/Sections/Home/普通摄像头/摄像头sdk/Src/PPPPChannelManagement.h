@@ -8,8 +8,8 @@
 #import "PPPPStatusProtocol.h"
 
 
-#define MAX_DID_LENGTH 64
-#define MAX_PPPP_CHANNEL_NUM 64
+#define MAX_DID_LENGTH 128
+#define MAX_PPPP_CHANNEL_NUM 128
 
 typedef struct _PPPP_CHANNEL
 {

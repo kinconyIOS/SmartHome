@@ -21,21 +21,25 @@
 
 @implementation HTPlayCamerViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//       
+//        // Custom initialization
+//    }
+//    return self;
+//}
+
+
+-(BOOL)shouldAutorotate
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-       
-        // Custom initialization
-    }
-    return self;
+    return YES;
 }
-
-
 
 -(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
-    return UIInterfaceOrientationLandscapeRight;
+    return UIInterfaceOrientationLandscapeLeft;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -128,7 +132,7 @@
     UIGraphicsEndImageContext();
     return newimage;
 }
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
@@ -748,15 +752,7 @@
     }
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
 
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
 - (void) StartAudio
 {
     _m_PPPPChannelMgt->StartPPPPAudio([_cameraID UTF8String]);
