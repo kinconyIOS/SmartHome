@@ -250,7 +250,7 @@ int CH264Decoder::DecoderFrame(uint8_t *pbuf, int len, int &width, int &height)
     
 	avcodec_decode_video2(m_pCodecCtx, m_pFrame, &consumed_bytes, &avpkt);
     
-    NSLog(@"m_pCodecCtx->width: %d, height: %d", m_pCodecCtx->width, m_pCodecCtx->height);
+   // NSLog(@"m_pCodecCtx->width: %d, height: %d", m_pCodecCtx->width, m_pCodecCtx->height);
     width = m_pCodecCtx->width ;
     height = m_pCodecCtx->height ;
 

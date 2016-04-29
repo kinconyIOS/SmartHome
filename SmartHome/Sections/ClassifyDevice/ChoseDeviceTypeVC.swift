@@ -49,7 +49,8 @@ class ChoseDeviceTypeVC: UIViewController {
             table.hidden = true
         }
         //修改导航栏按钮；
-        let bbi_r1=UIBarButtonItem(image: UIImage(named: "商场收藏"), style:UIBarButtonItemStyle.Plain, target:self ,action:Selector("saveChose"));
+         let bbi_r1 = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("saveChose:"))
+        
         bbi_r1.tintColor=UIColor.whiteColor()
       
         self.navigationItem.rightBarButtonItems = [bbi_r1]

@@ -99,9 +99,9 @@ func weatherWithProvince( administrativeArea:String,localCity:String,complete:Co
                 
                 let aDict = arr[index]  as! NSDictionary
                 
-                let dayPictureUrl:String = aDict["dayPictureUrl"]! as! String
-                
-                let nightPictureUrl:String = aDict["nightPictureUrl"]! as! String
+//                let dayPictureUrl:String = aDict["dayPictureUrl"]! as! String
+//                
+//                let nightPictureUrl:String = aDict["nightPictureUrl"]! as! String
                 //
                 let  arrayTemp:Array=aDict["temperature"]!.componentsSeparatedByString("~")
                 let aMaxTemp = arrayTemp.first?.trimString()

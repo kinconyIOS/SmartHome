@@ -11,8 +11,8 @@ import UIKit
 class SetModelVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     
     @IBOutlet var modelCollectionView: UICollectionView!
-    
-    var arr = [UIImage(imageLiteral: "icon1.png"),UIImage(imageLiteral: "icon2.png"),UIImage(imageLiteral: "icon3.png"),UIImage(imageLiteral: "icon4.png"),UIImage(imageLiteral: "icon5.png"),UIImage(imageLiteral: "icon6.png"),UIImage(imageLiteral: "icon7.png"),UIImage(imageLiteral: "icon8.png"),]
+    var name = ["相库","资讯","圈子","分享"]
+    var arr = [UIImage(imageLiteral: "xc.png"),UIImage(imageLiteral: "zx.png"),UIImage(imageLiteral: "qz.png"),UIImage(imageLiteral: "share.png")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class SetModelVC: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         layout.itemSize = CGSizeMake(ScreenWidth / 4 - 10, ScreenWidth / 4 - 10);
         self.modelCollectionView.collectionViewLayout = layout
         self.modelCollectionView.backgroundColor = UIColor.whiteColor()
-        self.navigationItem.title = "情景模式"
+        self.navigationItem.title = "发现"
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         //navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         //注册Cell，必须要有
@@ -35,7 +35,7 @@ class SetModelVC: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     }
     //定义展示的UICollectionViewCell的个数
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8;
+        return 4;
     }
     //定义展示的Section的个数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -50,6 +50,7 @@ class SetModelVC: UIViewController,UICollectionViewDataSource,UICollectionViewDe
         //        }
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("model_cell", forIndexPath: indexPath) as? ModelCell
         cell?.icon.image = arr[indexPath.row]
+         cell?.name.text = name[indexPath.row]
         return cell!
     }
     

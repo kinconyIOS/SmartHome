@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "HTCameras.h"
-
+@protocol TouchSXT
+-(void)passTouch:(NSDictionary *)dict;
+@end
 @interface MySxtScorllView : UIView
 @property (nonatomic,strong) NSArray<HTCameras *>* dataArray;
+@property (assign) id<TouchSXT> delegate;
 - (void)setupPage;
--(void)config;
+- (void)config;
+- (void)doBack;
 @end

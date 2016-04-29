@@ -8,10 +8,20 @@
 
 import UIKit
 
-class infCell: UICollectionViewCell ,UIActionSheetDelegate,UIAlertViewDelegate  {
+protocol pusView:NSObjectProtocol{
 
+    func pus()
+}
+
+class infCell: UICollectionViewCell ,UIActionSheetDelegate,UIAlertViewDelegate {
+
+    //代理
+    weak var delegate:pusView?
     
+    //设备属性类
     var inf:Infrared?
+    //判断添加还是开关
+    var JudgeI:Int?
     //var model:<type>?
     //---------------
     //声明一个闭包
@@ -51,15 +61,24 @@ class infCell: UICollectionViewCell ,UIActionSheetDelegate,UIAlertViewDelegate  
         self.inf = inf
         self.but.setTitle(inf.name, forState: UIControlState.Normal)
         self.but.titleLabel?.font = UIFont.systemFontOfSize(13.0)
+        
     }
-    
-    
+   
+    //单击
     func tapped(button:UIButton){
         print("aacc")
+        if self.JudgeI == 1{
+                print("aabbcc")
+            NSNotificationCenter.defaultCenter().postNotificationName("a", object: nil)
+            self.delegate?.pus()
+        }
+       
     }
+
     //按钮长按事件
     func longPress(sender:UILongPressGestureRecognizer){
         self.removeGestureRecognizer(sender)
+        
         print("bbcc")
         // NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("timer:"), userInfo: nil, repeats: false)
         

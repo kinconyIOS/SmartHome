@@ -14,8 +14,13 @@ class LoveCommodityViewController: UIViewController,UITableViewDataSource,UITabl
     var strName:String!
     var commodity:CommodityTableViewCell!
     //收藏 数据源
-    var love = []
     
+    var love = []
+    //显示钱数
+    @IBOutlet weak var money: UILabel!
+    
+    //结算
+    @IBOutlet weak var but: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden=false
@@ -44,6 +49,13 @@ class LoveCommodityViewController: UIViewController,UITableViewDataSource,UITabl
         print(response)
             if response.count != 0{
                 self.love=(response as? NSArray)!
+                self.but.setTitle("结算(\(self.love.count))", forState: UIControlState.Normal)
+                var mone = 0.00
+                for var i = 0;i < self.love.count;++i{
+                    let mon=(self.love[i]["goodsPrice"] as? NSString)?.doubleValue
+                    mone = mon! + mone
+                    self.money.text=String(format: "%.1f", mone)
+                }
             }
         
         self.tableView.reloadData()
@@ -65,6 +77,14 @@ class LoveCommodityViewController: UIViewController,UITableViewDataSource,UITabl
                 print(response)
                 if response.count != 0{
                     self.love=(response as? NSArray)!
+                    self.but.setTitle("结算(\(self.love.count))", forState: UIControlState.Normal)
+                    var mone = 0.00
+                    for var i = 0;i < self.love.count;++i{
+                        let mon=(self.love[i]["goodsPrice"] as? NSString)?.doubleValue
+                        mone = mon! + mone
+                        self.money.text=String(format: "%.1f", mone)
+                    }
+
                 }
                 self.tableView.reloadData()
             }
@@ -103,6 +123,7 @@ class LoveCommodityViewController: UIViewController,UITableViewDataSource,UITabl
         cell!.selectionStyle = UITableViewCellSelectionStyle.None
         cell!.commdityFollow.hidden = true
         //cell?.myClosure = somsomeFunctionThatTakesAClosure
+
         return cell!
 
     }
@@ -110,7 +131,7 @@ class LoveCommodityViewController: UIViewController,UITableViewDataSource,UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let view1:DetailsViewController=DetailsViewController(nibName: "DetailsViewController", bundle: nil)
         view1.hidesBottomBarWhenPushed=true
-        view1.coID = love[indexPath.row]["ids"]as!Int
+        view1.coID = love[indexPath.row]["ids"]as?Int
         self.navigationController?.pushViewController(view1, animated: true)
         
         }
@@ -131,9 +152,18 @@ class LoveCommodityViewController: UIViewController,UITableViewDataSource,UITabl
                 print(response)
                 if response.count != 0{
                     self.love=(response as? NSArray)!
+                    self.but.setTitle("结算(\(self.love.count))", forState: UIControlState.Normal)
+                    var mone = 0.00
+                    for var i = 0;i < self.love.count;++i{
+                        let mon=(self.love[i]["goodsPrice"] as? NSString)?.doubleValue
+                        mone = mon! + mone
+                        self.money.text=String(format: "%.1f", mone)
+                    }
                 }
                 else{
                     self.love = []
+                    self.but.setTitle("结算(\(self.love.count))", forState: UIControlState.Normal)
+                    self.money.text = "0.0"
                 }
                 self.tableView.reloadData()
             }

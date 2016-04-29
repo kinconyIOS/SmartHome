@@ -23,38 +23,40 @@ CLLocationManagerDelegate{
         YRSingleton.sharedAccountManagerInstance = MyLocationManager()
         })
       
-        return YRSingleton.sharedAccountManagerInstance!;
+        return YRSingleton.sharedAccountManagerInstance!
     }
     func configLocation()
     {
        
         if (currentlocation == nil)
         {
+            
             if (!CLLocationManager.locationServicesEnabled() || (CLLocationManager.authorizationStatus()==CLAuthorizationStatus.Denied))
             {
                 showMsg("您关闭了的定位功能，将无法收到位置信息，建议您到系统设置打开定位功能!")
-                
+             
             }
             else
             {
-               
+                
                 //开启定位
                 currentlocation = CLLocationManager()//创建位置管理器
                 currentlocation!.delegate=self
                 currentlocation!.desiredAccuracy=kCLLocationAccuracyBest
                 currentlocation!.distanceFilter=1000.0
                 
-                if ( Float(UIDevice.currentDevice().systemVersion) >= 8.0)
-                {
-                   currentlocation!.requestWhenInUseAuthorization()
-                   currentlocation!.requestAlwaysAuthorization()
-                 
-                }                //启动位置更新
+
+                    if  currentlocation!.respondsToSelector("requestWhenInUseAuthorization") { print("--------6")
+                  currentlocation!.requestWhenInUseAuthorization()
+                    }
+                   
+                
+                       //启动位置更新
                currentlocation?.startUpdatingLocation()
             }
-            
+          
         }
-        
+       
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

@@ -7,9 +7,9 @@
 //
 
 #import "JK_LineTableViewCell.h"
-#import "SmartHome-Swift.h"
+
 @interface JK_LineTableViewCell()
-@property (nonatomic,strong)HTCameras *camera;
+@property (nonatomic,strong)Equip *equip;
 @end
 @implementation JK_LineTableViewCell
 
@@ -25,29 +25,51 @@
 
     // Configure the view for the selected state
 }
--(void)setModel:(HTCameras *)camera
+-(void)setModel:(Equip *)equip
 {
-    self.camera = camera;
-    self.titleLabel.text  = camera.deviceName;
+    self.equip = equip;
+    self.titleLabel.text  = equip.name;
 }
 - (IBAction)addToHome:(id)sender {
     NSLog(@"ssss");
-    NSDictionary *dict = @{@"roomCode":self.camera.roomId,
-                            @"deviceAddress":self.camera.ID,
-                            @"nickName":self.camera.deviceName,
-                            @"ico":@"",
-                            @"deviceType":@"100",
-                            @"deviceCode":@"commonsxt"};
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"请输入密码" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+  //  _userName =[alert textFieldAtIndex:0];
+    _passWord =[alert textFieldAtIndex:0];
+    _passWord.keyboardType =UIKeyboardTypeNumbersAndPunctuation;
+    [alert show];
    
-    [BaseHttpService sendRequestAccess:@"http://120.27.137.65/smarthome.IMCPlatform/xingUser/setDeviceInfo.action" parameters:dict success:^(id _Nonnull) {
-        Equip *equip = [[Equip alloc]initWithEquipID:self.camera.ID];
-        equip.name = self.camera.deviceName;
-        equip.type = @"100";
-        equip.hostDeviceCode = @"commonsxt";
-        equip.roomCode = self.camera.roomId;
-        [equip saveEquip];
-        [[[UIAlertView alloc]initWithTitle:nil message:@"添加成功" delegate:nil cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil]show];
-    }];
+}
+#pragma mark --UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    switch (buttonIndex) {
+        case 1:
+        {
+            NSDictionary *dict = @{@"roomCode":self.equip.roomCode,
+                                   @"deviceAddress":self.equip.equipID,
+                                   @"nickName":self.equip.name,
+                                   @"ico":@"",
+                                   @"deviceType":self.equip.type,
+                                   @"deviceCode":@"commonsxt"};
+            
+            [BaseHttpService sendRequestAccess:@"http://120.27.137.65/smarthome.IMCPlatform/xingUser/setDeviceInfo.action" parameters:dict success:^(id _Nonnull) {
+                
+                //摄像头里这个字段存的是账号 及密码
+               // equip.icon = _userName.text;
+                self.equip.num = _passWord.text;
+                [self.equip saveEquip];
+                [[[UIAlertView alloc]initWithTitle:nil message:@"添加成功" delegate:nil cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil]show];
+            }];
+        }
+            break;
+            
+        default:
+            
+            break;
+    }
+    
 }
 
 

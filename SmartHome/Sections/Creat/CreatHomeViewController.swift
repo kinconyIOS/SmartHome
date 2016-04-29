@@ -46,6 +46,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         didSet{
             tableView.delegate = self
             tableView.dataSource = self
+
         }
     }
     @IBOutlet var addFloorBtn: UIButton! {
@@ -111,9 +112,10 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        self.navigationController?.navigationBarHidden=false
+        self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
         navigationItem.title = "创建我的家"
-        navigationController?.navigationBar.setBackgroundImage(UIImage(named: "导航栏L"), forBarMetrics: UIBarMetrics.Default)
+        //navigationController?.navigationBar.setBackgroundImage(UIImage(named: "导航栏L"), forBarMetrics: UIBarMetrics.Default)
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
@@ -158,7 +160,8 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     @IBAction func handleAddFloor(sender: UIButton) {
-        let floor = Building(buildType: .BuildFloor, buildName: "楼层\(floorArr.count + 1)", isAddCell: false)
+       
+        let floor = Building(buildType: .BuildFloor, buildName: "\(floorArr[floorArr.count-1].buildName)_1", isAddCell: false)
         floorArr.append(floor)
         dataSource.append(floor)
         let add = Building(buildType: .BuildRoom, buildName: "添加", isAddCell: true)
@@ -185,8 +188,10 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
                 setNetRoomInfoVersionNumber(f!+1, andComplete: {
                     
                     NSUserDefaults.standardUserDefaults().setFloat(f!+1, forKey: "RoomInfoVersionNumber")
+                     showMsg("保存成功");
                     if self.isSimple {
-                        showMsg("保存成功");
+                       
+                        self.navigationController?.popToRootViewControllerAnimated(true)
                     return
                     }
                     let addDeviceVC: AddDeviceViewController = AddDeviceViewController(nibName: "AddDeviceViewController", bundle: nil)
@@ -349,8 +354,8 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let building = dataSource[indexPath.row]
         if building.isAddCell {
-
-            let build = Building(buildType: .BuildRoom, buildName: "房间\((roomDic[building.floor!.buildName]?.count)!)", isAddCell: false)
+            let roomArr = roomDic[building.floor!.buildName]
+            let build = Building(buildType: .BuildRoom, buildName: "\(roomArr![roomArr!.count-2].buildName)_1", isAddCell: false)
             build.floor = building.floor
             roomDic[building.floor!.buildName]?.insert(build, atIndex: (roomDic[building.floor!.buildName]?.endIndex)! - 1)
             dataSource.insert(build, atIndex: indexPath.row)

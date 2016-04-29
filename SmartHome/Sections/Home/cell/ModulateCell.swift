@@ -40,7 +40,9 @@ class ModulateCell: UITableViewCell {
         self.equip = e
         self.iconImg.image = UIImage(named: e.icon)
         self.nameLabel.text = e.name
-        
+        if e.status != ""{
+        self.slider.value = Float(e.status)! * 0.01
+        }
     }
 
     

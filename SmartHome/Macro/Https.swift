@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 let baseUrl = "http://120.27.137.65/smarthome.IMCPlatform/xingUser/"
 //tupian
 let imgUrl = "http://120.27.137.65/smarthome.IMCPlatform/"
@@ -18,6 +19,7 @@ let imgUrl = "http://120.27.137.65/smarthome.IMCPlatform/"
 //添加房间
 let addEq_do = "\(baseUrl)setDeviceInfo.action"
 
+let deviceStatus_do="\(baseUrl)queryroomdevicestate.action"
 //查询未分类设备
 let unclassifyEquip_do = "\(baseUrl)unclassifyqueryequipment.action"
 let classifyEquip_do = "\(baseUrl)classifyqueryequipment.action"
@@ -74,3 +76,5 @@ let Set_QueryShopping="\(baseUrl)queryshoppingcart.action"
 let Dele_shopoing = "\(baseUrl)delectshoppingcart.action"
 //一键报修
 let Add_Repair = "\(baseUrl)addRepair.action"
+//解绑主机
+let Dele_tallhost = "\(baseUrl)unbundlinghost.action"

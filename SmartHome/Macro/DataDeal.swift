@@ -12,8 +12,13 @@ import SQLite
 var dataDeal: DataDeal {
     return DataDeal.sharedDataDeal
 }
-
-class DataDeal {
+class DataWrapper:NSObject {
+    static func getCameras()->[Equip]
+    {
+    return dataDeal.searchAllSXTModel()
+    }
+}
+class DataDeal :NSObject{
     
     enum TableType {
         case User, Floor, Room, Equip
@@ -50,7 +55,18 @@ class DataDeal {
 
     
     }
-    
+    func clearEquipTable(){
+        
+        let equips = Table("Equips")
+        
+        do {
+            try db?.run(equips.delete())
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        
+        
+    }
     func creatUserTable() {
         
     }
@@ -148,6 +164,7 @@ class DataDeal {
        
         return arr
     }
+   
     func searchModel(type: TableType, byCode code: String) ->AnyObject? {
         switch type {
         case .User:
@@ -460,7 +477,32 @@ class DataDeal {
         }
         return arr
     }
-    
+    func searchAllSXTModel() ->[Equip]{
+        var arr = [Equip]()
+        
+        let equipCode = Expression<String>("code")
+        let equipName = Expression<String>("name")
+        let equipIcon = Expression<String>("icon")
+        let roomCode = Expression<String>("roomCode")
+        let userCode = Expression<String>("userCode")
+        let type = Expression<String>("type")
+        let num =  Expression<String>("num")
+        let equip = Table("Equips")
+        
+        for e in try! db!.prepare(equip.filter(type  == "100"))
+        {
+            let newEquip = Equip(equipID: e[equipCode])
+            newEquip.name = e[equipName]
+            newEquip.icon = e[equipIcon]
+            newEquip.userCode = e[userCode]
+            newEquip.roomCode = e[roomCode]
+            newEquip.type = e[type]
+            newEquip.num = e[num]
+            arr.append(newEquip)
+        }
+        
+        return arr
+    }
     func toJSONString(jsonSource: AnyObject) -> String {
         var data = NSData()
         do {

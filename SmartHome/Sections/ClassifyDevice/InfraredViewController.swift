@@ -8,7 +8,19 @@
 
 import UIKit
 
-class InfraredViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate{
+
+class InfraredViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,pusView{
+
+    //代理
+    func pus() {
+        //从xib拉去
+//        let indvc:AlterViewController=AlterViewController(nibName: "AlterViewController", bundle: nil)
+//        indvc.alteText = "添加红外线";
+//        indvc.textName = ""
+//        //将当前someFunctionThatTakesAClosure函数指针传到第二个界面，第二个界面的闭包拿到该函数指针后会进行回调该函数
+//        indvc.myClosure = somsomeFunctionThatTakesAClosure1
+        //self.navigationController!.pushViewController(indvc, animated:true)
+    }
     //modeltag
     var strArr:[String] = ["0","1","2","3"]
     var cellArr = []
@@ -21,6 +33,68 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         //MyCollection.layer.masksToBounds = true
         // Do any additional setup after loading the view.
+
+        //导航栏右边按钮
+        self.navigationItem.rightBarButtonItems = self.barButton() as? [UIBarButtonItem]
+        
+    }
+
+    func inconAction(sender:UISwitch){
+        if sender.on
+        {
+        print("open")
+        }
+        else
+        {
+        print("close")
+        }
+    }
+
+    func barButton()->NSArray{
+        let item = UIBarButtonItem(customView: createButtonWithX(0, aSelector: Selector("inconAction:")))
+      //  let negativeSeperator = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        return [item]//,negativeSeperator]
+    }
+    func createButtonWithX(x:Float,aSelector: Selector)->UISwitch{
+        let _switch = UISwitch()
+    
+        _switch.addTarget(self, action: aSelector, forControlEvents: UIControlEvents.ValueChanged)
+       // _switch.onTintColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1)
+       
+        let _label1 = UILabel(frame:CGRectMake(0,0,_switch.frame.size.width/2,_switch.frame.size.height));
+        _label1.textAlignment = NSTextAlignment.Center
+        _label1.textColor = UIColor.whiteColor()
+
+        _label1.font = UIFont.systemFontOfSize(12)
+        _label1.text = "控"
+        
+        let _label2 = UILabel(frame:CGRectMake(_switch.frame.size.width/2,0,_switch.frame.size.width/2,_switch.frame.size.height));
+        _label2.textAlignment = NSTextAlignment.Center
+        _label2.textColor = UIColor.whiteColor()
+        
+        _label2.font = UIFont.systemFontOfSize(12)
+        _label2.text =  "学"
+       
+        _switch.addSubview(_label1)
+         _switch.addSubview(_label2)
+        return _switch
+    }
+    //添加红外线 界面
+    func addinf1(notification: NSNotification){
+        //从xib拉去
+        let indvc:AlterViewController=AlterViewController(nibName: "AlterViewController", bundle: nil)
+        indvc.alteText = "添加红外线";
+        indvc.textName = ""
+        //将当前someFunctionThatTakesAClosure函数指针传到第二个界面，第二个界面的闭包拿到该函数指针后会进行回调该函数
+        indvc.myClosure = somsomeFunctionThatTakesAClosure1
+        self.navigationController!.pushViewController(indvc, animated:true)
+        
+    }
+    //闭包函数 获取姓名
+    func somsomeFunctionThatTakesAClosure1(string:String) -> Void{
+        print(string)
+        strArr.append(string)
+        self.MyCollection.reloadData()
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -40,8 +114,13 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
         MyCollection.delegate = self
         MyCollection.backgroundColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1)
         MyCollection.layer.cornerRadius = 24.0
+        //注册消息点击添加红外线
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "addinf1:", name: "a", object: nil)
     }
-
+    override func viewWillDisappear(animated: Bool) {
+        print("tuochu")
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,10 +141,13 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
         if indexPath.row == strArr.count{
             cell?.but.setBackgroundImage(UIImage(imageLiteral: "红外线添加"), forState: UIControlState.Normal)
             cell?.but.setTitle("", forState: UIControlState.Normal)
+            cell?.JudgeI = 1
+            cell?.delegate = self
         }
         else{
              let infCell1:Infrared = Infrared.init(aname: strArr[indexPath.row])
             cell?.but.setBackgroundImage(UIImage(imageLiteral: "红外线"), forState: UIControlState.Normal)
+            cell?.JudgeI = 0
             cell?.tag = indexPath.row
             cell!.myClosure = somsomeFunctionThatTakesAClosure
             cell?.xiugai = xiugai
@@ -73,6 +155,7 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
             //cell?.but.titleLabel?.font = UIFont.systemFontOfSize(13.0)
             //cell?.but.setTitle(cellArr[indexPath.row], forState: UIControlState.Normal)
             cell?.setinf(infCell1)
+            
             
         }
         //cellArr.addObject(cell!)
@@ -99,14 +182,14 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
     }
     //    #pragma mark --UICollectionViewDelegate
     //UICollectionView被选中时调用的方法
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    
-    }
+//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//
+//    }
     
     //返回这个UICollectionView是否可以被选择
-    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
+//    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+//        return true
+//    }
 
     /*
     // MARK: - Navigation

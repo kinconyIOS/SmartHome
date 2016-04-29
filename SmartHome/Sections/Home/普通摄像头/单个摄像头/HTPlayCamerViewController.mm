@@ -31,29 +31,30 @@
 //    return self;
 //}
 
-
--(BOOL)shouldAutorotate
-{
-    return YES;
-}
-
--(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-{
-    return UIInterfaceOrientationLandscapeLeft;
-}
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                                duration:(NSTimeInterval)duration
-{
-    self.navigationController.navigationBarHidden = NO;
-   
-    if(toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-       toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
-    {
-        self.navigationController.navigationBarHidden = YES;
-     
-    }
-}
+//
+//-(BOOL)shouldAutorotate
+//{
+//    return YES;
+//}
+//
+//-(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+//{
+//    return UIInterfaceOrientationLandscapeLeft;
+//}
+//
+//
+//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+//                                duration:(NSTimeInterval)duration
+//{
+//    self.navigationController.navigationBarHidden = NO;
+//   
+//    if(toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+//       toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
+//    {
+//        self.navigationController.navigationBarHidden = YES;
+//     
+//    }
+//}
 
 
 
@@ -70,11 +71,25 @@
     
     return image;
 }
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;//隐藏为YES，显示为NO
+}
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+    // iOS 7
+    [self prefersStatusBarHidden];
+    [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
 
-    
+    }
+    [super viewDidLoad];
+    self.navigationController.navigationBarHidden = YES;
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight];
+    self.view.transform = CGAffineTransformMakeRotation(M_PI/2);
+    CGRect frame = [UIScreen mainScreen].applicationFrame;
+    self.view.bounds = CGRectMake(0, 0, frame.size.height, frame.size.width);
     UIImage* image =[self imageWithColor:[UIColor clearColor]];
     [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:image];
@@ -92,6 +107,7 @@
     if (self.statusLabel.text.length == 0 && !self.m_PPPPChannelMgt) {
         [self.statusLabel setText:NSLocalizedString(@"cameraPrompt", @"")];
     }
+    
     
     [self initslider];
     
@@ -135,8 +151,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
-    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+//    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+//    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
     if (_m_PPPPChannelMgt == nil) {
         _m_PPPPChannelMgtCondition = [[NSCondition alloc] init];
         _m_PPPPChannelMgt = new CPPPPChannelManagement();
@@ -155,6 +171,8 @@
     if (_m_PPPPChannelMgt == nil) {
         [self stopCamera:nil];
     }
+    _m_PPPPChannelMgt->StopAll();
+    
 }
 -(void)initslider{
     

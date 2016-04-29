@@ -19,7 +19,7 @@
 #import "obj_common.h"
 
 #import "HTCameraStatus.h"
-
+#import "HTPlayCamerViewController.h"
 #import "UIImageView+WebCache.h"
 
 @interface MySxtScorllView()<UIScrollViewDelegate>
@@ -57,6 +57,7 @@
     [self addSubview:_scrollView];
     [self addSubview:_pageControl];
 }
+
 -(void)config{
     //
     _m_PPPPChannelMgtCondition = [[NSCondition alloc] init];
@@ -108,8 +109,18 @@
         //创建一个视图
        UIImageView *playView = [[UIImageView alloc]initWithFrame:CGRectMake(originX, 0, _scrollView.frame.size.width,  _scrollView.frame.size.height)];
      
-      
-      
+        //单指双击
+        UITapGestureRecognizer *singleFingerTwo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleFingerEvent:)];
+        singleFingerTwo.numberOfTouchesRequired = 1;
+        singleFingerTwo.numberOfTapsRequired = 2;
+       
+  
+        playView.userInteractionEnabled = YES;
+        [playView addGestureRecognizer:singleFingerTwo];
+     
+        playView.tag = pages;
+       
+        
      
         //设置图片内容的显示模式()
         playView.contentMode = UIViewContentModeScaleAspectFill;
@@ -134,6 +145,21 @@
     //设置滚动视图的位置
     [_scrollView setContentSize:CGSizeMake(originX, 0)];
 }
+//处理事件的方法，代码：
+- (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
+{
+    //单指双击
+    HTCameras *cam4 = [self.dataArray objectAtIndex:sender.view.tag];
+   
+        [self.delegate passTouch:@{@"cameraID":cam4.ID,@"username":@"admin",@"password": cam4.PassWord}];
+        
+   
+        NSLog(@"单指双击%d",sender.view.tag);
+}
+
+
+    
+
 
 //改变页码的方法实现
 - (void)changePage:(id)sender
@@ -192,7 +218,7 @@
 
 // PPPPStatusDelegate
 - (void) PPPPStatus: (NSString*) strDID statusType:(NSInteger) statusType status:(NSInteger) status{
-    NSLog(@"状态 ： %d",status);
+   // NSLog(@"状态 ： %d",status);
     NSString* strPPPPStatus;
     switch (status) {
         case PPPP_STATUS_UNKNOWN:
@@ -258,11 +284,11 @@
 }
 //refreshImage
 - (void) refreshImage:(NSArray* ) arr{
-    NSLog(@"走图像协议了");
+   
     if ([arr objectAtIndex:0] != nil) {
         dispatch_async(dispatch_get_main_queue(),^{
           _players[[self getCameraIndex:arr[1]]].image = arr[0];
-            NSLog(@"加载image了");
+           
          // [self stopVideo:arr[1]];
         });
     }

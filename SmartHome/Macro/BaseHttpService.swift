@@ -90,7 +90,7 @@ class BaseHttpService: NSObject {
             } else {
                  print("\(url)-\(response.result.value)")
 
-            
+               
                 if (response.result.value!as![String:AnyObject]).keys.contains("statusCode"){
                      print("服务器返回异常数据")
                     return;
@@ -100,7 +100,10 @@ class BaseHttpService: NSObject {
                  successBlock(response.result.value!["data"]!!)
                
                  } else{
-                    print(response.result.value!["message"]as!String)
+                    let str = response.result.value!["message"]as!String
+                     BaseHttpService.showMMSSGG(str)
+                    print(str)
+                //
                    if response.result.value!["message"]as!String != "超时了" {
                     
                     if response.result.value!["message"]as!String == "没有找到该编号"
@@ -158,7 +161,22 @@ class BaseHttpService: NSObject {
                 
                 }else
                 {//彻底失效
-                  print("重新登录吧!refreshToken已经失效了")
+                    if response.result.value!["message"]as!String != "超时了" {
+                        
+                        if response.result.value!["message"]as!String == "没有找到该编号"
+                            
+                        {
+                            print("重新登录吧!没有找到该编号")
+                            
+                            let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
+                            app.window!.rootViewController=nav
+                            
+                        }
+                        //不是超时的其他问题
+                        return
+                        
+                    }
+                    print("重新登录吧!refreshToken已经失效了")
                     
                     let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
                     app.window!.rootViewController=nav
@@ -175,7 +193,19 @@ class BaseHttpService: NSObject {
         })
         
     }
+    static func showMMSSGG(str:String){
+        switch(str){
+        
+        case "该主机已被绑定","您没有绑定主机","主机处于离线状态","不能重复绑定主机":
+            showMsg(str)
+            break
+        default:
+            break
+        
+        }
     
+    
+    }
     static func accessToken()->String{
         let acc = NSUserDefaults.standardUserDefaults().objectForKey("AccessToken") as? String
         if acc == nil{

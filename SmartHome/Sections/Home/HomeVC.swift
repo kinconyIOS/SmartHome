@@ -8,15 +8,16 @@
 
 import UIKit
 import Alamofire
-class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
+class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSXT{
     let PLAYER_NEED_VALIDATE_CODE = -1   //播放需要安全验证
     let PLAYER_REALPLAY_START     = 1    //直播开始
     let PLAYER_VIDEOLEVEL_CHANGE  = 2    //直播流清晰度切换中
     let PLAYER_STREAM_RECONNECT   = 3    //直播流取流正在重连
     let PLAYER_PLAYBACK_START     = 11   //录像回放开始播放
     let PLAYER_PLAYBACK_STOP      = 12   //录像回放结束播放
-    
+    var showSXT:Bool = false
     var sideView:SZLSideView?
+    var _btn:UIButton = UIButton(frame: CGRectMake(0,0,50,50))
     var head  = 1
     var cameraId = ""
     var headCell:HeadCell?
@@ -46,11 +47,25 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
     }()
     
  
-    
+ 
+  
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
+        
         configView()
         registerCell()
+        MyLocationManager.sharedManager().callback={(str:String!)in
+            //天气预报 闭包回调
+            weatherWithProvince("北京市", localCity:str) {[unowned self] (weather:WeatherModel) -> () in
+                self.headCell?.setWeatherModel( weather)
+                
+            }
+            
+        }
+        MyLocationManager.sharedManager().configLocation()
+     
     }
     func registerCell(){
     
@@ -61,6 +76,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
         self.homeTableView.registerNib(UINib(nibName: "HeadCell", bundle: nil), forCellReuseIdentifier: "HeadCell")
         self.homeTableView.registerNib(UINib(nibName: "RecentModelCell", bundle: nil), forCellReuseIdentifier: "RecentModelCell")
          self.homeTableView.registerNib(UINib(nibName: "UnkownCell", bundle: nil), forCellReuseIdentifier: "UnkownCell")
+         self.homeTableView.registerNib(UINib(nibName: "NoDeviceCell", bundle: nil), forCellReuseIdentifier: "NoDeviceCell")
    
     }
     func configView(){
@@ -71,19 +87,19 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
         //self.navigationItem.title = "首页"
         //修改导航栏按钮；
         //摄像头
-        let bbi_l1=UIBarButtonItem(image: UIImage(named: "sxt"), style:UIBarButtonItemStyle.Plain, target:self ,action:Selector("showEZ"));
-         bbi_l1.tintColor=UIColor.whiteColor()
-         self.navigationItem.leftBarButtonItem = bbi_l1
+//        let bbi_l1=UIBarButtonItem(image: UIImage(named: "sxt"), style:UIBarButtonItemStyle.Plain, target:self ,action:Selector("showEZ"));
+//         bbi_l1.tintColor=UIColor.whiteColor()
+         self.navigationItem.leftBarButtonItems = barButton() as? [UIBarButtonItem]
         
         //修改导航栏按钮；
         
-        let bbi_r1 = UIBarButtonItem(image: UIImage(named: "scan"), style:UIBarButtonItemStyle.Plain, target:self ,action:Selector("addMainDevcie"))
-        bbi_r1.tintColor=UIColor.whiteColor()
+       // let bbi_r1 = UIBarButtonItem(image: UIImage(named: "scan"), style:UIBarButtonItemStyle.Plain, target:self ,action:Selector("addMainDevcie"))
+       // bbi_r1.tintColor=UIColor.whiteColor()
         let bbi_r2 = UIBarButtonItem(image: UIImage(named: "deviceList"), style:UIBarButtonItemStyle.Plain, target:self ,action:Selector("modifyDeviceInfo"))
         bbi_r2.tintColor=UIColor.whiteColor()
         let bbi_r3=UIBarButtonItem(image: UIImage(named: "menu"), style:UIBarButtonItemStyle.Plain, target:self ,action:Selector("showSide"));
         bbi_r3.tintColor=UIColor.whiteColor()
-        self.navigationItem.rightBarButtonItems = [bbi_r3,bbi_r2,bbi_r1]
+        self.navigationItem.rightBarButtonItems = [bbi_r3,bbi_r2/*，bbi_r1*/]
         
         //
         
@@ -92,6 +108,23 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
       
         
     }
+    func barButton()->NSArray{
+        let item = UIBarButtonItem(customView: createButtonWithX(0, aSelector: Selector("showEZ")))
+        //  let negativeSeperator = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        return [item]//,negativeSeperator]
+    }
+    func createButtonWithX(x:Float,aSelector: Selector)->UIView{
+       
+       
+        _btn.addTarget(self, action: aSelector, forControlEvents: UIControlEvents.TouchUpInside)
+        _btn.setImage(UIImage(named: "sxt"), forState: UIControlState.Normal)
+         _btn.setImage(UIImage(named: "sxt3"), forState: UIControlState.Selected)
+        // _switch.onTintColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1)
+        
+      
+        return _btn
+    }
+
     //添加主机
     func addMainDevcie(){
         let addDeviceVC: AddDeviceViewController = AddDeviceViewController(nibName: "AddDeviceViewController", bundle: nil)
@@ -105,6 +138,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
     //修改设备信息
     func modifyDeviceInfo(){
         let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
+        classifyVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(classifyVC, animated: true)
     }
     //修改房间信息
@@ -116,17 +150,24 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
     }
     //摄像头
     func showEZ(){
-//        if(sxtData.count <= 0){
-//            return
-//        }
-//        
+        if(sxtData.count <= 0){
+            showMsg("该房间没有摄像头")
+            return
+        }else{
+            print("-----")
+        showSXT = !showSXT
+        _btn.selected = showSXT
+        self.homeTableView.reloadData()
+        
+        }
+
         
         
        
-        let cameraType = CameraTypeTVC();
-        cameraType.hidesBottomBarWhenPushed
-            = true
-        self.navigationController?.pushViewController(cameraType, animated: true)
+//        let cameraType = CameraTypeTVC();
+//        cameraType.hidesBottomBarWhenPushed
+//            = true
+//        self.navigationController?.pushViewController(cameraType, animated: true)
     }
     func getRoomInfo(){
         print("刷新侧滑菜单")
@@ -139,6 +180,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
             floor.iconName = "Floor"
             floor.isSubItem = false
             let rooms = dataDeal.getRoomsByFloor(_floor)
+         
             for _room in rooms{
                 
                 let room  = RoomListItem()
@@ -150,6 +192,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
                 
             }
             tableSideViewDataSource.addObject(floor)
+     
             
         }
         //刷新数据
@@ -159,8 +202,39 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
         for room in allrooms{
             roomArray?.append(room.name)
         }
-         print("刷新侧滑菜单")
-        //刷新顶部按钮
+        
+        //增加默认选项
+        let _floors = dataDeal.getModels(DataDeal.TableType.Floor) as! Array<Floor>
+        if _floors.count > 0{
+            let rooms = dataDeal.getRoomsByFloor(_floors[0])
+
+        if rooms.count > 0 //当
+        {
+            self.deviceDataSource = dataDeal.getEquipsByRoom(rooms[0])
+            sxtData = [Equip]()
+            sxtData = dataDeal.searchSXTModel(byRoomCode: rooms[0].roomCode)
+            
+            self.homeTableView.reloadData()
+            let param = ["roomCode":rooms[0].roomCode]
+            BaseHttpService.sendRequestAccess(deviceStatus_do, parameters: param, success: { (back) -> () in
+                print(back)
+                if back.count > 0{
+                    for dic in (back as![[String:String]])
+                    {
+                        if self.getEquip(dic["deviceAddress"]!) != nil
+                        {
+                            self.getEquip(dic["deviceAddress"]!)?.status = dic["state"]!
+                        }
+                        
+                    }
+                    self.homeTableView.reloadData()
+                }
+                
+            })
+
+        }
+        }
+              //刷新顶部按钮
         // scrollAddBtn()
         
     }
@@ -185,9 +259,15 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
         }
   
     }
-
+    func passTouch(dict: [NSObject : AnyObject]!) {
+        Wrapper().pushCamera(self, dict: dict)
+       
+    }
     override  func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden  = false
+//        UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
+        
           self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
        //刷新房间信息
         getRoomInfo()
@@ -196,7 +276,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
         //侧滑
         if sideView==nil{
             sideView = NSBundle.mainBundle().loadNibNamed("SZLSideView", owner: self, options: nil)[0] as? SZLSideView
-            sideView!.frame=CGRectMake(ScreenWidth, 64, sideView!.frame.size.width,ScreenHeight);
+            sideView!.frame=CGRectMake(ScreenWidth, 0, sideView!.frame.size.width,ScreenHeight-114);
             sideView?.delegate=self
             
         }
@@ -206,7 +286,8 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
 //        self.drakBtn.frame=CGRectMake(0, 64, ScreenWidth,ScreenHeight)
 //        self.tabBarController!.view.addSubview(self.drakBtn)
         
-        self.tabBarController!.view.addSubview(sideView!)
+        self.view.addSubview(sideView!)
+        self.homeTableView.reloadData()
     }
     
     func loadEZplay() {
@@ -241,7 +322,9 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
             
         }
         if tableView===self.homeTableView && section == 2{
-            return deviceDataSource.count
+            if deviceDataSource.count>1{
+                return deviceDataSource.count}
+            else {return 1}
         }
         if tableView===self.homeTableView && section == 0{
             return head
@@ -283,27 +366,36 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
             {
 //                headCell = self.homeTableView.dequeueReusableCellWithIdentifier("HeadCell", forIndexPath: indexPath) as? HeadCell
 //                headCell!.configHeadView()
-//                headCell!.myScorllView.images = [UIImage(named: "lb1")!,UIImage(named: "lb2")!]
+//                headCell!.myScorllView.images = [UIImag e(named: "lb1")!,UIImage(named: "lb2")!]
 //                headCell!.myScorllView.setupPage()
                 
+            
                 headCell = self.homeTableView.dequeueReusableCellWithIdentifier("HeadCell", forIndexPath: indexPath) as? HeadCell
-                                headCell!.configHeadView()
-                
-
+               
+                if sxtData.count > 0 && showSXT{
+                    print("有摄像头了")
+                headCell!.configHeadView()
                 var cameras = [HTCameras]()
                 for equip in sxtData
                 {
                     let  c = HTCameras()
                     c.ID = equip.equipID;
                     c.Name = "admin"
-                    c.PassWord = "hificat"
+                    c.PassWord = equip.num
+                   
+                    "hificat"
                     cameras.append(c)
                 }
               
                 headCell!.myScorllView.dataArray = cameras
                 headCell!.myScorllView.config()
                 headCell!.myScorllView.setupPage()
-
+                headCell?.myScorllView.delegate = self
+                }else
+                {
+                  headCell!.removeHeadView()
+                    
+                }
                 return headCell!
                 
             }
@@ -316,16 +408,25 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
                 return cell!
                 
             }
+            if deviceDataSource.count < 1
+            {
+            
+             cell = self.homeTableView.dequeueReusableCellWithIdentifier("NoDeviceCell", forIndexPath: indexPath)
+                cell?.selectionStyle = UITableViewCellSelectionStyle.None
+                return cell!
+                
+            
+            }
             let equip = deviceDataSource[indexPath.row] as! Equip
             if equip.type == "1"||judgeType(equip.type, type: "1")
-            {
+            {//开关设备
                  cell = self.homeTableView.dequeueReusableCellWithIdentifier("LightCell", forIndexPath: indexPath)
                  cell?.backgroundColor = UIColor.whiteColor()
                  tableView.bringSubviewToFront(cell!)
                 (cell as!LightCell).setModel(equip)
             }
             else if equip.type == "2" || equip.type == "4"||judgeType(equip.type, type: "3")||judgeType(equip.type, type: "2")
-            {
+            {//可调设备
              cell = self.homeTableView.dequeueReusableCellWithIdentifier("ModulateCell", forIndexPath: indexPath)
                  cell?.backgroundColor = UIColor.whiteColor()
                  tableView.bringSubviewToFront(cell!)
@@ -344,6 +445,8 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
         return cell!
     }
+    
+    
     func judgeType(str:String,type:String)->Bool
    {
     if str.trimString() == ""
@@ -383,8 +486,12 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
                         item.isOpen = true;
                     }
                 } else {
+                    if (sxtData.count > 0){
+                     headCell!.removeHeadView()
+                    }
                     self.deviceDataSource = dataDeal.getEquipsByRoom(Room(roomCode: item.roomCode))
-                    self.sxtData = dataDeal.searchSXTModel(byRoomCode: item.roomCode)
+                    sxtData = [Equip]()
+                    sxtData = dataDeal.searchSXTModel(byRoomCode: item.roomCode)
                     //非菜单选项
                     print("点到具体房间。。\(item.roomCode)..\(self.deviceDataSource.count)")
                     
@@ -392,6 +499,22 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
                     self.homeTableView.reloadData()
                     self.sideView?.closeTap()
                      self.drakBtn.hidden=true
+                    let param = ["roomCode":item.roomCode]
+                    BaseHttpService.sendRequestAccess(deviceStatus_do, parameters: param, success: { (back) -> () in
+                        print(back)
+                        if back.count > 0{
+                         for dic in (back as![[String:String]])
+                         {
+                            if self.getEquip(dic["deviceAddress"]!) != nil
+                            {
+                             self.getEquip(dic["deviceAddress"]!)?.status = dic["state"]!
+                             }
+                        
+                         }
+                            self.homeTableView.reloadData()
+                        }
+                        
+                    })
                    // tableView.deselectRowAtIndexPath(indexPath,animated:false)
                     
                 }
@@ -399,10 +522,26 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
             }
         }else{//主tableview被点中
             
-            
+            if deviceDataSource.count < 1
+            {
+                self.modifyDeviceInfo()
+                return
+            }
             
         }
         
+    }
+    func getEquip(equip_id:String)->Equip?
+    {
+        for e in self.deviceDataSource
+        {
+            
+            if (e as! Equip).equipID == equip_id
+            {
+            return e as? Equip
+            }
+        }
+        return nil
     }
     
     //更改索引
@@ -430,13 +569,16 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
             {
                 return 65
             }
+            if deviceDataSource.count < 1{
+            return 44
+            }
             let equip = deviceDataSource[indexPath.row] as! Equip
         
 
             if equip.type == "1" || judgeType(equip.type, type: "1")
 
             {
-                return 85
+                return 53
             }
             else if equip.type == "2" || equip.type == "4"||judgeType(equip.type, type: "3")||judgeType(equip.type, type: "2")
 
@@ -494,9 +636,11 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
         sideView?.closeTap()
         self.drakBtn.hidden=true
         sideView?.hidden = true
-          }
+         headCell!.removeHeadView()
+        
+    }
   
-          //  headCell!.myScorllView.clearVedio()
+    
 
   
     
@@ -529,8 +673,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
    
       
     }
-    
-  //    //MARK-转屏适配-optional
+    //    //MARK-转屏适配-optional
 //    func statusBarOrientationChange(notification:NSNotification)
 //        
 //    {

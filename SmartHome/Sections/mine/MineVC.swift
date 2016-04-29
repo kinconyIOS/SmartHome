@@ -13,10 +13,10 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
 
     @IBOutlet var tableView: UITableView!//
     var arr = ["我的购物","我的房间","我的设备","一键报修","意见反馈"];
-    var arr1 = ["功能说明","关于我们","清除缓存",]
+    var arr1 = ["功能说明","关于我们","清除缓存","主机管理"]
     let imgArr = [UIImage(imageLiteral: "car.png"),UIImage(imageLiteral: "House.png"),UIImage(imageLiteral: "Power-Of.png"),UIImage(imageLiteral: "Tools.png"),UIImage(imageLiteral: "Edit.png")]
     
-    let imgArr1 = [UIImage(imageLiteral: "List.png"),UIImage(imageLiteral: "User.png"),UIImage(imageLiteral: "Refresh.png"),]
+    let imgArr1 = [UIImage(imageLiteral: "List.png"),UIImage(imageLiteral: "User.png"),UIImage(imageLiteral: "Refresh.png"),UIImage(imageLiteral: "fj.png")]
     override func viewDidLoad() {
         super.viewDidLoad()
         //设置导航栏透明
@@ -93,16 +93,25 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
             let cell:MyHeadCell? = tableView.dequeueReusableCellWithIdentifier("MyHeadCell") as? MyHeadCell
             cell!.headImg.layer.cornerRadius=cell!.headImg.frame.size.width*0.5; //设置为图片宽度的一半出来为圆形
             cell!.headImg.layer.masksToBounds=true;
-            cell?.name.text = app.user?.userName
-            cell?.sex.text = app.user?.userSex
-            cell?.qianm.text = app.user?.signature
-            cell?.ctiy.text = app.user?.city
-            if app.user?.headPic != nil{
-                let str = imgUrl+(app.user?.headPic)!
-                cell!.headImg.sd_setImageWithURL(NSURL(string: str))
-            }else{
-                cell?.headImg.image = UIImage(imageLiteral: "我的头像")
+            if app.user?.userName != ""{
+                cell?.name.text = app.user?.userName
             }
+            if app.user?.userSex != ""{
+                cell?.sex.text = app.user?.userSex
+            }
+            if app.user?.signature != ""{
+              cell?.qianm.text = app.user?.signature
+            }
+            if app.user?.city != ""{
+                cell?.ctiy.text = app.user?.city
+            }
+            
+           
+           
+           
+                let str = imgUrl+(app.user?.headPic)!
+                cell!.headImg.sd_setImageWithURL(NSURL(string: str), placeholderImage: UIImage(imageLiteral: "我的头像") )
+           
             cell!.selectionStyle = UITableViewCellSelectionStyle.None
             return cell!
 
@@ -172,6 +181,7 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
                 let num = FileManager().folderSizeAtPath(cachPath)
                 
                 let alert = UIAlertView(title: "提示", message: "缓存大小为\(String(format: "%.2f", num) )M确定要清理吗?", delegate: self, cancelButtonTitle: "确定", otherButtonTitles: "取消")
+                alert.tag = 1
                 alert.show()
 //                UIAlertController(title: "提示", message: "缓存大小为\(String(format: "%.2f", num) )M确定要清理吗?", preferredStyle: UIAlertControllerStyle.Alert)
 //                
@@ -203,6 +213,12 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
 //                alert.addAction(cancelAction)
 //                self.presentViewController(alert, animated: true, completion: nil)
                 break;
+                //解绑主机
+            case 3:
+                let indvc = DeviceManagerVC()
+                indvc.hidesBottomBarWhenPushed=true
+                self.navigationController!.pushViewController(indvc, animated:true)
+                break
             default :
                 break
             }
@@ -213,6 +229,16 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
             
             case 0:
                 self.Shopping()
+                break
+            case 1:
+                let creatHomeVC = CreatHomeViewController(nibName: "CreatHomeViewController", bundle: nil)
+                creatHomeVC.isSimple = true
+                creatHomeVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(creatHomeVC, animated: true)
+                break
+            case 2:
+                let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
+                self.navigationController?.pushViewController(classifyVC, animated: true)
                 break
             case 4:
                 //从xib拉出来
@@ -229,7 +255,6 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
                 //界面跳转 不通过导航栏
                 //self.presentViewController(indvc, animated: true, completion: nil)
                 break
-            
             default :
                 break
             }
@@ -238,20 +263,25 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
     }
     //清除缓存
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        let cachPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
-        
-        let files = NSFileManager.defaultManager().subpathsAtPath(cachPath )
-        for p in files!{
-            
-            let path = (cachPath as NSString).stringByAppendingPathComponent(p)
-            if NSFileManager.defaultManager().fileExistsAtPath(path){
-                do{
-                    try NSFileManager.defaultManager().removeItemAtPath(path)
-                }catch let error as NSError {
-                    print(error.localizedDescription)
+        if alertView.tag == 1{
+            if buttonIndex == 0{
+                let cachPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
+                let files = NSFileManager.defaultManager().subpathsAtPath(cachPath )
+                for p in files!{
+                    
+                    let path = (cachPath as NSString).stringByAppendingPathComponent(p)
+                    if NSFileManager.defaultManager().fileExistsAtPath(path){
+                        do{
+                            try NSFileManager.defaultManager().removeItemAtPath(path)
+                        }catch let error as NSError {
+                            print(error.localizedDescription)
+                        }
+                    }
                 }
             }
         }
+
+
     }
        //点击购物车
     func Shopping(){

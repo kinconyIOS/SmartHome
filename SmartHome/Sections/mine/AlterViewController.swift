@@ -45,6 +45,14 @@ class AlterViewController: UIViewController,UITextFieldDelegate {
         self.navigationController?.popViewControllerAnimated(true)
         self.myClosure?(textField.text!)
     }
+    //设置输入长度
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if textField.text!.characters.count > 10 {
+         return false
+        }
+        
+        return true
+    }
     //键盘消失
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)

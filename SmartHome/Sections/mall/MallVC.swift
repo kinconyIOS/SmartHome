@@ -36,16 +36,17 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
         //上拉刷新
         tableView.addLegendHeaderWithRefreshingBlock { () -> Void in
-            BaseHttpService .sendRequestAccess(Commodity_display, parameters:["":""]) { (response) -> () in
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "addinf1:", name: "shibai", object: nil)
+            BaseHttpService .sendRequestAccess(Commodity_display, parameters:["":""]) { [unowned self](response) -> () in
                 print(response)
                 self.shoppingList=response as! NSArray
                 self.tableView.reloadData()
                 self.tableView.header.endRefreshing();
-            }
-            
+            }  
         }
         //下拉加载
         tableView.addLegendFooterWithRefreshingBlock { () -> Void in
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "addinf1:", name: "shibai", object: nil)
             BaseHttpService .sendRequestAccess(Commodity_display, parameters:["":""]) { [unowned self](response) -> () in
                 print(response)
                 self.shoppingList=response as! NSArray
@@ -55,11 +56,14 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             }
             
         }
-    
+
         // Do any additional setup after loading the view.
     }
  
-
+    func addinf1(notification: NSNotification){
+        self.tableView.footer.endRefreshing();
+        self.tableView.header.endRefreshing();
+    }
     //分区
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -125,12 +129,12 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 //    }
     //cell点击事件
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let view1:DetailsViewController=DetailsViewController(nibName: "DetailsViewController", bundle: nil)
-        view1.hidesBottomBarWhenPushed=true
-        let Id1 = shoppingList[indexPath.row-1]
-        view1.coID = Id1["id"] as? Int
-        self.navigationController?.pushViewController(view1, animated: true)
+        if indexPath.row != 0{
+            let view1:DetailsViewController=DetailsViewController(nibName: "DetailsViewController", bundle: nil)
+            view1.hidesBottomBarWhenPushed=true
+            let Id1 = shoppingList[indexPath.row-1]
+            view1.coID = Id1["id"] as? Int
+            self.navigationController?.pushViewController(view1, animated: true)
+        }
     }
-   
-
 }

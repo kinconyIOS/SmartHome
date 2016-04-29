@@ -47,7 +47,7 @@ class AddDeviceViewController: UIViewController ,QRCodeReaderDelegate{
               AddDeviceViewController.myreader.modalPresentationStyle = UIModalPresentationStyle.FormSheet
                 AddDeviceViewController.myreader.delegate = self
                 AddDeviceViewController.myreader.setCompletionWithBlock({ (resultAsString) -> Void in
-                     print(resultAsString)
+                   
                 })   
 
 

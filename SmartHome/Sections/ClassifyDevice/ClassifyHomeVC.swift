@@ -54,7 +54,6 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
                 self.view.bringSubviewToFront(self.collectionView)
                 self.reloadUnClassifyDataSource()
                 
-                
             }
             deviceSegement.selectAction(.Right) { [unowned self] () -> () in
                 self.view.bringSubviewToFront(self.tableView)
@@ -176,8 +175,8 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.reloadUnClassifyDataSource()
-        self.reloadClassifyDataSource()
+        self.navigationController?.navigationBarHidden=false
+        self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
         
         
         navigationItem.title = "我的设备"
@@ -186,6 +185,20 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         
 
         
+        self.collectionView.addLegendHeaderWithRefreshingBlock { [unowned self]() -> Void in
+         
+            print("刷新界面")
+           
+            self.reloadUnClassifyDataSource()
+           self.collectionView.header.endRefreshing()
+        }
+        self.tableView.addLegendHeaderWithRefreshingBlock {[unowned self] () -> Void in
+            
+            print("刷新界面")
+             self.reloadClassifyDataSource()
+             self.tableView.header.endRefreshing()
+        }
+
         // Do any additional setup after loading the view.
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -219,7 +232,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         let homeNav:UINavigationController = AutorotateNavC(rootViewController: homevc)
         
         let setModelVC:SetModelVC=SetModelVC(nibName: "SetModelVC", bundle: nil)
-        setModelVC.tabBarItem.title=NSLocalizedString("情景模式", comment: "")
+        setModelVC.tabBarItem.title=NSLocalizedString("发现", comment: "")
         setModelVC.tabBarItem.image=modelIcon
         setModelVC.tabBarItem.selectedImage=modelIconSelected
         let setModelNav:UINavigationController = UINavigationController(rootViewController: setModelVC)

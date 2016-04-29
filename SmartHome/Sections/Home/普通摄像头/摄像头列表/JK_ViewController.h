@@ -10,11 +10,13 @@
 #import <UIKit/UIKit.h>
 #import "HTPlayCamerViewController.h"
 #import "SearchDVS.h"
+#import "SmartHome-Swift.h"
 @interface JK_ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource, SearchCameraResultProtocol>
 {
     CSearchDVS* dvs;
     NSDictionary *_moblieDict;
-    NSMutableArray *dataArray;
+    NSMutableArray <Equip *> *dataArray;
+      NSMutableArray <Equip *> *prefixDataArray;
 }
 @property (nonatomic,strong)NSString *roomCode;
 @property  CPPPPChannelManagement* m_PPPPChannelMgt;

@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "HTCameras.h"
-
+#import "SmartHome-Swift.h"
 @interface JK_LineTableViewCell : UITableViewCell
+//@property (nonatomic,strong) UITextField *userName;
+@property (nonatomic,strong) UITextField *passWord;
 @property (retain, nonatomic) IBOutlet UILabel *titleLabel;
--(void)setModel:(HTCameras *)camera;
+-(void)setModel:(Equip *)camera;
 @end
 
 /*

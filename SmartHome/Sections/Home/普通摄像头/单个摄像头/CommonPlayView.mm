@@ -40,8 +40,8 @@
 }
 -(void)tap:(id)sender
 {
-    [self.delegate passTouch:@{@"cameraID":self.cameraID,@"username":self.username,@"password":self.password}];
-     
+//    [self.delegate passTouch:@{@"cameraID":self.cameraID,@"username":self.username,@"password":self.password}];
+    
 }
 - (UIViewController *)parentController
 {

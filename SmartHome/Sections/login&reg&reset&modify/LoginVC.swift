@@ -153,7 +153,7 @@ class LoginVC: UIViewController  {
                 let homeNav:UINavigationController = AutorotateNavC(rootViewController: homevc)
                 
                 let setModelVC:SetModelVC=SetModelVC(nibName: "SetModelVC", bundle: nil)
-                setModelVC.tabBarItem.title=NSLocalizedString("情景模式", comment: "")
+                setModelVC.tabBarItem.title=NSLocalizedString("发现", comment: "")
                 setModelVC.tabBarItem.image=modelIcon
                 setModelVC.tabBarItem.selectedImage=modelIconSelected
                 let setModelNav:UINavigationController = UINavigationController(rootViewController: setModelVC)

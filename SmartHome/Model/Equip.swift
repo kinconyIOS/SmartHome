@@ -19,6 +19,7 @@ class Equip : NSObject{
     var type: String = ""
     var icon: String = ""
     var num:String = ""
+     var status:String = ""
     init(equipID: String) {
         self.equipID = equipID
     }

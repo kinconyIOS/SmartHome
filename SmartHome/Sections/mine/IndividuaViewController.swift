@@ -22,6 +22,7 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
     @IBOutlet var tableView: UITableView!
 //    var cellImg:HeadImgTableViewCell?
 //    var cell:OtherTableViewCell?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.layer.cornerRadius = 6.0
@@ -45,6 +46,8 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
         walk.addTarget(self, action: Selector("tui:"), forControlEvents: UIControlEvents.TouchUpInside)
         // Do any additional setup after loading the view.
     }
+    //拖拽手势取消
+    
     //退出登录
     func tui(but:UIButton){
         didSelectedEnter()
@@ -222,6 +225,7 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
     override func viewWillAppear(animated: Bool) {
         //获取用户信息
         let parameters=["userCode":userCode]
+        self.navigationController?.navigationBarHidden=false
         BaseHttpService .sendRequestAccess(GetUser, parameters:parameters) { (response) -> () in
             print("获取用户信息=\(response)")
             app.user = UserModel(dict: response as! [String:AnyObject])

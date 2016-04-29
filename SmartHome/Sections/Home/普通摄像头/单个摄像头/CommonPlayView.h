@@ -11,16 +11,16 @@
 #include "PPPPChannelManagement.h"
 #import "ImageNotifyProtocol.h"
 #import "SmartHome-Swift.h"
-@protocol TouchSXT
--(void)passTouch:(NSDictionary *)dict;
-@end
+//@protocol TouchSXT
+//-(void)passTouch:(NSDictionary *)dict;
+//@end
 @interface CommonPlayView : UIView<ImageNotifyProtocol>
 
 @property (nonatomic, retain) NSString* cameraID;
 @property (nonatomic, retain) NSString* username;
 @property (nonatomic, retain) NSString* password;
 @property  CPPPPChannelManagement* m_PPPPChannelMgt;
-@property (assign) id<TouchSXT> delegate;
+//@property (assign) id<TouchSXT> delegate;
 -(void)begin;
 -(void)end;
 - (void)starVideo;
