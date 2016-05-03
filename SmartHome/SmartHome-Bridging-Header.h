@@ -21,8 +21,11 @@
 #import "QRCodeReaderViewController.h"
 #import "Wrapper.h"
 #import "FileManager.h"
+#import "Pingpp.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <CoreLocation/CoreLocation.h>
+#import "AFNetworking.h"
+
 #import "NSDictionary+Ping.h"
 #import "NSString+Contains.h"
 #import "MJRefresh.h"

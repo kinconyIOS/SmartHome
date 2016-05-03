@@ -263,6 +263,16 @@
 		983FE2E91C1821B6004B89CE /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983FE2E81C1821B6004B89CE /* Helper.swift */; };
 		984117431CCF63CF008B46A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 984117421CCF63CF008B46A7 /* Assets.xcassets */; };
 		9847F0931C194F09005D72A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9847F0951C194F09005D72A9 /* InfoPlist.strings */; };
+		984A08D61CD8527700935967 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984A08D51CD8527700935967 /* CFNetwork.framework */; };
+		984A08D81CD852A000935967 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984A08D71CD852A000935967 /* Security.framework */; };
+		984A08E91CD8618000935967 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 984A08DC1CD8618000935967 /* AlipaySDK.bundle */; };
+		984A08EA1CD8618000935967 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 984A08DD1CD8618000935967 /* AlipaySDK.framework */; };
+		984A08EB1CD8618000935967 /* libpingpp+alipay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 984A08DE1CD8618000935967 /* libpingpp+alipay.a */; };
+		984A08EC1CD8618000935967 /* libpingpp+network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 984A08E11CD8618000935967 /* libpingpp+network.a */; };
+		984A08ED1CD8618000935967 /* libpingppcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 984A08E31CD8618000935967 /* libpingppcore.a */; };
+		984A08EE1CD8618000935967 /* libpingpp+one.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 984A08E51CD8618000935967 /* libpingpp+one.a */; };
+		984A08EF1CD8618000935967 /* Pingpp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 984A08E71CD8618000935967 /* Pingpp.bundle */; };
+		984A08F11CD8628A00935967 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 984A08F01CD8628A00935967 /* libsqlite3.tbd */; };
 		984DE7B51C48DFA700D7A76C /* Equip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984DE7B21C48DFA700D7A76C /* Equip.swift */; };
 		984DE7B61C48DFA700D7A76C /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984DE7B31C48DFA700D7A76C /* Floor.swift */; };
 		984DE7B71C48DFA700D7A76C /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984DE7B41C48DFA700D7A76C /* Room.swift */; };
@@ -400,7 +410,6 @@
 		C2DCFD8D1C3E0133005A8368 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DCFD8C1C3E0133005A8368 /* MBProgressHUD.m */; };
 		C2DCFDE81C3E4C24005A8368 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DCFDD91C3E4BE8005A8368 /* SQLite.framework */; };
 		C2DCFDE91C3E4C24005A8368 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C2DCFDD91C3E4BE8005A8368 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C2DCFDF11C3E4DA4005A8368 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DCFDF01C3E4DA4005A8368 /* libsqlite3.0.tbd */; };
 		C2DF38FA1C34C47F00114AE8 /* ChooseIconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DF38F81C34C47F00114AE8 /* ChooseIconVC.swift */; };
 		C2DF38FB1C34C47F00114AE8 /* ChooseIconVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DF38F91C34C47F00114AE8 /* ChooseIconVC.xib */; };
 		C2DF38FE1C34C5CB00114AE8 /* ChooseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DF38FC1C34C5CB00114AE8 /* ChooseHeaderView.swift */; };
@@ -1144,6 +1153,19 @@
 		9847F0961C194F0A005D72A9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		9847F0971C194F0B005D72A9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		9847F0AF1C1958C6005D72A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		984A08D51CD8527700935967 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		984A08D71CD852A000935967 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		984A08DC1CD8618000935967 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		984A08DD1CD8618000935967 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		984A08DE1CD8618000935967 /* libpingpp+alipay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+alipay.a"; sourceTree = "<group>"; };
+		984A08E11CD8618000935967 /* libpingpp+network.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+network.a"; sourceTree = "<group>"; };
+		984A08E21CD8618000935967 /* PingppURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingppURLResponse.h; sourceTree = "<group>"; };
+		984A08E31CD8618000935967 /* libpingppcore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpingppcore.a; sourceTree = "<group>"; };
+		984A08E51CD8618000935967 /* libpingpp+one.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+one.a"; sourceTree = "<group>"; };
+		984A08E61CD8618000935967 /* Pingpp+One.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Pingpp+One.h"; sourceTree = "<group>"; };
+		984A08E71CD8618000935967 /* Pingpp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Pingpp.bundle; sourceTree = "<group>"; };
+		984A08E81CD8618000935967 /* Pingpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pingpp.h; sourceTree = "<group>"; };
+		984A08F01CD8628A00935967 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		984DE7B21C48DFA700D7A76C /* Equip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equip.swift; sourceTree = "<group>"; };
 		984DE7B31C48DFA700D7A76C /* Floor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
 		984DE7B41C48DFA700D7A76C /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
@@ -1360,11 +1382,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				984A08F11CD8628A00935967 /* libsqlite3.tbd in Frameworks */,
+				984A08D81CD852A000935967 /* Security.framework in Frameworks */,
+				98036A521C3BB01D00634FB0 /* SystemConfiguration.framework in Frameworks */,
+				984A08D61CD8527700935967 /* CFNetwork.framework in Frameworks */,
 				98B1633D1CCDC6CF00CB8DC9 /* CoreLocation.framework in Frameworks */,
 				98312C201CBB72F9002E1C83 /* libiconv.tbd in Frameworks */,
 				98312C1E1CBB72DD002E1C83 /* libbz2.tbd in Frameworks */,
 				98312BEE1CBB6B50002E1C83 /* libPPPP_API_64.a in Frameworks */,
-				C2DCFDF11C3E4DA4005A8368 /* libsqlite3.0.tbd in Frameworks */,
 				C2EC1CA21C2BC9E9005030FC /* AVFoundation.framework in Frameworks */,
 				98312AE01CBB52F4002E1C83 /* libssl.a in Frameworks */,
 				98312BEB1CBB6B50002E1C83 /* libavfilter.a in Frameworks */,
@@ -1373,10 +1398,13 @@
 				98312ADF1CBB52F4002E1C83 /* libcrypto.a in Frameworks */,
 				98036A561C3BB02B00634FB0 /* VideoToolbox.framework in Frameworks */,
 				98312BED1CBB6B50002E1C83 /* libavutil.a in Frameworks */,
+				984A08EC1CD8618000935967 /* libpingpp+network.a in Frameworks */,
 				98312BF01CBB6B50002E1C83 /* libswscale.a in Frameworks */,
+				984A08ED1CD8618000935967 /* libpingppcore.a in Frameworks */,
+				984A08EA1CD8618000935967 /* AlipaySDK.framework in Frameworks */,
+				984A08EE1CD8618000935967 /* libpingpp+one.a in Frameworks */,
 				98036A541C3BB02400634FB0 /* CoreMedia.framework in Frameworks */,
 				98312BEF1CBB6B50002E1C83 /* libswresample.a in Frameworks */,
-				98036A521C3BB01D00634FB0 /* SystemConfiguration.framework in Frameworks */,
 				98312AC91CBB52F4002E1C83 /* libEZOpenSDK.a in Frameworks */,
 				98312BEA1CBB6B50002E1C83 /* libavdevice.a in Frameworks */,
 				98036A501C3BB01200634FB0 /* MobileCoreServices.framework in Frameworks */,
@@ -1385,6 +1413,7 @@
 				98036A4C1C3BAFFB00634FB0 /* libstdc++.6.0.9.tbd in Frameworks */,
 				98B8A3A11C1815FF00A584D3 /* libc++.tbd in Frameworks */,
 				98312BE91CBB6B50002E1C83 /* libavcodec.a in Frameworks */,
+				984A08EB1CD8618000935967 /* libpingpp+alipay.a in Frameworks */,
 				C29D91D71C3F4938008B49E4 /* Alamofire.framework in Frameworks */,
 				98B8A39F1C1815E700A584D3 /* libz.tbd in Frameworks */,
 				C2DCFDE81C3E4C24005A8368 /* SQLite.framework in Frameworks */,
@@ -1498,6 +1527,7 @@
 		98076E6E1CD33353007394A1 /* mall */ = {
 			isa = PBXGroup;
 			children = (
+				984A08D91CD8618000935967 /* lib */,
 				98076E6F1CD33353007394A1 /* CommentTableViewCell.swift */,
 				98076E701CD33353007394A1 /* CommentTableViewCell.xib */,
 				98076E711CD33353007394A1 /* CommodityImgTableViewCell.swift */,
@@ -1578,6 +1608,9 @@
 		980A92E91C17B440009166D0 = {
 			isa = PBXGroup;
 			children = (
+				984A08F01CD8628A00935967 /* libsqlite3.tbd */,
+				984A08D71CD852A000935967 /* Security.framework */,
+				984A08D51CD8527700935967 /* CFNetwork.framework */,
 				98B1633C1CCDC6CF00CB8DC9 /* CoreLocation.framework */,
 				98312C1F1CBB72F9002E1C83 /* libiconv.tbd */,
 				98312C1D1CBB72DD002E1C83 /* libbz2.tbd */,
@@ -2348,6 +2381,63 @@
 			path = "摄像头列表";
 			sourceTree = "<group>";
 		};
+		984A08D91CD8618000935967 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				984A08DA1CD8618000935967 /* Channels */,
+				984A08DF1CD8618000935967 /* Dependencies */,
+				984A08E31CD8618000935967 /* libpingppcore.a */,
+				984A08E41CD8618000935967 /* One */,
+				984A08E71CD8618000935967 /* Pingpp.bundle */,
+				984A08E81CD8618000935967 /* Pingpp.h */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		984A08DA1CD8618000935967 /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				984A08DB1CD8618000935967 /* Alipay */,
+			);
+			path = Channels;
+			sourceTree = "<group>";
+		};
+		984A08DB1CD8618000935967 /* Alipay */ = {
+			isa = PBXGroup;
+			children = (
+				984A08DC1CD8618000935967 /* AlipaySDK.bundle */,
+				984A08DD1CD8618000935967 /* AlipaySDK.framework */,
+				984A08DE1CD8618000935967 /* libpingpp+alipay.a */,
+			);
+			path = Alipay;
+			sourceTree = "<group>";
+		};
+		984A08DF1CD8618000935967 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				984A08E01CD8618000935967 /* Network */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		984A08E01CD8618000935967 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				984A08E11CD8618000935967 /* libpingpp+network.a */,
+				984A08E21CD8618000935967 /* PingppURLResponse.h */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		984A08E41CD8618000935967 /* One */ = {
+			isa = PBXGroup;
+			children = (
+				984A08E51CD8618000935967 /* libpingpp+one.a */,
+				984A08E61CD8618000935967 /* Pingpp+One.h */,
+			);
+			path = One;
+			sourceTree = "<group>";
+		};
 		984DE7881C48CD6E00D7A76C /* cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3101,6 +3191,7 @@
 				98076EE11CD33353007394A1 /* Tools.png in Resources */,
 				98076E551CD300B7007394A1 /* micro_on.png in Resources */,
 				98076E4A1CD300B7007394A1 /* ico1.png in Resources */,
+				984A08E91CD8618000935967 /* AlipaySDK.bundle in Resources */,
 				C24FD2A61C18043700B16BF2 /* LoginVC.xib in Resources */,
 				9847F0931C194F09005D72A9 /* InfoPlist.strings in Resources */,
 				98076E4C1CD300B7007394A1 /* ico3.png in Resources */,
@@ -3144,6 +3235,7 @@
 				98076E481CD300B7007394A1 /* audio.png in Resources */,
 				98040FC51CBF29C400BBF1B3 /* Icon-Spotlight-40@3x.png in Resources */,
 				98076EC11CD33353007394A1 /* ty1.png in Resources */,
+				984A08EF1CD8618000935967 /* Pingpp.bundle in Resources */,
 				9803CFFB1C4729CF00170051 /* HomeTopView.xib in Resources */,
 				98040FBD1CBF29C400BBF1B3 /* Icon-iPadPro@2x.png in Resources */,
 				98076EC01CD33353007394A1 /* PurchaseTableViewCell.xib in Resources */,
@@ -3587,7 +3679,10 @@
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Alipay",
+				);
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = SmartHome/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -3599,6 +3694,22 @@
 					"$(PROJECT_DIR)/SmartHome/Sections/Home/云摄像头/Venders/openssl/lib",
 					"$(PROJECT_DIR)/SmartHome/Sections/Home/云摄像头/Venders",
 					"$(PROJECT_DIR)/SmartHome/Sections/Home/云摄像头/Venders/ezviz_ios_sdk",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Alipay",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/ApplePay",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Bfb/Dependencies/ASIHttpRequest",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Bfb/Dependencies/BaiduMobStat/BaiduMobStat",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Bfb/Dependencies/BaiduMobStat",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Bfb/Dependencies/JSONKit",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Bfb/Dependencies/SDWebImage",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Bfb",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Cnp",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Fqlpay",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Qgbc",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/UnionPay",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Wx",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Dependencies/Network",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/One",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.smart.zszj0;
@@ -3619,7 +3730,10 @@
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Alipay",
+				);
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = SmartHome/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -3631,6 +3745,22 @@
 					"$(PROJECT_DIR)/SmartHome/Sections/Home/云摄像头/Venders/openssl/lib",
 					"$(PROJECT_DIR)/SmartHome/Sections/Home/云摄像头/Venders",
 					"$(PROJECT_DIR)/SmartHome/Sections/Home/云摄像头/Venders/ezviz_ios_sdk",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Alipay",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/ApplePay",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Bfb/Dependencies/ASIHttpRequest",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Bfb/Dependencies/BaiduMobStat/BaiduMobStat",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Bfb/Dependencies/BaiduMobStat",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Bfb/Dependencies/JSONKit",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Bfb/Dependencies/SDWebImage",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Bfb",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Cnp",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Fqlpay",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Qgbc",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/UnionPay",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Channels/Wx",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/Dependencies/Network",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib",
+					"$(PROJECT_DIR)/SmartHome/Sections/mall/lib/One",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.smart.zszj0;
