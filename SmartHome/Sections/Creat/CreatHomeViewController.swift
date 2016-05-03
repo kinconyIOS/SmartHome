@@ -160,13 +160,17 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     @IBAction func handleAddFloor(sender: UIButton) {
-       
-        let floor = Building(buildType: .BuildFloor, buildName: "\(floorArr[floorArr.count-1].buildName)_1", isAddCell: false)
-        floorArr.append(floor)
-        dataSource.append(floor)
+        var floor:Building?
+        if floorArr.count == 0{
+         floor = Building(buildType: .BuildFloor, buildName: "楼层", isAddCell: false)
+        }else{
+         floor = Building(buildType: .BuildFloor, buildName: "\(floorArr[floorArr.count-1].buildName)_1", isAddCell: false)
+        }
+        floorArr.append(floor!)
+        dataSource.append(floor!)
         let add = Building(buildType: .BuildRoom, buildName: "添加", isAddCell: true)
         add.floor = floor
-        roomDic[floor.buildName] = [add]
+        roomDic[floor!.buildName] = [add]
 //        tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: dataSource.count - 1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Bottom)
         tableView.reloadData()
     }
@@ -355,10 +359,16 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         let building = dataSource[indexPath.row]
         if building.isAddCell {
             let roomArr = roomDic[building.floor!.buildName]
-            let build = Building(buildType: .BuildRoom, buildName: "\(roomArr![roomArr!.count-2].buildName)_1", isAddCell: false)
-            build.floor = building.floor
-            roomDic[building.floor!.buildName]?.insert(build, atIndex: (roomDic[building.floor!.buildName]?.endIndex)! - 1)
-            dataSource.insert(build, atIndex: indexPath.row)
+            var build:Building?
+            if roomArr!.count == 1{
+                 build = Building(buildType: .BuildRoom, buildName: "房间", isAddCell: false)
+            }else {
+                 build = Building(buildType: .BuildRoom, buildName: "\(roomArr![roomArr!.count-2].buildName)_1", isAddCell: false)
+            }
+          
+            build!.floor = building.floor
+            roomDic[building.floor!.buildName]?.insert(build!, atIndex: (roomDic[building.floor!.buildName]?.endIndex)! - 1)
+            dataSource.insert(build!, atIndex: indexPath.row)
 //            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row, inSection: indexPath.section)], withRowAnimation: UITableViewRowAnimation.Fade)
             self.tableView.reloadData()
         }
