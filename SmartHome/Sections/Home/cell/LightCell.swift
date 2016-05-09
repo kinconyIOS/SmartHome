@@ -31,6 +31,7 @@ class LightCell: UITableViewCell {
     }
     
     func setModel(e:Equip){
+        
         self.equip = e
         self.nameLabel.text = e.name
         //let num =  Int( (equip?.num)!)! + 100

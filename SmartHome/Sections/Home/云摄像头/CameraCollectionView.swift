@@ -10,6 +10,7 @@ import UIKit
 
 class CameraCollectionView: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
+    var roomCode = ""
     var dataSource = []
     var currentPageIndex = 0
     var needRefresh = true
@@ -32,9 +33,13 @@ class CameraCollectionView: UIViewController {
             self.currentPageIndex = 0;
             print("刷新界面")
             EZOpenSDK.getCameraList(self.currentPageIndex++, pageSize: 10, completion: { (cameraList, error) -> Void in
+                if cameraList == nil{
+                     self.collectionView.header.endRefreshing()
+                return
+                }
                 self.dataSource = []
-                 print("得到结果")
-                print("cameraList.count==\(cameraList.count)")
+                print("得到结果 %@",cameraList)
+               
                 self.dataSource = cameraList
                  print(" self.dataSource.count==\( self.dataSource.count)")
                 self.collectionView.reloadData()
@@ -45,6 +50,10 @@ class CameraCollectionView: UIViewController {
         self.collectionView.addLegendFooterWithRefreshingBlock { () -> Void in
           
             EZOpenSDK.getCameraList(self.currentPageIndex++, pageSize: 10, completion: { (cameraList, error) -> Void in
+                if cameraList == nil{
+                     self.collectionView.header.endRefreshing()
+                    return
+                }
                 if self.dataSource.count == 0
                 {
                     self.collectionView.footer.hidden = true;
@@ -57,30 +66,10 @@ class CameraCollectionView: UIViewController {
             
 
         }
-        self.loadEZplay();
-                   // Do any additional setup after loading the view.
+       
+        // Do any additional setup after loading the view.
     }
-    func loadEZplay() {
-        //加载视频
-        print("加载视频")
-        if(GlobalKit.shareKit().accessToken != nil)
-        {
-            EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
-            print("加载已存在的AT")
-        }
-        else
-        {
-            dispatch_after(UInt64(1), dispatch_get_main_queue(), { () -> Void in
-                EZOpenSDK.openLoginPage({ (accessToken:EZAccessToken!) -> Void in
-                    
-                    GlobalKit.shareKit().accessToken=accessToken.accessToken
-                   
-                })
-            })
-        }
-        
-    }
-    override func viewWillAppear(animated: Bool) {
+       override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if (self.needRefresh)
         {
@@ -111,12 +100,32 @@ class CameraCollectionView: UIViewController {
     //    #pragma mark --UICollectionViewDelegate
     //UICollectionView被选中时调用的方法
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let ez = dataSource[indexPath.row] as! EZCameraInfo
+        let equip = Equip(equipID: ez.cameraId)
+        equip.name = ez.cameraName
+        equip.type = "101"
+        equip.icon = "list_camera"
+        equip.roomCode = self.roomCode
+        equip.num = ""
+        let dict = ["roomCode":equip.roomCode,
+            "deviceAddress":equip.equipID,
+            "nickName":equip.name,
+            "ico":"list_camera",
+            "deviceType":equip.type,
+            "deviceCode":"commonsxt"];
+        BaseHttpService.sendRequestAccess(addEq_do, parameters: dict) { (anyObject) -> () in
+            equip.saveEquip()
+            showMsg("添加成功")
+        }
+ 
+
         // 点击进入摄像头详情界面
-                let storyBoard=UIStoryboard(name: "EZMain", bundle: nil);
-        let ezlive:EZLivePlayViewController = storyBoard.instantiateViewControllerWithIdentifier("EZLivePlayViewController") as! EZLivePlayViewController
-        ezlive.cameraId = (dataSource[indexPath.row] as! EZCameraInfo).cameraId
-                ezlive.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(ezlive, animated: true)
+//        let storyBoard=UIStoryboard(name: "EZMain", bundle: nil);
+//        let ezlive:EZLivePlayViewController = storyBoard.instantiateViewControllerWithIdentifier("EZLivePlayViewController") as! EZLivePlayViewController
+//        ezlive.cameraId = (dataSource[indexPath.row] as! EZCameraInfo).cameraId
+//        ezlive.hidesBottomBarWhenPushed = true
+//        self.navigationController?.pushViewController(ezlive, animated: true)
     }
     
     //返回这个UICollectionView是否可以被选择

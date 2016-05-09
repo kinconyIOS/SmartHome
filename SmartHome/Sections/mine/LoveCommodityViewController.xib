@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoveCommodityViewController" customModule="SmartHome" customModuleProvider="target">
             <connections>
+                <outlet property="JSView" destination="TTz-a0-N1a" id="tST-O1-gof"/>
                 <outlet property="but" destination="vuj-To-W6F" id="wWM-de-LgG"/>
                 <outlet property="money" destination="yOf-1X-TKj" id="PVr-iO-xyz"/>
                 <outlet property="tableView" destination="sbe-wK-5tT" id="mlZ-W5-IEU"/>
@@ -45,6 +46,10 @@
                             <state key="normal" title="结算()">
                                 <color key="titleColor" red="0.98425615047364978" green="1" blue="0.98338683552931694" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="jie:" destination="-1" eventType="touchUpInside" id="u7s-UH-fir"/>
+                                <action selector="jiesuan:" destination="-1" eventType="touchUpOutside" id="OeW-1L-hsK"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktr-GI-2Rp">
                             <rect key="frame" x="13" y="18" width="47" height="29"/>
@@ -53,7 +58,7 @@
                                 <constraint firstAttribute="height" constant="29" id="PFK-cT-aW4"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>

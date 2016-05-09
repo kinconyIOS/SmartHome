@@ -14,23 +14,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ast-Xk-yCD">
-                        <rect key="frame" x="4" y="4" width="42" height="42"/>
+                        <rect key="frame" x="3" y="3" width="44" height="44"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" backgroundImage="红外线"/>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="Ast-Xk-yCD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="GUr-5j-dh7"/>
-                <constraint firstAttribute="bottom" secondItem="Ast-Xk-yCD" secondAttribute="bottom" constant="4" id="a67-Se-v33"/>
-                <constraint firstAttribute="trailing" secondItem="Ast-Xk-yCD" secondAttribute="trailing" constant="4" id="oOC-tF-dkP"/>
-                <constraint firstItem="Ast-Xk-yCD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="xPq-aa-5EK"/>
+                <constraint firstAttribute="trailing" secondItem="Ast-Xk-yCD" secondAttribute="trailing" constant="3" id="6tP-jl-RE0"/>
+                <constraint firstAttribute="bottom" secondItem="Ast-Xk-yCD" secondAttribute="bottom" constant="3" id="Kof-BR-pvs"/>
+                <constraint firstItem="Ast-Xk-yCD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="kId-QR-4aC"/>
+                <constraint firstItem="Ast-Xk-yCD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="krr-4j-pfZ"/>
             </constraints>
             <size key="customSize" width="51" height="50"/>
             <connections>
                 <outlet property="but" destination="Ast-Xk-yCD" id="veb-zf-xfw"/>
             </connections>
-            <point key="canvasLocation" x="1027" y="428"/>
+            <point key="canvasLocation" x="687" y="323"/>
         </collectionViewCell>
     </objects>
     <resources>

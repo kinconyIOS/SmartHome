@@ -67,7 +67,7 @@
             NSDictionary *dict = @{@"roomCode":self.roomCode,
                                    @"deviceAddress":self.deviceAddress.text,
                                    @"nickName":@"",
-                                   @"ico":@"",
+                                   @"ico":@"list_camera",
                                    @"deviceType":@"100",
                                    @"deviceCode":@"commonsxt"};
             __weak typeof(self) weakSelf = self;

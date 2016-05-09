@@ -11,14 +11,14 @@ import Foundation
 //    return lhs.hashValue == rhs.hashValue
 //}
 class Equip : NSObject{
-    let equipID: String
+    var equipID: String //
     var hostDeviceCode: String = "unload"
     var userCode: String = ""
     var roomCode: String = ""
     var name: String = ""
-    var type: String = ""
+    var type: String = ""//99
     var icon: String = ""
-    var num:String = ""
+    var num:String = ""//yanzhengma
      var status:String = ""
     init(equipID: String) {
         self.equipID = equipID

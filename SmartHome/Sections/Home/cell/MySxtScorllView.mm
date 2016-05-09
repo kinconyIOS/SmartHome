@@ -21,14 +21,23 @@
 #import "HTCameraStatus.h"
 #import "HTPlayCamerViewController.h"
 #import "UIImageView+WebCache.h"
-
-@interface MySxtScorllView()<UIScrollViewDelegate>
+///
+#import "EZOpenSDK.h"
+#import "UIViewController+EZBackPop.h"
+#import "EZDeviceInfo.h"
+#import "EZPlayer.h"
+#import "DDKit.h"
+#import "Masonry.h"
+#import "HIKLoadView.h"
+///
+#import "SmartHome-Swift.h"
+@interface MySxtScorllView()<UIScrollViewDelegate,EZPlayerDelegate>
 @property (strong, nonatomic)  UIScrollView *scrollView;
 @property  CPPPPChannelManagement* m_PPPPChannelMgt;
 @property (nonatomic, retain) NSCondition *m_PPPPChannelMgtCondition;
 @property (retain, nonatomic) UIPageControl *pageControl;
 @property (nonatomic,strong) NSMutableArray <UIImageView *> *players;
-
+@property (nonatomic, strong) NSMutableArray<EZPlayer *> *ezplayer;
 @property (nonatomic, retain) NSMutableArray *camstatus;
 @end
 @implementation MySxtScorllView
@@ -49,6 +58,7 @@
 -(void)configView:(CGRect)frame
 {
     _players = [NSMutableArray array];
+    _ezplayer = [NSMutableArray array];
     //设置scrollview
     _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width,frame.size.height)];
      //初始化pageControl
@@ -70,7 +80,10 @@
         dispatch_apply([self.dataArray count], queue, ^(size_t index){
             HTCameras *cam = [HTCameras new];
             cam = [self.dataArray objectAtIndex:index];
-            [self ConnectCam:cam.ID user:cam.Name psw:cam.PassWord];
+            if ([cam.deviceType isEqualToString:@"100"]) {
+              [self ConnectCam:cam.ID user:cam.Name psw:cam.PassWord];
+            }
+          
         });
     });
 
@@ -128,6 +141,14 @@
         playView.layer.masksToBounds=YES;
         [_scrollView addSubview:playView];
         [_players addObject:playView];
+        if ([equip.deviceType isEqualToString:@"101"]) {
+            EZPlayer *player = [EZPlayer createPlayerWithCameraId:equip.ID];
+            player.delegate = self;
+            [player setPlayerView:playView];
+            [player startRealPlay];
+            [_ezplayer addObject:player];
+            NSLog(@"创建了EZ");
+        }
        
         //下一张视图的x坐标:offset为:self.scrollView.frame.size.width.
         originX += (self.scrollView.frame.size.width);
@@ -150,14 +171,31 @@
 {
     //单指双击
     HTCameras *cam4 = [self.dataArray objectAtIndex:sender.view.tag];
-   
+    if ([cam4.deviceType isEqualToString:@"101"]) {
+     
+        // 点击进入摄像头详情界面
+        UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"EZMain" bundle:nil];
+        EZLivePlayViewController * ezlive =(EZLivePlayViewController *) [storyBoard instantiateViewControllerWithIdentifier:@"EZLivePlayViewController"];
+         ezlive.cameraId = cam4.ID;
+         ezlive.hidesBottomBarWhenPushed = YES;
+       [[self parentController].navigationController pushViewController: ezlive animated:YES];
+    }else{
+    
         [self.delegate passTouch:@{@"cameraID":cam4.ID,@"username":@"admin",@"password": cam4.PassWord}];
         
-   
+    }
         NSLog(@"单指双击%d",sender.view.tag);
 }
-
-
+   - (UIViewController *)parentController
+        {
+            for (UIView* next = [self superview]; next; next = next.superview) {
+                UIResponder* nextResponder = [next nextResponder];
+                if ([nextResponder isKindOfClass:[HomeVC class]]) {
+                    return (UIViewController*)nextResponder;
+                }
+            }
+            return nil;
+    }
     
 
 
@@ -312,9 +350,74 @@
     _m_PPPPChannelMgt->StopPPPPLivestream([caid UTF8String]);
 }
 - (void)doBack {
-    _m_PPPPChannelMgt->StopAll();
+    if (_players.count - _ezplayer.count > 0) {
+        _m_PPPPChannelMgt->StopAll();
+    }
+    for(EZPlayer * player in _ezplayer){
+        [EZOpenSDK releasePlayer:player];
+        
+    }
+    
 }
 
+///#pragma mark - PlayerDelegate Methods
+
+- (void)player:(EZPlayer *)player didPlayFailed:(NSError *)error
+{
+    NSLog(@"player = %@, error = %@",player, error.userInfo[@"NSLocalizedDescription"]);
+    if ([error.userInfo[@"NSLocalizedDescription"] isEqualToString:@"https error code = 10002"]) {
+    
+//        [BaseHttpService sendRequestAccess:@"http://120.27.137.65/smarthome.IMCPlatform/xingUser/gainfluoriteaccesstoken.action" parameters:@{} success:^(id json) {
+//            NSString * ezToken = json[@"data"][@"ez_token"];
+//          
+//            [GlobalKit shareKit].accessToken = [ezToken isEqualToString:@"NO_BUNDING"]?nil :ezToken;
+//              NSLog(@"%@", [GlobalKit shareKit].accessToken);
+//            [EZOpenSDK setAccessToken: [GlobalKit shareKit].accessToken];
+//            if (![ezToken isEqualToString:@"NO_BUNDING"]) {
+//                [player startRealPlay];
+//            }
+//            
+//        }];
+    }
+}
+
+- (void)player:(EZPlayer *)player didReceviedMessage:(NSInteger)messageCode
+{
+    if(messageCode == PLAYER_REALPLAY_START)
+    {
+            }
+    else if (messageCode == PLAYER_NEED_VALIDATE_CODE)
+    {
+        //终端安全验证
+        [EZOpenSDK getSMSCode:EZSMSTypeSecure completion:^(NSError *error) {
+            if(!error)
+            {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"安全验证" message:@"请输入安全手机号码收到的安全验证短信内容" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+                [alertView show];
+            }
+        }];
+    }
+}
+#pragma mark - UIAlertViewDelegate Methods
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        NSString *smsCode = [alertView textFieldAtIndex:0].text;
+        //验证输入的安全短信验证码
+        [EZOpenSDK secureSmsValidate:smsCode completion:^(NSError *error) {
+            if (!error)
+            {
+                for(EZPlayer * player in _ezplayer){
+
+                 [player startRealPlay];
+                }
+            }
+        }];
+    }
+}
 
 
 

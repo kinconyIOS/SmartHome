@@ -60,11 +60,10 @@ class EquipTypeChoseTVC: UITableViewController {
             break
         case 1:
             let equipAddVC = RedEquipAddVC()
-            equipAddVC.equip = Equip(equipID: randomCode())
-            equipAddVC.equip?.num = "1"
-            equipAddVC.equip?.roomCode = self.roomCode!
+            
+            equipAddVC.roomCode = self.roomCode!
             equipAddVC.NameText = "红外设备"
-            equipAddVC.EquType = indexPath.row
+            
             equipAddVC.hidesBottomBarWhenPushed=true
             self.navigationController?.pushViewController(equipAddVC, animated:true)
             break

@@ -9,17 +9,32 @@
 import UIKit
 
 class LoveCommodityViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+    @IBOutlet weak var JSView: UIView!
+    @IBAction func jie(sender: AnyObject) {
+        let view1 = PurchaseViewController(nibName:"PurchaseViewController",bundle: nil)
+        // view1.coID[0] = (self.coID! as NSNumber).stringValue
+        for var i = 0;i < self.love.count;++i{
+            let mon=(self.love[i]["ids"] as? Int)
+            view1.coID.append((mon! as NSNumber).stringValue)
+        }
+        view1.mo = Float(mone)
+        self.navigationController?.pushViewController(view1, animated: true)
+    }
     @IBOutlet weak var tableView: UITableView!
     var cell:CommodityTableViewCell?
     var strName:String!
     var commodity:CommodityTableViewCell!
     //收藏 数据源
-    
     var love = []
     //显示钱数
     @IBOutlet weak var money: UILabel!
-    
-    //结算
+    var mone = 0.00
+    @IBAction func jiesuan(sender: AnyObject) {
+        
+    }
+    //判断点击已购 购物车
+    var bool:Int = 1
+    //结算按钮
     @IBOutlet weak var but: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +54,6 @@ class LoveCommodityViewController: UIViewController,UITableViewDataSource,UITabl
         segmented.insertSegmentWithTitle("购物车", atIndex: 1, animated: true)
         segmented.tintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         segmented.selectedSegmentIndex = 1
-        
        // segmented.momentary = false
         segmented.multipleTouchEnabled = false
         segmented.addTarget(self, action: Selector("Selectbutton:"), forControlEvents:UIControlEvents.ValueChanged)
@@ -50,11 +64,11 @@ class LoveCommodityViewController: UIViewController,UITableViewDataSource,UITabl
             if response.count != 0{
                 self.love=(response as? NSArray)!
                 self.but.setTitle("结算(\(self.love.count))", forState: UIControlState.Normal)
-                var mone = 0.00
+                
                 for var i = 0;i < self.love.count;++i{
                     let mon=(self.love[i]["goodsPrice"] as? NSString)?.doubleValue
-                    mone = mon! + mone
-                    self.money.text=String(format: "%.1f", mone)
+                    self.mone = mon! + self.mone
+                    self.money.text=String(format: "%.2f", self.mone)
                 }
             }
         
@@ -67,12 +81,25 @@ class LoveCommodityViewController: UIViewController,UITableViewDataSource,UITabl
     //选择购物车 已购
     func Selectbutton(but:UISegmentedControl){
         if but.selectedSegmentIndex == 0{
-            self.love=[]
-            self.tableView.reloadData()
+            
+            self.bool = 0
+            self.JSView.hidden = true
+            BaseHttpService .sendRequestAccess(Get_gainuserorder, parameters:["":""]) { (response) -> () in
+                print(response)
+                if response.count != 0{
+                    self.love=(response as? NSArray)!
+                    self.tableView.reloadData()
+                }else{
+                    self.love = []
+                    self.tableView.reloadData()
+                }
+            }
         print(0)
         }else {
         print(1)
             //----获取数据
+            self.bool = 1
+            self.JSView.hidden = false
             BaseHttpService .sendRequestAccess(Set_QueryShopping, parameters:["":""]) { (response) -> () in
                 print(response)
                 if response.count != 0{
@@ -84,9 +111,12 @@ class LoveCommodityViewController: UIViewController,UITableViewDataSource,UITabl
                         mone = mon! + mone
                         self.money.text=String(format: "%.1f", mone)
                     }
-
+                    self.tableView.reloadData()
+                }else{
+                    self.love = []
+                    self.tableView.reloadData()
                 }
-                self.tableView.reloadData()
+              
             }
         }
 
@@ -105,34 +135,60 @@ class LoveCommodityViewController: UIViewController,UITableViewDataSource,UITabl
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         cell = tableView.dequeueReusableCellWithIdentifier("Commod") as? CommodityTableViewCell
-        let str = imgUrl+(love[indexPath.row]["picturesShow"]as!String)
-        print("\(str)")
-        cell?.commodityImg.sd_setImageWithURL(NSURL(string: str))
-        cell?.commodityImg?.contentMode = UIViewContentMode.ScaleToFill
-        cell!.commdityID = love[indexPath.row]["id"] as!Int
-        //            if ((index1["salesVolumeDegree"] as? Int) != 0)
-        //            {
-        //                cell?.aaa.hidden = true
-        //            }
-        if (love[indexPath.row]["salesVolumeDegree"] as? String) != "0"{
+        if self.bool == 1{
+            let str = imgUrl+(love[indexPath.row]["picturesShow"]as!String)
+            print("\(str)")
+            cell?.commodityImg.sd_setImageWithURL(NSURL(string: str))
+            cell?.commodityImg?.contentMode = UIViewContentMode.ScaleToFill
+            cell!.commdityID = love[indexPath.row]["id"] as!Int
+            //            if ((index1["salesVolumeDegree"] as? Int) != 0)
+            //            {
+            //                cell?.aaa.hidden = true
+            //            }
+            if (love[indexPath.row]["salesVolumeDegree"] as? String) != "0"{
+                cell?.aaa.hidden = true
+            }
+            cell?.commdityIntroduce.text = love[indexPath.row]["goodsIntroduce"] as? String
+            cell?.commdityName.text = love[indexPath.row]["goodsTitle"] as? String
+            cell?.commdityPrice.text = love[indexPath.row]["goodsPrice"] as? String
+            cell!.selectionStyle = UITableViewCellSelectionStyle.None
+            cell!.commdityFollow.hidden = true
+            //cell?.myClosure = somsomeFunctionThatTakesAClosure
+        }else{
+            let str = imgUrl+(love[indexPath.row]["picturesShow"]as!String)
+            print("\(str)")
+            cell?.commodityImg.sd_setImageWithURL(NSURL(string: str))
+            cell?.commodityImg?.contentMode = UIViewContentMode.ScaleToFill
+            cell!.commdityID = love[indexPath.row]["orderId"] as!Int
+            //            if ((index1["salesVolumeDegree"] as? Int) != 0)
+            //            {
+            //                cell?.aaa.hidden = true
+            //            }
             cell?.aaa.hidden = true
+            cell?.commdityIntroduce.text = love[indexPath.row]["goodsIntroduce"] as? String
+            cell?.commdityName.text = love[indexPath.row]["goodsTitle"] as? String
+            cell?.commdityPrice.text = love[indexPath.row]["tradeMoney"] as? String
+            cell!.selectionStyle = UITableViewCellSelectionStyle.None
+            cell!.commdityFollow.hidden = true
         }
-        cell?.commdityIntroduce.text = love[indexPath.row]["goodsIntroduce"] as? String
-        cell?.commdityName.text = love[indexPath.row]["goodsTitle"] as? String
-        cell?.commdityPrice.text = love[indexPath.row]["goodsPrice"] as? String
-        cell!.selectionStyle = UITableViewCellSelectionStyle.None
-        cell!.commdityFollow.hidden = true
-        //cell?.myClosure = somsomeFunctionThatTakesAClosure
+
 
         return cell!
 
     }
     //点击事件
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let view1:DetailsViewController=DetailsViewController(nibName: "DetailsViewController", bundle: nil)
-        view1.hidesBottomBarWhenPushed=true
-        view1.coID = love[indexPath.row]["ids"]as?Int
-        self.navigationController?.pushViewController(view1, animated: true)
+        if bool == 1{
+            let view1:DetailsViewController=DetailsViewController(nibName: "DetailsViewController", bundle: nil)
+            view1.hidesBottomBarWhenPushed=true
+            view1.coID = love[indexPath.row]["ids"]as?Int
+            self.navigationController?.pushViewController(view1, animated: true)
+        }else{
+            let view1 = OrderDetailsViewController(nibName:"OrderDetailsViewController",bundle: nil)
+            view1.orderId = love[indexPath.row]["orderId"]as?Int
+             self.navigationController?.pushViewController(view1, animated: true)
+        }
+
         
         }
     //行高
@@ -153,11 +209,11 @@ class LoveCommodityViewController: UIViewController,UITableViewDataSource,UITabl
                 if response.count != 0{
                     self.love=(response as? NSArray)!
                     self.but.setTitle("结算(\(self.love.count))", forState: UIControlState.Normal)
-                    var mone = 0.00
+                    self.mone = 0.00
                     for var i = 0;i < self.love.count;++i{
                         let mon=(self.love[i]["goodsPrice"] as? NSString)?.doubleValue
-                        mone = mon! + mone
-                        self.money.text=String(format: "%.1f", mone)
+                        self.mone = mon! + self.mone
+                        self.money.text=String(format: "%.2f", self.mone)
                     }
                 }
                 else{

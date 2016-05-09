@@ -12,18 +12,26 @@ import UIKit
 class InfraredViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,pusView{
 
     //代理
-    func pus() {
-        //从xib拉去
-//        let indvc:AlterViewController=AlterViewController(nibName: "AlterViewController", bundle: nil)
-//        indvc.alteText = "添加红外线";
-//        indvc.textName = ""
-//        //将当前someFunctionThatTakesAClosure函数指针传到第二个界面，第二个界面的闭包拿到该函数指针后会进行回调该函数
-//        indvc.myClosure = somsomeFunctionThatTakesAClosure1
-        //self.navigationController!.pushViewController(indvc, animated:true)
+    
+    func pus(id:Int) {
+        let ss = String(self.swif)
+        let parameters = ["deviceAddress":self.Address!,
+                        "isStudy":ss,
+                        "infraredButtonsValuess":String(id)]
+        print(parameters)
+        BaseHttpService .sendRequestAccess(studyandcommand, parameters:parameters) { [unowned self](response) -> () in
+            print(response)
+        }
     }
     //modeltag
-    var strArr:[String] = ["0","1","2","3"]
+    var strArr:[String] = []//数据按钮名
     var cellArr = []
+    //按钮 value
+    var IntArr:[Int] = []
+    //判断默认学习控制 默认值 0默认学习
+    var swif:Int = 0
+    //空值的设备地址
+    var Address:String?
     @IBOutlet weak var MyCollection: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,20 +44,33 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
 
         //导航栏右边按钮
         self.navigationItem.rightBarButtonItems = self.barButton() as? [UIBarButtonItem]
-        
+
     }
 
     func inconAction(sender:UISwitch){
         if sender.on
         {
         print("open")
+            //控 1
+            self.swif = 1
         }
         else
         {
         print("close")
+            //学 0
+             self.swif = 0
         }
     }
-
+    func WillAppear(){
+        strArr = []
+        IntArr = []
+        //获取
+        for var i = 0;i<cellArr.count;++i{
+            strArr.append((cellArr[i]["infraredButtonsName"] as? String)!)
+            IntArr.append((cellArr[i]["infraredButtonsValues"] as! NSString).integerValue)
+        }
+        self.MyCollection.reloadData()
+    }
     func barButton()->NSArray{
         let item = UIBarButtonItem(customView: createButtonWithX(0, aSelector: Selector("inconAction:")))
       //  let negativeSeperator = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
@@ -59,6 +80,12 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
         let _switch = UISwitch()
     
         _switch.addTarget(self, action: aSelector, forControlEvents: UIControlEvents.ValueChanged)
+        if self.swif == 0{
+            _switch.setOn(false, animated: true)
+        }else {
+            _switch.setOn(true, animated: true)
+        }
+        
        // _switch.onTintColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1)
        
         let _label1 = UILabel(frame:CGRectMake(0,0,_switch.frame.size.width/2,_switch.frame.size.height));
@@ -74,9 +101,9 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
         
         _label2.font = UIFont.systemFontOfSize(12)
         _label2.text =  "学"
-       
+        
+        _switch.addSubview(_label2)
         _switch.addSubview(_label1)
-         _switch.addSubview(_label2)
         return _switch
     }
     //添加红外线 界面
@@ -86,6 +113,16 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
         indvc.alteText = "添加红外线";
         indvc.textName = ""
         //将当前someFunctionThatTakesAClosure函数指针传到第二个界面，第二个界面的闭包拿到该函数指针后会进行回调该函数
+        if cellArr.count != 0{
+            indvc.addr = self.Address
+            
+            indvc.inv = (cellArr[cellArr.count-1]["infraredButtonsValues"] as! NSString).integerValue
+        }else{
+            indvc.addr = self.Address
+            indvc.inv = 0
+        }
+
+        //------
         indvc.myClosure = somsomeFunctionThatTakesAClosure1
         self.navigationController!.pushViewController(indvc, animated:true)
         
@@ -93,8 +130,18 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
     //闭包函数 获取姓名
     func somsomeFunctionThatTakesAClosure1(string:String) -> Void{
         print(string)
-        strArr.append(string)
-        self.MyCollection.reloadData()
+        
+       // strArr.append(string)
+       // self.MyCollection.reloadData()
+        //红外线刷新
+        BaseHttpService .sendRequestAccess(Get_gaininfraredbuttonses, parameters:["deviceAddress":self.Address!]) { [unowned self](response) -> () in
+            print(response)
+            if response.count != 0{
+                self.cellArr = response as! NSArray
+                self.WillAppear()
+            }
+            
+        }
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -116,6 +163,16 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
         MyCollection.layer.cornerRadius = 24.0
         //注册消息点击添加红外线
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "addinf1:", name: "a", object: nil)
+        //红外线刷新
+        BaseHttpService .sendRequestAccess(Get_gaininfraredbuttonses, parameters:["deviceAddress":self.Address!]) { [unowned self](response) -> () in
+            print(response)
+            if response.count != 0{
+                self.cellArr = response as! NSArray
+                self.WillAppear()
+            }
+
+        }
+        
     }
     override func viewWillDisappear(animated: Bool) {
         print("tuochu")
@@ -128,7 +185,7 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
     
     //定义展示的UICollectionViewCell的个数
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return strArr.count+1;
+        return strArr.count+1
     }
     //定义展示的Section的个数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -142,33 +199,52 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
             cell?.but.setBackgroundImage(UIImage(imageLiteral: "红外线添加"), forState: UIControlState.Normal)
             cell?.but.setTitle("", forState: UIControlState.Normal)
             cell?.JudgeI = 1
-            cell?.delegate = self
+            
         }
         else{
-             let infCell1:Infrared = Infrared.init(aname: strArr[indexPath.row])
+             let infCell1:Infrared = Infrared.init(aname:strArr[indexPath.row], and: self.Address!)
             cell?.but.setBackgroundImage(UIImage(imageLiteral: "红外线"), forState: UIControlState.Normal)
             cell?.JudgeI = 0
-            cell?.tag = indexPath.row
+            cell?.tag = IntArr[indexPath.row]
+            print("\(cell?.tag)")
             cell!.myClosure = somsomeFunctionThatTakesAClosure
             cell?.xiugai = xiugai
             cell?.addLongPass()
             //cell?.but.titleLabel?.font = UIFont.systemFontOfSize(13.0)
             //cell?.but.setTitle(cellArr[indexPath.row], forState: UIControlState.Normal)
             cell?.setinf(infCell1)
-            
+            cell?.delegate = self
             
         }
         //cellArr.addObject(cell!)
        // cellArr.indexOfObject(cell!)
         return cell!
     }
-    //闭包函数
+    //闭包函数 删除
     func somsomeFunctionThatTakesAClosure(string:Int) -> Void{
         print(string)
-        //cellArr.removeObject(cellArr[string])
-        strArr.removeAtIndex(string)
+       // strArr.removeAtIndex(string)
+    
+        IntArr.removeAtIndex(IntArr.indexOf(string)!)
+        var i = 0
+            i = string
+        let dic = ["deviceAddress":self.Address!,
+            "infraredButtonsValuess":String(i)]
+        print(dic)
+        BaseHttpService.sendRequestAccess(Dele_deleteinfraredbuttonses, parameters:dic) { (response) -> () in
+            print(response)
+
+            //红外线刷新
+            BaseHttpService .sendRequestAccess(Get_gaininfraredbuttonses, parameters:["deviceAddress":self.Address!]) { [unowned self](response) -> () in
+                print(response)
+                if response.count != 0{
+                    self.cellArr = response as! NSArray
+                    self.WillAppear()
+                }
+            }
+            
+        }
         
-        MyCollection.reloadData()
     }
     
     //闭包函数修改

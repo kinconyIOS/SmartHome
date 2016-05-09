@@ -10,7 +10,9 @@ import UIKit
 
 class Infrared: NSObject {
     var name:String = ""
-    init(aname:String) {
+    var addr:String?
+    init(aname:String,and ad:String) {
         name = aname
+        addr = ad
     }
 }

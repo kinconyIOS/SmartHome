@@ -50,7 +50,7 @@
             NSDictionary *dict = @{@"roomCode":self.equip.roomCode,
                                    @"deviceAddress":self.equip.equipID,
                                    @"nickName":self.equip.name,
-                                   @"ico":@"",
+                                   @"ico":@"list_camera",
                                    @"deviceType":self.equip.type,
                                    @"deviceCode":@"commonsxt"};
             

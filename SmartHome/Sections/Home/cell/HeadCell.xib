@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="138"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_rainy" translatesAutoresizingMaskIntoConstraints="NO" id="HxY-5q-6zo">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_rainy" translatesAutoresizingMaskIntoConstraints="NO" id="HxY-5q-6zo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="138"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="465-pC-rUx">
@@ -45,6 +45,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="HxY-5q-6zo" secondAttribute="bottom" id="1sv-70-rzf"/>
+                    <constraint firstItem="HxY-5q-6zo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Sum-Pg-8Xs"/>
+                    <constraint firstAttribute="trailing" secondItem="HxY-5q-6zo" secondAttribute="trailing" id="W6s-MO-TQ7"/>
+                    <constraint firstItem="HxY-5q-6zo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fM7-tT-UJw"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="addressLabel" destination="465-pC-rUx" id="3zF-WZ-n7h"/>

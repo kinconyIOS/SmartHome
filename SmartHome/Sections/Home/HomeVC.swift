@@ -9,22 +9,28 @@
 import UIKit
 import Alamofire
 class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSXT{
-    let PLAYER_NEED_VALIDATE_CODE = -1   //播放需要安全验证
-    let PLAYER_REALPLAY_START     = 1    //直播开始
-    let PLAYER_VIDEOLEVEL_CHANGE  = 2    //直播流清晰度切换中
-    let PLAYER_STREAM_RECONNECT   = 3    //直播流取流正在重连
-    let PLAYER_PLAYBACK_START     = 11   //录像回放开始播放
-    let PLAYER_PLAYBACK_STOP      = 12   //录像回放结束播放
+//    let PLAYER_NEED_VALIDATE_CODE = -1   //播放需要安全验证
+//    let PLAYER_REALPLAY_START     = 1    //直播开始
+//    let PLAYER_VIDEOLEVEL_CHANGE  = 2    //直播流清晰度切换中
+//    let PLAYER_STREAM_RECONNECT   = 3    //直播流取流正在重连
+//    let PLAYER_PLAYBACK_START     = 11   //录像回放开始播放
+//    let PLAYER_PLAYBACK_STOP      = 12   //录像回放结束播放
+    
+    @IBOutlet var popView: UIView!
+    @IBOutlet var anfangCheck: UIButton!
+    var bgView:UIButton?
+    @IBOutlet var jiajuCheck: UIButton!
+    
     var showSXT:Bool = false
     var sideView:SZLSideView?
     var _btn:UIButton = UIButton(frame: CGRectMake(0,0,50,50))
+    
     var head  = 1
     var cameraId = ""
     var headCell:HeadCell?
-    let vfcode="at.6wm8ormqcy03shfib5yeb9yyah3r2cp4-171ujmx9ol-0oc00e3-seti9m9p5"
     var orientationLast:UIInterfaceOrientation?=UIInterfaceOrientation.Portrait
     var roomArray:[String]?=[]
-   // let  hscroll:HScrollView?=HScrollView.init()
+   // let  hscroll:HScrollView ?= HScrollView.init()
     var player:EZPlayer?
     
     var tableSideViewDataSource:NSMutableArray = NSMutableArray(capacity: 10)
@@ -39,7 +45,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         dark.hidden=true
         dark.backgroundColor=UIColor.blackColor()
         dark.alpha=0.3
-        dark.userInteractionEnabled=false
+        dark.userInteractionEnabled=true
         print("创建bg")
         
         return dark
@@ -53,7 +59,11 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         super.viewDidLoad()
         
        
-        
+        popView.frame = CGRectMake(0, 0, 280 * ScreenWidth/320, 280 * 5 * ScreenWidth / 320 / 7)
+        popView.center = CGPointMake(self.view.center.x, self.view.center.y - 70)
+        popView.layer.cornerRadius = 7.0
+        popView.layer.masksToBounds = true
+        jiajuCheck.selected = true
         configView()
         registerCell()
         MyLocationManager.sharedManager().callback={(str:String!)in
@@ -210,7 +220,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
 
         if rooms.count > 0 //当
         {
-            self.deviceDataSource = dataDeal.getEquipsByRoom(rooms[0])
+            self.deviceDataSource = dataDeal.getEquipsByRoomExceptSXT(rooms[0])
             sxtData = [Equip]()
             sxtData = dataDeal.searchSXTModel(byRoomCode: rooms[0].roomCode)
             
@@ -283,29 +293,29 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         sideView?.hidden = false
        
         
-//        self.drakBtn.frame=CGRectMake(0, 64, ScreenWidth,ScreenHeight)
-//        self.tabBarController!.view.addSubview(self.drakBtn)
+        self.drakBtn.frame=CGRectMake(0, 0, ScreenWidth,ScreenHeight)
+        self.view.addSubview(self.drakBtn)
         
         self.view.addSubview(sideView!)
         self.homeTableView.reloadData()
     }
     
-    func loadEZplay() {
-        //加载视频
-        if(GlobalKit.shareKit().accessToken != nil)
-        {
-            EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
-        }
-        else
-        {
-            dispatch_after(UInt64(1), dispatch_get_main_queue(), { () -> Void in
-                EZOpenSDK.openLoginPage({ (accessToken:EZAccessToken!) -> Void in
-                    GlobalKit.shareKit().accessToken=accessToken.accessToken
-                })
-            })
-        }
-        
-    }
+//    func loadEZplay() {
+//        //加载视频
+//        if(GlobalKit.shareKit().accessToken != nil)
+//        {
+//            EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
+//        }
+//        else
+//        {
+//            dispatch_after(UInt64(1), dispatch_get_main_queue(), { () -> Void in
+//                EZOpenSDK.openLoginPage({ (accessToken:EZAccessToken!) -> Void in
+//                    GlobalKit.shareKit().accessToken=accessToken.accessToken
+//                })
+//            })
+//        }
+//        
+//    }
    
     
         // MARK: - Table view data source
@@ -382,8 +392,8 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
                     c.ID = equip.equipID;
                     c.Name = "admin"
                     c.PassWord = equip.num
-                   
-                    "hificat"
+                    c.deviceType = equip.type
+                    //"hificat"
                     cameras.append(c)
                 }
               
@@ -489,14 +499,16 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
                     if (sxtData.count > 0){
                      headCell!.removeHeadView()
                     }
-                    self.deviceDataSource = dataDeal.getEquipsByRoom(Room(roomCode: item.roomCode))
+                    self.deviceDataSource = dataDeal.getEquipsByRoomExceptSXT(Room(roomCode: item.roomCode))
                     sxtData = [Equip]()
                     sxtData = dataDeal.searchSXTModel(byRoomCode: item.roomCode)
                     //非菜单选项
-                    print("点到具体房间。。\(item.roomCode)..\(self.deviceDataSource.count)")
+                    print("点到具体房间。。\(item.roomCode)..\(self.deviceDataSource.count)---\(sxtData.count)")
                     
                     
                     self.homeTableView.reloadData()
+                    
+                    //
                     self.sideView?.closeTap()
                      self.drakBtn.hidden=true
                     let param = ["roomCode":item.roomCode]
@@ -635,6 +647,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         super.viewWillDisappear(animated)
         sideView?.closeTap()
         self.drakBtn.hidden=true
+        popView .removeFromSuperview()
         sideView?.hidden = true
          headCell!.removeHeadView()
         
@@ -673,6 +686,25 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
    
       
     }
+    
+    @IBAction func checkTap(sender: UIButton) {
+        anfangCheck.selected = anfangCheck.tag == sender.tag
+        jiajuCheck.selected = jiajuCheck.tag == sender.tag
+    }
+   
+    @IBAction func qxTap(sender: UIButton) {
+        popView .removeFromSuperview()
+        drakBtn.hidden = true
+    }
+   
+    @IBAction func qrTap(sender: AnyObject) {
+       
+
+        let cmvc  = CreateModelVC(nibName: "CreateModelVC", bundle: nil)
+        cmvc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(cmvc, animated: true)
+    }
+    
     //    //MARK-转屏适配-optional
 //    func statusBarOrientationChange(notification:NSNotification)
 //        

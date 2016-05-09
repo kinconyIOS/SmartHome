@@ -118,8 +118,8 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
     
        self.getRoomInfoFotClassify()
         
-        let parameter = ["userCode" : userCode]
-        BaseHttpService.sendRequestAccess(classifyEquip_do, parameters: parameter) { (data) -> () in
+       
+        BaseHttpService.sendRequestAccess(classifyEquip_do, parameters: [:]) { (data) -> () in
             print(data)
             if data.count != 0{
             
@@ -330,9 +330,9 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         
             cell.roomName.text = "\(model.room!.name)"
             if model.isUnfold {
-                cell.unfoldImage.image = UIImage(named: "楼层按下")
+                cell.unfoldImage.image = UIImage(named: "hua1")
             } else {
-                cell.unfoldImage.image = UIImage(named: "楼层未按下")
+                cell.unfoldImage.image = UIImage(named: "hua2")
             }
             return cell
         case .Equip:

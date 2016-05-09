@@ -28,6 +28,9 @@
                     <constraint firstAttribute="trailingMargin" secondItem="5sO-Ad-hZJ" secondAttribute="trailing" constant="25" id="opK-Fq-xie"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="but" destination="5sO-Ad-hZJ" id="eTC-nD-jjN"/>
+            </connections>
             <point key="canvasLocation" x="327" y="270"/>
         </tableViewCell>
     </objects>

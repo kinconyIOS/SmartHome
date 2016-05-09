@@ -17,9 +17,7 @@ class BaseHttpService: NSObject {
         print(dic.ping()+app_secret)
        
         let head_dict:[String:String]? = ["timestamp":timeStamp(),"nonce":randomNumAndLetter(),"sign":sign]
-
-   
-        Alamofire.request(.POST, url, parameters:dic as? [String : AnyObject], encoding:.URL , headers: head_dict).responseJSON(completionHandler: { (response) -> Void in
+       Alamofire.request(.POST, url, parameters:dic as? [String : AnyObject], encoding:.URL , headers: head_dict).responseJSON(completionHandler: { (response) -> Void in
             
             if response.result.isFailure {
                 
@@ -75,10 +73,7 @@ class BaseHttpService: NSObject {
         let head_dict:[String:String]? = ["access_token":token,"timestamp":stamp,"nonce":nonce,"sign":sign,"userCode":code]
      
         
-        
-      
-      
-           Alamofire.request(.POST, url, parameters:dic as? [String : AnyObject], encoding:.URL , headers: head_dict).responseJSON(completionHandler: { (response) -> Void in
+        Alamofire.request(.POST, url, parameters:dic as? [String : AnyObject], encoding:.URL , headers: head_dict).responseJSON(completionHandler: { (response) -> Void in
              MBProgressHUD.hideAllHUDsForView(app.window, animated: true)
            //  print(NSString(data:response.data!, encoding:NSUTF8StringEncoding))
             
@@ -103,27 +98,28 @@ class BaseHttpService: NSObject {
                     let str = response.result.value!["message"]as!String
                      BaseHttpService.showMMSSGG(str)
                     print(str)
-                //
-                   if response.result.value!["message"]as!String != "超时了" {
-                    
+                // state 1
                     if response.result.value!["message"]as!String == "没有找到该编号"
                         
-                    {
-                        print("重新登录吧!没有找到该编号")
-                        
-                        let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
-                        app.window!.rootViewController=nav
-                        
+                        {
+                            print("重新登录吧!没有找到该编号")
+                            
+                            let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
+                            app.window!.rootViewController=nav
+                            return
+                            
                     }
-                //不是超时的其他问题
+                // state 2
+                   if response.result.value!["message"]as!String != "超时了" {
+                       //不是超时的其他问题
                     return
                 
                    }
-                    
+                // state 3
                 //失效
                  print("accessToken已经失效了重新获取!")
                sendRequest(refreshToken_do, parameters: ["refreshToken":refreshAccessToken(),"userCode":userCode()]) { (any:AnyObject) -> () in
-               
+            
                 if any["success"]as! Bool == true
                 {
                     //得到新的accessToken 和 refreshToken 保存
@@ -135,15 +131,11 @@ class BaseHttpService: NSObject {
                     let stamp = timeStamp()
                     let nonce = randomNumAndLetter()
                     let sign = "access_token=\(token)&nonce=\(nonce)&timestamp=\(stamp)app_sercet".md5
-                    print(dic.ping()+app_secret)
+                    print("最新的请求--------"+dic.ping()+app_secret)
                     
                     let head_dict:[String:String]? = ["timestamp":stamp,"nonce":nonce,"sign":sign]
                     
-                    let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-                    config.timeoutIntervalForRequest = 5.0    // 秒
-                    
-                    let manager = Alamofire.Manager(configuration: config)
-                    manager.request(.POST, url, parameters:dic as? [String : AnyObject], encoding:.URL , headers: head_dict).responseJSON(completionHandler: { (response) -> Void in
+                     Alamofire.request(.POST, url, parameters:dic as? [String : AnyObject], encoding:.URL , headers: head_dict).responseJSON(completionHandler: { (response) -> Void in
                         
                         if response.result.isFailure {
                             print("网路问题-error:\(response.result.error)")
@@ -153,33 +145,29 @@ class BaseHttpService: NSObject {
                                 successBlock(response.result.value!["data"]!! )
                                 
                             } else{
-                                print("系统错误!刚刷新回来的token就已经失效了")
+                               /// print("操作失败")
                             }
-
+                            
                             
                         }})
                 
-                }else
+                }
+                else
                 {//彻底失效
-                    if response.result.value!["message"]as!String != "超时了" {
+                    let msg =  response.result.value!["message"]as!String
+                    switch (msg)
+                    {
+                       case "refreshToken令牌失效","超时了":
                         
-                        if response.result.value!["message"]as!String == "没有找到该编号"
-                            
-                        {
-                            print("重新登录吧!没有找到该编号")
-                            
-                            let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
-                            app.window!.rootViewController=nav
-                            
-                        }
-                        //不是超时的其他问题
-                        return
-                        
-                    }
-                    print("重新登录吧!refreshToken已经失效了")
+                        print("refreshToken令牌失效"+"超时了")
+                       let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
+                       app.window!.rootViewController=nav
+                        break
+                    default:
+                        break
                     
-                    let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
-                    app.window!.rootViewController=nav
+                    }
+                  
                  
                 }
                     

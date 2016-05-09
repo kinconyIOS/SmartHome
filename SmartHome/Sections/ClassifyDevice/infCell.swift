@@ -10,14 +10,14 @@ import UIKit
 
 protocol pusView:NSObjectProtocol{
 
-    func pus()
+    func pus(id:Int)
 }
 
 class infCell: UICollectionViewCell ,UIActionSheetDelegate,UIAlertViewDelegate {
 
     //代理
     weak var delegate:pusView?
-    
+
     //设备属性类
     var inf:Infrared?
     //判断添加还是开关
@@ -68,9 +68,9 @@ class infCell: UICollectionViewCell ,UIActionSheetDelegate,UIAlertViewDelegate {
     func tapped(button:UIButton){
         print("aacc")
         if self.JudgeI == 1{
-                print("aabbcc")
             NSNotificationCenter.defaultCenter().postNotificationName("a", object: nil)
-            self.delegate?.pus()
+        }else{
+            self.delegate?.pus(self.tag)
         }
        
     }

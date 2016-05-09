@@ -82,7 +82,7 @@ class ShotEquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
         self.navigationController?.popViewControllerAnimated(true)
     }
     func handleRightItem(barButton: UIBarButtonItem) {
-        self.equip!.saveEquip()
+       
   
     
         if self.equip!.name == ""
@@ -110,6 +110,7 @@ class ShotEquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
             "deviceCode":self.equip!.hostDeviceCode]
         print("\(parameter)")
         BaseHttpService.sendRequestAccess(addEq_do, parameters:parameter, success: { (data) -> () in
+             self.equip!.saveEquip()
             print(data)
             
         })

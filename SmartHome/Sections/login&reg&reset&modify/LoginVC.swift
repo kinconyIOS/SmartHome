@@ -109,6 +109,14 @@ class LoginVC: UIViewController  {
                  BaseHttpService.setAccessToken(any["data"]!!["accessToken"] as!String)
                  BaseHttpService.setRefreshAccessToken(any["data"]!!["refreshToken"] as!String)
                  BaseHttpService.setUserCode(any["data"]!!["userCode"] as!String)
+                let ezToken = any["data"]!!["ez_token"] as!String
+              
+                GlobalKit.shareKit().accessToken = ezToken == "NO_BUNDING" ? nil : ezToken
+            
+              EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
+               
+                
+                
               self.loginSuccess()
                 
             } else{

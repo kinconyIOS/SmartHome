@@ -45,6 +45,8 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
         //退出事件
         walk.addTarget(self, action: Selector("tui:"), forControlEvents: UIControlEvents.TouchUpInside)
         // Do any additional setup after loading the view.
+        
+        
     }
     //拖拽手势取消
     
@@ -189,7 +191,9 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
         case 3:
             let actionSheet:UIActionSheet? = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: nil, destructiveButtonTitle: nil, otherButtonTitles:"男", "女")
             actionSheet!.tag = 320;
-            actionSheet?.showInView(self.tableView)
+            //[actionSheet showInView:[UIApplication sharedApplication].keyWindow]
+            actionSheet?.showInView(self.view)
+           // actionSheet?.showInView(self.tableView)
             break
         case 4:
             let path = NSBundle.mainBundle().pathForResource("mJson", ofType: "json")
@@ -208,10 +212,13 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
             self.sunData?.setNumberOfComponents(3, SET: self.areas, addTarget:self.navigationController!.view , complete: { (one, two, three) -> Void in
                 let a = "\(one),\(two),\(three)"
                 print(a)
+                print("\(two)")
+                print("\(1)")
                 let parameters=["city":a]
                 BaseHttpService.sendRequestAccess(GetUserCity, parameters:parameters) { (response) -> () in
                     print(response)
                     //self.usreArr[3] = "\(two)-\(three)"
+                   
                     self.city = "\(two)-\(three)"
                     self.tableView.reloadData()
                 }

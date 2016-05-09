@@ -53,7 +53,7 @@
     _scrollView.tag=111;
     _scrollView.delegate = self;
     //是否自动裁切超出部分
-    _scrollView.clipsToBounds = YES;
+
     //是否自动裁切超出部分;
     self.scrollView.clipsToBounds = YES;
     //设置是否可以缩放

@@ -36,34 +36,31 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
         //上拉刷新
         tableView.addLegendHeaderWithRefreshingBlock { () -> Void in
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "addinf1:", name: "shibai", object: nil)
+
             BaseHttpService .sendRequestAccess(Commodity_display, parameters:["":""]) { [unowned self](response) -> () in
                 print(response)
                 self.shoppingList=response as! NSArray
                 self.tableView.reloadData()
-                self.tableView.header.endRefreshing();
-            }  
+               // self.tableView.header.endRefreshing();
+            }
+            self.tableView.header.endRefreshing();
         }
         //下拉加载
         tableView.addLegendFooterWithRefreshingBlock { () -> Void in
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "addinf1:", name: "shibai", object: nil)
             BaseHttpService .sendRequestAccess(Commodity_display, parameters:["":""]) { [unowned self](response) -> () in
                 print(response)
                 self.shoppingList=response as! NSArray
                 print(self.shoppingList)
                 self.tableView.reloadData()
-                self.tableView.footer.endRefreshing();
+                //self.tableView.footer.endRefreshing();
             }
+            self.tableView.footer.endRefreshing();
             
         }
 
         // Do any additional setup after loading the view.
     }
- 
-    func addinf1(notification: NSNotification){
-        self.tableView.footer.endRefreshing();
-        self.tableView.header.endRefreshing();
-    }
+
     //分区
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

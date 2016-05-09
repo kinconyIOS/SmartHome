@@ -16,7 +16,10 @@ let imgUrl = "http://120.27.137.65/smarthome.IMCPlatform/"
 //let addFloor_do = "\(baseUrl)addfloor.action"
 ////添加房间
 //let addRoom_do = "\(baseUrl)addroom.action"
+
 //添加房间
+let ezToken = "\(baseUrl)gainfluoriteaccesstoken.action"
+
 let addEq_do = "\(baseUrl)setDeviceInfo.action"
 
 let deviceStatus_do="\(baseUrl)queryroomdevicestate.action"
@@ -78,3 +81,21 @@ let Dele_shopoing = "\(baseUrl)delectshoppingcart.action"
 let Add_Repair = "\(baseUrl)addRepair.action"
 //解绑主机
 let Dele_tallhost = "\(baseUrl)unbundlinghost.action"
+//----
+//支付回调接口
+let Notifypay = "\(baseUrl)notifypay.action"
+//已购接口
+let Get_gainuserorder = "\(baseUrl)gainuserorder.action"
+//物车里已购详情模块
+let Get_gainuserorderInfo = "\(baseUrl)gainuserorderInfo.action"
+//保存红外设备
+let Set_setinfrareddeviceinfo = "\(baseUrl)setinfrareddeviceinfo.action"
+//获取红外按钮
+let Get_gaininfraredbuttonses = "\(baseUrl)gaininfraredbuttonses.action"
+//----
+//添加红外线
+let Add_addinfraredbuttonses = "\(baseUrl)addinfraredbuttonses.action"
+//删除红外线
+let Dele_deleteinfraredbuttonses = "\(baseUrl)deleteinfraredbuttonses.action"
+//学习控制
+let studyandcommand = "\(baseUrl)studyandcommand.action"

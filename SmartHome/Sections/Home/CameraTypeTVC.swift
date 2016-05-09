@@ -61,7 +61,16 @@ class CameraTypeTVC: UITableViewController {
                
                 break
             default:
-                showMsg("暂未开放敬请期待")
+                if( GlobalKit.shareKit().accessToken==nil){
+                 showMsg("您暂时没有萤石设备")
+                }
+                else{
+                 EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
+                    let cam = CameraCollectionView()
+                    cam.roomCode = self.roomCode
+                    self.navigationController?.pushViewController(cam, animated: true)
+                }
+               
                 break
                 
             }

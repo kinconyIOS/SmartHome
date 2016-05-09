@@ -38,7 +38,7 @@ class HeadCell: UITableViewCell {
     func configHeadView(){
         if myScorllView == nil{
            
-            myScorllView = MySxtScorllView(frame: CGRectMake(0,0,self.frame.size.width,self.frame.size.height))
+            myScorllView = MySxtScorllView(frame: CGRectMake(0,0,ScreenWidth,self.frame.size.height * ScreenWidth/320))
             
             self.addSubview(myScorllView)
         }

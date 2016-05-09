@@ -89,11 +89,19 @@ class DetailsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         case 4:
             cellpur = tableView.dequeueReusableCellWithIdentifier("Purchase", forIndexPath: indexPath) as? PurchaseTableViewCell
             cellpur!.selectionStyle = UITableViewCellSelectionStyle.None
+            cellpur?.but.addTarget(self, action: "pusView:", forControlEvents: UIControlEvents.TouchUpInside)
             return cellpur!
         default :
             return cellpur!
             
         }
+    }
+    func pusView(but:UIButton){
+        let view1 = PurchaseViewController(nibName:"PurchaseViewController",bundle: nil)
+        view1.coID.append((self.coID! as NSNumber).stringValue)
+        
+        view1.mo = Float(cellPrice!.goodPrice.text!)
+        self.navigationController?.pushViewController(view1, animated: true)
     }
     //分区头
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -134,9 +142,15 @@ class DetailsViewController: UIViewController,UITableViewDelegate,UITableViewDat
             let view:EvaluateViewController=EvaluateViewController(nibName: "EvaluateViewController", bundle: nil)
             view.hidesBottomBarWhenPushed=true
            // self.navigationController?.pushViewController(view, animated: true)
+        }else if indexPath.section == 4{
+            let view1 = PurchaseViewController(nibName:"PurchaseViewController",bundle: nil)
+            view1.coID[0] = (self.coID! as NSNumber).stringValue
+            view1.mo = Float(cellPrice!.goodPrice.text!)
+            self.navigationController?.pushViewController(view1, animated: true)
+            
         }
     }
-
+    
     /*
     // MARK: - Navigation
 

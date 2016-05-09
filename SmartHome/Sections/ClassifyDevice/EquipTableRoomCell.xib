@@ -28,7 +28,7 @@
                         <rect key="frame" x="0.0" y="42" width="320" height="1"/>
                         <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="楼层未按下" translatesAutoresizingMaskIntoConstraints="NO" id="RX7-23-LmQ">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hua1" translatesAutoresizingMaskIntoConstraints="NO" id="RX7-23-LmQ">
                         <rect key="frame" x="283" y="16" width="23" height="12"/>
                     </imageView>
                 </subviews>
@@ -45,6 +45,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="楼层未按下" width="16" height="9"/>
+        <image name="hua1" width="22" height="8"/>
     </resources>
 </document>

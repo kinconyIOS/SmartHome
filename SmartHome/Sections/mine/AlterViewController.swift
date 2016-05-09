@@ -14,6 +14,10 @@ class AlterViewController: UIViewController,UITextFieldDelegate {
     var textName:String?
     //声明一个闭包
     var myClosure:callbackfunc?
+    //红外数据 地址
+    var addr:String?
+    //按钮编号
+    var inv = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden=false
@@ -40,6 +44,17 @@ class AlterViewController: UIViewController,UITextFieldDelegate {
                 print(response)
             }
             
+        }else if self.alteText == "添加红外线"{
+            var i = self.inv
+            i = i+1
+            let dic = ["deviceAddress":self.addr!,
+                "infraredButtonsName":textField.text!,
+                "infraredButtonsValuess":String(i)]
+            print(dic)
+            BaseHttpService.sendRequestAccess(Add_addinfraredbuttonses, parameters:dic) { (response) -> () in
+                print(response)
+            }
+        //红外线添加接口
         }
         
         self.navigationController?.popViewControllerAnimated(true)

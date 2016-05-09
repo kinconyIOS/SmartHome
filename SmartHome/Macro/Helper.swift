@@ -226,6 +226,29 @@ func updateRoomInfo(complete:CompleteUpdateRoomInfo){
         print("更新房间信息")
         complete()
     }
+    BaseHttpService.sendRequestAccess(classifyEquip_do, parameters: [:]) { (data) -> () in
+        print(data)
+        if data.count != 0{
+            
+            let arr = data as! [[String : AnyObject]]
+            for e in arr {
+                let equip = Equip(equipID: e["deviceAddress"] as! String)
+                equip.name = e["nickName"] as! String
+                equip.roomCode = e["roomCode"] as! String
+                equip.userCode = e["userCode"] as! String
+                equip.type = e["deviceType"] as! String
+                equip.num  = e["deviceNum"] as! String
+                equip.icon  = e["icon"] as! String
+                if equip.icon == ""{
+                    equip.icon = getIconByType(equip.type)
+                }
+                equip.saveEquip()
+                
+            }
+            
+        }
+    }
+
     
 }
 typealias CompletereadRoomInfo = () -> ()
@@ -245,7 +268,7 @@ func readRoomInfo(complete:CompletereadRoomInfo)
                 
                 setNetRoomInfoVersionNumber(f+1, andComplete: {
                     complete()
-                    NSUserDefaults.standardUserDefaults().setFloat(f+1, forKey: "RoomInfoVersionNumber")
+                                      NSUserDefaults.standardUserDefaults().setFloat(f+1, forKey: "RoomInfoVersionNumber")
                     
                 })
             })
@@ -281,6 +304,12 @@ func dareNetRoomInfoVersionNumber(complete:CompleteRoomInfoNumber){
     
     //读取服务器版本号。
     BaseHttpService .sendRequestAccess(getversion_do, parameters: parameters) { (response) -> () in
+        // 重新刷新萤石token
+    
+//        let ezToken = response["ez_token"] as!String
+//        GlobalKit.shareKit().accessToken = ezToken == "NO_BUNDING" ? nil : ezToken
+//        
+//        EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
         
         complete((response["version"]!?.floatValue)!)//处理版本号
     }
