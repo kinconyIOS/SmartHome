@@ -12,7 +12,7 @@ import Alamofire
 @UIApplicationMain
 
   class AppDelegate: UIResponder, UIApplicationDelegate{
-   
+   // tangyan shangchuang de 5.11 test
     var window: UIWindow? = UIWindow.init(frame: UIScreen.mainScreen().bounds)
     var user:UserModel?=UserModel()
     var weather:WeatherModel?
