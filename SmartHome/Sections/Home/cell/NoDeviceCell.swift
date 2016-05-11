@@ -10,6 +10,7 @@ import UIKit
 
 class NoDeviceCell: UITableViewCell {
 
+    @IBOutlet var showLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +21,23 @@ class NoDeviceCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    @IBAction func delayChoseTap(sender: AnyObject) {
+        let parent =  self.parentController() as! CreateModelVC
+        parent.sunData?.setNumberOfComponents(1, SET:["1","2"], addTarget:parent.navigationController!.view , complete: { (one, two, three) -> Void in
+            let a = "\(one),\(two),\(three)"
+            print(a)
+        })
+    }
     
+    func parentController()->UIViewController?
+    {
+        for (var next = self.superview; (next != nil); next = next!.superview) {
+            let nextr = next?.nextResponder()
+            if nextr!.isKindOfClass(HomeVC.classForCoder()){
+                return (nextr as! UIViewController)
+            }
+            
+        }
+        return nil
+    }
 }

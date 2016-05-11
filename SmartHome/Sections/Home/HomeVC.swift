@@ -15,7 +15,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
 //    let PLAYER_STREAM_RECONNECT   = 3    //直播流取流正在重连
 //    let PLAYER_PLAYBACK_START     = 11   //录像回放开始播放
 //    let PLAYER_PLAYBACK_STOP      = 12   //录像回放结束播放
-    
+    var btnIsSeleted = false;
     @IBOutlet var popView: UIView!
     @IBOutlet var anfangCheck: UIButton!
     var bgView:UIButton?
@@ -87,7 +87,8 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         self.homeTableView.registerNib(UINib(nibName: "RecentModelCell", bundle: nil), forCellReuseIdentifier: "RecentModelCell")
          self.homeTableView.registerNib(UINib(nibName: "UnkownCell", bundle: nil), forCellReuseIdentifier: "UnkownCell")
          self.homeTableView.registerNib(UINib(nibName: "NoDeviceCell", bundle: nil), forCellReuseIdentifier: "NoDeviceCell")
-   
+        self.homeTableView.registerNib(UINib(nibName: "InfraredCell", bundle: nil), forCellReuseIdentifier: "InfraredCell")
+       
     }
     func configView(){
       
@@ -170,9 +171,6 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         self.homeTableView.reloadData()
         
         }
-
-        
-        
        
 //        let cameraType = CameraTypeTVC();
 //        cameraType.hidesBottomBarWhenPushed
@@ -300,22 +298,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         self.homeTableView.reloadData()
     }
     
-//    func loadEZplay() {
-//        //加载视频
-//        if(GlobalKit.shareKit().accessToken != nil)
-//        {
-//            EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
-//        }
-//        else
-//        {
-//            dispatch_after(UInt64(1), dispatch_get_main_queue(), { () -> Void in
-//                EZOpenSDK.openLoginPage({ (accessToken:EZAccessToken!) -> Void in
-//                    GlobalKit.shareKit().accessToken=accessToken.accessToken
-//                })
-//            })
-//        }
-//        
-//    }
+
    
     
         // MARK: - Table view data source
@@ -414,6 +397,30 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
             {
                 cell = self.homeTableView.dequeueReusableCellWithIdentifier("RecentModelCell", forIndexPath: indexPath)
                 cell?.backgroundColor = UIColor.whiteColor()
+                
+                //                BaseHttpService .sendRequestAccess(Get_gainmodel, parameters:["":""]) { (response) -> () in
+                //                    print(response)
+                //                    (cell as? RecentModelCell)?.models = [ChainModel]()
+                //                    for model in (response as! Array<Dictionary<String,String>>)
+                //                    {
+                //                        let modele = ChainModel()
+                //                        modele.modelName = model["modelName"]!
+                //                        modele.modelId = model["modelId"]!
+                //                        //modele.modelIcon = model["modelIcon"]!
+                //                        (cell as? RecentModelCell)?.setmodelss(modele)
+                //
+                //                    }
+                //                    (cell as? RecentModelCell)?.collectionView.reloadData()
+                //                }
+                
+                //                BaseHttpService.sendRequestAccess(Get_gainmodel, parameters: [:], success: { (back) -> () in
+                //                    print(back)
+                //                    //放入model
+                //                    var modele = ChainModel()
+                //                    
+                //                    })
+                // (cell as? RecentModelCell)?.setmodelss()
+                (cell as? RecentModelCell)?.getModel()
                 tableView.bringSubviewToFront(cell!)
                 return cell!
                 
@@ -422,6 +429,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
             {
             
              cell = self.homeTableView.dequeueReusableCellWithIdentifier("NoDeviceCell", forIndexPath: indexPath)
+                (cell as! NoDeviceCell).showLabel.text = "该房间暂无设备，点击添加"
                 cell?.selectionStyle = UITableViewCellSelectionStyle.None
                 return cell!
                 
@@ -442,7 +450,16 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
                  tableView.bringSubviewToFront(cell!)
                  (cell as! ModulateCell).setModel(equip)
             }
-            else{
+                //todo
+            else if equip.type == "99" || equip.type == "98"
+                {//红外学习设备
+                    cell = self.homeTableView.dequeueReusableCellWithIdentifier("InfraredCell", forIndexPath: indexPath)
+                    cell?.backgroundColor = UIColor.whiteColor()
+                    tableView.bringSubviewToFront(cell!)
+                    (cell as! InfraredCell).setModel(equip)
+            }
+            else
+          {
             
                 cell = self.homeTableView.dequeueReusableCellWithIdentifier("UnkownCell", forIndexPath: indexPath)
                  cell?.backgroundColor = UIColor.whiteColor()
@@ -455,8 +472,10 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
         return cell!
     }
-    
-    
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true;
+    }
+ 
     func judgeType(str:String,type:String)->Bool
    {
     if str.trimString() == ""
@@ -590,14 +609,19 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
             if equip.type == "1" || judgeType(equip.type, type: "1")
 
             {
-                return 53
+                return 65
             }
             else if equip.type == "2" || equip.type == "4"||judgeType(equip.type, type: "3")||judgeType(equip.type, type: "2")
 
             {
-                return 47
+                return 65
             }
-            return 47
+             else if equip.type == "99" || equip.type == "98"
+            {
+            
+             return 65
+            }
+            return 50
         }
         if tableView === sideView?.tableView{
             
@@ -632,6 +656,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
                 btn.setImage(UIImage(named: "hua2"), forState: UIControlState.Normal)
                 btn.setImage(UIImage(named: "hua1"), forState: UIControlState.Selected)
             btn.addTarget(self, action: Selector("open:"), forControlEvents: UIControlEvents.TouchUpInside)
+            btn.selected = btnIsSeleted
             view.addSubview(btn)
             break
             
@@ -659,6 +684,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
     
     func open(sender:UIButton){
     sender.selected = !sender.selected
+        btnIsSeleted = sender.selected
         if sender.selected
         {
             removeOneCell()
@@ -699,10 +725,9 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
    
     @IBAction func qrTap(sender: AnyObject) {
        
-
-        let cmvc  = CreateModelVC(nibName: "CreateModelVC", bundle: nil)
-        cmvc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(cmvc, animated: true)
+        let chainView = ChainEquipAddVC()
+        self.navigationController?.pushViewController(chainView, animated: true)
+     
     }
     
     //    //MARK-转屏适配-optional

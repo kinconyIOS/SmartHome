@@ -131,7 +131,7 @@ class BaseHttpService: NSObject {
                     let stamp = timeStamp()
                     let nonce = randomNumAndLetter()
                     let sign = "access_token=\(token)&nonce=\(nonce)&timestamp=\(stamp)app_sercet".md5
-                    print("最新的请求--------"+dic.ping()+app_secret)
+                   
                     
                     let head_dict:[String:String]? = ["timestamp":stamp,"nonce":nonce,"sign":sign]
                     

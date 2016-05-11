@@ -204,8 +204,16 @@ class ChoseDeviceForModel: UIViewController,UITableViewDelegate,UITableViewDataS
         }
         
         if model.type == .Equip {
-        // to do 
-            // 选中设备
+            let eq = Equip(equipID: model.equip!.equipID)
+            eq.name = model.equip!.name
+            eq.userCode = model.equip!.userCode
+            eq.roomCode = model.equip!.roomCode
+            eq.type = model.equip!.type
+            eq.icon  = model.equip!.icon
+            eq.num = model.equip!.num
+            eq.status = model.equip!.status
+            app.modelEquipArr.addObject(eq)
+            showMsg("添加成功");
         }
         
     }
@@ -216,33 +224,27 @@ class ChoseDeviceForModel: UIViewController,UITableViewDelegate,UITableViewDataS
         }
         return 44
     }
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        let model = tDataSource[indexPath.row]
-        if model.type == .Floor || model.type == .Room || model.type == .Add {
-            return false
-        }
-        return true
-    }
-    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
-        return "选择"
-    }
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let model = tDataSource[indexPath.row]
-        //从数据库删除该设备
-        //model.equip?.delete()
-        if model.equip?.equipID != ""{
-            let parameter = ["deviceAddress" :model.equip!.equipID]
-            BaseHttpService.sendRequestAccess(deletedevice_do, parameters: parameter) { (back) -> () in
-            }
-        }
-        let arr:[Equip] = tDic[(model.equip?.roomCode)!]!
-        print(arr)
-       
-       
-        
-        
-        
-    }
+//    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//        let model = tDataSource[indexPath.row]
+//        if model.type == .Floor || model.type == .Room || model.type == .Add {
+//            return false
+//        }
+//        return true
+//    }
+//    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+//        return "选择"
+//    }
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        let model = tDataSource[indexPath.row]
+//      
+//     
+//       
+//       
+//        
+//        
+//        
+//    }
 }
     
 

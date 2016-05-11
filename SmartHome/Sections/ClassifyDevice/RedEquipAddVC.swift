@@ -260,7 +260,7 @@ class RedEquipAddVC: UITableViewController, UIGestureRecognizerDelegate,QRCodeRe
                 //----------
                 let infraredVC = InfraredViewController(nibName: "InfraredViewController", bundle: nil)
                    infraredVC.swif = 0
-                BaseHttpService .sendRequestAccess(Get_gaininfraredbuttonses, parameters:["deviceAddress":self.equip!.equipID]) { [unowned self](response) -> () in
+                BaseHttpService .sendRequestAccess(Get_gaininfraredbuttonses, parameters:["deviceAddress":self.equip!.equipID]) { (response) -> () in
                     print(response)
                     if response.count != 0{
                         infraredVC.cellArr = response as! NSArray

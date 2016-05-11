@@ -12,6 +12,7 @@ class EquipNameCell: UITableViewCell {
 
      var complete:completeEquipName?
     @IBOutlet var equipName: UITextField!
+    @IBOutlet weak var leab: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

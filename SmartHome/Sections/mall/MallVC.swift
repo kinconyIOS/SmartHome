@@ -14,7 +14,7 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     var refresh:UIRefreshControl?
      @IBOutlet var tableView: UITableView!
-    var shoppingList=[]
+    var shoppingList=NSMutableArray()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
@@ -26,7 +26,7 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         tableView.registerNib(UINib(nibName:"CoTableViewCell", bundle: nil), forCellReuseIdentifier:"CoTab")
         BaseHttpService .sendRequestAccess(Commodity_display, parameters:["":""]) { (response) -> () in
             print(response)
-            self.shoppingList=response as! NSArray
+             self.shoppingList=NSMutableArray(array: (response as! NSArray))
             self.tableView.reloadData()
         }
         
@@ -39,7 +39,7 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
             BaseHttpService .sendRequestAccess(Commodity_display, parameters:["":""]) { [unowned self](response) -> () in
                 print(response)
-                self.shoppingList=response as! NSArray
+                  self.shoppingList=NSMutableArray(array: (response as! NSArray))
                 self.tableView.reloadData()
                // self.tableView.header.endRefreshing();
             }
@@ -49,7 +49,7 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         tableView.addLegendFooterWithRefreshingBlock { () -> Void in
             BaseHttpService .sendRequestAccess(Commodity_display, parameters:["":""]) { [unowned self](response) -> () in
                 print(response)
-                self.shoppingList=response as! NSArray
+                self.shoppingList=NSMutableArray(array: (response as! NSArray))
                 print(self.shoppingList)
                 self.tableView.reloadData()
                 //self.tableView.footer.endRefreshing();
@@ -97,7 +97,7 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                 cell?.aaa.hidden = true
             }
             cell?.commdityIntroduce.text = shoppingList[indexPath.row-1]["goodsIntroduce"] as? String
-            cell?.commdityName.text = shoppingList[indexPath.row-1]["goodsTitle"] as? String
+         cell?.commdityName.text = shoppingList[indexPath.row-1]["goodsTitle"] as? String
             cell?.commdityPrice.text = shoppingList[indexPath.row-1]["goodsPrice"] as? String
             cell!.selectionStyle = UITableViewCellSelectionStyle.None
             cell?.myClosure = somsomeFunctionThatTakesAClosure
@@ -119,13 +119,48 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             print(response)
         }
     }
-
-//    //分区头
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return " "
+        //分区头
+//        func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//            return " "
+//        }
+//    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//        return indexPath.row > 0;
 //    }
-    //cell点击事件
+//
+//    //cell点击事件
+//    //单元格返回的编辑风格，包括删除 添加 和 默认  和不可编辑三种风格
+//    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+//       
+//        return UITableViewCellEditingStyle(rawValue:UITableViewCellEditingStyle.Delete.rawValue)!
+//    }
+//    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+//        let fromRow = sourceIndexPath.row;
+//        //    获取移动某处的位置
+//        let toRow = destinationIndexPath.row;
+//        //    从数组中读取需要移动行的数据
+//        let object = shoppingList[fromRow-1];
+//        //    在数组中移动需要移动的行的数据
+//        shoppingList.removeObjectAtIndex(fromRow-1)
+//        shoppingList.insertObject(object, atIndex: toRow-1)
+//        //    把需要移动的单元格数据在数组中，移动到想要移动的数据前面
+//        self.tableView .reloadData()
+//      
+//    }
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if editingStyle == UITableViewCellEditingStyle.Delete
+//        {
+//            let fromRow = indexPath.row;
+//           
+//            //    在数组中移动需要移动的行的数据
+//            shoppingList.removeObjectAtIndex(fromRow-1)
+//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+//            self.tableView .reloadData()
+//        }
+//    }
+   
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  //     tableView.setEditing(true, animated: true)
+  
         if indexPath.row != 0{
             let view1:DetailsViewController=DetailsViewController(nibName: "DetailsViewController", bundle: nil)
             view1.hidesBottomBarWhenPushed=true

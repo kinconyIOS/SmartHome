@@ -99,3 +99,15 @@ let Add_addinfraredbuttonses = "\(baseUrl)addinfraredbuttonses.action"
 let Dele_deleteinfraredbuttonses = "\(baseUrl)deleteinfraredbuttonses.action"
 //学习控制
 let studyandcommand = "\(baseUrl)studyandcommand.action"
+
+//上传情景模式详情
+let addmodelinfo = "\(baseUrl)addmodelinfo.action"
+//情景模式----
+//获取情景模式
+let Get_gainmodel = "\(baseUrl)gainmodel.action"
+//情景模式详情 错误 修改
+let Get_gainmodelinfo = "\(baseUrl)gainmodelinfo.action"
+//情景模式删除deletemodel.action
+let Dele_deletemodel = "\(baseUrl)deletemodel.action"
+//添加
+let Add_addmodel = "\(baseUrl)addmodel.action"

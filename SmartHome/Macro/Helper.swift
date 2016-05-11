@@ -306,10 +306,7 @@ func dareNetRoomInfoVersionNumber(complete:CompleteRoomInfoNumber){
     BaseHttpService .sendRequestAccess(getversion_do, parameters: parameters) { (response) -> () in
         // 重新刷新萤石token
     
-//        let ezToken = response["ez_token"] as!String
-//        GlobalKit.shareKit().accessToken = ezToken == "NO_BUNDING" ? nil : ezToken
-//        
-//        EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
+
         
         complete((response["version"]!?.floatValue)!)//处理版本号
     }

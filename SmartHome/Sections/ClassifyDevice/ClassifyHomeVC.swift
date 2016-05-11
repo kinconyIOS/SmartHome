@@ -225,35 +225,8 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
     }
     func handleRightItem(barButton: UIBarButtonItem) {
         
-        let homevc:HomeVC=HomeVC(nibName: "HomeVC", bundle: nil)
-        homevc.tabBarItem.title=NSLocalizedString("首页", comment: "")
-        homevc.tabBarItem.image=homeIcon
-        homevc.tabBarItem.selectedImage=homeIconSelected
-        let homeNav:UINavigationController = AutorotateNavC(rootViewController: homevc)
         
-        let setModelVC:SetModelVC=SetModelVC(nibName: "SetModelVC", bundle: nil)
-        setModelVC.tabBarItem.title=NSLocalizedString("发现", comment: "")
-        setModelVC.tabBarItem.image=modelIcon
-        setModelVC.tabBarItem.selectedImage=modelIconSelected
-        let setModelNav:UINavigationController = UINavigationController(rootViewController: setModelVC)
-        
-        let mallvc:MallVC=MallVC(nibName: "MallVC", bundle: nil)
-        mallvc.tabBarItem.title=NSLocalizedString("商城", comment: "")
-        mallvc.tabBarItem.image=mallIcon
-        mallvc.tabBarItem.selectedImage=mallIconSelected
-        let mallNav:UINavigationController = UINavigationController(rootViewController:mallvc)
-        
-        let minevc:MineVC=MineVC(nibName: "MineVC", bundle: nil)
-        minevc.tabBarItem.title=NSLocalizedString("我的", comment: "")
-        minevc.tabBarItem.image=mineIcon
-        minevc.tabBarItem.selectedImage=mineIconSelected
-        let mineNav:UINavigationController = UINavigationController(rootViewController: minevc)
-        let tab=AutoTabC()
-        tab.viewControllers=[homeNav,setModelNav,mallNav,mineNav];
-        tab.tabBar.tintColor=mainColor
-        //  let navigationC = UINavigationController(rootViewController: addDeviceVC)
-        
-        UIApplication.sharedApplication().keyWindow?.rootViewController = tab
+        UIApplication.sharedApplication().keyWindow?.rootViewController = TabbarC()
     }
 
    

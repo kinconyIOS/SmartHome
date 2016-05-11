@@ -16,6 +16,8 @@ import Alamofire
     var window: UIWindow? = UIWindow.init(frame: UIScreen.mainScreen().bounds)
     var user:UserModel?=UserModel()
     var weather:WeatherModel?
+    var modelEquipArr = NSMutableArray()
+    
     //定时器
     var i=0
     //个推
@@ -27,7 +29,7 @@ import Alamofire
     var  payloadId:NSString? = ""
     //pgyer url
     var updateUrl:NSString = ""
-    let EzvizAppKey = "4bdf5701dfaa4e18bd2abe901274ae17"
+    let EzvizAppKey = "98283ab61de44e48bc10ef414a0ca549"
    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window!.makeKeyAndVisible();
@@ -41,6 +43,9 @@ import Alamofire
     
         //第一次安装会走引导页
         let isNotFirst = NSUserDefaults.standardUserDefaults().objectForKey("isNotFirstComming")?.boolValue
+        
+        EZOpenSDK.initLibWithAppKey(EzvizAppKey)
+       
         if isNotFirst == nil || isNotFirst == false {
         let guidevc:GuideViewController = GuideViewController(coverImageNames: ["引导页.jpg","引导页.jpg","引导页.jpg"], backgroundImageNames: nil)
             guidevc.didSelectedEnter=didSelectedEnter
@@ -56,11 +61,10 @@ import Alamofire
         
     
         self.startGeTuiSdk()
+    IFlySpeechUtility.createUtility("appid=55976d0c,timeout=20000")
         
-        EZOpenSDK.initLibWithAppKey(EzvizAppKey)
-        //注册摄像头的序列号和验证码 可以不用输入
-        EZOpenSDK.setValidateCode("BJLKLK", forDeviceSerial: "567350669")
-        
+      
+       
        
        
         return true
@@ -70,34 +74,10 @@ import Alamofire
    
     func secondLogin(){
    
-        let homevc:HomeVC=HomeVC(nibName: "HomeVC", bundle: nil)
-        homevc.tabBarItem.title=NSLocalizedString("首页", comment: "")
-        homevc.tabBarItem.image=homeIcon
-        homevc.tabBarItem.selectedImage=homeIconSelected
-        let homeNav:AutorotateNavC = AutorotateNavC(rootViewController: homevc)
         
-        let setModelVC:SetModelVC=SetModelVC(nibName: "SetModelVC", bundle: nil)
-        setModelVC.tabBarItem.title=NSLocalizedString("发现", comment: "")
-        setModelVC.tabBarItem.image=modelIcon
-        setModelVC.tabBarItem.selectedImage=modelIconSelected
-        let setModelNav:UINavigationController = UINavigationController(rootViewController: setModelVC)
+         EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
+        self.window!.rootViewController = TabbarC()
         
-        let mallvc:MallVC=MallVC(nibName: "MallVC", bundle: nil)
-        mallvc.tabBarItem.title=NSLocalizedString("商城", comment: "")
-        mallvc.tabBarItem.image=mallIcon
-        mallvc.tabBarItem.selectedImage=mallIconSelected
-        let mallNav:UINavigationController = UINavigationController(rootViewController:mallvc)
-        
-        let minevc:MineVC=MineVC(nibName: "MineVC", bundle: nil)
-        minevc.tabBarItem.title=NSLocalizedString("我的", comment: "")
-        minevc.tabBarItem.image=mineIcon
-        minevc.tabBarItem.selectedImage=mineIconSelected
-        let mineNav:UINavigationController = UINavigationController(rootViewController: minevc)
-        let tab=AutoTabC()
-        tab.viewControllers=[homeNav,setModelNav,mallNav,mineNav];
-        tab.tabBar.tintColor=mainColor
-        
-        self.window!.rootViewController = tab
           //  数据更新
         readRoomInfo {
             

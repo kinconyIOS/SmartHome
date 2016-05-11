@@ -12,8 +12,12 @@ import UIKit
 class InfraredViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,pusView{
 
     //代理
-    
+    var isMoni:Bool = false
     func pus(id:Int) {
+        if self.isMoni
+        {
+        return
+        }
         let ss = String(self.swif)
         let parameters = ["deviceAddress":self.Address!,
                         "isStudy":ss,
@@ -224,7 +228,7 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
     func somsomeFunctionThatTakesAClosure(string:Int) -> Void{
         print(string)
        // strArr.removeAtIndex(string)
-    
+      
         IntArr.removeAtIndex(IntArr.indexOf(string)!)
         var i = 0
             i = string

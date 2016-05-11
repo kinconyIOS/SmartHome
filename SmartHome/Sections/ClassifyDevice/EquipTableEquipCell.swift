@@ -63,7 +63,6 @@ class EquipTableEquipCell: UITableViewCell {
         default:
             break
         }
-        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

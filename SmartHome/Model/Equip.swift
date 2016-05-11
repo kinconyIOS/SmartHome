@@ -20,6 +20,7 @@ class Equip : NSObject{
     var icon: String = ""
     var num:String = ""//yanzhengma
      var status:String = ""
+    var delay:String = "0"
     init(equipID: String) {
         self.equipID = equipID
     }
