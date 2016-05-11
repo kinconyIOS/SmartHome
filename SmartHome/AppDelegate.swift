@@ -13,6 +13,8 @@ import Alamofire
 
   class AppDelegate: UIResponder, UIApplicationDelegate{
    
+    ///dfghjkl;dfghjkl;'fghjkl;'
+    
     var window: UIWindow? = UIWindow.init(frame: UIScreen.mainScreen().bounds)
     var user:UserModel?=UserModel()
     var weather:WeatherModel?
