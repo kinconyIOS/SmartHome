@@ -99,7 +99,9 @@ class DetailsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func pusView(but:UIButton){
         let view1 = PurchaseViewController(nibName:"PurchaseViewController",bundle: nil)
         view1.coID.append((self.coID! as NSNumber).stringValue)
-        
+        if cellPrice?.goodPrice.text == nil{
+            return
+        }
         view1.mo = Float(cellPrice!.goodPrice.text!)
         self.navigationController?.pushViewController(view1, animated: true)
     }

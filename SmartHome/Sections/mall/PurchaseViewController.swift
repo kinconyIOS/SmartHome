@@ -30,8 +30,10 @@ class PurchaseViewController: UIViewController,UIActionSheetDelegate {
             print(1)
             normalPayAction((self.mo!*100 as NSNumber).stringValue)
         }else if buttonIndex == 2{
+            WXPayAction((self.mo!*100 as NSNumber).stringValue)
             print(2)
         }else if buttonIndex == 0{
+           
             print(0)
         }
     }
@@ -47,6 +49,32 @@ class PurchaseViewController: UIViewController,UIActionSheetDelegate {
         textField.resignFirstResponder()
         return true
     }
+    //微信
+    func WXPayAction(amount:String){
+        //let str = (self.coID! as NSNumber).stringValue
+        var str:String? = ""
+        for var i = 0;i<self.coID.count;++i{
+            str! += self.coID[i] + ","
+        }
+        print(str)
+        let parametrs = ["channel":"wx",
+            "amount":amount,
+            "description":Name.text! + "," + phone.text! + "," + address.text!,
+            "goodsid":str!]
+        print(parametrs)
+        BaseHttpService .sendRequestAccess(Notifypay, parameters:parametrs) { (response) -> () in
+            print(response)
+            let obj = response["charge"]
+            Pingpp.createPayment(obj as! NSObject, appURLScheme: "wx455f2dce93df9440", withCompletion: { (error, PingppError) -> Void in
+                if (error == nil) {
+                    // print("errno is no")
+                } else {
+                    // print("PingppError: code=%lu msg=%@", error , error.getMsg);
+                }
+            })
+        }
+    }
+    //支付宝
     func normalPayAction(amount:String){
         //let str = (self.coID! as NSNumber).stringValue
         var str:String? = ""

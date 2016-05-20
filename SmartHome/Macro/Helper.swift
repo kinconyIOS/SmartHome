@@ -255,23 +255,19 @@ typealias CompletereadRoomInfo = () -> ()
 func readRoomInfo(complete:CompletereadRoomInfo)
 {
     // 获取本地版本
-    let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("RoomInfoVersionNumber")
+    let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("\(BaseHttpService.userCode())RoomInfoVersionNumber")
     
     // 读取服务器版本
     dareNetRoomInfoVersionNumber {  f in
-        if   f != localnum // 判断是否更新
+        if   f > localnum // 判断是否更新
         {
             // 更新（如需）
             print("更新房间信息")
             updateRoomInfo({ () -> () in
                 // 更新一个版本号上传到服务器上面
-                
-                setNetRoomInfoVersionNumber(f+1, andComplete: {
-                    complete()
-                                      NSUserDefaults.standardUserDefaults().setFloat(f+1, forKey: "RoomInfoVersionNumber")
-                    
-                })
-            })
+                NSUserDefaults.standardUserDefaults().setFloat(f, forKey: "\(BaseHttpService.userCode())RoomInfoVersionNumber")
+                     complete()
+             })
             
         }else{
             complete()
@@ -281,18 +277,18 @@ func readRoomInfo(complete:CompletereadRoomInfo)
     // 本地设置为最新的版本号
 }
 
-typealias CompleteNOtoNet = () -> ()
-func setNetRoomInfoVersionNumber(f:Float,andComplete complete:CompleteNOtoNet){
-    
-    let parameters=["version": Float(floatLiteral: f)];
-    //设置服务器版本号。
-    BaseHttpService .sendRequestAccess(setversion_do, parameters: parameters) { (response) -> () in
-        
-        complete()
-    }
-    
-    
-}
+//typealias CompleteNOtoNet = () -> ()
+//func setNetRoomInfoVersionNumber(f:Float,andComplete complete:CompleteNOtoNet){
+//    
+//    let parameters=["version": Float(floatLiteral: f)];
+//    //设置服务器版本号。
+//    BaseHttpService .sendRequestAccess(setversion_do, parameters: parameters) { (response) -> () in
+//        
+//        complete()
+//    }
+//    
+//    
+//}
 
 typealias CompleteRoomInfoNumber = (Float) -> ()
 func dareNetRoomInfoVersionNumber(complete:CompleteRoomInfoNumber){
@@ -304,11 +300,8 @@ func dareNetRoomInfoVersionNumber(complete:CompleteRoomInfoNumber){
     
     //读取服务器版本号。
     BaseHttpService .sendRequestAccess(getversion_do, parameters: parameters) { (response) -> () in
-        // 重新刷新萤石token
-    
-
-        
-        complete((response["version"]!?.floatValue)!)//处理版本号
+      
+          complete((response["version"]!?.floatValue)!)//处理版本号
     }
     
     
@@ -317,7 +310,7 @@ func dareNetRoomInfoVersionNumber(complete:CompleteRoomInfoNumber){
 
 func randomCode()->String
 {
-    let kNumber = 10;
+    let kNumber = 8;
     let sourceStr:NSString="0123456789";
     var resultStr = ""
     srand(UInt32(time(nil)))

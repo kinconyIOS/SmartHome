@@ -12,11 +12,16 @@ import UIKit
 class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate{
 
     @IBOutlet var tableView: UITableView!//
-    var arr = ["我的购物","我的房间","我的设备","一键报修","意见反馈"];
-    var arr1 = ["功能说明","关于我们","清除缓存","主机管理"]
-    let imgArr = [UIImage(imageLiteral: "car.png"),UIImage(imageLiteral: "House.png"),UIImage(imageLiteral: "Power-Of.png"),UIImage(imageLiteral: "Tools.png"),UIImage(imageLiteral: "Edit.png")]
+   // var arr = ["我的购物","我的房间","我的设备","一键报修","意见反馈"]
+   // var arr1 = ["功能说明","关于我们","清除缓存","主机管理"]
+    var arr = ["我的购物","我的房间","我的设备","我的设置"]
+    var arr1 = ["一键报修","主机管理"]
+    let imgArr = [UIImage(imageLiteral: "car.png"),UIImage(imageLiteral: "House.png"),UIImage(imageLiteral: "Power-Of.png"),UIImage(imageLiteral: "List.png")]
     
-    let imgArr1 = [UIImage(imageLiteral: "List.png"),UIImage(imageLiteral: "User.png"),UIImage(imageLiteral: "Refresh.png"),UIImage(imageLiteral: "fj.png")]
+    let imgArr1 = [UIImage(imageLiteral: "Tools.png"),UIImage(imageLiteral: "fj.png")]
+//    let imgArr = [UIImage(imageLiteral: "car.png"),UIImage(imageLiteral: "House.png"),UIImage(imageLiteral: "Power-Of.png"),UIImage(imageLiteral: "Tools.png"),UIImage(imageLiteral: "Edit.png")]
+//    
+//    let imgArr1 = [UIImage(imageLiteral: "List.png"),UIImage(imageLiteral: "User.png"),UIImage(imageLiteral: "Refresh.png"),UIImage(imageLiteral: "fj.png")]
     override func viewDidLoad() {
         super.viewDidLoad()
         //设置导航栏透明
@@ -170,9 +175,14 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
         }else if indexPath.section == 2{
             switch indexPath.row{
             case 0:
-
+                let indvc:RepairViewController=RepairViewController(nibName: "RepairViewController", bundle: nil)
+                indvc.hidesBottomBarWhenPushed=true
+                self.navigationController!.pushViewController(indvc, animated:true)
                 break;
-            case 1:
+            case 3:
+                let indvc:FeedbackViewController=FeedbackViewController(nibName: "FeedbackViewController", bundle: nil)
+                                indvc.hidesBottomBarWhenPushed=true
+                 self.navigationController!.pushViewController(indvc, animated:true)
                 break;
             case 2:
                 //清除缓存
@@ -183,6 +193,7 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
                 let alert = UIAlertView(title: "提示", message: "缓存大小为\(String(format: "%.2f", num) )M确定要清理吗?", delegate: self, cancelButtonTitle: "确定", otherButtonTitles: "取消")
                 alert.tag = 1
                 alert.show()
+                //---
 //                UIAlertController(title: "提示", message: "缓存大小为\(String(format: "%.2f", num) )M确定要清理吗?", preferredStyle: UIAlertControllerStyle.Alert)
 //                
 //                let defaultAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default , handler: { (aa) -> Void in
@@ -199,12 +210,9 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
 //                                }catch let error as NSError {
 //                                    print(error.localizedDescription)
 //                                }
-//                                
 //                            }
-//                            
 //                        }
-//                    })
-//                    
+//                    }) 
 //                })
 //                alert.addAction(defaultAction)
 //                let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default, handler: { (aaa) -> Void in
@@ -214,7 +222,7 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
 //                self.presentViewController(alert, animated: true, completion: nil)
                 break;
                 //解绑主机
-            case 3:
+            case 1:
                 let indvc = DeviceManagerVC()
                 indvc.hidesBottomBarWhenPushed=true
                 self.navigationController!.pushViewController(indvc, animated:true)
@@ -242,18 +250,21 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
                 break
             case 4:
                 //从xib拉出来
-                let indvc:FeedbackViewController=FeedbackViewController(nibName: "FeedbackViewController", bundle: nil)
-                indvc.hidesBottomBarWhenPushed=true
-                self.navigationController!.pushViewController(indvc, animated:true)
+//                let indvc:FeedbackViewController=FeedbackViewController(nibName: "FeedbackViewController", bundle: nil)
+//                indvc.hidesBottomBarWhenPushed=true
+//                self.navigationController!.pushViewController(indvc, animated:true)
                 
                 break
             case 3:
                 //从xib拉出来
-                let indvc:RepairViewController=RepairViewController(nibName: "RepairViewController", bundle: nil)
-                indvc.hidesBottomBarWhenPushed=true
-                self.navigationController!.pushViewController(indvc, animated:true)
+//                let indvc:RepairViewController=RepairViewController(nibName: "RepairViewController", bundle: nil)
+//                indvc.hidesBottomBarWhenPushed=true
+//                self.navigationController!.pushViewController(indvc, animated:true)
                 //界面跳转 不通过导航栏
                 //self.presentViewController(indvc, animated: true, completion: nil)
+                let indvc = MySetUp()
+                indvc.hidesBottomBarWhenPushed=true
+                self.navigationController!.pushViewController(indvc, animated:true)
                 break
             default :
                 break

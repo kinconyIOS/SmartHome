@@ -107,6 +107,7 @@ class CameraCollectionView: UIViewController {
         equip.type = "101"
         equip.icon = "list_camera"
         equip.roomCode = self.roomCode
+         print("2----\(self.roomCode)")
         equip.num = ""
         let dict = ["roomCode":equip.roomCode,
             "deviceAddress":equip.equipID,

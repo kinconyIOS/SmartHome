@@ -80,11 +80,20 @@ class ChainEquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
         let parameters = ["modelId":self.model!.modelId
             ,"modelName":self.model!.modelName
             ,"ico":self.model!.modelIcon]
+        print("\(parameters)")
         BaseHttpService.sendRequestAccess(Add_addmodel, parameters: parameters) { [unowned self](back) -> () in
             print(back)
-            
+//            for temp in self.navigationController!.viewControllers {
+//                if temp.isKindOfClass(HomeVC.classForCoder()) {
+//                    self.navigationController?.popToViewController(temp , animated: true)
+//                }else if temp.isKindOfClass(MineVC.classForCoder()){
+//                    self.navigationController?.popToViewController(temp , animated: true)
+//                }
+//            }
+            self.navigationController?.popViewControllerAnimated(true)
+            showMsg("保存成功了！")
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        
      }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -130,6 +139,8 @@ class ChainEquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
             if self.model?.modelIcon != ""{
                 cell.cellIconImage.image = UIImage(named: (self.model?.modelIcon)!)
                 //cell.cellIconImage.contentMode = UIViewContentMode.ScaleAspectFill
+            }else{
+                cell.cellIconImage.image = UIImage(named:"icon1.png")
             }
             cell.cellTitleLabel.text = "模式图标"
             return cell
@@ -165,8 +176,23 @@ class ChainEquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
             break
         case 2:
             let createVc = CreateModelVC(nibName: "CreateModelVC", bundle: nil)
+            
+            if self.model?.modelId == ""{
+                self.model?.modelId = self.randomNumAndLetter()
+            }
+            if self.model!.modelIcon == ""{
+                self.model!.modelIcon = "icon1.png"
+            }
             createVc.modelId = (self.model?.modelId)!
-            self.navigationController?.pushViewController(createVc, animated: true)
+            let parameters = ["modelId":self.model!.modelId
+                ,"modelName":self.model!.modelName
+                ,"ico":self.model!.modelIcon]
+            print("\(parameters)")
+            BaseHttpService.sendRequestAccess(Add_addmodel, parameters: parameters) { [unowned self](back) -> () in
+                print(back)
+                self.navigationController?.pushViewController(createVc, animated: true)
+            }
+          
             break
         default:
             break

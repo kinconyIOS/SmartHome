@@ -17,9 +17,11 @@ import Alamofire
     var user:UserModel?=UserModel()
     var weather:WeatherModel?
     var modelEquipArr = NSMutableArray()
-    
+    var models = [ChainModel]()
     //定时器
     var i=0
+    //放假
+    var App_room = ""
     //个推
     var  deviceToken:NSString = ""
     var  gexinPusher:GexinSdk?
@@ -47,7 +49,7 @@ import Alamofire
         EZOpenSDK.initLibWithAppKey(EzvizAppKey)
        
         if isNotFirst == nil || isNotFirst == false {
-        let guidevc:GuideViewController = GuideViewController(coverImageNames: ["引导页.jpg","引导页.jpg","引导页.jpg"], backgroundImageNames: nil)
+        let guidevc:GuideViewController = GuideViewController(coverImageNames: ["weg_img","weg_img","weg_img"], backgroundImageNames: nil)
             guidevc.didSelectedEnter=didSelectedEnter
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isNotFirstComming")
             self.window!.rootViewController = guidevc
@@ -55,6 +57,7 @@ import Alamofire
             
             //非第一次登陆，直接进入登陆界面
             secondLogin()
+            
         }
         self.setUpErrorTest()
         self.registerRemoteNotification()
@@ -81,7 +84,7 @@ import Alamofire
           //  数据更新
         readRoomInfo {
             
-            let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("RoomInfoVersionNumber")
+            let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("\(BaseHttpService.userCode())RoomInfoVersionNumber")
             print("当前的楼层信息版本号为:\(localnum)")
         }
     }
@@ -109,11 +112,24 @@ import Alamofire
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        //如果设置了屏锁 就显示以下界面
+        //取值
+        //NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]
+        let password = NSUserDefaults.standardUserDefaults().objectForKey("password")
+        if (password as? String) == "1"{
+            let db =  DBGViewController()
+            db.hidesBottomBarWhenPushed = true
+            db.isLogin = true
+            UIWindow.visibleViewController().navigationController?.pushViewController(db, animated: true)
+        }
+
+        
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        
         self.saveContext()
     }
  

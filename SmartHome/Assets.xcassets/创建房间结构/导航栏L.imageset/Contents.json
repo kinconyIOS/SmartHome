@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "导航栏L.png",
+      "filename" : "导航栏L副本.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "导航栏L@2x.png",
+      "filename" : "导航栏L@2x副本.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "导航栏L@3x.png",
+      "filename" : "导航栏L@3x副本.png",
       "scale" : "3x"
     }
   ],

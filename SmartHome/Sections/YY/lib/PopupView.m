@@ -41,6 +41,7 @@
 - (void) setText:(NSString *) text
 {
     _textLabel.frame = CGRectMake(0, 10, 100, 10);
+    _textLabel.font = [UIFont systemFontOfSize:13.f];
     _queueCount ++;
     self.alpha = 1.0f;
     _textLabel.text = text;
@@ -50,7 +51,7 @@
     _textLabel.frame = CGRectMake(_textLabel.frame.origin.x, _textLabel.frame.origin.y+10, _textLabel.frame.size.width, _textLabel.frame.size.height);
     frame =  CGRectMake((_parentView.frame.size.width - frame.size.width)/2, self.frame.origin.y, _textLabel.frame.size.width+10, _textLabel.frame.size.height+20);
     self.frame = frame;
-    [UIView animateWithDuration:3.0
+    [UIView animateWithDuration:1.7
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateModelVC" customModule="SmartHome" customModuleProvider="target">
@@ -36,7 +36,21 @@
                 <constraint firstAttribute="trailing" secondItem="Cge-XN-LN8" secondAttribute="trailing" id="yp3-r8-MwW"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="nom-Tg-jsw" appends="YES" id="GaG-n4-gk0"/>
+                <outletCollection property="gestureRecognizers" destination="o4I-gb-uZm" appends="YES" id="Nul-I0-10s"/>
+            </connections>
             <point key="canvasLocation" x="235" y="219"/>
         </view>
+        <swipeGestureRecognizer direction="right" id="nom-Tg-jsw">
+            <connections>
+                <action selector="right:" destination="-1" id="ACU-hX-IWq"/>
+            </connections>
+        </swipeGestureRecognizer>
+        <swipeGestureRecognizer direction="left" id="o4I-gb-uZm">
+            <connections>
+                <action selector="left:" destination="-1" id="ydc-13-2j2"/>
+            </connections>
+        </swipeGestureRecognizer>
     </objects>
 </document>

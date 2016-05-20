@@ -13,10 +13,17 @@ class SetModelVC: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     @IBOutlet var modelCollectionView: UICollectionView!
     var name = ["相库","资讯","圈子","分享"]
     var arr = [UIImage(imageLiteral: "xc.png"),UIImage(imageLiteral: "zx.png"),UIImage(imageLiteral: "qz.png"),UIImage(imageLiteral: "share.png")]
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden  = false
+        //        UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
+        
+        self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
+        //self.navigationController?.navigationBar.backgroundColor =  UIColor(patternImage: navBgImage!)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //self.navigationController?.navigationBar.backgroundColor =  UIColor(patternImage: navBgImage!)
         self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
         let layout:UICollectionViewFlowLayout=UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionViewScrollDirection.Vertical

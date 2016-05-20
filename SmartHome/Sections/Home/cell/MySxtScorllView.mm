@@ -146,6 +146,8 @@
             player.delegate = self;
             [player setPlayerView:playView];
             [player startRealPlay];
+            //
+         
             [_ezplayer addObject:player];
             NSLog(@"创建了EZ");
         }
@@ -385,7 +387,9 @@
 {
     if(messageCode == PLAYER_REALPLAY_START)
     {
-            }
+       //[player stopVoiceTalk];
+        [player closeSound];
+    }
     else if (messageCode == PLAYER_NEED_VALIDATE_CODE)
     {
         //终端安全验证
@@ -412,7 +416,9 @@
             {
                 for(EZPlayer * player in _ezplayer){
 
-                 [player startRealPlay];
+                [player startRealPlay];
+                [player stopVoiceTalk];
+                [player closeSound];
                 }
             }
         }];

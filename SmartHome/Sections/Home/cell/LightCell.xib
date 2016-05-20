@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,17 +15,19 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCc-YC-g5J">
-                        <rect key="frame" x="93" y="28" width="92" height="36"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evO-Ae-6Lw">
+                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evO-Ae-6Lw">
                         <rect key="frame" x="28" y="22" width="38" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="38" id="Cs5-jc-JIG"/>
+                            <constraint firstAttribute="height" constant="34" id="der-ax-dBA"/>
+                        </constraints>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aa1-ea-5Uy">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aa1-ea-5Uy">
                         <rect key="frame" x="18" y="0.0" width="57" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="57" id="WKe-yh-3vb"/>
+                            <constraint firstAttribute="height" constant="20" id="eBP-L5-F1k"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title="立即执行">
                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -33,13 +36,37 @@
                             <action selector="delayChoseTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7j0-ad-LQT"/>
                         </connections>
                     </button>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZTr-dL-ut8">
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZTr-dL-ut8">
                         <rect key="frame" x="229" y="21" width="51" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="49" id="HBm-xr-4N1"/>
+                            <constraint firstAttribute="height" constant="31" id="UIo-xl-Jag"/>
+                        </constraints>
                         <connections>
                             <action selector="valueChangeTap:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Piu-Ld-Xla"/>
                         </connections>
                     </switch>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCc-YC-g5J">
+                        <rect key="frame" x="93" y="22" width="92" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="bFX-hn-Xcu"/>
+                            <constraint firstAttribute="width" constant="92" id="uZd-Yz-lx2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="ZTr-dL-ut8" secondAttribute="trailing" constant="34" id="CyL-GB-jYJ"/>
+                    <constraint firstItem="aa1-ea-5Uy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Lc5-lJ-Jix"/>
+                    <constraint firstItem="OCc-YC-g5J" firstAttribute="leading" secondItem="evO-Ae-6Lw" secondAttribute="trailing" constant="27" id="O8E-5t-OFp"/>
+                    <constraint firstItem="evO-Ae-6Lw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="28" id="bLc-IH-We2"/>
+                    <constraint firstItem="aa1-ea-5Uy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="fxd-f7-3q0"/>
+                    <constraint firstItem="evO-Ae-6Lw" firstAttribute="top" secondItem="aa1-ea-5Uy" secondAttribute="bottom" constant="2" id="prq-5c-wM5"/>
+                    <constraint firstItem="ZTr-dL-ut8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="vGg-TU-tnV"/>
+                    <constraint firstAttribute="bottom" secondItem="OCc-YC-g5J" secondAttribute="bottom" constant="6" id="xLV-V3-KI8"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>

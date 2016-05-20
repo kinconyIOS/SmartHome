@@ -18,6 +18,8 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
+       
+        //self.navigationController?.navigationBar.backgroundColor =  UIColor(patternImage: navBgImage!)
         self.navigationItem.title = "智能商场"
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
@@ -60,7 +62,13 @@ class MallVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
         // Do any additional setup after loading the view.
     }
-
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden  = false
+        //        UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
+        
+        self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
+    }
     //分区
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

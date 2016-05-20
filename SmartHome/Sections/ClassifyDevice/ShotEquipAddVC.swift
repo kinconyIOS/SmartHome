@@ -47,7 +47,7 @@ class ShotEquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
             {return}
             for dic in back as![[String:String]]
             {
-                    print(dic )
+            print(dic )
              self.arr.append(dic["deviceCode"]!)
             }
             print(self.arr)
@@ -112,13 +112,16 @@ class ShotEquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
         BaseHttpService.sendRequestAccess(addEq_do, parameters:parameter, success: { (data) -> () in
              self.equip!.saveEquip()
             print(data)
+            for temp in self.navigationController!.viewControllers {
+                if temp.isKindOfClass(HomeVC.classForCoder()) {
+                    self.navigationController?.popToViewController(temp , animated: true)
+                }else if temp.isKindOfClass(MineVC.classForCoder()){
+                    self.navigationController?.popToViewController(temp , animated: true)
+                }
+            }
             
         })
-        for temp in self.navigationController!.viewControllers {
-            if temp.isKindOfClass(ClassifyHomeVC.classForCoder()) {
-                self.navigationController?.popToViewController(temp , animated: true)
-            }
-        }
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

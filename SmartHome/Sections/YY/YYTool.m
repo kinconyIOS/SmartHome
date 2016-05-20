@@ -7,6 +7,7 @@
 //
 
 #import "YYTool.h"
+#import "SmartHome-Swift.h"
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVAudioSession.h>
 #import <AudioToolbox/AudioSession.h>
@@ -119,7 +120,7 @@ static YYTool *yyTool = nil;
  * @上传用户词
  */
 #define NAME @"myuserwords"
-#define USERWORDS   @"{\"userword\":[{\"name\":\"iflytek\",\"words\":[\"1档\",\"2档\",\"3档\",\"开启\",\"关闭\",\"开\",\"关\",\"加湿\",\"干燥\",\"摆风\",\"静止\",\"自然\",\"温控\",\"标准\",\"智能\",\"睡眠\",\"离子\",\"指示\",\"摇头\"]}]}"
+#define USERWORDS   @"{\"userword\":[{\"name\":\"iflytek\",\"words\":[\"回家\",\"2档\",\"3档\",\"开启\",\"关闭\",\"开\",\"关\",\"加湿\",\"干燥\",\"摆风\",\"静止\",\"自然\",\"温控\",\"标准\",\"智能\",\"睡眠\",\"离子\",\"指示\",\"摇头\"]}]}"
 
 - (void) onUploadUserWord
 {
@@ -219,9 +220,9 @@ static YYTool *yyTool = nil;
     [self showVoiceHudOrHide:NO];
     [_popUpView setText: text];
     
-    [self.parentView addSubview:_popUpView];
+    //[self.parentView addSubview:_popUpView];
 
-    
+        
 }
 
 /**
@@ -245,6 +246,19 @@ static YYTool *yyTool = nil;
     NSString * resultFromJson =  [[ISRDataHelper shareInstance] getResultFromJson:resultString];
   
     NSLog(@"听写结果：%@",resultFromJson);
+  
+        AppDelegate * appd = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        for (ChainModel *m  in appd.models) {
+            if ([resultFromJson containsString:m.modelName])
+            {
+                [BaseHttpService sendRequestAccess:@"http://120.27.137.65/smarthome.IMCPlatform/xingUser/commandmodel.action" parameters:@{@"modelId":m.modelId} success:^(id backJson) {
+                    
+                }];
+            }
+        }
+        
+    
+    
     if (isLast)
     {
        // NSLog(@"听写结果(json)：%@",  _reString);

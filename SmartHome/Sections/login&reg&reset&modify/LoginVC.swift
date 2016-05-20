@@ -139,8 +139,8 @@ class LoginVC: UIViewController  {
         //读取房间信息
         readRoomInfo {
             
-            let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("RoomInfoVersionNumber")
-            print("当前的楼层信息版本号为:\(localnum)")
+            let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("\(BaseHttpService.userCode())RoomInfoVersionNumber")
+            print("\(BaseHttpService.userCode())当前的楼层信息版本号为:\(localnum)")
             let isSecond = NSUserDefaults.standardUserDefaults().objectForKey("isSecondLogin")?.boolValue
             if
                 isSecond == nil
@@ -150,13 +150,13 @@ class LoginVC: UIViewController  {
                 
                 let creatHomeVC = CreatHomeViewController(nibName: "CreatHomeViewController", bundle: nil)
                 let creatNavigationC = UINavigationController(rootViewController: creatHomeVC)
-                UIApplication.sharedApplication().keyWindow?.rootViewController = creatNavigationC
+                app.window!.rootViewController = creatNavigationC
                 
                 
             }else{
                 
                 
-                UIApplication.sharedApplication().keyWindow?.rootViewController = TabbarC()
+                app.window!.rootViewController = TabbarC()
             }
         }
     

@@ -32,9 +32,12 @@
 #import "MyScorllView.h"
 #import "MySxtScorllView.h"
 #import "SunDataPicker.h"
-
+#import "PopupView.h"
 //语音
 #import "UIWindow+Visible.h"
 #import "YYTool.h"
 #import "iflyMSC/iflySetting.h"
 #import "iflyMSC/IFlySpeechUtility.h"
+
+
+#import "DBGViewController.h"

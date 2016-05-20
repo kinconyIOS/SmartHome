@@ -46,8 +46,22 @@ class EquipSetVC: UITableViewController, UIGestureRecognizerDelegate {
         print("--\(equip?.name)-\(equip?.icon)-\(equip?.roomCode)")
         compeletBlock?(equip!)
         self.navigationController?.popViewControllerAnimated(true)
+//        for temp in self.navigationController!.viewControllers {
+//            if temp.isKindOfClass(HomeVC.classForCoder()) {
+//                self.navigationController?.popToViewController(temp , animated: true)
+//            }else if temp.isKindOfClass(MineVC.classForCoder()){
+//                self.navigationController?.popToViewController(temp , animated: true)
+//            }
+//        }
     }
-    
+    //键盘消失
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         if NSStringFromClass(touch.view!.classForCoder) == "UITableViewCellContentView" {
             return false

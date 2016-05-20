@@ -12,7 +12,7 @@ class RecentModelCell: UITableViewCell ,UICollectionViewDataSource,UICollectionV
     @IBOutlet var collectionView: UICollectionView!
   var arr = [UIImage(imageLiteral: "icon1.png"),UIImage(imageLiteral: "icon2.png"),UIImage(imageLiteral: "icon3.png"),UIImage(imageLiteral: "icon4.png"),UIImage(imageLiteral: "icon5.png"),UIImage(imageLiteral: "icon6.png"),UIImage(imageLiteral: "icon7.png"),UIImage(imageLiteral: "icon8.png"),]
     var name = ["回家","上班","娱乐","就餐","回家","上班","娱乐","就餐"]
-    var models = [ChainModel]()
+    
     //代理 删除之后刷新
     func DeleRefresh(modeleId: String){
         self.getModel()
@@ -38,7 +38,7 @@ class RecentModelCell: UITableViewCell ,UICollectionViewDataSource,UICollectionV
     func getModel(){
         BaseHttpService .sendRequestAccess(Get_gainmodel, parameters:["":""]) { (response) -> () in
             print(response)
-            self.models = [ChainModel]()
+        app.models = [ChainModel]()
             if response.count == 0{
                 self.collectionView.reloadData()
             return
@@ -56,11 +56,11 @@ class RecentModelCell: UITableViewCell ,UICollectionViewDataSource,UICollectionV
     }
     
     func setmodelss(model:ChainModel){
-        self.models.append(model)
+        app.models.append(model)
     }
     //定义展示的UICollectionViewCell的个数
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.models.count + 1;
+        return app.models.count + 1;
     }
     //定义展示的Section的个数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -69,7 +69,7 @@ class RecentModelCell: UITableViewCell ,UICollectionViewDataSource,UICollectionV
     //每个UICollectionView展示的内容
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     
-        if indexPath.row == self.models.count
+        if indexPath.row == app.models.count
         {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("model_cell", forIndexPath: indexPath) as? ModelCell
             cell?.icon.image = UIImage(named: "icon_add_model")
@@ -80,13 +80,13 @@ class RecentModelCell: UITableViewCell ,UICollectionViewDataSource,UICollectionV
         
         }else{
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("model_cell", forIndexPath: indexPath) as? ModelCell
-        cell?.icon.image = UIImage(named: self.models[indexPath.row].modelIcon)
+        cell?.icon.image = UIImage(named: app.models[indexPath.row].modelIcon)
        // cell?.icon.image =  self.arr[indexPath.row]
-        cell?.name.text = self.models[indexPath.row].modelName
+        cell?.name.text = app.models[indexPath.row].modelName
         cell?.addLongPass()
         cell?.tag = indexPath.row
-        cell?.modelID = self.models[indexPath.row].modelId
-        cell?.model = self.models[indexPath.row]
+        cell?.modelID = app.models[indexPath.row].modelId
+        cell?.model = app.models[indexPath.row]
         cell?.delegate=self
         return cell!
         }
@@ -97,7 +97,7 @@ class RecentModelCell: UITableViewCell ,UICollectionViewDataSource,UICollectionV
     //    #pragma mark --UICollectionViewDelegate
     //UICollectionView被选中时调用的方法
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == self.models.count
+        if indexPath.row == app.models.count
         {
         let homevc = self.parentController()
             homevc!.drakBtn.hidden=false
@@ -106,7 +106,12 @@ class RecentModelCell: UITableViewCell ,UICollectionViewDataSource,UICollectionV
           
         }else
         {
+            let m = app.models[indexPath.row] 
         // 使用
+            BaseHttpService.sendRequestAccess(commandmodel, parameters: ["modelId":m.modelId]) { (backJson) -> () in
+                print(backJson)
+              
+            }
         }
     }
  

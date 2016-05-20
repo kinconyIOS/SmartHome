@@ -168,6 +168,7 @@ class DataDeal :NSObject{
     }
    
     func searchModel(type: TableType, byCode code: String) ->AnyObject? {
+        
         switch type {
         case .User:
             break
@@ -459,6 +460,30 @@ class DataDeal :NSObject{
         }
         return arr
     }
+    func getEquipsByRoomCodeExceptSXT(currentRoomCode: String) -> [Equip] {
+        print("-----\(currentRoomCode)")
+        var arr = [Equip]()
+        let equipCode = Expression<String>("code")
+        let equipName = Expression<String>("name")
+        let equipIcon = Expression<String>("icon")
+        let roomCode = Expression<String>("roomCode")
+        let userCode = Expression<String>("userCode")
+        let type = Expression<String>("type")
+        let num =  Expression<String>("num")
+        let equip = Table("Equips")
+            print("getEquipsByRoomExceptSXT---\(roomCode)");
+        for e in try! db!.prepare(equip.filter(roomCode == currentRoomCode && type != "100" && type != "101")) {
+            let newEquip = Equip(equipID: e[equipCode])
+            newEquip.name = e[equipName]
+            newEquip.icon = e[equipIcon]
+            newEquip.roomCode = e[roomCode]
+            newEquip.userCode = e[userCode]
+            newEquip.type = e[type]
+            newEquip.num = e[num]
+            arr.append(newEquip)
+        }
+        return arr
+    }
     func getEquipsByRoomExceptSXT(room: Room) -> [Equip] {
         var arr = [Equip]()
         let equipCode = Expression<String>("code")
@@ -469,7 +494,7 @@ class DataDeal :NSObject{
         let type = Expression<String>("type")
         let num =  Expression<String>("num")
         let equip = Table("Equips")
-        
+        print("getEquipsByRoomExceptSXT---\(room.roomCode)");
         for e in try! db!.prepare(equip.filter(roomCode == room.roomCode && type != "100" && type != "101")) {
             let newEquip = Equip(equipID: e[equipCode])
             newEquip.name = e[equipName]

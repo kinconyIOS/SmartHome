@@ -23,8 +23,6 @@
 		9803456D1CC777230016F345 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9803456A1CC777230016F345 /* FileManager.m */; };
 		9803456E1CC777230016F345 /* GuideViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9803456C1CC777230016F345 /* GuideViewController.mm */; };
 		980353A71C19499E00A2C6A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 980353A91C19499E00A2C6A8 /* Localizable.strings */; };
-		980364591CD996690091DD63 /* OneOfModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980364581CD996690091DD63 /* OneOfModel.swift */; };
-		980364681CD997A10091DD63 /* CtrModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980364671CD997A10091DD63 /* CtrModel.swift */; };
 		98036A4C1C3BAFFB00634FB0 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 98036A4B1C3BAFFB00634FB0 /* libstdc++.6.0.9.tbd */; };
 		98036A4E1C3BB00700634FB0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98036A4D1C3BB00700634FB0 /* AudioToolbox.framework */; };
 		98036A501C3BB01200634FB0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98036A4F1C3BB01200634FB0 /* MobileCoreServices.framework */; };
@@ -78,7 +76,6 @@
 		9806746C1CE02342008DB8B5 /* ChainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806746B1CE02342008DB8B5 /* ChainModel.swift */; };
 		9806746F1CE03024008DB8B5 /* InfraredCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9806746D1CE03024008DB8B5 /* InfraredCell.swift */; };
 		980674701CE03024008DB8B5 /* InfraredCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9806746E1CE03024008DB8B5 /* InfraredCell.xib */; };
-		9806CD481C2124C90038A8E0 /* 引导页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9806CD471C2124C90038A8E0 /* 引导页.jpg */; };
 		980701291CE32D0900521156 /* RecentModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980701271CE32D0900521156 /* RecentModelCell.swift */; };
 		9807012A1CE32D0900521156 /* RecentModelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 980701281CE32D0900521156 /* RecentModelCell.xib */; };
 		9807012D1CE32D8C00521156 /* ModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9807012B1CE32D8C00521156 /* ModelCell.swift */; };
@@ -466,6 +463,19 @@
 		C2DF39071C351E0600114AE8 /* EquipImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2DF39051C351E0600114AE8 /* EquipImageCell.xib */; };
 		C2EC1CA01C2BC99F005030FC /* LQRcodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EC1C9F1C2BC99F005030FC /* LQRcodeVC.swift */; };
 		C2EC1CA21C2BC9E9005030FC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EC1CA11C2BC9E8005030FC /* AVFoundation.framework */; };
+		E41A30411CEAF42800585C72 /* MyPasser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41A30401CEAF42800585C72 /* MyPasser.swift */; };
+		E41FF1F11CE577AE006A61F1 /* MySetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41FF1F01CE577AE006A61F1 /* MySetUp.swift */; };
+		E41FF1F31CE59D4C006A61F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E41FF1F21CE59D4C006A61F1 /* UIKit.framework */; };
+		E41FF2041CE5A9BE006A61F1 /* DBGuestureButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E41FF2011CE5A9BE006A61F1 /* DBGuestureButton.m */; };
+		E41FF2051CE5A9BE006A61F1 /* DBGuestureLock.m in Sources */ = {isa = PBXBuildFile; fileRef = E41FF2031CE5A9BE006A61F1 /* DBGuestureLock.m */; };
+		E41FF2271CE5AC9C006A61F1 /* DBGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41FF2251CE5AC9C006A61F1 /* DBGViewController.m */; };
+		E41FF22A1CE5B275006A61F1 /* DBGimg.png in Resources */ = {isa = PBXBuildFile; fileRef = E41FF2291CE5B275006A61F1 /* DBGimg.png */; };
+		E451EFCD1CE9B9400082BCC8 /* ShotLightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E451EFCB1CE9B9400082BCC8 /* ShotLightCell.xib */; };
+		E451EFCE1CE9B9400082BCC8 /* ShotLightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451EFCC1CE9B9400082BCC8 /* ShotLightCell.swift */; };
+		E48BD02E1CEDA053005DF004 /* ShotWindowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E48BD02C1CEDA053005DF004 /* ShotWindowCell.xib */; };
+		E48BD02F1CEDA053005DF004 /* ShotWindowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BD02D1CEDA053005DF004 /* ShotWindowCell.swift */; };
+		E48BD0321CEDC1E6005DF004 /* ShotLockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E48BD0301CEDC1E6005DF004 /* ShotLockCell.xib */; };
+		E48BD0331CEDC1E6005DF004 /* ShotLockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BD0311CEDC1E6005DF004 /* ShotLockCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -646,8 +656,6 @@
 		980353B81C194A8A00A2C6A8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		980353B91C194A8A00A2C6A8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hant"; path = "zh-Hant.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		980353BB1C194A8D00A2C6A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
-		980364581CD996690091DD63 /* OneOfModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneOfModel.swift; sourceTree = "<group>"; };
-		980364671CD997A10091DD63 /* CtrModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CtrModel.swift; sourceTree = "<group>"; };
 		98036A4B1C3BAFFB00634FB0 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		98036A4D1C3BB00700634FB0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		98036A4F1C3BB01200634FB0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -704,7 +712,6 @@
 		9806746B1CE02342008DB8B5 /* ChainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainModel.swift; sourceTree = "<group>"; };
 		9806746D1CE03024008DB8B5 /* InfraredCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfraredCell.swift; sourceTree = "<group>"; };
 		9806746E1CE03024008DB8B5 /* InfraredCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfraredCell.xib; sourceTree = "<group>"; };
-		9806CD471C2124C90038A8E0 /* 引导页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "引导页.jpg"; sourceTree = "<group>"; };
 		980701271CE32D0900521156 /* RecentModelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentModelCell.swift; sourceTree = "<group>"; };
 		980701281CE32D0900521156 /* RecentModelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentModelCell.xib; sourceTree = "<group>"; };
 		9807012B1CE32D8C00521156 /* ModelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCell.swift; sourceTree = "<group>"; };
@@ -1483,6 +1490,22 @@
 		C2DF39051C351E0600114AE8 /* EquipImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EquipImageCell.xib; sourceTree = "<group>"; };
 		C2EC1C9F1C2BC99F005030FC /* LQRcodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LQRcodeVC.swift; sourceTree = "<group>"; };
 		C2EC1CA11C2BC9E8005030FC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E41A30401CEAF42800585C72 /* MyPasser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPasser.swift; sourceTree = "<group>"; };
+		E41FF1F01CE577AE006A61F1 /* MySetUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySetUp.swift; sourceTree = "<group>"; };
+		E41FF1F21CE59D4C006A61F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E41FF2001CE5A9BE006A61F1 /* DBGuestureButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBGuestureButton.h; sourceTree = "<group>"; };
+		E41FF2011CE5A9BE006A61F1 /* DBGuestureButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBGuestureButton.m; sourceTree = "<group>"; };
+		E41FF2021CE5A9BE006A61F1 /* DBGuestureLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBGuestureLock.h; sourceTree = "<group>"; };
+		E41FF2031CE5A9BE006A61F1 /* DBGuestureLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBGuestureLock.m; sourceTree = "<group>"; };
+		E41FF2241CE5AC9C006A61F1 /* DBGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBGViewController.h; sourceTree = "<group>"; };
+		E41FF2251CE5AC9C006A61F1 /* DBGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBGViewController.m; sourceTree = "<group>"; };
+		E41FF2291CE5B275006A61F1 /* DBGimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DBGimg.png; sourceTree = "<group>"; };
+		E451EFCB1CE9B9400082BCC8 /* ShotLightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShotLightCell.xib; sourceTree = "<group>"; };
+		E451EFCC1CE9B9400082BCC8 /* ShotLightCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotLightCell.swift; sourceTree = "<group>"; };
+		E48BD02C1CEDA053005DF004 /* ShotWindowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShotWindowCell.xib; sourceTree = "<group>"; };
+		E48BD02D1CEDA053005DF004 /* ShotWindowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotWindowCell.swift; sourceTree = "<group>"; };
+		E48BD0301CEDC1E6005DF004 /* ShotLockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShotLockCell.xib; sourceTree = "<group>"; };
+		E48BD0311CEDC1E6005DF004 /* ShotLockCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotLockCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1490,6 +1513,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41FF1F31CE59D4C006A61F1 /* UIKit.framework in Frameworks */,
 				981114221CE1D6C70092F507 /* AddressBook.framework in Frameworks */,
 				981114011CE1BF0E0092F507 /* CoreGraphics.framework in Frameworks */,
 				C2EC1CA21C2BC9E9005030FC /* AVFoundation.framework in Frameworks */,
@@ -1615,7 +1639,6 @@
 			isa = PBXGroup;
 			children = (
 				98040F9F1CBF29C400BBF1B3 /* icon */,
-				9806CD471C2124C90038A8E0 /* 引导页.jpg */,
 			);
 			name = Resources;
 			path = ../../Resources;
@@ -1650,6 +1673,7 @@
 		980A92E91C17B440009166D0 = {
 			isa = PBXGroup;
 			children = (
+				E41FF1F21CE59D4C006A61F1 /* UIKit.framework */,
 				981114211CE1D6C70092F507 /* AddressBook.framework */,
 				981114001CE1BF0D0092F507 /* CoreGraphics.framework */,
 				984A08F01CD8628A00935967 /* libsqlite3.tbd */,
@@ -2493,6 +2517,8 @@
 				9802ED291CCB597E00D71662 /* MySxtScorllView.mm */,
 				9805CB6F1CBF9C1800C6B97F /* MyScorllView.h */,
 				9805CB701CBF9C1800C6B97F /* MyScorllView.m */,
+				E451EFCC1CE9B9400082BCC8 /* ShotLightCell.swift */,
+				E451EFCB1CE9B9400082BCC8 /* ShotLightCell.xib */,
 				985C639D1CB4EF1A00A4D4DA /* LightCell.swift */,
 				985C639E1CB4EF1A00A4D4DA /* LightCell.xib */,
 				98A3DB4B1CB4FFEE0064474C /* ModulateCell.swift */,
@@ -2508,6 +2534,10 @@
 				9806746B1CE02342008DB8B5 /* ChainModel.swift */,
 				9806746D1CE03024008DB8B5 /* InfraredCell.swift */,
 				9806746E1CE03024008DB8B5 /* InfraredCell.xib */,
+				E48BD02D1CEDA053005DF004 /* ShotWindowCell.swift */,
+				E48BD02C1CEDA053005DF004 /* ShotWindowCell.xib */,
+				E48BD0311CEDC1E6005DF004 /* ShotLockCell.swift */,
+				E48BD0301CEDC1E6005DF004 /* ShotLockCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -2705,8 +2735,11 @@
 		98EDE6341CDB6A90003AD01C /* mine */ = {
 			isa = PBXGroup;
 			children = (
+				E41FF1FF1CE5A985006A61F1 /* DBGuestureLock */,
 				980674631CE01C66008DB8B5 /* AlterViewController.swift */,
 				980674641CE01C66008DB8B5 /* AlterViewController.xib */,
+				E41A30401CEAF42800585C72 /* MyPasser.swift */,
+				E41FF1F01CE577AE006A61F1 /* MySetUp.swift */,
 				98EDE6371CDB6A90003AD01C /* DeviceManagerVC.swift */,
 				98EDE6381CDB6A90003AD01C /* FeedbackViewController.swift */,
 				98EDE6391CDB6A90003AD01C /* FeedbackViewController.xib */,
@@ -2767,8 +2800,6 @@
 				984DE7B31C48DFA700D7A76C /* Floor.swift */,
 				984DE7B41C48DFA700D7A76C /* Room.swift */,
 				9803F63E1C2B97E300CE10C2 /* WeatherModel.swift */,
-				980364581CD996690091DD63 /* OneOfModel.swift */,
-				980364671CD997A10091DD63 /* CtrModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3019,8 +3050,8 @@
 				9807012F1CE32DA300521156 /* ChainVC.swift */,
 				980701301CE32DA300521156 /* ChainVC.xib */,
 				980701311CE32DA300521156 /* ChainEquipAddVC.swift */,
-				986D2F231CCE1CF90065D8D0 /* ShotEquipAddVC.swift */,
 				980E29721CAE503B006A4034 /* EquipTableFloorCell.swift */,
+				986D2F231CCE1CF90065D8D0 /* ShotEquipAddVC.swift */,
 				980E29731CAE503B006A4034 /* EquipTableFloorCell.xib */,
 				C2D04EE31C33A48F00A59345 /* SHSegement.swift */,
 				C2D04EDF1C33A2B300A59345 /* ClassifyHomeVC.swift */,
@@ -3090,6 +3121,20 @@
 				C2DCFDE71C3E4BE8005A8368 /* SQLiteCipher Mac Tests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E41FF1FF1CE5A985006A61F1 /* DBGuestureLock */ = {
+			isa = PBXGroup;
+			children = (
+				E41FF2001CE5A9BE006A61F1 /* DBGuestureButton.h */,
+				E41FF2011CE5A9BE006A61F1 /* DBGuestureButton.m */,
+				E41FF2021CE5A9BE006A61F1 /* DBGuestureLock.h */,
+				E41FF2031CE5A9BE006A61F1 /* DBGuestureLock.m */,
+				E41FF2241CE5AC9C006A61F1 /* DBGViewController.h */,
+				E41FF2251CE5AC9C006A61F1 /* DBGViewController.m */,
+				E41FF2291CE5B275006A61F1 /* DBGimg.png */,
+			);
+			name = DBGuestureLock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3370,6 +3415,7 @@
 				98EDE67D1CDB6A90003AD01C /* ty2.png in Resources */,
 				98EDE6871CDB6A90003AD01C /* HeadImgTableViewCell.xib in Resources */,
 				C2DF38FB1C34C47F00114AE8 /* ChooseIconVC.xib in Resources */,
+				E41FF22A1CE5B275006A61F1 /* DBGimg.png in Resources */,
 				C24FD2B61C18043700B16BF2 /* DeviceIconVC.xib in Resources */,
 				98EDE6891CDB6A90003AD01C /* IndividuaViewController.xib in Resources */,
 				C2DF38FF1C34C5CB00114AE8 /* ChooseHeaderView.xib in Resources */,
@@ -3384,8 +3430,10 @@
 				98040FC21CBF29C400BBF1B3 /* Icon-Small@3x.png in Resources */,
 				98EDE69A1CDB6A90003AD01C /* PersonalCell.xib in Resources */,
 				98312BF41CBB6B50002E1C83 /* Shader.vsh in Resources */,
+				E48BD02E1CEDA053005DF004 /* ShotWindowCell.xib in Resources */,
 				98312BE81CBB6B50002E1C83 /* HTPlayCamerViewController.xib in Resources */,
 				98EDE6A31CDB6A90003AD01C /* Refresh.png in Resources */,
+				E451EFCD1CE9B9400082BCC8 /* ShotLightCell.xib in Resources */,
 				98076E531CD300B7007394A1 /* left.png in Resources */,
 				98CEDA6F1CC63883007CF18C /* 楼层按下.png in Resources */,
 				98EDE6901CDB6A90003AD01C /* MyHeadCell.xib in Resources */,
@@ -3437,7 +3485,6 @@
 				98EDE67C1CDB6A90003AD01C /* ty1.png in Resources */,
 				98076E491CD300B7007394A1 /* down.png in Resources */,
 				980674621CE01C26008DB8B5 /* RedsTableViewCell.xib in Resources */,
-				9806CD481C2124C90038A8E0 /* 引导页.jpg in Resources */,
 				98EDE69D1CDB6A90003AD01C /* fj.png in Resources */,
 				C2C97A041C3A1B5500706A07 /* EquipTableEquipCell.xib in Resources */,
 				98EDE69E1CDB6A90003AD01C /* House.png in Resources */,
@@ -3446,6 +3493,7 @@
 				981114101CE1C9580092F507 /* btn_mic.png in Resources */,
 				C21E15911C18065200C45854 /* FailedVC.xib in Resources */,
 				C21E158D1C18063B00C45854 /* SuccessVC.xib in Resources */,
+				E48BD0321CEDC1E6005DF004 /* ShotLockCell.xib in Resources */,
 				98312C0F1CBB6B50002E1C83 /* JK_ViewController.xib in Resources */,
 				98EDE6751CDB6A90003AD01C /* MallVC.xib in Resources */,
 				98076E4F1CD300B7007394A1 /* ico4on.png in Resources */,
@@ -3511,7 +3559,6 @@
 				981114121CE1C9580092F507 /* LCVoiceHud.m in Sources */,
 				98764C2A1CAA1AC600DC1368 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				98312ACA1CBB52F4002E1C83 /* GlobalKit.m in Sources */,
-				980364591CD996690091DD63 /* OneOfModel.swift in Sources */,
 				C24FD2D31C18043700B16BF2 /* UIView+WebCacheOperation.m in Sources */,
 				98764C2F1CAA1AC600DC1368 /* UIProgressView+AFNetworking.m in Sources */,
 				C24FD2A31C18043700B16BF2 /* HomeVC.swift in Sources */,
@@ -3543,6 +3590,7 @@
 				986D2F251CCE1CF90065D8D0 /* ShotEquipAddVC.swift in Sources */,
 				98764C2B1CAA1AC600DC1368 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				C24FD2CD1C18043700B16BF2 /* UIButton+WebCache.m in Sources */,
+				E41FF1F11CE577AE006A61F1 /* MySetUp.swift in Sources */,
 				98312ABB1CBB52F4002E1C83 /* DACircularProgressView.m in Sources */,
 				98312ACB1CBB52F4002E1C83 /* MASCompositeConstraint.m in Sources */,
 				98EDE6A01CDB6A90003AD01C /* OrderNumberTableViewCell.swift in Sources */,
@@ -3584,6 +3632,7 @@
 				9802ED6A1CD22C7D0025B93B /* NoDeviceCell.swift in Sources */,
 				98312C081CBB6B50002E1C83 /* RecPathManagement.m in Sources */,
 				98764C2C1CAA1AC600DC1368 /* UIAlertView+AFNetworking.m in Sources */,
+				E41FF2271CE5AC9C006A61F1 /* DBGViewController.m in Sources */,
 				98312AAE1CBB52F4002E1C83 /* CameraCollectionView.swift in Sources */,
 				980474651C23A52D00B3966D /* RoomListItem.swift in Sources */,
 				98312ABD1CBB52F4002E1C83 /* NSArray+DDKit.m in Sources */,
@@ -3601,6 +3650,7 @@
 				C24FD2CB1C18043700B16BF2 /* SDWebImageManager.m in Sources */,
 				98EDE6991CDB6A90003AD01C /* PersonalCell.swift in Sources */,
 				9803F63F1C2B97E300CE10C2 /* WeatherModel.swift in Sources */,
+				E451EFCE1CE9B9400082BCC8 /* ShotLightCell.swift in Sources */,
 				98312C091CBB6B50002E1C83 /* SearchDVS.mm in Sources */,
 				98A3DB3D1CB4FDD50064474C /* MJRefreshFooter.m in Sources */,
 				98EDE6761CDB6A90003AD01C /* ParameterTableViewCell.swift in Sources */,
@@ -3612,6 +3662,7 @@
 				98063BA41CCA0A30006F5139 /* CommonPlayView.mm in Sources */,
 				9805CB711CBF9C1800C6B97F /* MyScorllView.m in Sources */,
 				98312AC01CBB52F4002E1C83 /* UIButton+DDKit.m in Sources */,
+				E48BD02F1CEDA053005DF004 /* ShotWindowCell.swift in Sources */,
 				98EDE6671CDB6A90003AD01C /* DetailsViewController.swift in Sources */,
 				989276051C321AA000FAEF5E /* AppDelegate+GeTui.swift in Sources */,
 				981113F91CE1BE9C0092F507 /* SBJson4Parser.m in Sources */,
@@ -3625,6 +3676,7 @@
 				C2DF38FA1C34C47F00114AE8 /* ChooseIconVC.swift in Sources */,
 				98764C311CAA1AC600DC1368 /* UIWebView+AFNetworking.m in Sources */,
 				C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */,
+				E41FF2051CE5A9BE006A61F1 /* DBGuestureLock.m in Sources */,
 				98EDE6611CDB6A90003AD01C /* CommodityImgTableViewCell.swift in Sources */,
 				98312AEA1CBB52F4002E1C83 /* UITableView+FDKeyedHeightCache.m in Sources */,
 				981113F81CE1BE9C0092F507 /* RecognizerFactory.m in Sources */,
@@ -3648,6 +3700,7 @@
 				98312BF81CBB6B50002E1C83 /* CameraListMgt.mm in Sources */,
 				C24FD2B51C18043700B16BF2 /* DeviceIconVC.swift in Sources */,
 				C24FD2CF1C18043700B16BF2 /* UIImage+MultiFormat.m in Sources */,
+				E41A30411CEAF42800585C72 /* MyPasser.swift in Sources */,
 				980345671CC776FF0016F345 /* NSDictionary+Ping.m in Sources */,
 				98312BF71CBB6B50002E1C83 /* CameraDBUtils.mm in Sources */,
 				C2AD17DC1C2CDD5700AFE71E /* RoomCell.swift in Sources */,
@@ -3681,6 +3734,7 @@
 				C2D04EE41C33A48F00A59345 /* SHSegement.swift in Sources */,
 				98764C211CAA1AC600DC1368 /* AFHTTPRequestOperation.m in Sources */,
 				98312AC81CBB52F4002E1C83 /* DDCollectionViewFlowLayout.m in Sources */,
+				E48BD0331CEDC1E6005DF004 /* ShotLockCell.swift in Sources */,
 				C24FD2B11C18043700B16BF2 /* AllDeviceListVC.swift in Sources */,
 				98312AC11CBB52F4002E1C83 /* UIColor+DDKit.m in Sources */,
 				98312C041CBB6B50002E1C83 /* PicPathManagement.m in Sources */,
@@ -3696,6 +3750,7 @@
 				C24FD2C81C18043700B16BF2 /* SDWebImageDecoder.m in Sources */,
 				98EDE6741CDB6A90003AD01C /* MallVC.swift in Sources */,
 				98312BFE1CBB6B50002E1C83 /* LocalPlayback.mm in Sources */,
+				E41FF2041CE5A9BE006A61F1 /* DBGuestureButton.m in Sources */,
 				98312AB51CBB52F4002E1C83 /* HIKLoadPercentView.m in Sources */,
 				98B461501CDC65E10080F77B /* ChoseDeviceForModel.swift in Sources */,
 				98312AD41CBB52F4002E1C83 /* ViewController+MASAdditions.m in Sources */,
@@ -3736,7 +3791,6 @@
 				C24FD2C41C18043700B16BF2 /* MKAnnotationView+WebCache.m in Sources */,
 				98312AC51CBB52F4002E1C83 /* UISegmentedControl+DDKit.m in Sources */,
 				98EDE6861CDB6A90003AD01C /* HeadImgTableViewCell.swift in Sources */,
-				980364681CD997A10091DD63 /* CtrModel.swift in Sources */,
 				98312ADE1CBB52F4002E1C83 /* UIImage+MWPhotoBrowser.m in Sources */,
 				989276091C32267D00FAEF5E /* AppDelegate+Reach.swift in Sources */,
 				98764BFA1CAA0C8F00DC1368 /* BaseHttpService.swift in Sources */,

@@ -20,9 +20,12 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
     @IBOutlet var anfangCheck: UIButton!
     var bgView:UIButton?
     @IBOutlet var jiajuCheck: UIButton!
-    
+    var timer:NSTimer?
+    var judge_refresh_timer:NSTimer?
+    var judge_refresh_count = 0.0
     var showSXT:Bool = false
     var sideView:SZLSideView?
+     var currentRoomCode = ""
     var _btn:UIButton = UIButton(frame: CGRectMake(0,0,50,50))
     
     var head  = 1
@@ -35,7 +38,8 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
     
     var tableSideViewDataSource:NSMutableArray = NSMutableArray(capacity: 10)
     
-        var deviceDataSource = []
+    
+     var deviceDataSource = []
      var sxtData = [Equip]()
     
     @IBOutlet var homeTableView: UITableView!
@@ -58,9 +62,8 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
-        popView.frame = CGRectMake(0, 0, 280 * ScreenWidth/320, 280 * 5 * ScreenWidth / 320 / 7)
-        popView.center = CGPointMake(self.view.center.x, self.view.center.y - 70)
+        popView.frame = CGRectMake((ScreenWidth -  (280 * ScreenWidth/320))/2, (ScreenHeight - 280 * 5 * ScreenWidth / 320 / 7)/2-70, 280 * ScreenWidth/320, 280 * 5 * ScreenWidth / 320 / 7)
+       // popView.center = CGPointMake(self.view.center.x, self.view.center.y - 70)
         popView.layer.cornerRadius = 7.0
         popView.layer.masksToBounds = true
         jiajuCheck.selected = true
@@ -88,10 +91,37 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
          self.homeTableView.registerNib(UINib(nibName: "UnkownCell", bundle: nil), forCellReuseIdentifier: "UnkownCell")
          self.homeTableView.registerNib(UINib(nibName: "NoDeviceCell", bundle: nil), forCellReuseIdentifier: "NoDeviceCell")
         self.homeTableView.registerNib(UINib(nibName: "InfraredCell", bundle: nil), forCellReuseIdentifier: "InfraredCell")
-       
+        self.homeTableView.registerNib(UINib(nibName: "ShotLightCell", bundle: nil), forCellReuseIdentifier: "ShotLightCell")
+        self.homeTableView.registerNib(UINib(nibName: "ShotWindowCell", bundle: nil), forCellReuseIdentifier: "ShotWindowCell")
+        
+       self.homeTableView.registerNib(UINib(nibName: "ShotLockCell", bundle: nil), forCellReuseIdentifier: "ShotLockCell")
+    }
+    func runTime(){
+        if self.judge_refresh_count == 3
+        {
+            self.refreshStatus()
+        }
+        if self.judge_refresh_count  == 4
+        {
+            self.judge_refresh_timer?.invalidate()
+            
+            self.judge_refresh_count = 0
+            return
+        }
+        self.judge_refresh_count += 0.5
+        
     }
     func configView(){
-      
+        //下拉加载
+        self.homeTableView.addLegendHeaderWithRefreshingBlock { [unowned self]() -> Void in
+            if self.judge_refresh_count == 0 {
+             self.refreshStatus()
+            self.judge_refresh_timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("runTime"), userInfo: nil, repeats: true)
+            self.judge_refresh_timer?.fire()
+            
+            }
+            self.homeTableView.header.endRefreshing();
+        }
         ////标题栏去掉
         // hscroll!.frame=CGRectMake(0,20, ScreenWidth-60, 64);
         // self.navigationItem.titleView=hscroll
@@ -218,34 +248,61 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
 
         if rooms.count > 0 //当
         {
-            self.deviceDataSource = dataDeal.getEquipsByRoomExceptSXT(rooms[0])
-            sxtData = [Equip]()
-            sxtData = dataDeal.searchSXTModel(byRoomCode: rooms[0].roomCode)
             
+            if app.App_room == ""{
+                app.App_room  = rooms[0].roomCode;
+            }
+            self.deviceDataSource = dataDeal.getEquipsByRoomCodeExceptSXT(app.App_room)
+            print("\(self.deviceDataSource.count)")
+            sxtData = [Equip]()
+            sxtData = dataDeal.searchSXTModel(byRoomCode: app.App_room)
+              refreshStatus()
             self.homeTableView.reloadData()
-            let param = ["roomCode":rooms[0].roomCode]
-            BaseHttpService.sendRequestAccess(deviceStatus_do, parameters: param, success: { (back) -> () in
-                print(back)
-                if back.count > 0{
-                    for dic in (back as![[String:String]])
-                    {
-                        if self.getEquip(dic["deviceAddress"]!) != nil
-                        {
-                            self.getEquip(dic["deviceAddress"]!)?.status = dic["state"]!
-                        }
-                        
-                    }
-                    self.homeTableView.reloadData()
-                }
-                
-            })
-
-        }
-        }
+           // currentRoomCode  = rooms[0].roomCode;
+//            if self.timer != nil
+//            {
+//                self.timer?.invalidate()
+//            }
+//            self.timer = nil
+           // self.timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("refreshStatus"), userInfo: nil, repeats: true)
+          
+//            self.timer?.fire()
+            //timer = nil;
+            //run timer ;
+            
               //刷新顶部按钮
         // scrollAddBtn()
+            }
+        }
         
     }
+            
+            
+        func   refreshStatus(){
+          
+          
+                let param = ["roomCode":app.App_room]
+                print("----0.01\(app.App_room)0.0----")
+                BaseHttpService.sendRequestAccess(deviceStatus_do, parameters: param, success: { (back) -> () in
+                    print(back)
+                    if back.count > 0{
+                        for dic in (back as![[String:String]])
+                        {
+                            if self.getEquip(dic["deviceAddress"]!) != nil
+                            {
+                                self.getEquip(dic["deviceAddress"]!)?.status = dic["state"]!
+                            }
+                            
+                        }
+                        let indexSet = NSIndexSet(index: 2)
+                        self.homeTableView.reloadSections(indexSet, withRowAnimation: UITableViewRowAnimation.Automatic)
+                        
+                    }
+                    
+                })
+                
+            }
+   
 //    @IBAction func closeSideViewGesture(sender: AnyObject) {
 //        sideView?.closeTap()
 //       
@@ -273,14 +330,43 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
     }
     override  func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        readRoomInfo {
+            
+            let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("\(BaseHttpService.userCode())RoomInfoVersionNumber")
+            print("\(BaseHttpService.userCode())当前的楼层信息版本号为:\(localnum)")
+        }
         self.navigationController?.navigationBarHidden  = false
 //        UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
         
-          self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
+        self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
        //刷新房间信息
-        getRoomInfo()
-        //加载
-       //  loadEZplay()
+  
+        BaseHttpService.sendRequestAccess(classifyEquip_do, parameters: [:]) { [unowned self](data) -> () in
+            print(data)
+          
+            if data.count != 0{
+                let arr = data as! [[String : AnyObject]]
+                for e in arr {
+                    let equip = Equip(equipID: e["deviceAddress"] as! String)
+                    equip.name = e["nickName"] as! String
+                    equip.roomCode = e["roomCode"] as! String
+                    equip.userCode = e["userCode"] as! String
+                    equip.type = e["deviceType"] as! String
+                    equip.num  = e["deviceNum"] as! String
+                    equip.icon  = e["icon"] as! String
+                    if equip.icon == ""{
+                        equip.icon = getIconByType(equip.type)
+                    }
+                    equip.saveEquip()
+                    
+                }
+                
+            }
+             self.getRoomInfo()
+            //先去更新数据库 再从数据库中解析
+           
+            
+        }
         //侧滑
         if sideView==nil{
             sideView = NSBundle.mainBundle().loadNibNamed("SZLSideView", owner: self, options: nil)[0] as? SZLSideView
@@ -436,14 +522,34 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
             
             }
             let equip = deviceDataSource[indexPath.row] as! Equip
-            if equip.type == "1"||judgeType(equip.type, type: "1")
+            if equip.type == "1"
             {//开关设备
                  cell = self.homeTableView.dequeueReusableCellWithIdentifier("LightCell", forIndexPath: indexPath)
                  cell?.backgroundColor = UIColor.whiteColor()
                  tableView.bringSubviewToFront(cell!)
                 (cell as!LightCell).setModel(equip)
             }
-            else if equip.type == "2" || equip.type == "4"||judgeType(equip.type, type: "3")||judgeType(equip.type, type: "2")
+            else if Int(equip.type) >= 1000 && Int(equip.type)<2000 {
+                //开关分开
+                cell = self.homeTableView.dequeueReusableCellWithIdentifier("ShotLightCell", forIndexPath: indexPath)
+                cell?.backgroundColor = UIColor.whiteColor()
+                tableView.bringSubviewToFront(cell!)
+                (cell as! ShotLightCell).setModel(equip)
+            }
+            else if Int(equip.type) >= 3000 && Int(equip.type)<4000 {
+                //开关停 窗帘
+                cell = self.homeTableView.dequeueReusableCellWithIdentifier("ShotWindowCell", forIndexPath: indexPath)
+                cell?.backgroundColor = UIColor.whiteColor()
+                tableView.bringSubviewToFront(cell!)
+                (cell as! ShotWindowCell).setModel(equip)
+            }
+            else if equip.type == "999"{
+                cell = self.homeTableView.dequeueReusableCellWithIdentifier("ShotLockCell", forIndexPath: indexPath)
+                cell?.backgroundColor = UIColor.whiteColor()
+                tableView.bringSubviewToFront(cell!)
+                (cell as! ShotLockCell).setModel(equip)
+            }
+            else if equip.type == "2" || equip.type == "4"||judgeType(equip.type, type: "2")
             {//可调设备
              cell = self.homeTableView.dequeueReusableCellWithIdentifier("ModulateCell", forIndexPath: indexPath)
                  cell?.backgroundColor = UIColor.whiteColor()
@@ -518,36 +624,33 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
                     if (sxtData.count > 0){
                      headCell!.removeHeadView()
                     }
+                    
                     self.deviceDataSource = dataDeal.getEquipsByRoomExceptSXT(Room(roomCode: item.roomCode))
                     sxtData = [Equip]()
                     sxtData = dataDeal.searchSXTModel(byRoomCode: item.roomCode)
                     //非菜单选项
                     print("点到具体房间。。\(item.roomCode)..\(self.deviceDataSource.count)---\(sxtData.count)")
-                    
-                    
                     self.homeTableView.reloadData()
-                    
                     //
                     self.sideView?.closeTap()
                      self.drakBtn.hidden=true
-                    let param = ["roomCode":item.roomCode]
-                    BaseHttpService.sendRequestAccess(deviceStatus_do, parameters: param, success: { (back) -> () in
-                        print(back)
-                        if back.count > 0{
-                         for dic in (back as![[String:String]])
-                         {
-                            if self.getEquip(dic["deviceAddress"]!) != nil
-                            {
-                             self.getEquip(dic["deviceAddress"]!)?.status = dic["state"]!
-                             }
-                        
-                         }
-                            self.homeTableView.reloadData()
-                        }
-                        
-                    })
-                   // tableView.deselectRowAtIndexPath(indexPath,animated:false)
+                   // self.currentRoomCode = item.roomCode;
+                    app.App_room = item.roomCode
+                    //
+//                    if self.timer != nil
+//                    {
+//                        self.timer?.invalidate()
+//                    }
+//                    self.timer = nil
+                    //self.timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("refreshStatus"), userInfo: nil, repeats: true)
                     
+//                    self.timer?.fire()
+                    
+                    //self.timer = nil;
+                    //run timer ;
+                   
+                   // tableView.deselectRowAtIndexPath(indexPath,animated:false)
+                    refreshStatus()
                 }
                 
             }
@@ -562,6 +665,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         }
         
     }
+   
     func getEquip(equip_id:String)->Equip?
     {
         for e in self.deviceDataSource
@@ -598,7 +702,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
             }
             if indexPath.section == 1
             {
-                return 65
+                return ScreenWidth / 4.5 - 10
             }
             if deviceDataSource.count < 1{
             return 44
@@ -670,6 +774,11 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
   
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+//        if self.timer != nil
+//        {
+//            self.timer?.invalidate()
+//        }
+//        self.timer = nil
         sideView?.closeTap()
         self.drakBtn.hidden=true
         popView .removeFromSuperview()
@@ -677,11 +786,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
          headCell!.removeHeadView()
         
     }
-  
-    
 
-  
-    
     func open(sender:UIButton){
     sender.selected = !sender.selected
         btnIsSeleted = sender.selected
@@ -719,13 +824,14 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
     }
    
     @IBAction func qxTap(sender: UIButton) {
-        popView .removeFromSuperview()
+        popView.removeFromSuperview()
         drakBtn.hidden = true
     }
    
     @IBAction func qrTap(sender: AnyObject) {
        
         let chainView = ChainEquipAddVC()
+        
         self.navigationController?.pushViewController(chainView, animated: true)
      
     }

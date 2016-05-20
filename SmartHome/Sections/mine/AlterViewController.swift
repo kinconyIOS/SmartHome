@@ -35,13 +35,17 @@ class AlterViewController: UIViewController,UITextFieldDelegate {
        
         if self.alteText == "修改姓名"{
             let parameters=["userName":textField.text!]
-            BaseHttpService.sendRequestAccess(GetUserName, parameters:parameters) { (response) -> () in
+            BaseHttpService.sendRequestAccess(GetUserName, parameters:parameters) {[unowned self] (response) -> () in
                 print(response)
+                self.navigationController?.popViewControllerAnimated(true)
+                self.myClosure?(self.textField.text!)
             }
         }else if self.alteText == "修改签名"{
             let parameters=["signature":textField.text!]
-            BaseHttpService.sendRequestAccess(GetUserSignature, parameters:parameters) { (response) -> () in
+            BaseHttpService.sendRequestAccess(GetUserSignature, parameters:parameters) {[unowned self] (response) -> () in
                 print(response)
+                self.navigationController?.popViewControllerAnimated(true)
+                self.myClosure?(self.textField.text!)
             }
             
         }else if self.alteText == "添加红外线"{
@@ -51,14 +55,15 @@ class AlterViewController: UIViewController,UITextFieldDelegate {
                 "infraredButtonsName":textField.text!,
                 "infraredButtonsValuess":String(i)]
             print(dic)
-            BaseHttpService.sendRequestAccess(Add_addinfraredbuttonses, parameters:dic) { (response) -> () in
+            BaseHttpService.sendRequestAccess(Add_addinfraredbuttonses, parameters:dic) { [unowned self](response) -> () in
                 print(response)
+                self.navigationController?.popViewControllerAnimated(true)
+                self.myClosure?(self.textField.text!)
             }
         //红外线添加接口
         }
         
-        self.navigationController?.popViewControllerAnimated(true)
-        self.myClosure?(textField.text!)
+
     }
     //设置输入长度
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {

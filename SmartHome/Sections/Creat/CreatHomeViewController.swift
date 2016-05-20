@@ -182,36 +182,33 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         print("------\(parameter["roomInfo"])")
         print("------\(parameter["floorInfo"])")
         BaseHttpService .sendRequestAccess(updatinfo, parameters: parameter) { (back) -> () in
+            // 更新一个版本号上传到服务器上面
             
-            updateRoomInfo({ () -> () in
-                // 更新一个版本号上传到服务器上面
-                var f = NSUserDefaults.standardUserDefaults().objectForKey( "RoomInfoVersionNumber")?.floatValue
-                if f == nil{ f
-                    = 0
-                }
-                setNetRoomInfoVersionNumber(f!+1, andComplete: {
-                    
-                    NSUserDefaults.standardUserDefaults().setFloat(f!+1, forKey: "RoomInfoVersionNumber")
-                     showMsg("保存成功");
+            
+            NSUserDefaults.standardUserDefaults().setFloat((back["version"]!?.floatValue)!, forKey: "\(BaseHttpService.userCode())RoomInfoVersionNumber")
+            
+         
+                updateRoomInfo({ () -> () in
+                    showMsg("保存成功");
                     if self.isSimple {
-                       
+                        
                         self.navigationController?.popToRootViewControllerAnimated(true)
-                    return
+                        return
                     }
                     let addDeviceVC: AddDeviceViewController = AddDeviceViewController(nibName: "AddDeviceViewController", bundle: nil)
                     addDeviceVC.setCompeletBlock { [unowned self]() -> () in
-                        let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
-                        self.navigationController?.pushViewController(classifyVC, animated: true)
+//                        let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
+//                        self.navigationController?.pushViewController(classifyVC, animated: true)
+                        app.window!.rootViewController = TabbarC()
                     }
                     self.navigationController?.pushViewController(addDeviceVC, animated: true)
-                        
-                   
                 })
-                })
-           
             
-           
-        }
+                        
+            
+                }
+       
+    
 
     }
  
@@ -402,9 +399,25 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         {
             if building.buildCode != ""{
             let parameter = ["roomCode" :building.buildCode]
-            BaseHttpService .sendRequestAccess(deleteroom_do, parameters: parameter) { (back) -> () in
-            }
-            }
+              BaseHttpService .sendRequestAccess(deleteroom_do, parameters: parameter) { [unowned self](back) -> () in
+              
+                    
+                    Room( roomCode:building.buildCode).delete()
+                    NSUserDefaults.standardUserDefaults().setFloat((back["version"]!?.floatValue)!,forKey: "\(BaseHttpService.userCode())RoomInfoVersionNumber")
+                    showMsg("删除成功");
+                    let correctArray = getRemoveIndex(building,array: (self.roomDic[building.floor!.buildName])!)
+                    //从原数组中删除指定元素
+                    
+                     for index in correctArray{
+                        self.roomDic[building.floor!.buildName]?.removeAtIndex(index)
+                     }
+                    self.dataSource.removeAtIndex(indexPath.row)
+                    self.tableView.reloadData()
+                    
+               
+                
+              }
+            }else{
                 let correctArray = getRemoveIndex(building,array: (self.roomDic[building.floor!.buildName])!)
                 //从原数组中删除指定元素
                 
@@ -414,38 +427,57 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
                 self.dataSource.removeAtIndex(indexPath.row)
                 self.tableView.reloadData()
           
-          
+            }
        //
         }else
-        {    if building.buildCode != ""{
+        {
+            if(building.isUnfold){
+                print("房间打开");
+                let correctArray = getRemoveIndex(building,array:self.floorArr)
+                //从原数组中删除指定元素
+                
+                if self.roomDic.keys.contains(building.buildName)
+                {
+                    //var indexPaths = [NSIndexPath]()
+                    let arr = self.roomDic[building.buildName]
+                    
+                    for _ in 0 ..< arr!.count+1
+                    {
+                        self.dataSource.removeAtIndex(indexPath.row)
+                    }
+                    self.roomDic.removeValueForKey(building.buildName)
+                    
+                }
+                for index in correctArray{
+                    self.floorArr.removeAtIndex(index)
+                }
+                self.tableView.reloadData()
+                
+            }
+
+            
+            if building.buildCode != ""{
 
              let parameter = ["floorCode" :building.buildCode]
-                BaseHttpService .sendRequestAccess(deleteroom_do, parameters: parameter) {(back) -> () in
-                }
-             }
-                if(building.isUnfold){
-                    print("房间打开");
-                    let correctArray = getRemoveIndex(building,array:self.floorArr)
-                    //从原数组中删除指定元素
+                BaseHttpService .sendRequestAccess(deletefloor_do, parameters: parameter) {[unowned self](back) -> () in
                     
-                    if self.roomDic.keys.contains(building.buildName)
-                    {
-                        //var indexPaths = [NSIndexPath]()
-                        let arr = self.roomDic[building.buildName]
-                        
-                        for _ in 0 ..< arr!.count+1
+                         Floor( floorCode:building.buildCode).delete()
+                        NSUserDefaults.standardUserDefaults().setFloat((back["version"]!?.floatValue)!, forKey: "\(BaseHttpService.userCode())RoomInfoVersionNumber")
+                        showMsg("删除成功");
+                        let correctArray = getRemoveIndex(building,array:self.floorArr)
+                        //从原数组中删除指定元素
+                        if self.roomDic.keys.contains(building.buildName)
                         {
-                            self.dataSource.removeAtIndex(indexPath.row)
+                            self.roomDic.removeValueForKey(building.buildName)
                         }
-                        self.roomDic.removeValueForKey(building.buildName)
-                        
-                    }
-                    for index in correctArray{
-                        self.floorArr.removeAtIndex(index)
-                    }
-                    self.tableView.reloadData()
-                    return
+                        for index in correctArray{
+                            self.floorArr.removeAtIndex(index)
+                        }
+                        self.dataSource.removeAtIndex(indexPath.row)
+                        self.tableView.reloadData()
+                  
                 }
+            }else{
                 let correctArray = getRemoveIndex(building,array:self.floorArr)
                 //从原数组中删除指定元素
                 if self.roomDic.keys.contains(building.buildName)
@@ -457,6 +489,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
                 }
                 self.dataSource.removeAtIndex(indexPath.row)
                 self.tableView.reloadData()
+            }
             
             
         }

@@ -19,8 +19,8 @@ class Equip : NSObject{
     var type: String = ""//99
     var icon: String = ""
     var num:String = ""//yanzhengma
-     var status:String = ""
-    var delay:String = "0"
+    var status:String = ""
+    var delay:String = "300"
     init(equipID: String) {
         self.equipID = equipID
     }

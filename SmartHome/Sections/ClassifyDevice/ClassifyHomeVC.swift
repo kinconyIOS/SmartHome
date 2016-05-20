@@ -79,6 +79,10 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         
         let parameter = ["userCode" : userCode]
         BaseHttpService.sendRequestAccess(unclassifyEquip_do, parameters: parameter) { (data) -> () in
+            if data.count <= 0{
+                return
+            }
+            
             let arr = data as! [[String : AnyObject]]
             print(arr)
              self.cDataSource = []
@@ -125,6 +129,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
             
             let arr = data as! [[String : AnyObject]]
             for e in arr {
+                print("更新数据库设备")
                 let equip = Equip(equipID: e["deviceAddress"] as! String)
                 equip.name = e["nickName"] as! String
                 equip.roomCode = e["roomCode"] as! String
@@ -181,7 +186,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         
         navigationItem.title = "我的设备"
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "矢量智能对象"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleBack:"))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
+      //  navigationItem.rightBarButtonItem = UIBarButtonItem(title: "去首页", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
         
 
         
@@ -258,25 +263,19 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
             let equipSetVC = EquipSetVC(nibName: "EquipSetVC", bundle: nil)
             equipSetVC.equip = cDataSource[indexPath.row]
             equipSetVC.configCompeletBlock({ [unowned self] (equip) -> () in
-              
+            
                 //添加设备
                   let parameter = [
                     "roomCode":equip.roomCode,
                     "deviceAddress":equip.equipID,
                     "nickName":equip.name,
                     "ico":equip.icon]
-                BaseHttpService.sendRequestAccess(addEq_do, parameters:  parameter, success: { (data) -> () in
+                BaseHttpService.sendRequestAccess(addEq_do, parameters:  parameter, success: {[unowned self] (data) -> () in
                     print(data)
                     equip.saveEquip()
+                    self.getUnEquips()
                 })
-                //上传更新设备
-                for i in 0..<self.cDataSource.count {
-                    if self.cDataSource[i].equipID == equip.equipID {
-                        self.cDataSource.removeAtIndex(i)
-                        break
-                    }
-                }
-                self.collectionView.reloadData()
+             
             })
             self.navigationController?.pushViewController(equipSetVC, animated: true)
         }
@@ -363,6 +362,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
                let equipTypeChoseTVC = EquipTypeChoseTVC()
             equipTypeChoseTVC.roomCode = model.addRoom!.roomCode
           self.navigationController?.pushViewController(equipTypeChoseTVC, animated: true)
+             self.collectionView.reloadData()
 //            let equipAddVC = EquipAddVC(nibName: "EquipAddVC", bundle: nil)
 //            equipAddVC.equip = Equip(equipID: randomCode())
 //            equipAddVC.equip?.num = "1"
@@ -413,23 +413,26 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let model = tDataSource[indexPath.row]
         //从数据库删除该设备
-        model.equip?.delete()
+        
             if model.equip?.equipID != ""{
                 let parameter = ["deviceAddress" :model.equip!.equipID]
-                BaseHttpService.sendRequestAccess(deletedevice_do, parameters: parameter) { (back) -> () in
+                BaseHttpService.sendRequestAccess(deletedevice_do, parameters: parameter) { [unowned self](back) -> () in
+                 
+                    model.equip?.delete()
+                    let arr:[Equip] = self.tDic[(model.equip?.roomCode)!]!
+                    print(arr)
+                    let correctArray = getRemoveIndex(model.equip!,array:arr)
+                    //从原数组中删除指定元素
+                    
+                    for index in correctArray{
+                        self.tDic[model.equip!.roomCode]!.removeAtIndex(index)
+                    }
+                    self.tDataSource.removeAtIndex(indexPath.row)
+                    self.tableView.reloadData()
+
                 }
             }
-        let arr:[Equip] = tDic[(model.equip?.roomCode)!]!
-        print(arr)
-            let correctArray = getRemoveIndex(model.equip!,array:arr)
-            //从原数组中删除指定元素
-            
-            for index in correctArray{
-               tDic[model.equip!.roomCode]!.removeAtIndex(index)
-            }
-            self.tDataSource.removeAtIndex(indexPath.row)
-            self.tableView.reloadData()
-            
+        
         
         
     }

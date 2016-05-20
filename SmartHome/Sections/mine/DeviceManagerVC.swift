@@ -84,7 +84,32 @@ class DeviceManagerVC: UITableViewController {
                         print(a)
                         let parameters=["deviceCode":a]
                         BaseHttpService.sendRequestAccess(Dele_tallhost, parameters:parameters) { [unowned dataDeal] (response) -> () in
+                            //
                             dataDeal.clearEquipTable()
+                            print("----0.0----")
+                            BaseHttpService.sendRequestAccess(classifyEquip_do, parameters: [:]) { (data) -> () in
+                                print(data)
+
+                                if data.count != 0{
+                                    let arr = data as! [[String : AnyObject]]
+                                    for e in arr {
+                                        let equip = Equip(equipID: e["deviceAddress"] as! String)
+                                        equip.name = e["nickName"] as! String
+                                        equip.roomCode = e["roomCode"] as! String
+                                        equip.userCode = e["userCode"] as! String
+                                        equip.type = e["deviceType"] as! String
+                                        equip.num  = e["deviceNum"] as! String
+                                        equip.icon  = e["icon"] as! String
+                                        if equip.icon == ""{
+                                            equip.icon = getIconByType(equip.type)
+                                        }
+                                        equip.saveEquip()
+                                        
+                                    }
+                                    
+                                }
+                            }
+                            //
                         }
                     })
                     

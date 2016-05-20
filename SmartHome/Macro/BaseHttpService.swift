@@ -9,16 +9,17 @@
 import UIKit
 import Alamofire
 class BaseHttpService: NSObject {
+  
     typealias RequestSuccessBlock = (AnyObject) -> ()
     
     static func sendRequest(url:String,parameters dic:NSDictionary,success successBlock:RequestSuccessBlock){
         let app_secret = "12345"
         let sign = (dic.ping()+app_secret).md5
         print(dic.ping()+app_secret)
-       
+        MBProgressHUD.showHUDAddedTo(app.window, animated: true)
         let head_dict:[String:String]? = ["timestamp":timeStamp(),"nonce":randomNumAndLetter(),"sign":sign]
        Alamofire.request(.POST, url, parameters:dic as? [String : AnyObject], encoding:.URL , headers: head_dict).responseJSON(completionHandler: { (response) -> Void in
-            
+         MBProgressHUD.hideAllHUDsForView(app.window, animated: true)
             if response.result.isFailure {
                 
                 print("网路问题-error:\(response.result.error)")
@@ -58,7 +59,10 @@ class BaseHttpService: NSObject {
     }
 
     static func sendRequestAccess(url:String,parameters dic:NSDictionary,success successBlock:RequestSuccessBlock){
-        MBProgressHUD.showHUDAddedTo(app.window, animated: true)
+        if deviceStatus_do != url{
+            MBProgressHUD.showHUDAddedTo(app.window, animated: true)
+        }
+       
        
         
         let app_secret = "12345"
@@ -78,8 +82,11 @@ class BaseHttpService: NSObject {
            //  print(NSString(data:response.data!, encoding:NSUTF8StringEncoding))
             
             if response.result.isFailure {
-                
-                
+                  let  popView = PopupView(frame: CGRectMake(100, ScreenHeight-200, 0, 0))
+                    popView.ParentView = UIWindow.visibleViewController().view
+                    popView.setText("网络不给力")
+                popView.ParentView .addSubview(popView)
+              
                 print("网路问题-error:\(response.result.error)")
                 
             } else {
@@ -87,6 +94,11 @@ class BaseHttpService: NSObject {
 
                
                 if (response.result.value!as![String:AnyObject]).keys.contains("statusCode"){
+                    
+                    let  popView = PopupView(frame: CGRectMake(100, ScreenHeight-200, 0, 0))
+                    popView.ParentView = UIWindow.visibleViewController().view
+                    popView.setText("获取信息失败!")
+                      popView.ParentView .addSubview(popView)
                      print("服务器返回异常数据")
                     return;
                 }
@@ -231,6 +243,7 @@ class BaseHttpService: NSObject {
         setRefreshAccessToken("")
         setAccessToken("")
         setUserCode("")
+        EZOpenSDK.setAccessToken("")
   
     }
   

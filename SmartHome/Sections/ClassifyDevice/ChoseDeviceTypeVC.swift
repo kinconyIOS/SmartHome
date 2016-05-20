@@ -17,7 +17,7 @@ class ChoseDeviceTypeVC: UIViewController {
         self.compeletBlock = compeletBlock
         
     }
-    let typeDataSource = ["普通灯","调光灯","窗帘"]
+    let typeDataSource = ["普通灯","调光灯","窗帘","电磁阀","插座","阀门(机械手)"]
     let codeDataSource = ["2262","1527"]
     let hzDataSource = ["315HZ","433HZ"]
     let ohmDataSource = ["1.2Ω","1.5Ω","2.2Ω","3.3Ω","4.7Ω"]
@@ -66,6 +66,7 @@ class ChoseDeviceTypeVC: UIViewController {
       //  let hz = hzBtn.titleLabel?.text
       //  let ohm = ohmBtn.titleLabel?.text
         let str = type!// + " " + code! + " " + hz! + " " + ohm!
+        type_value = (type_value == 4 || type_value == 5 || type_value == 6 ) ? 1 : type_value
         self.compeletBlock!(str,type_value*1000+code_value*100+hz_value*10+ohm_value)
         self.navigationController?.popViewControllerAnimated(true)
     

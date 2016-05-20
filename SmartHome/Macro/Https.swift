@@ -22,6 +22,7 @@ let ezToken = "\(baseUrl)gainfluoriteaccesstoken.action"
 
 let addEq_do = "\(baseUrl)setDeviceInfo.action"
 
+
 let deviceStatus_do="\(baseUrl)queryroomdevicestate.action"
 //查询未分类设备
 let unclassifyEquip_do = "\(baseUrl)unclassifyqueryequipment.action"
@@ -105,9 +106,12 @@ let addmodelinfo = "\(baseUrl)addmodelinfo.action"
 //情景模式----
 //获取情景模式
 let Get_gainmodel = "\(baseUrl)gainmodel.action"
-//情景模式详情 错误 修改
+//情景模式详情
 let Get_gainmodelinfo = "\(baseUrl)gainmodelinfo.action"
 //情景模式删除deletemodel.action
 let Dele_deletemodel = "\(baseUrl)deletemodel.action"
 //添加
 let Add_addmodel = "\(baseUrl)addmodel.action"
+//-----
+//控制
+let commandmodel = "\(baseUrl)commandmodel.action"

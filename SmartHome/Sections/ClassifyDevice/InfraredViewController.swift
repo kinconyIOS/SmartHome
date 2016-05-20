@@ -10,12 +10,21 @@ import UIKit
 
 
 class InfraredViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,pusView{
-
+ 
+    
+    
+   
     //代理
     var isMoni:Bool = false
+    var index:NSIndexPath?
+    var equip:Equip?
     func pus(id:Int) {
         if self.isMoni
         {
+            self.equip?.status = String(id)+","+strArr[IntArr.indexOf(id)!]
+            app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
+           
+            self.navigationController?.popViewControllerAnimated(true)
         return
         }
         let ss = String(self.swif)
@@ -32,10 +41,11 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
     var cellArr = []
     //按钮 value
     var IntArr:[Int] = []
-    //判断默认学习控制 默认值 0默认学习
+    //判断学习控制 默认值 0默认学习
     var swif:Int = 0
     //空值的设备地址
     var Address:String?
+    
     @IBOutlet weak var MyCollection: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +56,21 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
         //MyCollection.layer.masksToBounds = true
         // Do any additional setup after loading the view.
 
-        //导航栏右边按钮
-        self.navigationItem.rightBarButtonItems = self.barButton() as? [UIBarButtonItem]
+        //红外线刷新
+        BaseHttpService .sendRequestAccess(Get_gaininfraredbuttonses, parameters:["deviceAddress":self.Address!]) { [unowned self](response) -> () in
+            print(response)
+            if response.count != 0{
+                self.cellArr = response as! NSArray
+                self.WillAppear()
+            }
+            
+        }
+        
+        if !self.isMoni{
+            //导航栏右边按钮
+            self.navigationItem.rightBarButtonItems = self.barButton() as? [UIBarButtonItem]
+        }
+        self.GetDate()
 
     }
 
@@ -65,6 +88,17 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
              self.swif = 0
         }
     }
+    func GetDate(){
+        BaseHttpService .sendRequestAccess(Get_gaininfraredbuttonses, parameters:["deviceAddress":self.Address!]) { (response) -> () in
+            print(response)
+            if response.count != 0{
+                self.cellArr = response as! NSArray
+            }
+            //print(infraredVC.cellArr)
+            self.WillAppear()
+        }
+    }
+    
     func WillAppear(){
         strArr = []
         IntArr = []
@@ -167,15 +201,7 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
         MyCollection.layer.cornerRadius = 24.0
         //注册消息点击添加红外线
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "addinf1:", name: "a", object: nil)
-        //红外线刷新
-        BaseHttpService .sendRequestAccess(Get_gaininfraredbuttonses, parameters:["deviceAddress":self.Address!]) { [unowned self](response) -> () in
-            print(response)
-            if response.count != 0{
-                self.cellArr = response as! NSArray
-                self.WillAppear()
-            }
 
-        }
         
     }
     override func viewWillDisappear(animated: Bool) {
@@ -189,7 +215,11 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
     
     //定义展示的UICollectionViewCell的个数
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return strArr.count+1
+        if !self.isMoni{
+            return strArr.count+1
+        }else{
+            return strArr.count
+        }
     }
     //定义展示的Section的个数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -199,14 +229,31 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("inf", forIndexPath: indexPath) as? infCell
-        if indexPath.row == strArr.count{
-            cell?.but.setBackgroundImage(UIImage(imageLiteral: "红外线添加"), forState: UIControlState.Normal)
-            cell?.but.setTitle("", forState: UIControlState.Normal)
-            cell?.JudgeI = 1
-            
-        }
-        else{
-             let infCell1:Infrared = Infrared.init(aname:strArr[indexPath.row], and: self.Address!)
+        if !self.isMoni{
+            if indexPath.row == strArr.count{
+                cell?.but.setBackgroundImage(UIImage(imageLiteral: "红外线添加"), forState: UIControlState.Normal)
+                cell?.but.setTitle("", forState: UIControlState.Normal)
+                cell?.JudgeI = 1
+                
+            }
+            else{
+                let infCell1:Infrared = Infrared.init(aname:strArr[indexPath.row], and: self.Address!)
+                cell?.but.setBackgroundImage(UIImage(imageLiteral: "红外线"), forState: UIControlState.Normal)
+                cell?.JudgeI = 0
+                cell?.tag = IntArr[indexPath.row]
+                print("\(cell?.tag)")
+                cell!.myClosure = somsomeFunctionThatTakesAClosure
+                cell?.xiugai = xiugai
+                cell?.addLongPass()
+                //cell?.but.titleLabel?.font = UIFont.systemFontOfSize(13.0)
+                //cell?.but.setTitle(cellArr[indexPath.row], forState: UIControlState.Normal)
+                cell?.setinf(infCell1)
+                cell?.delegate = self
+                
+            }
+
+        }else{
+            let infCell1:Infrared = Infrared.init(aname:strArr[indexPath.row], and: self.Address!)
             cell?.but.setBackgroundImage(UIImage(imageLiteral: "红外线"), forState: UIControlState.Normal)
             cell?.JudgeI = 0
             cell?.tag = IntArr[indexPath.row]
@@ -218,9 +265,8 @@ class InfraredViewController: UIViewController,UICollectionViewDataSource,UIColl
             //cell?.but.setTitle(cellArr[indexPath.row], forState: UIControlState.Normal)
             cell?.setinf(infCell1)
             cell?.delegate = self
-            
         }
-        //cellArr.addObject(cell!)
+               //cellArr.addObject(cell!)
        // cellArr.indexOfObject(cell!)
         return cell!
     }

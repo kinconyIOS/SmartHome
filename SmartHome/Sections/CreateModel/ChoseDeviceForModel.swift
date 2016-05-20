@@ -15,7 +15,7 @@ class ChoseDeviceForModel: UIViewController,UITableViewDelegate,UITableViewDataS
   
     var tDataSource: [FloorOrRoomOrEquip] = []
     var tDic: [String : [Equip]] = [String : [Equip]]()
-    
+    var modelId = ""
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
    
@@ -75,7 +75,7 @@ class ChoseDeviceForModel: UIViewController,UITableViewDelegate,UITableViewDataS
             for room in rooms {
                 let r = FloorOrRoomOrEquip(floor: nil,room: room, equip: nil)
                 self.tDataSource.append(r)
-                let equips = dataDeal.getEquipsByRoom(room)
+                let equips = dataDeal.getEquipsByRoomExceptSXT(room)
                 self.tDic[room.roomCode] = equips
             }
             
@@ -93,7 +93,7 @@ class ChoseDeviceForModel: UIViewController,UITableViewDelegate,UITableViewDataS
         
         navigationItem.title = "我的设备"
         //  navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "矢量智能对象"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleBack:"))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleRightItem:"))
         
         
         
@@ -120,7 +120,7 @@ class ChoseDeviceForModel: UIViewController,UITableViewDelegate,UITableViewDataS
         self.navigationController?.popViewControllerAnimated(true)
     }
     func handleRightItem(barButton: UIBarButtonItem) {
-
+     
     }
     
     
@@ -213,6 +213,11 @@ class ChoseDeviceForModel: UIViewController,UITableViewDelegate,UITableViewDataS
             eq.num = model.equip!.num
             eq.status = model.equip!.status
             app.modelEquipArr.addObject(eq)
+            print("\(getJsonStrOfDeviceData())")
+//            BaseHttpService.sendRequestAccess(addmodelinfo, parameters: ["modelInfo":getJsonStrOfDeviceData(),"modelId":self.modelId], success: {[unowned self] (back) -> () in
+//                print(back)
+//                self.navigationController?.popViewControllerAnimated(true)
+//                })
             showMsg("添加成功");
         }
         
@@ -223,6 +228,19 @@ class ChoseDeviceForModel: UIViewController,UITableViewDelegate,UITableViewDataS
             return 30
         }
         return 44
+    }
+    //-----------添加数组
+    func getJsonStrOfDeviceData()->String{
+        
+        let arr = NSMutableArray()
+        for  e in app.modelEquipArr
+        {
+            let eq = e as! Equip
+            let dict = ["deviceAddress":eq.equipID,"deviceType":eq.type,"controlCommand":eq.status,"delayValues":eq.delay]
+            arr.addObject(dict)
+        }
+        
+        return dataDeal.toJSONString(arr)
     }
 //    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 //        let model = tDataSource[indexPath.row]

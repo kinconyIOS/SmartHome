@@ -19,8 +19,18 @@ class CameraTypeTVC: UITableViewController {
               navigationController?.navigationBar.tintColor = UIColor.whiteColor()
             self.tableView.backgroundColor = UIColor.groupTableViewBackgroundColor()
             self.tableView.tableFooterView = UIView()
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "矢量智能对象"), style: UIBarButtonItemStyle.Plain, target: self, action: Selector("handleBack:"))
         }
-        
+    func handleBack(barButton: UIBarButtonItem) {
+        //self.navigationController?.popViewControllerAnimated(true)
+        for temp in self.navigationController!.viewControllers {
+            if temp.isKindOfClass(HomeVC.classForCoder()) {
+                self.navigationController?.popToViewController(temp , animated: true)
+            }else if temp.isKindOfClass(MineVC.classForCoder()){
+                self.navigationController?.popToViewController(temp , animated: true)
+            }
+        }
+    }
         override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
             // Dispose of any resources that can be recreated.
@@ -68,6 +78,7 @@ class CameraTypeTVC: UITableViewController {
                  EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
                     let cam = CameraCollectionView()
                     cam.roomCode = self.roomCode
+                     print("1----\(self.roomCode)")
                     self.navigationController?.pushViewController(cam, animated: true)
                 }
                

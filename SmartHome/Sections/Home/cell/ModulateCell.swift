@@ -20,6 +20,7 @@ class ModulateCell: UITableViewCell {
         super.awakeFromNib()
         slider.setThumbImage(UIImage(named: "silder"), forState: UIControlState.Normal)
         // Initialization code
+        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -30,18 +31,16 @@ class ModulateCell: UITableViewCell {
     
     @IBAction func valueChangeTap(sender: UISlider) {
        print("------\(self.index?.row)")
-       let commad = Int(sender.value * 100)
+       var commad = Int(sender.value * 100)
         print(sender.value)
         print(commad)
         
-        
+        if commad == 100{
+            commad = 99
+        }
         if isMoni
         {
-         
-            ( app.modelEquipArr[(self.index?.row)!] as! Equip).status = String(commad)
-             print("------\((app.modelEquipArr[0] as! Equip).status)")
-             print("------\((app.modelEquipArr[1] as! Equip).status)")
-             print("------\((app.modelEquipArr[2] as! Equip).status)")
+             (app.modelEquipArr[(self.index?.row)!] as! Equip).status = String(commad)
             return
         }
         let address = self.equip?.equipID
@@ -59,6 +58,32 @@ class ModulateCell: UITableViewCell {
         {  print("------\(self.index?.row)")
             self.equip?.status = String(Int(slider.value * 100))
              app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
+            var str = ""
+            switch(self.equip!.delay){
+            case "300":str = "立即执行"//ms
+                break
+            case "600":str = "延迟0.5秒"
+                break
+            case "1000":str = "延迟1秒"
+                break
+            case "2000":str = "延迟2秒"
+                break
+            case "3000":str = "延迟3秒"
+                break
+            case "4000":str = "延迟4秒"
+                break
+            case "5000":str = "延迟5秒"
+                break
+            case "10000":str = "延迟10秒"
+                break
+            case "15000":str = "延迟15秒"
+                break
+            case "30000":str = "延迟30秒"
+                break
+            default:break
+                
+            }
+            self.delayBtn.setTitle(str, forState: UIControlState.Normal)
             self.delayBtn.hidden = false
             return
         }
@@ -74,7 +99,7 @@ class ModulateCell: UITableViewCell {
             let a = "\(one)"
             self.delayBtn.setTitle(a, forState: UIControlState.Normal)
             switch(a){
-            case "立即执行":self.equip?.delay = "200"//ms
+            case "立即执行":self.equip?.delay = "300"//ms
                 break
             case "延迟0.5秒":self.equip?.delay = "600"
                 break

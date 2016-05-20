@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,16 +15,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="未识别设备" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5n-kD-gHH">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未识别设备" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5n-kD-gHH">
                         <rect key="frame" x="118" y="14" width="85" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="1JU-cb-lUJ"/>
+                            <constraint firstAttribute="width" constant="85" id="N9c-a2-ORh"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="未知" translatesAutoresizingMaskIntoConstraints="NO" id="whk-6Q-CGa">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="未知" translatesAutoresizingMaskIntoConstraints="NO" id="whk-6Q-CGa">
                         <rect key="frame" x="28" y="8" width="36" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="Ger-8a-2UW"/>
+                            <constraint firstAttribute="width" constant="36" id="fIT-wh-Oee"/>
+                        </constraints>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="whk-6Q-CGa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="D9C-07-iuf"/>
+                    <constraint firstItem="D5n-kD-gHH" firstAttribute="leading" secondItem="whk-6Q-CGa" secondAttribute="trailing" constant="54" id="FWf-75-mJF"/>
+                    <constraint firstItem="whk-6Q-CGa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="fbe-uI-LaX"/>
+                    <constraint firstItem="D5n-kD-gHH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="vmj-Fy-uQq"/>
+                </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="300" y="347.5"/>
         </tableViewCell>

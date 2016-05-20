@@ -33,7 +33,7 @@ class LightCell: UITableViewCell {
             let a = "\(one)"
             self.delayBtn.setTitle(a, forState: UIControlState.Normal)
             switch(a){
-            case "立即执行":self.equip?.delay = "200"//ms
+            case "立即执行":self.equip?.delay = "300"//ms
                 break
             case "延迟0.5秒":self.equip?.delay = "600"
                 break
@@ -83,6 +83,7 @@ class LightCell: UITableViewCell {
         
         self.equip = e
         self.nameLabel.text = e.name
+        //self.delayBtn.setTitle(e.delay, forState: UIControlState.Normal)
         
         if isMoni
         {
@@ -90,6 +91,34 @@ class LightCell: UITableViewCell {
           
             app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
             self.delayBtn.hidden = false
+            /// delay
+            var str = ""
+            switch(self.equip!.delay){
+            case "300":str = "立即执行"//ms
+                break
+            case "600":str = "延迟0.5秒"
+                break
+            case "1000":str = "延迟1秒"
+                break
+            case "2000":str = "延迟2秒"
+                break
+            case "3000":str = "延迟3秒"
+                break
+            case "4000":str = "延迟4秒"
+                break
+            case "5000":str = "延迟5秒"
+                break
+            case "10000":str = "延迟10秒"
+                break
+            case "15000":str = "延迟15秒"
+                break
+            case "30000":str = "延迟30秒"
+                break
+            default:break
+                
+            }
+            self.delayBtn.setTitle(str, forState: UIControlState.Normal)
+          
             return
         }
         self.delayBtn.hidden = true

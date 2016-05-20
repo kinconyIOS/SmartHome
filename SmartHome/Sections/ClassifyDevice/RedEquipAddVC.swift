@@ -81,7 +81,14 @@ class RedEquipAddVC: UITableViewController, UIGestureRecognizerDelegate,QRCodeRe
     }
     
     func handleBack(barButton: UIBarButtonItem) {
-        self.navigationController?.popViewControllerAnimated(true)
+        //self.navigationController?.popViewControllerAnimated(true)
+        for temp in self.navigationController!.viewControllers {
+            if temp.isKindOfClass(HomeVC.classForCoder()) {
+                self.navigationController?.popToViewController(temp , animated: true)
+            }else if temp.isKindOfClass(MineVC.classForCoder()){
+                self.navigationController?.popToViewController(temp , animated: true)
+            }
+        }
     }
     func handleRightItem(barButton: UIBarButtonItem) {
 //        self.equip!.saveEquip()
@@ -124,6 +131,7 @@ class RedEquipAddVC: UITableViewController, UIGestureRecognizerDelegate,QRCodeRe
        // self.equip?.equipID = RedCell!.code.text!//设备的唯一标识 地址码
         self.equip?.num = "1"
         self.equip?.type = "99"//zigbee 红外99
+        
         self.equip?.status = RedCell!.identification.text!//设备验证码
         self.equip?.roomCode = self.roomCode!//房间号
         if self.equip?.equipID == "" || self.equip?.icon == "" || self.equip?.status == "" || self.equip?.name == ""{
@@ -141,6 +149,14 @@ class RedEquipAddVC: UITableViewController, UIGestureRecognizerDelegate,QRCodeRe
         BaseHttpService .sendRequestAccess(Set_setinfrareddeviceinfo, parameters:parameters) { [unowned self](response) -> () in
             print(response)
             self.equip?.saveEquip()//存储数据库
+           // self.dismissViewControllerAnimated(true, completion: nil)
+            for temp in self.navigationController!.viewControllers {
+                if temp.isKindOfClass(HomeVC.classForCoder()) {
+                    self.navigationController?.popToViewController(temp , animated: true)
+                }else if temp.isKindOfClass(MineVC.classForCoder()){
+                    self.navigationController?.popToViewController(temp , animated: true)
+                }
+            }
         }
     }
     override func didReceiveMemoryWarning() {
@@ -152,11 +168,6 @@ class RedEquipAddVC: UITableViewController, UIGestureRecognizerDelegate,QRCodeRe
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-      if  self.arr.count <= 1
-      {
-        return 4
-      }
-        
         return 4
         
     }
@@ -260,14 +271,7 @@ class RedEquipAddVC: UITableViewController, UIGestureRecognizerDelegate,QRCodeRe
                 //----------
                 let infraredVC = InfraredViewController(nibName: "InfraredViewController", bundle: nil)
                    infraredVC.swif = 0
-                BaseHttpService .sendRequestAccess(Get_gaininfraredbuttonses, parameters:["deviceAddress":self.equip!.equipID]) { (response) -> () in
-                    print(response)
-                    if response.count != 0{
-                        infraredVC.cellArr = response as! NSArray
-                    }
-                    //print(infraredVC.cellArr)
-                    infraredVC.WillAppear()
-                }
+
                 infraredVC.Address = self.equip!.equipID
                 self.navigationController?.pushViewController(infraredVC, animated: true)
                 break
