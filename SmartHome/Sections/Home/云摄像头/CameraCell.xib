@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -29,6 +29,12 @@
                             <constraint firstAttribute="height" constant="29" id="Rvs-Wc-RNa"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McC-U5-FbR">
+                        <rect key="frame" x="0.0" y="0.0" width="144" height="109"/>
+                        <connections>
+                            <action selector="tap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="oC5-6w-tBv"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -36,10 +42,14 @@
                 <constraint firstAttribute="trailing" secondItem="yAi-hO-MiS" secondAttribute="trailing" id="5wN-lu-2hX"/>
                 <constraint firstItem="wts-mp-mRG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="KFt-wz-A0Y"/>
                 <constraint firstItem="GMb-te-mPi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="NYy-sL-RD5"/>
+                <constraint firstAttribute="trailing" secondItem="McC-U5-FbR" secondAttribute="trailing" id="PEf-6q-qjE"/>
                 <constraint firstAttribute="bottom" secondItem="GMb-te-mPi" secondAttribute="bottom" constant="20" id="RPL-Vh-Rd4"/>
                 <constraint firstAttribute="bottom" secondItem="yAi-hO-MiS" secondAttribute="bottom" id="Tya-G6-dPr"/>
                 <constraint firstItem="yAi-hO-MiS" firstAttribute="top" secondItem="GMb-te-mPi" secondAttribute="bottom" id="VHy-n8-hTD"/>
                 <constraint firstAttribute="trailing" secondItem="GMb-te-mPi" secondAttribute="trailing" id="csY-R5-ASx"/>
+                <constraint firstItem="McC-U5-FbR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kYv-Fe-ale"/>
+                <constraint firstItem="McC-U5-FbR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="l0e-Te-ExI"/>
+                <constraint firstItem="yAi-hO-MiS" firstAttribute="top" secondItem="McC-U5-FbR" secondAttribute="bottom" id="mJx-hO-Mb6"/>
                 <constraint firstItem="yAi-hO-MiS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rqz-HO-zR7"/>
                 <constraint firstAttribute="trailing" secondItem="wts-mp-mRG" secondAttribute="trailing" id="uFn-3k-pll"/>
                 <constraint firstItem="GMb-te-mPi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ugP-Ha-ngR"/>
@@ -50,7 +60,7 @@
                 <outlet property="nameLabel" destination="yAi-hO-MiS" id="ns3-SU-J8Y"/>
                 <outlet property="offlineIcon" destination="wts-mp-mRG" id="02n-xu-vyo"/>
             </connections>
-            <point key="canvasLocation" x="460" y="304.5"/>
+            <point key="canvasLocation" x="320" y="162.5"/>
         </collectionViewCell>
     </objects>
     <resources>

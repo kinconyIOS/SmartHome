@@ -33,7 +33,7 @@ class DataDeal :NSObject{
     
     var floors = [Floor]()
     var rooms = [Room]()
-    func clearAllTable(){
+    func clearRoomAndFloorTable(){
         let floor = Table("Floors")
         
         do {
@@ -48,13 +48,7 @@ class DataDeal :NSObject{
         } catch let error as NSError {
             print(error.localizedDescription)
         }
-        let equips = Table("Equips")
-        
-        do {
-            try db?.run(equips.delete())
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
+     
    
     }
     func clearEquipTable(){

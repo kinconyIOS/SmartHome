@@ -63,21 +63,14 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         super.viewDidLoad()
         
         popView.frame = CGRectMake((ScreenWidth -  (280 * ScreenWidth/320))/2, (ScreenHeight - 280 * 5 * ScreenWidth / 320 / 7)/2-70, 280 * ScreenWidth/320, 280 * 5 * ScreenWidth / 320 / 7)
-       // popView.center = CGPointMake(self.view.center.x, self.view.center.y - 70)
+   
         popView.layer.cornerRadius = 7.0
         popView.layer.masksToBounds = true
         jiajuCheck.selected = true
+        self.refreshWeather()
         configView()
         registerCell()
-        MyLocationManager.sharedManager().callback={(str:String!)in
-            //天气预报 闭包回调
-            weatherWithProvince("北京市", localCity:str) {[unowned self] (weather:WeatherModel) -> () in
-                self.headCell?.setWeatherModel( weather)
-                
-            }
-            
-        }
-        MyLocationManager.sharedManager().configLocation()
+        
      
     }
     func registerCell(){
@@ -101,7 +94,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         {
             self.refreshStatus()
         }
-        if self.judge_refresh_count  == 4
+        if self.judge_refresh_count  == 5
         {
             self.judge_refresh_timer?.invalidate()
             
@@ -111,15 +104,41 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         self.judge_refresh_count += 0.5
         
     }
+    func refreshWeather(){
+    
+        MyLocationManager.sharedManager().callback={(str:String!)in
+            //天气预报 闭包回调
+            weatherWithProvince(BaseHttpService.userCity(), localCity:str) {[unowned self] (weather:WeatherModel?) -> () in
+                if weather == nil{
+                    return;
+                }
+                self.headCell?.setWeatherModel( weather!)
+                
+            }
+            
+        }
+        print(BaseHttpService.userCity())
+        MyLocationManager.sharedManager().configLocation()
+        weatherWithProvince("杭州市", localCity:BaseHttpService.userCity()) {[unowned self] (weather:WeatherModel?) -> () in
+            if weather == nil{
+                return;
+            }
+            self.headCell?.setWeatherModel( weather!)
+            
+        }
+    }
     func configView(){
         //下拉加载
         self.homeTableView.addLegendHeaderWithRefreshingBlock { [unowned self]() -> Void in
             if self.judge_refresh_count == 0 {
+             self.refreshWeather()
+
              self.refreshStatus()
             self.judge_refresh_timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("runTime"), userInfo: nil, repeats: true)
             self.judge_refresh_timer?.fire()
             
             }
+            
             self.homeTableView.header.endRefreshing();
         }
         ////标题栏去掉
@@ -330,43 +349,18 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
     }
     override  func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        readRoomInfo {
-            
-            let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("\(BaseHttpService.userCode())RoomInfoVersionNumber")
-            print("\(BaseHttpService.userCode())当前的楼层信息版本号为:\(localnum)")
-        }
+  
         self.navigationController?.navigationBarHidden  = false
 //        UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
         
         self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
        //刷新房间信息
-  
-        BaseHttpService.sendRequestAccess(classifyEquip_do, parameters: [:]) { [unowned self](data) -> () in
-            print(data)
-          
-            if data.count != 0{
-                let arr = data as! [[String : AnyObject]]
-                for e in arr {
-                    let equip = Equip(equipID: e["deviceAddress"] as! String)
-                    equip.name = e["nickName"] as! String
-                    equip.roomCode = e["roomCode"] as! String
-                    equip.userCode = e["userCode"] as! String
-                    equip.type = e["deviceType"] as! String
-                    equip.num  = e["deviceNum"] as! String
-                    equip.icon  = e["icon"] as! String
-                    if equip.icon == ""{
-                        equip.icon = getIconByType(equip.type)
-                    }
-                    equip.saveEquip()
-                    
-                }
-                
-            }
-             self.getRoomInfo()
-            //先去更新数据库 再从数据库中解析
-           
-            
-        }
+    updateRoomInfo { () -> () in
+    updateDeviceInfo({ () -> () in
+         self.getRoomInfo()
+    })
+    }
+        
         //侧滑
         if sideView==nil{
             sideView = NSBundle.mainBundle().loadNibNamed("SZLSideView", owner: self, options: nil)[0] as? SZLSideView

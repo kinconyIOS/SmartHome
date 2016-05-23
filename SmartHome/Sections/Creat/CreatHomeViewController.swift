@@ -124,7 +124,12 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.registerNib(UINib(nibName: "RoomCell", bundle: nil), forCellReuseIdentifier: "roomcell")
         tableView.registerNib(UINib(nibName: "AddRoomCell", bundle: nil), forCellReuseIdentifier: "addroomcell")
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        updateRoomInfo { () -> () in
+        
         self.getRoomInfoForCreate()
+            self.tableView.reloadData()
+        }
+        
     }
     func getRoomInfoForCreate(){
         
@@ -185,7 +190,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
             // 更新一个版本号上传到服务器上面
             
             
-            NSUserDefaults.standardUserDefaults().setFloat((back["version"]!?.floatValue)!, forKey: "\(BaseHttpService.userCode())RoomInfoVersionNumber")
+           
             
          
                 updateRoomInfo({ () -> () in
@@ -403,7 +408,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
               
                     
                     Room( roomCode:building.buildCode).delete()
-                    NSUserDefaults.standardUserDefaults().setFloat((back["version"]!?.floatValue)!,forKey: "\(BaseHttpService.userCode())RoomInfoVersionNumber")
+                
                     showMsg("删除成功");
                     let correctArray = getRemoveIndex(building,array: (self.roomDic[building.floor!.buildName])!)
                     //从原数组中删除指定元素

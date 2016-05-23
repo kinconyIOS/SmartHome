@@ -66,9 +66,10 @@
         {
             NSDictionary *dict = @{@"roomCode":self.roomCode,
                                    @"deviceAddress":self.deviceAddress.text,
-                                   @"nickName":@"",
+                                   @"nickName":self.userName.text,
                                    @"ico":@"list_camera",
                                    @"deviceType":@"100",
+                                  @"validationCode":self.passWord.text,
                                    @"deviceCode":@"commonsxt"};
             __weak typeof(self) weakSelf = self;
             [BaseHttpService sendRequestAccess:@"http://120.27.137.65/smarthome.IMCPlatform/xingUser/setDeviceInfo.action" parameters:dict success:^(id _Nonnull) {
@@ -80,6 +81,7 @@
                 eq.name  = self.userName.text;
                 eq.hostDeviceCode = @"commonsxt";
                 eq.num = weakSelf.passWord.text;
+                
                 eq.roomCode = weakSelf.roomCode;
                 [eq saveEquip];
                 [[[UIAlertView alloc]initWithTitle:nil message:@"添加成功" delegate:nil cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil]show];

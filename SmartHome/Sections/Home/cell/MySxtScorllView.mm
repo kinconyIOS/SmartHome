@@ -48,7 +48,7 @@
         //初始化
         [self configView:frame];
      
-       
+        _loadingViews = [NSMutableArray array];
     }
     return self;
 }
@@ -112,6 +112,7 @@
     self.scrollView.alwaysBounceVertical =  NO;
     self.scrollView.showsHorizontalScrollIndicator =  NO;
     self.scrollView.showsVerticalScrollIndicator =  NO;
+
     //设置是否可以缩放
     //用来记录页数
     NSUInteger pages = 0;
@@ -120,8 +121,11 @@
     for(HTCameras * equip in _dataArray)
     {
         //创建一个视图
-       UIImageView *playView = [[UIImageView alloc]initWithFrame:CGRectMake(originX, 0, _scrollView.frame.size.width,  _scrollView.frame.size.height)];
+        UIImageView *playView;
+   
+       playView = [[UIImageView alloc]initWithFrame:CGRectMake(originX, 0, _scrollView.frame.size.width,  _scrollView.frame.size.height)];
      
+
         //单指双击
         UITapGestureRecognizer *singleFingerTwo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleFingerEvent:)];
         singleFingerTwo.numberOfTouchesRequired = 1;
@@ -141,7 +145,19 @@
         playView.layer.masksToBounds=YES;
         [_scrollView addSubview:playView];
         [_players addObject:playView];
+        
+//        HIKLoadView *_loadingView = [[HIKLoadView alloc] initWithHIKLoadViewStyle:HIKLoadViewStyleSqureClockWise];
+//        [playView addSubview:_loadingView];
+//        [_loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.width.height.mas_equalTo(@14);
+//            make.centerX.mas_equalTo(playView.mas_centerX);
+//            make.centerY.mas_equalTo(playView.mas_centerY);
+//        }];
+//        [self.loadingViews addObject:_loadingView];
+//        [_loadingView startSquareClcokwiseAnimation];
+        
         if ([equip.deviceType isEqualToString:@"101"]) {
+            [EZOpenSDK setValidateCode:equip.PassWord forDeviceSerial:equip.ID];
             EZPlayer *player = [EZPlayer createPlayerWithCameraId:equip.ID];
             player.delegate = self;
             [player setPlayerView:playView];
@@ -302,6 +318,7 @@
     dispatch_async(dispatch_get_main_queue(),^{
        
         HTCameras *cam4 = self.dataArray[[self getCameraIndex:strDID]];
+//        [self.loadingViews[[self getCameraIndex:strDID]]stopSquareClockwiseAnimation];
         if (status == 2) {
             [self starVideo:cam4.ID];
         }
@@ -359,8 +376,10 @@
         [EZOpenSDK releasePlayer:player];
         
     }
+   
     
 }
+
 
 ///#pragma mark - PlayerDelegate Methods
 
@@ -388,6 +407,7 @@
     if(messageCode == PLAYER_REALPLAY_START)
     {
        //[player stopVoiceTalk];
+      
         [player closeSound];
     }
     else if (messageCode == PLAYER_NEED_VALIDATE_CODE)

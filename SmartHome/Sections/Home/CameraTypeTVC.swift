@@ -76,7 +76,7 @@ class CameraTypeTVC: UITableViewController {
                 }
                 else{
                  EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
-                    let cam = CameraCollectionView()
+                    let cam = CameraCollectionView(nibName: "CameraCollectionView", bundle: nil)
                     cam.roomCode = self.roomCode
                      print("1----\(self.roomCode)")
                     self.navigationController?.pushViewController(cam, animated: true)

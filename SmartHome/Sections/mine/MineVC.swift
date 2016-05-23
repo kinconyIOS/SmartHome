@@ -57,6 +57,10 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
         BaseHttpService .sendRequestAccess(GetUser, parameters:parameters) { (response) -> () in
             print("获取用户信息=\(response)")
             app.user = UserModel(dict: response as! [String:AnyObject])
+            let arrayStr = (app.user?.city)!.componentsSeparatedByString("-")
+           
+            BaseHttpService.setUserCity(arrayStr[0])
+           
             print(app.user?.userName)
             self.tableView.reloadData()
         }

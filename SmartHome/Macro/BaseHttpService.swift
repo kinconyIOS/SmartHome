@@ -196,7 +196,7 @@ class BaseHttpService: NSObject {
     static func showMMSSGG(str:String){
         switch(str){
         
-        case "该主机已被绑定","您没有绑定主机","主机处于离线状态","不能重复绑定主机":
+        case "该主机已被绑定","您没有绑定主机","主机处于离线状态","不能重复绑定主机","摄像头密码不能为空":
             showMsg(str)
             break
         default:
@@ -234,15 +234,28 @@ class BaseHttpService: NSObject {
         return acc!
       
     }
+    static func userCity()->String{
+        let acc = NSUserDefaults.standardUserDefaults().objectForKey("userCity") as? String
+    
+        if acc == nil{
+            return ""
+        }
+        return acc!
+        
+    }
     static func setUserCode(userCode:NSString){
         NSUserDefaults.standardUserDefaults().setObject(userCode, forKey: "userCode")
     }
     
+    static func setUserCity(userCity:NSString){
+        NSUserDefaults.standardUserDefaults().setObject(userCity, forKey: "userCity")
+    }
     
     static func clearToken(){
         setRefreshAccessToken("")
         setAccessToken("")
         setUserCode("")
+        setUserCity("")
         EZOpenSDK.setAccessToken("")
   
     }

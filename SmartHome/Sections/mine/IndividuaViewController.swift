@@ -58,11 +58,12 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
     func didSelectedEnter(){
         
         let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
+        NSUserDefaults.standardUserDefaults().setFloat(0, forKey: "\(BaseHttpService.userCode())RoomInfoVersionNumber")
         BaseHttpService.clearToken()
         let app = UIApplication.sharedApplication().delegate as! AppDelegate
         app.window!.rootViewController=nav
         // [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"password"];
-        NSUserDefaults.standardUserDefaults().setObject("0", forKey: "password")
+       NSUserDefaults.standardUserDefaults().setObject("0", forKey: "password")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

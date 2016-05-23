@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "HTCameras.h"
+#import "HIKLoadView.h"
 @protocol TouchSXT
 -(void)passTouch:(NSDictionary *)dict;
 @end
 @interface MySxtScorllView : UIView
 @property (nonatomic,strong) NSArray<HTCameras *>* dataArray;
+@property (nonatomic, strong) NSMutableArray<HIKLoadView *>*loadingViews;
 @property (assign) id<TouchSXT> delegate;
 - (void)setupPage;
 - (void)config;

@@ -19,49 +19,49 @@ class ChoseDeviceForModel: UIViewController,UITableViewDelegate,UITableViewDataS
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
    
-        self.reloadClassifyDataSource()
+        self.getRoomInfoFotClassify()
        
     }
     
    
  
     
-    func reloadClassifyDataSource() {
+//    func reloadClassifyDataSource() {
+//        
+//        self.getRoomInfoFotClassify()
+//        
+    
+//        BaseHttpService.sendRequestAccess(classifyEquip_do, parameters: [:]) { (data) -> () in
+//            print(data)
+//            if data.count != 0{
+//                
+//                let arr = data as! [[String : AnyObject]]
+//                for e in arr {
+//                    let equip = Equip(equipID: e["deviceAddress"] as! String)
+//                    equip.name = e["nickName"] as! String
+//                    equip.roomCode = e["roomCode"] as! String
+//                    equip.userCode = e["userCode"] as! String
+//                    equip.type = e["deviceType"] as! String
+//                    equip.num  = e["deviceNum"] as! String
+//                    equip.icon  = e["icon"] as! String
+//                    if equip.icon == ""{
+//                        equip.icon = getIconByType(equip.type)
+//                    }
+//                    equip.saveEquip()
+//                    
+//                }
+//                
+//            }
+//            //先去更新数据库 再从数据库中解析
+//            self.getRoomInfoFotClassify()
+//            
+//        }
         
-        self.getRoomInfoFotClassify()
-        
-        
-        BaseHttpService.sendRequestAccess(classifyEquip_do, parameters: [:]) { (data) -> () in
-            print(data)
-            if data.count != 0{
-                
-                let arr = data as! [[String : AnyObject]]
-                for e in arr {
-                    let equip = Equip(equipID: e["deviceAddress"] as! String)
-                    equip.name = e["nickName"] as! String
-                    equip.roomCode = e["roomCode"] as! String
-                    equip.userCode = e["userCode"] as! String
-                    equip.type = e["deviceType"] as! String
-                    equip.num  = e["deviceNum"] as! String
-                    equip.icon  = e["icon"] as! String
-                    if equip.icon == ""{
-                        equip.icon = getIconByType(equip.type)
-                    }
-                    equip.saveEquip()
-                    
-                }
-                
-            }
-            //先去更新数据库 再从数据库中解析
-            self.getRoomInfoFotClassify()
-            
-        }
-        
-        self.tableView.reloadData()
-        
-        
-        
-    }
+//        self.tableView.reloadData()
+//        
+//        
+//        
+//    }
     func getRoomInfoFotClassify(){
         self.tDic.removeAll()
         self.tDataSource.removeAll()
@@ -101,7 +101,7 @@ class ChoseDeviceForModel: UIViewController,UITableViewDelegate,UITableViewDataS
         self.tableView.addLegendHeaderWithRefreshingBlock {[unowned self] () -> Void in
             
             print("刷新界面")
-            self.reloadClassifyDataSource()
+            self.getRoomInfoFotClassify()
             self.tableView.header.endRefreshing()
         }
         

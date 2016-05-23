@@ -49,7 +49,7 @@ import Alamofire
         EZOpenSDK.initLibWithAppKey(EzvizAppKey)
        
         if isNotFirst == nil || isNotFirst == false {
-        let guidevc:GuideViewController = GuideViewController(coverImageNames: ["weg_img","weg_img","weg_img"], backgroundImageNames: nil)
+        let guidevc:GuideViewController = GuideViewController(coverImageNames: ["引导1","引导2","引导3"], backgroundImageNames: nil)
             guidevc.didSelectedEnter=didSelectedEnter
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isNotFirstComming")
             self.window!.rootViewController = guidevc
@@ -65,10 +65,7 @@ import Alamofire
     
         self.startGeTuiSdk()
     IFlySpeechUtility.createUtility("appid=55976d0c,timeout=20000")
-        
       
-       
-       
        
         return true
         
@@ -81,12 +78,7 @@ import Alamofire
          EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
         self.window!.rootViewController = TabbarC()
         
-          //  数据更新
-        readRoomInfo {
-            
-            let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("\(BaseHttpService.userCode())RoomInfoVersionNumber")
-            print("当前的楼层信息版本号为:\(localnum)")
-        }
+      
     }
     func didSelectedEnter(){
         

@@ -74,12 +74,13 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func reloadUnClassifyDataSource() {
-        getUnEquips()
+       
        
         
         let parameter = ["userCode" : userCode]
         BaseHttpService.sendRequestAccess(unclassifyEquip_do, parameters: parameter) { (data) -> () in
             if data.count <= 0{
+                  self.cDataSource = []
                 return
             }
             
@@ -96,27 +97,14 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
                 if equip.icon == ""{
                 equip.icon = getIconByType(equip.type)
                 }
-                equip.saveEquip()
+                
                 self.cDataSource.append(equip)
             }
             self.collectionView.reloadData()
         }
         
     }
-    func getUnEquips(){
-       self.cDataSource = []
-        //先去更新数据库 再从数据库中解析
-        let equips = dataDeal.getModels(.Equip) as! [Equip]
-        for equip in equips
-        {
-            if  equip.roomCode == ""{
-             self.cDataSource.append(equip)
-            }
-        }
-            
-        self.collectionView.reloadData()
-     
-    }
+ 
     
     func reloadClassifyDataSource() {
     
@@ -125,8 +113,9 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
        
         BaseHttpService.sendRequestAccess(classifyEquip_do, parameters: [:]) { (data) -> () in
             print(data)
+            dataDeal.clearEquipTable()
             if data.count != 0{
-            
+                
             let arr = data as! [[String : AnyObject]]
             for e in arr {
                 print("更新数据库设备")
@@ -135,7 +124,8 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
                 equip.roomCode = e["roomCode"] as! String
                 equip.userCode = e["userCode"] as! String
                 equip.type = e["deviceType"] as! String
-                equip.num  = e["deviceNum"] as! String
+                equip.num  = String( e["validationCode"])
+                print(String( e["validationCode"]))
                 equip.icon  = e["icon"] as! String
                 if equip.icon == ""{
                     equip.icon = getIconByType(equip.type)
@@ -149,10 +139,6 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
           self.getRoomInfoFotClassify()
             
         }
-        
-        self.tableView.reloadData()
-            
-        
      
     }
     func getRoomInfoFotClassify(){
@@ -262,7 +248,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         if indexPath.row < cDataSource.count {
             let equipSetVC = EquipSetVC(nibName: "EquipSetVC", bundle: nil)
             equipSetVC.equip = cDataSource[indexPath.row]
-            equipSetVC.configCompeletBlock({ [unowned self] (equip) -> () in
+            equipSetVC.configCompeletBlock({ [unowned equipSetVC] (equip) -> () in
             
                 //添加设备
                   let parameter = [
@@ -272,8 +258,9 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
                     "ico":equip.icon]
                 BaseHttpService.sendRequestAccess(addEq_do, parameters:  parameter, success: {[unowned self] (data) -> () in
                     print(data)
-                    equip.saveEquip()
-                    self.getUnEquips()
+                 self.cDataSource.removeAtIndex(indexPath.row)
+                    self.collectionView.reloadData()
+                   
                 })
              
             })
@@ -362,7 +349,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
                let equipTypeChoseTVC = EquipTypeChoseTVC()
             equipTypeChoseTVC.roomCode = model.addRoom!.roomCode
           self.navigationController?.pushViewController(equipTypeChoseTVC, animated: true)
-             self.collectionView.reloadData()
+          
 //            let equipAddVC = EquipAddVC(nibName: "EquipAddVC", bundle: nil)
 //            equipAddVC.equip = Equip(equipID: randomCode())
 //            equipAddVC.equip?.num = "1"

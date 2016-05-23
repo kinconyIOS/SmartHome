@@ -43,7 +43,7 @@
 #pragma mark --UIAlertViewDelegate
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    
+      __weak typeof(self) weakSelf = self;
     switch (buttonIndex) {
         case 1:
         {
@@ -51,15 +51,19 @@
                                    @"deviceAddress":self.equip.equipID,
                                    @"nickName":self.equip.name,
                                    @"ico":@"list_camera",
-                                   @"deviceType":self.equip.type,
+                                   @"deviceType":@"100",
+                                   @"validationCode":self.passWord.text,
                                    @"deviceCode":@"commonsxt"};
-            
+          
             [BaseHttpService sendRequestAccess:@"http://120.27.137.65/smarthome.IMCPlatform/xingUser/setDeviceInfo.action" parameters:dict success:^(id _Nonnull) {
                 
-                //摄像头里这个字段存的是账号 及密码
-               // equip.icon = _userName.text;
-                self.equip.num = _passWord.text;
-                [self.equip saveEquip];
+              
+               
+                weakSelf.equip.hostDeviceCode = @"commonsxt";
+                weakSelf.equip.num = weakSelf.passWord.text;
+                
+             
+                [weakSelf.equip saveEquip];
                 [[[UIAlertView alloc]initWithTitle:nil message:@"添加成功" delegate:nil cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil]show];
             }];
         }

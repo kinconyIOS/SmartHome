@@ -103,21 +103,22 @@ class LoginVC: UIViewController  {
       
       let phone = self.phoneText.text?.trimString()
       let pwd = self.passText.text?.trimString()
-        
+        print("----a\(phone),\(pwd)")
         BaseHttpService.sendRequest(login_do, parameters: ["userPhone":phone!,"verifyCode":pwd!]) { [unowned self](any:AnyObject) -> () in
             if any["success"] as! Bool == true{
                  BaseHttpService.setAccessToken(any["data"]!!["accessToken"] as!String)
                  BaseHttpService.setRefreshAccessToken(any["data"]!!["refreshToken"] as!String)
                  BaseHttpService.setUserCode(any["data"]!!["userCode"] as!String)
                 let ezToken = any["data"]!!["ez_token"] as!String
-              
+                let isFirst = any["data"]!!["isFirst"] as! Bool
+                BaseHttpService.setUserCity(any["data"]!!["city"] as!String)
                 GlobalKit.shareKit().accessToken = ezToken == "NO_BUNDING" ? nil : ezToken
             
-               EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
+                EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
                
                 
                 
-              self.loginSuccess()
+              self.loginSuccess(!isFirst)
                 
             } else{
                 showMsg(any["message"] as! String)
@@ -135,15 +136,12 @@ class LoginVC: UIViewController  {
         
         
     }
-    func loginSuccess(){
+    func loginSuccess(isFisrt:Bool){
         //读取房间信息
-        readRoomInfo {
-            
-            let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("\(BaseHttpService.userCode())RoomInfoVersionNumber")
-            print("\(BaseHttpService.userCode())当前的楼层信息版本号为:\(localnum)")
-            let isSecond = NSUserDefaults.standardUserDefaults().objectForKey("isSecondLogin")?.boolValue
+      
+        
             if
-                isSecond == nil
+                isFisrt == true
             {
                 
                 NSUserDefaults.standardUserDefaults().setObject(true, forKey: "isSecondLogin")
@@ -154,11 +152,9 @@ class LoginVC: UIViewController  {
                 
                 
             }else{
-                
-                
-                app.window!.rootViewController = TabbarC()
+                 app.window!.rootViewController = TabbarC()
             }
-        }
+       
     
     
     }

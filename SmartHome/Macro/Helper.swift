@@ -65,8 +65,8 @@ extension String{
     *  @param city     NSString 城市
     *  @param area     NSString 区域
     */
-typealias Complete = (WeatherModel) -> ()
-func weatherWithProvince( administrativeArea:String,localCity:String,complete:Complete){
+typealias Complete = (WeatherModel?) -> ()
+func weatherWithProvince(administrativeArea:String,localCity:String,complete:Complete){
         var str:String?=localCity
         if str!.characters.count==0 || !str!.containsString("市")
         {
@@ -91,7 +91,12 @@ func weatherWithProvince( administrativeArea:String,localCity:String,complete:Co
         if(response.result.isSuccess){
         
             let responseObject = response.result.value
-            
+            print(responseObject);
+            if Int(responseObject!["error"] as!NSNumber) == -3
+            {
+                complete(nil)
+            return
+            }
             let arr = responseObject!["results"]!![0]["weather_data"] as! NSArray
             
             print(arr)
@@ -194,13 +199,48 @@ func getIconByType(type:String)->String
 
 
 }
+typealias CompleteUpdateDeviceInfo = () -> ()
+func updateDeviceInfo(complete:CompleteUpdateDeviceInfo){
+    
+     print("更新设备信息")
+    BaseHttpService.sendRequestAccess(classifyEquip_do, parameters: [:]) { (data) -> () in
+        dataDeal.clearEquipTable()
+        print(data)
+        if data.count != 0{
+            
+            let arr = data as! [[String : AnyObject]]
+            for e in arr {
+                let equip = Equip(equipID: e["deviceAddress"] as! String)
+                equip.name = e["nickName"] as! String
+                equip.roomCode = e["roomCode"] as! String
+                equip.userCode = e["userCode"] as! String
+                equip.type = e["deviceType"] as! String
+                equip.num  = e["deviceNum"] as! String
+                equip.icon  = e["icon"] as! String
+                equip.num  =  e["validationCode"] == nil ? "" : e["validationCode"]as!String
+                if equip.icon == ""{
+                    equip.icon = getIconByType(equip.type)
+                }
+                equip.saveEquip()
+                
+            }
+            
+        }
+        complete()
+    }
+
+}
+
+
 
 typealias CompleteUpdateRoomInfo = () -> ()
 func updateRoomInfo(complete:CompleteUpdateRoomInfo){
-    DataDeal.sharedDataDeal.clearAllTable()
+    
+    
+    print("更新房间信息")
     let parameters=["":""];
     BaseHttpService .sendRequestAccess(getroom_do, parameters: parameters) { (anyObject) -> () in
-     
+       dataDeal.clearRoomAndFloorTable()
         if anyObject.count <= 0{
             complete()
             return
@@ -223,59 +263,43 @@ func updateRoomInfo(complete:CompleteUpdateRoomInfo){
             r.saveRoom()
             
         }
-        print("更新房间信息")
-        complete()
-    }
-    BaseHttpService.sendRequestAccess(classifyEquip_do, parameters: [:]) { (data) -> () in
-        print(data)
-        if data.count != 0{
-            
-            let arr = data as! [[String : AnyObject]]
-            for e in arr {
-                let equip = Equip(equipID: e["deviceAddress"] as! String)
-                equip.name = e["nickName"] as! String
-                equip.roomCode = e["roomCode"] as! String
-                equip.userCode = e["userCode"] as! String
-                equip.type = e["deviceType"] as! String
-                equip.num  = e["deviceNum"] as! String
-                equip.icon  = e["icon"] as! String
-                if equip.icon == ""{
-                    equip.icon = getIconByType(equip.type)
-                }
-                equip.saveEquip()
-                
-            }
-            
-        }
-    }
+       
+    
+         complete()
+      
+        
+        
 
-    
-}
-typealias CompletereadRoomInfo = () -> ()
-func readRoomInfo(complete:CompletereadRoomInfo)
-{
-    // 获取本地版本
-    let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("\(BaseHttpService.userCode())RoomInfoVersionNumber")
-    
-    // 读取服务器版本
-    dareNetRoomInfoVersionNumber {  f in
-        if   f > localnum // 判断是否更新
-        {
-            // 更新（如需）
-            print("更新房间信息")
-            updateRoomInfo({ () -> () in
-                // 更新一个版本号上传到服务器上面
-                NSUserDefaults.standardUserDefaults().setFloat(f, forKey: "\(BaseHttpService.userCode())RoomInfoVersionNumber")
-                     complete()
-             })
-            
-        }else{
-            complete()
-            
-        }
+        
     }
-    // 本地设置为最新的版本号
+    
+    
 }
+//typealias CompletereadRoomInfo = () -> ()
+//func readRoomInfo(complete:CompletereadRoomInfo)
+//{
+//     //获取本地版本
+//    let localnum =  NSUserDefaults.standardUserDefaults().floatForKey("\(BaseHttpService.userCode())RoomInfoVersionNumber")
+//    
+//    // 读取服务器版本
+//    dareNetRoomInfoVersionNumber {  f in
+//        if   f > localnum // 判断是否更新
+//        {
+//            // 更新（如需）
+//            print("更新房间信息")
+//            updateRoomInfo({ () -> () in
+//                // 更新一个版本号上传到服务器上面
+//                NSUserDefaults.standardUserDefaults().setFloat(f, forKey: "\(BaseHttpService.userCode())RoomInfoVersionNumber")
+//                     complete()
+//             })
+//            
+//        }else{
+//            complete()
+//            
+//        }
+//    }
+//     //本地设置为最新的版本号
+//}
 
 //typealias CompleteNOtoNet = () -> ()
 //func setNetRoomInfoVersionNumber(f:Float,andComplete complete:CompleteNOtoNet){
@@ -289,23 +313,23 @@ func readRoomInfo(complete:CompletereadRoomInfo)
 //    
 //    
 //}
-
-typealias CompleteRoomInfoNumber = (Float) -> ()
-func dareNetRoomInfoVersionNumber(complete:CompleteRoomInfoNumber){
-    
-    
-    
-    let parameters=["":""]
-    
-    
-    //读取服务器版本号。
-    BaseHttpService .sendRequestAccess(getversion_do, parameters: parameters) { (response) -> () in
-      
-          complete((response["version"]!?.floatValue)!)//处理版本号
-    }
-    
-    
-}
+//
+//typealias CompleteRoomInfoNumber = (Float) -> ()
+//func dareNetRoomInfoVersionNumber(complete:CompleteRoomInfoNumber){
+//    
+//    
+//    
+//    let parameters=["":""]
+//    
+//    
+//    //读取服务器版本号。
+//    BaseHttpService .sendRequestAccess(getversion_do, parameters: parameters) { (response) -> () in
+//      
+//          complete((response["version"]!?.floatValue)!)//处理版本号
+//    }
+//    
+//    
+//}
 
 
 func randomCode()->String

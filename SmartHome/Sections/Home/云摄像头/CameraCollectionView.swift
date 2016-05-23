@@ -93,35 +93,24 @@ class CameraCollectionView: UIViewController {
         if (cell == nil) {
             cell = NSBundle.mainBundle().loadNibNamed("CameraCell", owner: self, options: nil).first as? CameraCell
         }
-        cell?.setCameraInfo(dataSource[indexPath.row] as! EZCameraInfo)
-        return cell!
-    }
-    
-    //    #pragma mark --UICollectionViewDelegate
-    //UICollectionView被选中时调用的方法
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
         let ez = dataSource[indexPath.row] as! EZCameraInfo
         let equip = Equip(equipID: ez.cameraId)
         equip.name = ez.cameraName
         equip.type = "101"
         equip.icon = "list_camera"
         equip.roomCode = self.roomCode
-         print("2----\(self.roomCode)")
+        print("2----\(self.roomCode)")
         equip.num = ""
-        let dict = ["roomCode":equip.roomCode,
-            "deviceAddress":equip.equipID,
-            "nickName":equip.name,
-            "ico":"list_camera",
-            "deviceType":equip.type,
-            "deviceCode":"commonsxt"];
-        BaseHttpService.sendRequestAccess(addEq_do, parameters: dict) { (anyObject) -> () in
-            equip.saveEquip()
-            showMsg("添加成功")
-        }
- 
-
-        // 点击进入摄像头详情界面
+        equip.hostDeviceCode = "commonsxt"
+        cell?.setCameraInfo(dataSource[indexPath.row] as! EZCameraInfo)
+        cell?.setModel(equip)
+        return cell!
+    }
+    
+    //    #pragma mark --UICollectionViewDelegate
+    //UICollectionView被选中时调用的方法
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+         // 点击进入摄像头详情界面
 //        let storyBoard=UIStoryboard(name: "EZMain", bundle: nil);
 //        let ezlive:EZLivePlayViewController = storyBoard.instantiateViewControllerWithIdentifier("EZLivePlayViewController") as! EZLivePlayViewController
 //        ezlive.cameraId = (dataSource[indexPath.row] as! EZCameraInfo).cameraId
@@ -133,7 +122,5 @@ class CameraCollectionView: UIViewController {
     func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    
-    
     
 }
