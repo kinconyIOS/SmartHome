@@ -56,6 +56,9 @@ class ModulateCell: UITableViewCell {
       
         if isMoni
         {  print("------\(self.index?.row)")
+            if e.status != ""{
+                self.slider.value = Float(e.status)! * 0.01
+            }
             self.equip?.status = String(Int(slider.value * 100))
              app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
             var str = ""
@@ -87,11 +90,12 @@ class ModulateCell: UITableViewCell {
             self.delayBtn.hidden = false
             return
         }
+        if e.status != ""{
+            self.slider.value = Float(e.status)! * 0.01
+        }
         self.delayBtn.hidden = true
         
-        if e.status != ""{
-        self.slider.value = Float(e.status)! * 0.01
-        }
+       
     }
     @IBAction func delayChoseTap(sender: AnyObject) {
         let parent =  self.parentController() as! CreateModelVC

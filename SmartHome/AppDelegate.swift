@@ -3,6 +3,7 @@
 //  SmartHome
 //
 //  Created by sunzl on 15/12/9.
+//  Update by sunzl on 16/5/29.
 //  Copyright © 2015年 sunzl. All rights reserved.
 //
 
@@ -22,6 +23,7 @@ import Alamofire
     var i=0
     //放假
     var App_room = ""
+     var App_roomName = ""
     //个推
     var  deviceToken:NSString = ""
     var  gexinPusher:GexinSdk?
@@ -41,8 +43,8 @@ import Alamofire
         dataDeal.creatEquipTable()
         print(NSHomeDirectory())
         
-     
-    
+      print( NSNull())
+   
         //第一次安装会走引导页
         let isNotFirst = NSUserDefaults.standardUserDefaults().objectForKey("isNotFirstComming")?.boolValue
         
@@ -75,8 +77,14 @@ import Alamofire
     func secondLogin(){
    
         
+        if BaseHttpService.userCode()=="" || BaseHttpService.refreshAccessToken()=="" || BaseHttpService.accessToken()==""
+        {
+            let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
+            self.window!.rootViewController=nav
+        }else{
          EZOpenSDK.setAccessToken(GlobalKit.shareKit().accessToken)
         self.window!.rootViewController = TabbarC()
+        }
         
       
     }

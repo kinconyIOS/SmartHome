@@ -7,8 +7,6 @@
 //
 
 import UIKit
-
-
 class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate{
 
     @IBOutlet var tableView: UITableView!//
@@ -16,9 +14,12 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
    // var arr1 = ["功能说明","关于我们","清除缓存","主机管理"]
     var arr = ["我的购物","我的房间","我的设备","我的设置"]
     var arr1 = ["一键报修","主机管理"]
+    var arr2 = ["演示模式"]
+    
     let imgArr = [UIImage(imageLiteral: "car.png"),UIImage(imageLiteral: "House.png"),UIImage(imageLiteral: "Power-Of.png"),UIImage(imageLiteral: "List.png")]
     
     let imgArr1 = [UIImage(imageLiteral: "Tools.png"),UIImage(imageLiteral: "fj.png")]
+    let imgArr2 = [UIImage(imageLiteral: "guang")]
 //    let imgArr = [UIImage(imageLiteral: "car.png"),UIImage(imageLiteral: "House.png"),UIImage(imageLiteral: "Power-Of.png"),UIImage(imageLiteral: "Tools.png"),UIImage(imageLiteral: "Edit.png")]
 //    
 //    let imgArr1 = [UIImage(imageLiteral: "List.png"),UIImage(imageLiteral: "User.png"),UIImage(imageLiteral: "Refresh.png"),UIImage(imageLiteral: "fj.png")]
@@ -53,7 +54,7 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
         //隐藏导航栏
         self.navigationController?.navigationBarHidden=true
         //获取用户信息
-        let parameters=["userCode":userCode]
+        let parameters=[:]
         BaseHttpService .sendRequestAccess(GetUser, parameters:parameters) { (response) -> () in
             print("获取用户信息=\(response)")
             app.user = UserModel(dict: response as! [String:AnyObject])
@@ -74,13 +75,14 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
 
     //返回几个分区
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3;
+        return 4;
     }
     //分区头的高度
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 2{
+        if section == 2 || section == 3{
             return 10
         }
+        
         return 0
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,8 +92,10 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
         else if section == 1{
             return arr.count
         }
-        else{
+        else if section == 2{
             return arr1.count
+        }else{
+            return arr2.count
         }
         
     }
@@ -135,19 +139,29 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
             //cell 箭头
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             cell.textLabel?.text = arr[indexPath.row]
-            cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+            cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
             cell.imageView?.image = imgArr[indexPath.row]
             cell.textLabel?.textColor = UIColor.grayColor()
             cell.textLabel?.font = UIFont.systemFontOfSize(13.0)
             return cell;
         }
-        else{
+        else if indexPath.section == 2{
              let cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier:"cell");
             //cell 箭头
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             cell.textLabel?.text = arr1[indexPath.row]
-            cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+            cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
             cell.imageView?.image = imgArr1[indexPath.row]
+            cell.textLabel?.textColor = UIColor.grayColor()
+            cell.textLabel?.font = UIFont.systemFontOfSize(13.0)
+            return cell;
+          }else{
+            let cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier:"cell");
+            //cell 箭头
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            cell.textLabel?.text = arr2[indexPath.row]
+            cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
+            cell.imageView?.image = imgArr2[indexPath.row]
             cell.textLabel?.textColor = UIColor.grayColor()
             cell.textLabel?.font = UIFont.systemFontOfSize(13.0)
             return cell;
@@ -189,14 +203,12 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
                  self.navigationController!.pushViewController(indvc, animated:true)
                 break;
             case 2:
-                //清除缓存
-                //清除缓存
-                let cachPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0]
-                let num = FileManager().folderSizeAtPath(cachPath)
+//                let avView = AVsViewController()
+//                avView.hidesBottomBarWhenPushed = true
+//                
+//                self.navigationController?.pushViewController(avView, animated: true)
+
                 
-                let alert = UIAlertView(title: "提示", message: "缓存大小为\(String(format: "%.2f", num) )M确定要清理吗?", delegate: self, cancelButtonTitle: "确定", otherButtonTitles: "取消")
-                alert.tag = 1
-                alert.show()
                 //---
 //                UIAlertController(title: "提示", message: "缓存大小为\(String(format: "%.2f", num) )M确定要清理吗?", preferredStyle: UIAlertControllerStyle.Alert)
 //                
@@ -273,6 +285,9 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
             default :
                 break
             }
+        }else{
+            self.playMovie()
+            print("演示视频")
         }
         
     }
@@ -298,6 +313,8 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
 
 
     }
+ 
+
        //点击购物车
     func Shopping(){
         print("购物车")
@@ -313,5 +330,71 @@ class MineVC: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIAler
         Lview.hidesBottomBarWhenPushed=true
         Lview.strName="收藏"
         self.navigationController!.pushViewController(Lview, animated: true)
+    }
+    func playMovie(){
+    //视频文件路径
+    
+    //视频URL
+    //NSURL *url = [NSURL URLWithString:@"http://www.hificat.com/smart-demo.mp4"];
+    let url = NSURL(string: "http://www.hificat.com/smart-demo.mp4")
+    //视频播放对象
+   // MPMoviePlayerViewController *movie = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
+    let movie = MPMoviePlayerViewController(contentURL: url)
+    //
+    
+    //
+    //[movie.moviePlayer prepareToPlay];
+    movie.moviePlayer.prepareToPlay()
+        self.navigationController?.presentMoviePlayerViewControllerAnimated(movie)
+    //[self.navigationController presentMoviePlayerViewControllerAnimated:movie];
+    
+    //[movie.moviePlayer setControlStyle:MPMovieControlStyleFullscreen];
+    movie.moviePlayer.controlStyle = MPMovieControlStyle.Fullscreen
+    
+   // [movie.view setBackgroundColor:[UIColor clearColor]];
+    movie.view.backgroundColor = UIColor.clearColor()
+        
+    //[movie.view setFrame:self.view.bounds];
+    movie.view.frameForAlignmentRect(self.view.bounds)
+    // 注册一个播放结束的通知
+    //[[NSNotificationCenter defaultCenter] addObserver:self
+    //selector:@selector(myMovieFinishedCallback:)
+    //name:MPMoviePlayerPlaybackDidFinishNotification
+    //object:movie.moviePlayer];
+    let defaultCenter = NSNotificationCenter()
+        defaultCenter.addObserver(self, selector: Selector("myMovieFinishedCallback"), name: MPMoviePlayerPlaybackDidFinishNotification, object: movie.moviePlayer)
+        
+    }
+    
+   // #pragma mark -------------------视频播放结束委托--------------------
+    
+    /*
+    @method 当视频播放完毕释放对象
+    */
+    func myMovieFinishedCallback(notify:NSNotification)
+    {
+    //视频播放对象
+    // 视频播放完或者在presentMoviePlayerViewControllerAnimated下的Done按钮被点击响应的通知。
+    
+    
+    
+  //  MPMoviePlayerController* theMovie = [notify object];
+    
+    var theMovie = notify.object
+
+   
+//    [[NSNotificationCenter defaultCenter]removeObserver:self
+//    
+//    
+//    name:MPMoviePlayerPlaybackDidFinishNotification
+//    
+//    
+//    object:theMovie];
+    
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: MPMoviePlayerPlaybackDidFinishNotification, object: theMovie)
+       
+   // [self dismissMoviePlayerViewControllerAnimated];
+    self.dismissMoviePlayerViewControllerAnimated()
+    
     }
 }

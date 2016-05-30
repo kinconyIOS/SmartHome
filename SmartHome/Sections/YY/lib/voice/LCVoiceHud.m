@@ -289,7 +289,7 @@
     _dynamicProgress.verticalProgress = YES;
     _dynamicProgress.center = CGPointMake(self.center.x, self.center.y-13);
    
-    _btnCancel = [[UIButton alloc] initWithFrame:CGRectMake(_DEVICE_WIDTH/2-frame2.size.width/2, frame2.origin.y+frame2.size.height, frame2.size.width, CANCEL_BUTTON_HEIGHT)];
+    _btnCancel = [[UIButton alloc] initWithFrame:CGRectMake(_DEVICE_WIDTH/2-frame2.size.width/2, (frame2.origin.y+frame2.size.height)*_DEVICE_HEIGHT/480, frame2.size.width, CANCEL_BUTTON_HEIGHT)];
     [_btnCancel setTitle:NSLocalizedString(@"取消", nil) forState:UIControlStateNormal];
       
     [self addSubview:_btnCancel];

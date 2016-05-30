@@ -19,7 +19,6 @@
 		980345611CC776EA0016F345 /* Https.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9803455C1CC776EA0016F345 /* Https.swift */; };
 		980345621CC776EA0016F345 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9803455D1CC776EA0016F345 /* Tools.swift */; };
 		980345671CC776FF0016F345 /* NSDictionary+Ping.m in Sources */ = {isa = PBXBuildFile; fileRef = 980345641CC776FE0016F345 /* NSDictionary+Ping.m */; };
-		980345681CC776FF0016F345 /* NSString+Contains.m in Sources */ = {isa = PBXBuildFile; fileRef = 980345661CC776FF0016F345 /* NSString+Contains.m */; };
 		9803456D1CC777230016F345 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9803456A1CC777230016F345 /* FileManager.m */; };
 		9803456E1CC777230016F345 /* GuideViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9803456C1CC777230016F345 /* GuideViewController.mm */; };
 		980353A71C19499E00A2C6A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 980353A91C19499E00A2C6A8 /* Localizable.strings */; };
@@ -350,7 +349,6 @@
 		98EDE6891CDB6A90003AD01C /* IndividuaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98EDE63D1CDB6A90003AD01C /* IndividuaViewController.xib */; };
 		98EDE68A1CDB6A90003AD01C /* LoveCommodityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EDE63E1CDB6A90003AD01C /* LoveCommodityViewController.swift */; };
 		98EDE68B1CDB6A90003AD01C /* LoveCommodityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98EDE63F1CDB6A90003AD01C /* LoveCommodityViewController.xib */; };
-		98EDE68C1CDB6A90003AD01C /* MineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EDE6401CDB6A90003AD01C /* MineVC.swift */; };
 		98EDE68D1CDB6A90003AD01C /* MineVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98EDE6411CDB6A90003AD01C /* MineVC.xib */; };
 		98EDE68E1CDB6A90003AD01C /* mJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 98EDE6421CDB6A90003AD01C /* mJson.json */; };
 		98EDE68F1CDB6A90003AD01C /* MyHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EDE6431CDB6A90003AD01C /* MyHeadCell.swift */; };
@@ -382,6 +380,8 @@
 		98EDE6A91CDB6A90003AD01C /* RepairViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98EDE65E1CDB6A90003AD01C /* RepairViewController.xib */; };
 		98EDE6AC1CDB6B21003AD01C /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EDE6AA1CDB6B21003AD01C /* PurchaseViewController.swift */; };
 		98EDE6AD1CDB6B21003AD01C /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98EDE6AB1CDB6B21003AD01C /* PurchaseViewController.xib */; };
+		98FF9B7A1CF841CE006C4CC9 /* MineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FF9B791CF841CE006C4CC9 /* MineVC.swift */; };
+		98FF9B7C1CF84203006C4CC9 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98FF9B7B1CF84203006C4CC9 /* MediaPlayer.framework */; };
 		98FFF98C1CC5C24A00EC4876 /* EquipTypeChoseTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FFF98B1CC5C24A00EC4876 /* EquipTypeChoseTVC.swift */; };
 		C21031131C27D7140039B96C /* SHAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21031121C27D7140039B96C /* SHAlertView.swift */; };
 		C21E158C1C18063B00C45854 /* SuccessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E158A1C18063B00C45854 /* SuccessVC.swift */; };
@@ -1350,7 +1350,6 @@
 		98EDE63D1CDB6A90003AD01C /* IndividuaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndividuaViewController.xib; sourceTree = "<group>"; };
 		98EDE63E1CDB6A90003AD01C /* LoveCommodityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoveCommodityViewController.swift; sourceTree = "<group>"; };
 		98EDE63F1CDB6A90003AD01C /* LoveCommodityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoveCommodityViewController.xib; sourceTree = "<group>"; };
-		98EDE6401CDB6A90003AD01C /* MineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineVC.swift; sourceTree = "<group>"; };
 		98EDE6411CDB6A90003AD01C /* MineVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineVC.xib; sourceTree = "<group>"; };
 		98EDE6421CDB6A90003AD01C /* mJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mJson.json; sourceTree = "<group>"; };
 		98EDE6431CDB6A90003AD01C /* MyHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHeadCell.swift; sourceTree = "<group>"; };
@@ -1383,6 +1382,8 @@
 		98EDE6AA1CDB6B21003AD01C /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		98EDE6AB1CDB6B21003AD01C /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseViewController.xib; sourceTree = "<group>"; };
 		98FD77AC1C1E694B0079E5A7 /* SmartHome-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SmartHome-Bridging-Header.h"; sourceTree = "<group>"; };
+		98FF9B791CF841CE006C4CC9 /* MineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineVC.swift; sourceTree = "<group>"; };
+		98FF9B7B1CF84203006C4CC9 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		98FFF98B1CC5C24A00EC4876 /* EquipTypeChoseTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipTypeChoseTVC.swift; sourceTree = "<group>"; };
 		C21031121C27D7140039B96C /* SHAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHAlertView.swift; sourceTree = "<group>"; };
 		C21E158A1C18063B00C45854 /* SuccessVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessVC.swift; sourceTree = "<group>"; };
@@ -1513,6 +1514,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98FF9B7C1CF84203006C4CC9 /* MediaPlayer.framework in Frameworks */,
 				E41FF1F31CE59D4C006A61F1 /* UIKit.framework in Frameworks */,
 				981114221CE1D6C70092F507 /* AddressBook.framework in Frameworks */,
 				981114011CE1BF0E0092F507 /* CoreGraphics.framework in Frameworks */,
@@ -1673,6 +1675,7 @@
 		980A92E91C17B440009166D0 = {
 			isa = PBXGroup;
 			children = (
+				98FF9B7B1CF84203006C4CC9 /* MediaPlayer.framework */,
 				E41FF1F21CE59D4C006A61F1 /* UIKit.framework */,
 				981114211CE1D6C70092F507 /* AddressBook.framework */,
 				981114001CE1BF0D0092F507 /* CoreGraphics.framework */,
@@ -2749,7 +2752,7 @@
 				98EDE63D1CDB6A90003AD01C /* IndividuaViewController.xib */,
 				98EDE63E1CDB6A90003AD01C /* LoveCommodityViewController.swift */,
 				98EDE63F1CDB6A90003AD01C /* LoveCommodityViewController.xib */,
-				98EDE6401CDB6A90003AD01C /* MineVC.swift */,
+				98FF9B791CF841CE006C4CC9 /* MineVC.swift */,
 				98EDE6411CDB6A90003AD01C /* MineVC.xib */,
 				98EDE6421CDB6A90003AD01C /* mJson.json */,
 				98EDE6431CDB6A90003AD01C /* MyHeadCell.swift */,
@@ -3203,7 +3206,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = sunzl;
 				TargetAttributes = {
 					980A92F11C17B440009166D0 = {
@@ -3564,11 +3567,11 @@
 				C24FD2A31C18043700B16BF2 /* HomeVC.swift in Sources */,
 				98EDE6651CDB6A90003AD01C /* CoTableViewCell.swift in Sources */,
 				98312AD21CBB52F4002E1C83 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				98FF9B7A1CF841CE006C4CC9 /* MineVC.swift in Sources */,
 				C2D04EF31C33CBCA00A59345 /* EquipConfigCell.swift in Sources */,
 				98312AE91CBB52F4002E1C83 /* UITableView+FDIndexPathHeightCache.m in Sources */,
 				C2D04EE11C33A2B300A59345 /* ClassifyHomeVC.swift in Sources */,
 				981114271CE1E2380092F507 /* UIWindow+Visible.m in Sources */,
-				980345681CC776FF0016F345 /* NSString+Contains.m in Sources */,
 				98764C2D1CAA1AC600DC1368 /* UIButton+AFNetworking.m in Sources */,
 				980345621CC776EA0016F345 /* Tools.swift in Sources */,
 				983142C51CB65BB900F75C8F /* ChoseDeviceTypeVC.swift in Sources */,
@@ -3719,7 +3722,6 @@
 				98EDE6781CDB6A90003AD01C /* PriceTableViewCell.swift in Sources */,
 				C2DF38FE1C34C5CB00114AE8 /* ChooseHeaderView.swift in Sources */,
 				98312BFF1CBB6B50002E1C83 /* MyAudioSession.mm in Sources */,
-				98EDE68C1CDB6A90003AD01C /* MineVC.swift in Sources */,
 				98312AD11CBB52F4002E1C83 /* NSArray+MASAdditions.m in Sources */,
 				981113DC1CE1BE790092F507 /* YYTool.m in Sources */,
 				98A3DB511CB50DA20064474C /* HeadCell.swift in Sources */,
@@ -4027,8 +4029,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.smart.zszj;
 				PRODUCT_MODULE_NAME = SmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "00bd984d-22a1-40ae-ba35-a05c8aaeccae";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartHome/SmartHome-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -4037,8 +4040,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yang Danfeng (C84VK3E4JF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
@@ -4079,8 +4082,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.smart.zszj;
 				PRODUCT_MODULE_NAME = SmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a240c465-34d7-460f-ba63-596b4ce9c279";
+				PROVISIONING_PROFILE = "00bd984d-22a1-40ae-ba35-a05c8aaeccae";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartHome/SmartHome-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;

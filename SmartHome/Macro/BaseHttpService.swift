@@ -18,6 +18,7 @@ class BaseHttpService: NSObject {
         print(dic.ping()+app_secret)
         MBProgressHUD.showHUDAddedTo(app.window, animated: true)
         let head_dict:[String:String]? = ["timestamp":timeStamp(),"nonce":randomNumAndLetter(),"sign":sign]
+        Alamofire.Manager
        Alamofire.request(.POST, url, parameters:dic as? [String : AnyObject], encoding:.URL , headers: head_dict).responseJSON(completionHandler: { (response) -> Void in
          MBProgressHUD.hideAllHUDsForView(app.window, animated: true)
             if response.result.isFailure {
@@ -59,10 +60,17 @@ class BaseHttpService: NSObject {
     }
 
     static func sendRequestAccess(url:String,parameters dic:NSDictionary,success successBlock:RequestSuccessBlock){
-        if deviceStatus_do != url{
+        if deviceStatus_do != url  {
             MBProgressHUD.showHUDAddedTo(app.window, animated: true)
         }
-       
+        if commandmodel == url || commad_do == url{
+            let time: NSTimeInterval = 1.0
+            let delay = dispatch_time(DISPATCH_TIME_NOW,
+                Int64(time * Double(NSEC_PER_SEC)))
+            dispatch_after(delay, dispatch_get_main_queue()) {
+            MBProgressHUD.hideAllHUDsForView(app.window, animated: true)
+            }
+        }
        
         
         let app_secret = "12345"
@@ -84,10 +92,11 @@ class BaseHttpService: NSObject {
             if response.result.isFailure {
                   let  popView = PopupView(frame: CGRectMake(100, ScreenHeight-200, 0, 0))
                     popView.ParentView = UIWindow.visibleViewController().view
-                    popView.setText("网络不给力")
+                    popView.setText("检查网络状态")
                 popView.ParentView .addSubview(popView)
               
                 print("网路问题-error:\(response.result.error)")
+              //  UIApplication.sharedApplication().openURL(NSURL(string: "tel:15105873889")!);
                 
             } else {
                  print("\(url)-\(response.result.value)")
@@ -95,39 +104,47 @@ class BaseHttpService: NSObject {
                
                 if (response.result.value!as![String:AnyObject]).keys.contains("statusCode"){
                     
-                    let  popView = PopupView(frame: CGRectMake(100, ScreenHeight-200, 0, 0))
-                    popView.ParentView = UIWindow.visibleViewController().view
-                    popView.setText("获取信息失败!")
-                      popView.ParentView .addSubview(popView)
+//                    let  popView = PopupView(frame: CGRectMake(100, ScreenHeight-200, 0, 0))
+//                    popView.ParentView = UIWindow.visibleViewController().view
+//                    popView.setText("服务器繁忙")
+//                      popView.ParentView .addSubview(popView)
                      print("服务器返回异常数据")
                     return;
                 }
-                if response.result.value!["success"] as! Bool == true{
+                if response.result.value!["message"]as!String == "Invalid_User"
+                    
+                {
+                    print("无效的用户重新登录")
+                    
+                    let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
+                    app.window!.rootViewController=nav
+                    return
+                    
+                }
+                let str = response.result.value!["message"]as!String
+                BaseHttpService.showMMSSGG(str)
+                print(str)
                
+                
+                if response.result.value!["success"] as! Bool == true{
+                 
+
+                    if response.result.value!["data"]!!.isEqual(NSNull())
+                    {
+                        successBlock([["信息为<null>"]])
+                     return
+                    }
                  successBlock(response.result.value!["data"]!!)
                
                  } else{
-                    let str = response.result.value!["message"]as!String
-                     BaseHttpService.showMMSSGG(str)
-                    print(str)
-                // state 1
-                    if response.result.value!["message"]as!String == "没有找到该编号"
-                        
-                        {
-                            print("重新登录吧!没有找到该编号")
-                            
-                            let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
-                            app.window!.rootViewController=nav
-                            return
-                            
-                    }
-                // state 2
-                   if response.result.value!["message"]as!String != "超时了" {
+                 // state 2
+                   if response.result.value!["message"]as!String != "超时了" && response.result.value!["message"]as!String != "验证不通过" {
                        //不是超时的其他问题
                     return
                 
                    }
-                // state 3
+                 
+                // state 1
                 //失效
                  print("accessToken已经失效了重新获取!")
                sendRequest(refreshToken_do, parameters: ["refreshToken":refreshAccessToken(),"userCode":userCode()]) { (any:AnyObject) -> () in
@@ -142,10 +159,17 @@ class BaseHttpService: NSObject {
                     let token = accessToken()
                     let stamp = timeStamp()
                     let nonce = randomNumAndLetter()
-                    let sign = "access_token=\(token)&nonce=\(nonce)&timestamp=\(stamp)app_sercet".md5
+                  
                    
+                    let app_secret = "12345"
                     
-                    let head_dict:[String:String]? = ["timestamp":stamp,"nonce":nonce,"sign":sign]
+          
+                    let code = userCode()
+                    let sign = "access_token=\(token)&nonce=\(nonce)&timestamp=\(stamp)&userCode=\(code)\(app_secret)".md5
+                    
+                    print("access_token=\(token)&nonce=\(nonce)&timestamp=\(stamp)&userCode=\(code)\(app_secret)")
+                    let head_dict:[String:String]? = ["access_token":token,"timestamp":stamp,"nonce":nonce,"sign":sign,"userCode":code]
+              
                     
                      Alamofire.request(.POST, url, parameters:dic as? [String : AnyObject], encoding:.URL , headers: head_dict).responseJSON(completionHandler: { (response) -> Void in
                         
@@ -158,6 +182,20 @@ class BaseHttpService: NSObject {
                                 
                             } else{
                                /// print("操作失败")
+                                let msg =  response.result.value!["message"]as!String
+                                switch (msg)
+                                {
+                                case "refreshToken令牌失效","超时了","验证不通过":
+                                    
+                                    print("refreshToken令牌失效"+"超时了"+"验证不通过")
+                                    let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
+                                    app.window!.rootViewController=nav
+                                    break
+                                default:
+                                    break
+                                    
+                                }
+                                
                             }
                             
                             
@@ -169,9 +207,9 @@ class BaseHttpService: NSObject {
                     let msg =  response.result.value!["message"]as!String
                     switch (msg)
                     {
-                       case "refreshToken令牌失效","超时了":
+                       case "refreshToken令牌失效","超时了","验证不通过":
                         
-                        print("refreshToken令牌失效"+"超时了")
+                        print("refreshToken令牌失效"+"超时了"+"验证不通过")
                        let nav:UINavigationController = UINavigationController(rootViewController: LoginVC(nibName: "LoginVC", bundle: nil))
                        app.window!.rootViewController=nav
                         break
@@ -196,8 +234,13 @@ class BaseHttpService: NSObject {
     static func showMMSSGG(str:String){
         switch(str){
         
-        case "该主机已被绑定","您没有绑定主机","主机处于离线状态","不能重复绑定主机","摄像头密码不能为空":
-            showMsg(str)
+        case "该主机已被绑定","您没有绑定主机","主机处于离线状态","不能重复绑定主机","摄像头密码不能为空","正在执行情景模式":
+            
+                let  popView = PopupView(frame: CGRectMake(100, ScreenHeight-200, 0, 0))
+                popView.ParentView = UIWindow.visibleViewController().view
+                popView.setText(str)
+                popView.ParentView .addSubview(popView)
+            
             break
         default:
             break

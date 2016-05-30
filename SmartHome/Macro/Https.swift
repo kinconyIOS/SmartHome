@@ -9,9 +9,9 @@
 import Foundation
 
 
-let baseUrl = "http://120.27.137.65/smarthome.IMCPlatform/xingUser/"
+let baseUrl = "http://114.55.89.143:8080/smarthome.IMCPlatform/xingUser/"
 //tupian
-let imgUrl = "http://120.27.137.65/smarthome.IMCPlatform/"
+let imgUrl = "http:/114.55.89.143:8080/smarthome.IMCPlatform/"
 ////添加楼层
 //let addFloor_do = "\(baseUrl)addfloor.action"
 ////添加房间

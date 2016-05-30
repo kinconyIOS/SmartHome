@@ -13,7 +13,7 @@ class ShotLockCell: UITableViewCell {
     @IBOutlet var btn: UIButton!
     @IBOutlet weak var kai: UIButton!
 
-    var commad =  0
+    var commad =  100
     var isMoni:Bool = false
     var index:NSIndexPath?
     var equip:Equip?
@@ -79,33 +79,7 @@ class ShotLockCell: UITableViewCell {
         if isMoni
             {
                 self.equip?.status = String(self.commad )
-                var str = ""
-                switch(self.equip!.delay){
-                case "300":str = "立即执行"//ms
-                    break
-                case "600":str = "延迟0.5秒"
-                    break
-                case "1000":str = "延迟1秒"
-                    break
-                case "2000":str = "延迟2秒"
-                    break
-                case "3000":str = "延迟3秒"
-                    break
-                case "4000":str = "延迟4秒"
-                    break
-                case "5000":str = "延迟5秒"
-                    break
-                case "10000":str = "延迟10秒"
-                    break
-                case "15000":str = "延迟15秒"
-                    break
-                case "30000":str = "延迟30秒"
-                    break
-                default:break
-                    
-                }
-                self.delayBtn.setTitle(str, forState: UIControlState.Normal)
-                app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
+               app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
                 return
             }
             let dic = ["deviceAddress":address!,"command":self.commad]
@@ -132,9 +106,35 @@ class ShotLockCell: UITableViewCell {
         if isMoni
         {
             self.equip?.status = String(self.commad)
-            app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
+            var str = ""
+            switch(self.equip!.delay){
+            case "300":str = "立即执行"//ms
+                break
+            case "600":str = "延迟0.5秒"
+                break
+            case "1000":str = "延迟1秒"
+                break
+            case "2000":str = "延迟2秒"
+                break
+            case "3000":str = "延迟3秒"
+                break
+            case "4000":str = "延迟4秒"
+                break
+            case "5000":str = "延迟5秒"
+                break
+            case "10000":str = "延迟10秒"
+                break
+            case "15000":str = "延迟15秒"
+                break
+            case "30000":str = "延迟30秒"
+                break
+            default:break
+                
+            }
+            self.delayBtn.setTitle(str, forState: UIControlState.Normal)
+            //app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
             self.delayBtn.hidden = false
-            self.delayBtn .setTitle(self.equip?.delay, forState: UIControlState.Normal)
+           // self.delayBtn .setTitle(self.equip?.delay, forState: UIControlState.Normal)
             return
         }
         self.delayBtn.hidden = true

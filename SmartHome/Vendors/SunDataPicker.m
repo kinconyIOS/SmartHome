@@ -46,7 +46,9 @@
     [_btn addTarget:self action:@selector(getData) forControlEvents:UIControlEventTouchUpInside];
     [_btn setTitle:@"确定" forState:UIControlStateNormal];
     [_btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
+    _selectOne=0;
+      _selectTwo=0;
+       _selectThree=0;
     [self addSubview:_picker];
     [self addSubview:_title];
     [self addSubview:_btn];
@@ -115,9 +117,7 @@
     _oneTitles=nil;
     _thirdTitles=nil;
     _secondTitles=nil;
-    _selectOne=0;
-    _selectTwo=0;
-    _selectThree=0;
+//
     
     //调整位置
     UIView * tar=(UIView *)target;
@@ -148,7 +148,9 @@
         
             break;
     }
-   [self.picker reloadAllComponents];
+    [self.picker reloadAllComponents];
+    
+  //
   
     _complete=complete;
     

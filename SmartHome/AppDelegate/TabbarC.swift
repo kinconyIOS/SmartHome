@@ -31,7 +31,7 @@ class TabbarC: UITabBarController {
         self.tabBar.shadowImage = imageWithColor(UIColor.clearColor())
 
         self.tabBar.backgroundImage = imageWithColor(UIColor.whiteColor())
-       
+       self.view.backgroundColor = UIColor .whiteColor()
        
         
         

@@ -7,7 +7,7 @@
 //
 
 #import "JK_LineTableViewCell.h"
-
+#import "JK_ViewController.h"
 @interface JK_LineTableViewCell()
 @property (nonatomic,strong)Equip *equip;
 @end
@@ -47,6 +47,7 @@
     switch (buttonIndex) {
         case 1:
         {
+            NSLog(@"ssss");
             NSDictionary *dict = @{@"roomCode":self.equip.roomCode,
                                    @"deviceAddress":self.equip.equipID,
                                    @"nickName":self.equip.name,
@@ -55,16 +56,15 @@
                                    @"validationCode":self.passWord.text,
                                    @"deviceCode":@"commonsxt"};
           
-            [BaseHttpService sendRequestAccess:@"http://120.27.137.65/smarthome.IMCPlatform/xingUser/setDeviceInfo.action" parameters:dict success:^(id _Nonnull) {
-                
-              
-               
+            [BaseHttpService sendRequestAccess:@"http://114.55.89.143:8080/smarthome.IMCPlatform/xingUser/setDeviceInfo.action" parameters:dict success:^(id _Nonnull) {
+             NSLog(@"ssss");
                 weakSelf.equip.hostDeviceCode = @"commonsxt";
                 weakSelf.equip.num = weakSelf.passWord.text;
                 
              
                 [weakSelf.equip saveEquip];
                 [[[UIAlertView alloc]initWithTitle:nil message:@"添加成功" delegate:nil cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil]show];
+                [[weakSelf parentController] startSearch];
             }];
         }
             break;
@@ -75,6 +75,15 @@
     }
     
 }
-
+- (JK_ViewController *)parentController
+{
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[JK_ViewController class]]) {
+            return (JK_ViewController*)nextResponder;
+        }
+    }
+    return nil;
+}
 
 @end

@@ -118,7 +118,7 @@ class EquipTypeChoseTVC: UITableViewController {
                         eq.hostDeviceCode = a
                         //
                         eq.icon = "门锁"
-                        let parameter = ["userCode" : userCode,
+                        let parameter = [
                             "roomCode":self.roomCode!,
                             "deviceAddress":eq.equipID,
                             "nickName":eq.name,
@@ -131,11 +131,11 @@ class EquipTypeChoseTVC: UITableViewController {
                             eq.saveEquip()
                             showMsg("添加成功")
                             for temp in self.navigationController!.viewControllers {
-                                if temp.isKindOfClass(HomeVC.classForCoder()) {
+                                if temp.isKindOfClass(ClassifyHomeVC.classForCoder()) {
                                     self.navigationController?.popToViewController(temp , animated: true)
-                                }else if temp.isKindOfClass(MineVC.classForCoder()){
+                                }/*else if temp.isKindOfClass(c.classForCoder()){
                                     self.navigationController?.popToViewController(temp , animated: true)
-                                }
+                                }*/
                             }
                             
                             })

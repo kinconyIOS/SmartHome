@@ -100,7 +100,8 @@ class LoginVC: UIViewController  {
 
     @IBAction func loginTap(sender: AnyObject) {
         
-      
+        BaseHttpService.clearToken()
+        NSUserDefaults.standardUserDefaults().setObject("0", forKey: "password")
       let phone = self.phoneText.text?.trimString()
       let pwd = self.passText.text?.trimString()
         print("----a\(phone),\(pwd)")

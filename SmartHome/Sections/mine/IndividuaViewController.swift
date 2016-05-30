@@ -63,7 +63,8 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
         let app = UIApplication.sharedApplication().delegate as! AppDelegate
         app.window!.rootViewController=nav
         // [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"password"];
-       NSUserDefaults.standardUserDefaults().setObject("0", forKey: "password")
+        
+        NSUserDefaults.standardUserDefaults().setObject("0", forKey: "password")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -236,9 +237,8 @@ class IndividuaViewController: UIViewController,UITableViewDataSource,UITableVie
     }
     override func viewWillAppear(animated: Bool) {
         //获取用户信息
-        let parameters=["userCode":userCode]
         self.navigationController?.navigationBarHidden=false
-        BaseHttpService .sendRequestAccess(GetUser, parameters:parameters) { (response) -> () in
+        BaseHttpService .sendRequestAccess(GetUser, parameters:[:]) { (response) -> () in
             print("获取用户信息=\(response)")
             app.user = UserModel(dict: response as! [String:AnyObject])
             print(app.user?.userName)

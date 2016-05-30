@@ -74,40 +74,66 @@ class CreateModelVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         self.homeTableView.registerNib(UINib(nibName: "ShotLockCell", bundle: nil), forCellReuseIdentifier: "ShotLockCell")
     }
     func configView(){
-      
+      app.modelEquipArr.removeAllObjects()
+        self.homeTableView.reloadData()
         let bbi_r3=UIBarButtonItem(title: "保存", style:UIBarButtonItemStyle.Plain, target:self ,action:Selector("submit"));
         bbi_r3.tintColor=UIColor.whiteColor()
         self.navigationItem.rightBarButtonItems = [bbi_r3]
         BaseHttpService.sendRequestAccess(Get_gainmodelinfo, parameters: ["modelId":modelId]) { (backJson) -> () in
             print(backJson)
-            app.modelEquipArr.removeAllObjects()
+            
             if backJson.count != 0{
+                var isAll = true
                 for mo in (backJson as! Array<Dictionary<String,AnyObject>>){
-                    print("\(mo["deviceAddress"]!)")
-                    let eq =  dataDeal.searchModel(.Equip, byCode: mo["deviceAddress"]! as! String) as! Equip
+                    print("----\(mo["deviceAddress"]!)")
+                    let eq1:Equip? =  dataDeal.searchModel(.Equip, byCode: mo["deviceAddress"]! as! String) as! Equip?
+                    if eq1 != nil
+                    {
+                        let eq = Equip(equipID: (eq1?.equipID)!)
+                        eq.name = eq1!.name
+                        eq.userCode = eq1!.userCode
+                        eq.roomCode = eq1!.roomCode
+                        eq.type = eq1!.type
+                        eq.icon  = eq1!.icon
+                        eq.num = eq1!.num
+                        eq.status = eq1!.status
+                        eq.delay = mo["delayValues"]!.stringValue
+                        eq.status = mo["controlCommand"]! as!String
+                        app.modelEquipArr.addObject(eq)
                     
-                    eq.delay = mo["delayValues"]!.stringValue
-                    eq.status = mo["controlCommand"]! as!String
-                    app.modelEquipArr.addObject(eq)
+                    }else
+                    {
+                        isAll = false
+                    }
+                    
                 }
+                if !isAll{
+                    BaseHttpService.sendRequestAccess(addmodelinfo, parameters: ["modelInfo":self.getJsonStrOfDeviceData(),"modelId":self.modelId], success: {(back) -> () in
+                        print(back)
+                                             showMsg("失效设备已移除")
+                        })
+
+                   
+                }
+                self.homeTableView.reloadData()
             }
             
-            self.homeTableView.reloadData()
+            
         }
 
         
     }
-  
+
     @IBAction func left(sender: AnyObject) {
         print("left")
-           self.homeTableView.setEditing(false, animated: true)
+        self.homeTableView.setEditing(false, animated: true)
       
     }
    
 
     @IBAction func right(sender: AnyObject) {
         print("right")
-           self.homeTableView.setEditing(true, animated: true)
+          self.homeTableView.setEditing(true, animated: true)
     
     }
     
@@ -136,7 +162,7 @@ class CreateModelVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
 //        UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
         
           self.navigationController!.navigationBar.setBackgroundImage(navBgImage, forBarMetrics: UIBarMetrics.Default)
-        self.homeTableView.reloadData()
+     self.homeTableView.reloadData()
 }
     
 //[{'modelId':'abcdefgh','deviceAddress':'56194','deviceType':'2','controlCommand':'50','delayValues':'10'}]
@@ -169,13 +195,13 @@ class CreateModelVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+        print("出cell");
         var cell:UITableViewCell?
      
             if app.modelEquipArr.count ==  indexPath.row
             {
             
-             cell = self.homeTableView.dequeueReusableCellWithIdentifier("NoDeviceCell", forIndexPath: indexPath)
+             cell = tableView.dequeueReusableCellWithIdentifier("NoDeviceCell", forIndexPath: indexPath)
                   (cell as! NoDeviceCell).showLabel.text = "点击为情景模式添加设备"
                 cell?.selectionStyle = UITableViewCellSelectionStyle.None
                 return cell!
@@ -185,39 +211,40 @@ class CreateModelVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
             let equip = app.modelEquipArr[indexPath.row] as! Equip
             if equip.type == "1"
             {//开关设备
-                 cell = self.homeTableView.dequeueReusableCellWithIdentifier("LightCell", forIndexPath: indexPath)
+                 cell = tableView.dequeueReusableCellWithIdentifier("LightCell", forIndexPath: indexPath)
                 
                  cell?.backgroundColor = UIColor.whiteColor()
-                 tableView.bringSubviewToFront(cell!)
+               
                 (cell as! LightCell).isMoni = true
                 (cell as! LightCell).index = indexPath
-                (cell as!LightCell).setModel(equip)
+                (cell as! LightCell).setModel(equip)
                 if indexPath.row == 0{
                     (cell as!LightCell).delayBtn.hidden = true
                 }
             }
+        else
         if equip.type == "999"
         {//门锁
             
-            cell = self.homeTableView.dequeueReusableCellWithIdentifier("ShotLockCell", forIndexPath: indexPath)
+            cell = tableView.dequeueReusableCellWithIdentifier("ShotLockCell", forIndexPath: indexPath)
             
             cell?.backgroundColor = UIColor.whiteColor()
-            tableView.bringSubviewToFront(cell!)
+            
             (cell as! ShotLockCell).isMoni = true
             (cell as! ShotLockCell).index = indexPath
-            (cell as!ShotLockCell).setModel(equip)
+            (cell as! ShotLockCell).setModel(equip)
             if indexPath.row == 0{
                 (cell as!ShotLockCell).delayBtn.hidden = true
             }
         }
             else if Int(equip.type) >= 1000 && Int(equip.type)<2000{
-                cell = self.homeTableView.dequeueReusableCellWithIdentifier("ShotLightCell", forIndexPath: indexPath)
+                cell = tableView.dequeueReusableCellWithIdentifier("ShotLightCell", forIndexPath: indexPath)
                 
                 cell?.backgroundColor = UIColor.whiteColor()
-                tableView.bringSubviewToFront(cell!)
+            
                 (cell as! ShotLightCell).isMoni = true
                 (cell as! ShotLightCell).index = indexPath
-                (cell as!ShotLightCell).setModel(equip)
+                (cell as! ShotLightCell).setModel(equip)
                 if indexPath.row == 0{
                     (cell as!ShotLightCell).delayBtn.hidden = true
                 }
@@ -226,21 +253,21 @@ class CreateModelVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
             else if Int(equip.type) >= 3000 && Int(equip.type)<4000 {
                 //开关停 窗帘
                 
-                cell = self.homeTableView.dequeueReusableCellWithIdentifier("ShotWindowCell", forIndexPath: indexPath)
+                cell = tableView.dequeueReusableCellWithIdentifier("ShotWindowCell", forIndexPath: indexPath)
                 cell?.backgroundColor = UIColor.whiteColor()
-                tableView.bringSubviewToFront(cell!)
+            
                 (cell as! ShotWindowCell).isMoni = true
                 (cell as! ShotWindowCell).index = indexPath
-                (cell as!ShotWindowCell).setModel(equip)
+                (cell as! ShotWindowCell).setModel(equip)
                 if indexPath.row == 0{
                     (cell as!ShotWindowCell).delayBtn.hidden = true
                 }
             }
             else if equip.type == "2" || equip.type == "4"||judgeType(equip.type, type: "2")
             {//可调设备
-             cell = self.homeTableView.dequeueReusableCellWithIdentifier("ModulateCell", forIndexPath: indexPath)
+             cell = tableView.dequeueReusableCellWithIdentifier("ModulateCell", forIndexPath: indexPath)
                  cell?.backgroundColor = UIColor.whiteColor()
-                 tableView.bringSubviewToFront(cell!)
+          
                 (cell as! ModulateCell).isMoni = true
                  (cell as! ModulateCell).index = indexPath
                  (cell as! ModulateCell).setModel(equip)
@@ -250,9 +277,9 @@ class CreateModelVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
             }
         else if equip.type == "99" || equip.type == "98"
             {//红外学习设备
-                cell = self.homeTableView.dequeueReusableCellWithIdentifier("InfraredCell", forIndexPath: indexPath)
+                cell = tableView.dequeueReusableCellWithIdentifier("InfraredCell", forIndexPath: indexPath)
                 cell?.backgroundColor = UIColor.whiteColor()
-                tableView.bringSubviewToFront(cell!)
+              
                 (cell as! InfraredCell).isMoni = true
                 (cell as! InfraredCell).index = indexPath
                 (cell as! InfraredCell).setModel(equip)
@@ -261,10 +288,11 @@ class CreateModelVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
                 }
         }
         else{
+            print("未知设备");
             
-                cell = self.homeTableView.dequeueReusableCellWithIdentifier("UnkownCell", forIndexPath: indexPath)
+                cell = tableView.dequeueReusableCellWithIdentifier("UnkownCell", forIndexPath: indexPath)
                  cell?.backgroundColor = UIColor.whiteColor()
-                 tableView.bringSubviewToFront(cell!)
+            
                 //(cell as! UnkownCell).setModel(equip)
                 if indexPath == 0{
                     
@@ -297,7 +325,7 @@ class CreateModelVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         
        //高度
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if tableView===self.homeTableView{
+        if tableView===tableView{
           
             if app.modelEquipArr.count  == indexPath.row{
             return 44
@@ -327,12 +355,12 @@ class CreateModelVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         return 55
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0{
-        return 0.001
-        }
-        return 30
-    }
+//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        if section == 0{
+//        return 0.001
+//        }
+//        return 30
+//    }
 //    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //
 //        return view
@@ -349,8 +377,8 @@ class CreateModelVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     //单元格返回的编辑风格，包括删除 添加 和 默认  和不可编辑三种风格
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         if app.modelEquipArr.count != indexPath.row{
-           return UITableViewCellEditingStyle.Delete
-            //return UITableViewCellEditingStyle(rawValue:UITableViewCellEditingStyle.Delete.rawValue|UITableViewCellEditingStyle.Insert.rawValue)!
+          return UITableViewCellEditingStyle.Delete
+          //   return UITableViewCellEditingStyle(rawValue:UITableViewCellEditingStyle.Delete.rawValue|UITableViewCellEditingStyle.Insert.rawValue)!
         }else{
              return UITableViewCellEditingStyle.None
         }
@@ -372,7 +400,7 @@ class CreateModelVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         //    在数组中移动需要移动的行的数据
         app.modelEquipArr.removeObjectAtIndex(fromRow)
         app.modelEquipArr.insertObject(object, atIndex: toRow)
-        self.homeTableView.reloadData();
+        tableView.reloadData();
         } //    把需要移动的单元格数据在数组中，移动到想要移动的数据前面
         
     }
@@ -384,23 +412,16 @@ class CreateModelVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete && app.modelEquipArr.count > 0
         {
-            let fromRow = indexPath.row;
+            let row = indexPath.row;
             
-            //    在数组中移动需要移动的行的数据
-            app.modelEquipArr.removeObjectAtIndex(fromRow)
+            app.modelEquipArr.removeObjectAtIndex(row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            self.homeTableView.reloadData();
+           // tableView.reloadData();
         }
     }
     
  
-      //
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
- 
-        
-    }
+   
 
     
 }

@@ -30,7 +30,7 @@ extension AppDelegate{
                 let dict = ["appName":"SmartHome","content":err!]
                 
                 
-                let url1 = "http://120.27.137.65:8080/smarthome.IMCPlatform/xingErrorr/report.action"
+                let url1 = "http://120.27.137.65:80/smarthome.IMCPlatform/xingErrorr/report.action"
                 print(url1)
               
                 

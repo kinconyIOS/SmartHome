@@ -15,11 +15,14 @@
 {
     CSearchDVS* dvs;
     NSDictionary *_moblieDict;
-    NSMutableArray <Equip *> *dataArray;
+   
       NSMutableArray <Equip *> *prefixDataArray;
 }
+@property (nonatomic,strong) NSMutableArray <Equip *> *dataArray;
 @property (nonatomic,strong)NSString *roomCode;
 @property  CPPPPChannelManagement* m_PPPPChannelMgt;
 @property (nonatomic, retain) NSTimer* searchTimer;
+
+- (void) startSearch;
 //@property (nonatomic, retain) NSCondition* m_PPPPChannelMgtCondition;
 @end

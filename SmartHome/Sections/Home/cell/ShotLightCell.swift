@@ -85,7 +85,7 @@ class ShotLightCell: UITableViewCell {
         if isMoni
             {
                 self.equip?.status = String(self.commad )
-                self.delayBtn.setTitle(self.equip?.delay, forState: UIControlState.Normal)
+              //  self.delayBtn.setTitle(self.equip?.delay, forState: UIControlState.Normal)
                 app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
                 self.kai.layer.borderColor = UIColor.greenColor().CGColor
                 self.guan.layer.borderColor = UIColor.whiteColor().CGColor
@@ -106,7 +106,7 @@ class ShotLightCell: UITableViewCell {
         {
             self.equip?.status = String(self.commad )
             app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
-            self.delayBtn.setTitle(self.equip?.delay, forState: UIControlState.Normal)
+          //  self.delayBtn.setTitle(self.equip?.delay, forState: UIControlState.Normal)
             self.guan.layer.borderColor = UIColor.groupTableViewBackgroundColor().CGColor
             self.guan.layer.borderColor = UIColor.greenColor().CGColor
             self.kai.layer.borderColor = UIColor.whiteColor().CGColor
@@ -134,7 +134,6 @@ class ShotLightCell: UITableViewCell {
 
         if isMoni
         {
-            self.equip?.status = String(self.commad)
             if self.equip?.status == "0"{
                 self.guan.layer.borderColor = UIColor.greenColor().CGColor
                 self.commad = 0
@@ -142,7 +141,9 @@ class ShotLightCell: UITableViewCell {
                 self.kai.layer.borderColor = UIColor.greenColor().CGColor
                 self.commad = 100
             }
-            app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
+            self.equip?.status = String(self.commad)
+           
+           app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
             self.delayBtn.hidden = false
             var str = ""
             switch(self.equip!.delay){

@@ -65,7 +65,7 @@ class ShotWindowCell: UITableViewCell {
             default:break
             
             }
-     app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
+     //app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
             print(a)
         })
       }
@@ -90,7 +90,7 @@ class ShotWindowCell: UITableViewCell {
         if isMoni
         {
             self.equip?.status = String(self.commad )
-            self.delayBtn.setTitle(self.equip?.delay, forState: UIControlState.Normal)
+           // self.delayBtn.setTitle(self.equip?.delay, forState: UIControlState.Normal)
             app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
             self.kai.layer.borderColor = UIColor.whiteColor().CGColor
             self.guan.layer.borderColor = UIColor.whiteColor().CGColor
@@ -132,7 +132,7 @@ class ShotWindowCell: UITableViewCell {
         {
             self.equip?.status = String(self.commad )
             app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
-            self.delayBtn.setTitle(self.equip?.delay, forState: UIControlState.Normal)
+           // self.delayBtn.setTitle(self.equip?.delay, forState: UIControlState.Normal)
             self.guan.layer.borderColor = UIColor.groupTableViewBackgroundColor().CGColor
             self.guan.layer.borderColor = UIColor.greenColor().CGColor
             self.kai.layer.borderColor = UIColor.whiteColor().CGColor
@@ -194,7 +194,7 @@ class ShotWindowCell: UITableViewCell {
                 self.kai.layer.borderColor = UIColor.greenColor().CGColor
                 self.commad = 100
             }
-            app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
+          //  app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
             self.delayBtn.hidden = false
             self.delayBtn .setTitle(self.equip?.delay, forState: UIControlState.Normal)
             return

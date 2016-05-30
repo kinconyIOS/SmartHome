@@ -87,7 +87,7 @@ class ShotEquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
     
         if self.equip!.name == ""
         {
-            showMsg("类型不能为空")
+            showMsg("名字不能为空")
             return
         }
         if self.equip!.type == ""
@@ -101,7 +101,7 @@ class ShotEquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
             return
         }
              //添加设备
-        let parameter = ["userCode" : userCode,
+        let parameter = [
             "roomCode":self.equip!.roomCode,
             "deviceAddress":self.equip!.equipID,
             "nickName":self.equip!.name,
@@ -113,11 +113,12 @@ class ShotEquipAddVC: UITableViewController, UIGestureRecognizerDelegate {
              self.equip!.saveEquip()
             print(data)
             for temp in self.navigationController!.viewControllers {
-                if temp.isKindOfClass(HomeVC.classForCoder()) {
+                print("-------");
+                if temp.isKindOfClass(ClassifyHomeVC.classForCoder()) {
                     self.navigationController?.popToViewController(temp , animated: true)
-                }else if temp.isKindOfClass(MineVC.classForCoder()){
+                }/*else if temp.isKindOfClass(MineVC.classForCoder()){
                     self.navigationController?.popToViewController(temp , animated: true)
-                }
+                }*/
             }
             
         })

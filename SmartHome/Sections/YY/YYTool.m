@@ -251,7 +251,7 @@ static YYTool *yyTool = nil;
         for (ChainModel *m  in appd.models) {
             if ([resultFromJson containsString:m.modelName])
             {
-                [BaseHttpService sendRequestAccess:@"http://120.27.137.65/smarthome.IMCPlatform/xingUser/commandmodel.action" parameters:@{@"modelId":m.modelId} success:^(id backJson) {
+                [BaseHttpService sendRequestAccess:@"http://114.55.89.143:8080/smarthome.IMCPlatform/xingUser/commandmodel.action" parameters:@{@"modelId":m.modelId} success:^(id backJson) {
                     
                 }];
             }

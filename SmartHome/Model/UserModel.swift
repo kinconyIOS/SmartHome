@@ -8,7 +8,7 @@
 
 import Foundation
 
-var userCode = "U00318"
+
 
 class UserModel: NSObject {
     var userName:String? = ""//姓名

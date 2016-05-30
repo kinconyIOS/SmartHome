@@ -64,7 +64,10 @@ class SetModelVC: UIViewController,UICollectionViewDataSource,UICollectionViewDe
     //    #pragma mark --UICollectionViewDelegate
     //UICollectionView被选中时调用的方法
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+                            let  popView = PopupView(frame: CGRectMake(100, ScreenHeight-200, 0, 0))
+                            popView.ParentView = UIWindow.visibleViewController().view
+                            popView.setText("即将上线，敬请期待")
+                              popView.ParentView .addSubview(popView)
     }
     
     //返回这个UICollectionView是否可以被选择

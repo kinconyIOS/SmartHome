@@ -11,7 +11,7 @@ import UIKit
 
 class ChooseIconVC: UICollectionViewController {
     
-    var itemDataSource: [String : [String]] = ["为你的设备选取图标" : ["调光灯泡", "开关灯泡", "普通灯泡", "挂式空调", "立式空调","中央空调", "窗帘", "电视","窗帘半开","窗帘关闭","电池阀","阀门","门锁","插座"]]
+    var itemDataSource: [String : [String]] = ["为你的设备选取图标" : ["调光灯泡", /*"开关灯泡",*/ "普通灯泡", "挂式空调", "立式空调","中央空调", "窗帘", "电视","窗帘半开","窗帘关闭","电池阀","阀门","门锁","插座"]]
     var sectionDataSource: [String] = ["为你的设备选取图标"]
     
     override func viewDidLoad() {

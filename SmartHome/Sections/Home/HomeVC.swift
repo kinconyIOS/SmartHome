@@ -94,10 +94,10 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         {
             self.refreshStatus()
         }
-        if self.judge_refresh_count  == 5
+        if self.judge_refresh_count  == 6
         {
             self.judge_refresh_timer?.invalidate()
-            
+             self.homeTableView.header.endRefreshing()
             self.judge_refresh_count = 0
             return
         }
@@ -139,8 +139,9 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
             
             }
             
-            self.homeTableView.header.endRefreshing();
+          
         }
+            navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         ////标题栏去掉
         // hscroll!.frame=CGRectMake(0,20, ScreenWidth-60, 64);
         // self.navigationItem.titleView=hscroll
@@ -166,7 +167,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("statusBarOrientationChange:"), name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
         //    self.homeTableView.registerNib(UINib(nibName: "HomeTopTableViewCell", bundle: nil), forCellReuseIdentifier:"topcell")
       
-        
+         self._btn.selected = true
     }
     func barButton()->NSArray{
         let item = UIBarButtonItem(customView: createButtonWithX(0, aSelector: Selector("showEZ")))
@@ -179,6 +180,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         _btn.addTarget(self, action: aSelector, forControlEvents: UIControlEvents.TouchUpInside)
         _btn.setImage(UIImage(named: "sxt"), forState: UIControlState.Normal)
          _btn.setImage(UIImage(named: "sxt3"), forState: UIControlState.Selected)
+        
         // _switch.onTintColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1)
         
       
@@ -212,11 +214,18 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
     func showEZ(){
         if(sxtData.count <= 0){
             showMsg("该房间没有摄像头")
+             self._btn.selected  = true
             return
         }else{
             print("-----")
-        showSXT = !showSXT
-        _btn.selected = showSXT
+       
+            if !showSXT {
+               _btn.setImage(UIImage(named: "guang1"), forState: UIControlState.Normal)
+                 showSXT = true
+            }else{
+               _btn.setImage(UIImage(named: "sxt"), forState: UIControlState.Normal)
+                showSXT = false
+            }
         self.homeTableView.reloadData()
         
         }
@@ -237,7 +246,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
             floor.iconName = "Floor"
             floor.isSubItem = false
             let rooms = dataDeal.getRoomsByFloor(_floor)
-         
+            
             for _room in rooms{
                 
                 let room  = RoomListItem()
@@ -245,10 +254,16 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
                 room.roomCode = _room.roomCode
                 room.iconName = "Home"
                 room.isSubItem = true
+                
                 floor.items.addObject(room)
                 
             }
-            tableSideViewDataSource.addObject(floor)
+         tableSideViewDataSource.addObject(floor)
+            
+           // if tableSideViewDataSource.count == 1{
+                floor.isOpen = true
+            tableSideViewDataSource.addObjectsFromArray(floor.items as [AnyObject])
+           // }
      
             
         }
@@ -270,12 +285,16 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
             
             if app.App_room == ""{
                 app.App_room  = rooms[0].roomCode;
+                app.App_roomName  = rooms[0].name;
+                
             }
+             navigationItem.title = app.App_roomName
             self.deviceDataSource = dataDeal.getEquipsByRoomCodeExceptSXT(app.App_room)
             print("\(self.deviceDataSource.count)")
             sxtData = [Equip]()
             sxtData = dataDeal.searchSXTModel(byRoomCode: app.App_room)
               refreshStatus()
+            self._btn.selected  = sxtData.count == 0
             self.homeTableView.reloadData()
            // currentRoomCode  = rooms[0].roomCode;
 //            if self.timer != nil
@@ -349,7 +368,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
     }
     override  func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-  
+      
         self.navigationController?.navigationBarHidden  = false
 //        UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
         
@@ -501,7 +520,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
                 //                    })
                 // (cell as? RecentModelCell)?.setmodelss()
                 (cell as? RecentModelCell)?.getModel()
-                tableView.bringSubviewToFront(cell!)
+              
                 return cell!
                 
             }
@@ -520,42 +539,42 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
             {//开关设备
                  cell = self.homeTableView.dequeueReusableCellWithIdentifier("LightCell", forIndexPath: indexPath)
                  cell?.backgroundColor = UIColor.whiteColor()
-                 tableView.bringSubviewToFront(cell!)
+                
                 (cell as!LightCell).setModel(equip)
             }
             else if Int(equip.type) >= 1000 && Int(equip.type)<2000 {
                 //开关分开
                 cell = self.homeTableView.dequeueReusableCellWithIdentifier("ShotLightCell", forIndexPath: indexPath)
                 cell?.backgroundColor = UIColor.whiteColor()
-                tableView.bringSubviewToFront(cell!)
+              
                 (cell as! ShotLightCell).setModel(equip)
             }
             else if Int(equip.type) >= 3000 && Int(equip.type)<4000 {
                 //开关停 窗帘
                 cell = self.homeTableView.dequeueReusableCellWithIdentifier("ShotWindowCell", forIndexPath: indexPath)
                 cell?.backgroundColor = UIColor.whiteColor()
-                tableView.bringSubviewToFront(cell!)
+              
                 (cell as! ShotWindowCell).setModel(equip)
             }
             else if equip.type == "999"{
                 cell = self.homeTableView.dequeueReusableCellWithIdentifier("ShotLockCell", forIndexPath: indexPath)
                 cell?.backgroundColor = UIColor.whiteColor()
-                tableView.bringSubviewToFront(cell!)
+              
                 (cell as! ShotLockCell).setModel(equip)
             }
             else if equip.type == "2" || equip.type == "4"||judgeType(equip.type, type: "2")
             {//可调设备
              cell = self.homeTableView.dequeueReusableCellWithIdentifier("ModulateCell", forIndexPath: indexPath)
                  cell?.backgroundColor = UIColor.whiteColor()
-                 tableView.bringSubviewToFront(cell!)
+               
                  (cell as! ModulateCell).setModel(equip)
             }
                 //todo
-            else if equip.type == "99" || equip.type == "98"
+            else if equip.type == "99" || equip.type == "98" || equip.type == "8192"
                 {//红外学习设备
                     cell = self.homeTableView.dequeueReusableCellWithIdentifier("InfraredCell", forIndexPath: indexPath)
                     cell?.backgroundColor = UIColor.whiteColor()
-                    tableView.bringSubviewToFront(cell!)
+                  
                     (cell as! InfraredCell).setModel(equip)
             }
             else
@@ -563,7 +582,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
             
                 cell = self.homeTableView.dequeueReusableCellWithIdentifier("UnkownCell", forIndexPath: indexPath)
                  cell?.backgroundColor = UIColor.whiteColor()
-                 tableView.bringSubviewToFront(cell!)
+            
                 //(cell as! UnkownCell).setModel(equip)
             
             }
@@ -624,12 +643,16 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
                     sxtData = dataDeal.searchSXTModel(byRoomCode: item.roomCode)
                     //非菜单选项
                     print("点到具体房间。。\(item.roomCode)..\(self.deviceDataSource.count)---\(sxtData.count)")
+                    self.showSXT = false
+                    self._btn.selected  = sxtData.count == 0
                     self.homeTableView.reloadData()
                     //
                     self.sideView?.closeTap()
                      self.drakBtn.hidden=true
                    // self.currentRoomCode = item.roomCode;
                     app.App_room = item.roomCode
+                    app.App_roomName  = item.name;
+                     navigationItem.title = app.App_roomName
                     //
 //                    if self.timer != nil
 //                    {
@@ -812,6 +835,7 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
       
     }
     
+    
     @IBAction func checkTap(sender: UIButton) {
         anfangCheck.selected = anfangCheck.tag == sender.tag
         jiajuCheck.selected = jiajuCheck.tag == sender.tag
@@ -828,6 +852,62 @@ class HomeVC: UIViewController,UITableViewDataSource,UITableViewDelegate,TouchSX
         
         self.navigationController?.pushViewController(chainView, animated: true)
      
+    }
+    @IBAction func leftTap(sender: AnyObject) {
+        print("左")
+        if getCodeOfRooms(app.App_room, isNext: true){
+            nextOne()
+        }
+    }
+  
+    @IBAction func rightTap(sender: AnyObject) {
+        print("右")
+        if getCodeOfRooms(app.App_room, isNext: false){
+            preOne()
+        }
+        
+    }
+    func getCodeOfRooms(roomCode:String,isNext:Bool)->Bool{
+     let allrooms = dataDeal.getModels(DataDeal.TableType.Room) as! Array<Room>
+        var i = 0
+        for ; i < allrooms.count ; i++ {
+            if allrooms[i].roomCode == roomCode{
+                break
+            }
+        }
+        if i == 0 && !isNext
+        {
+             return false
+        }
+        if i == allrooms.count-1 && isNext
+        {
+            return false
+        }
+      
+         app.App_room = allrooms[i+(isNext ? 1 : -1)].roomCode
+         app.App_roomName = allrooms[i+(isNext ? 1 : -1)].name
+    return true
+    }
+    
+    func preOne(){
+        
+    let transition = CATransition()
+    transition.type = kCATransitionPush//可更改为其他方式
+    transition.subtype = kCATransitionFromLeft//可更改为其他方式
+        let homevc:HomeVC=HomeVC(nibName: "HomeVC", bundle: nil)
+        self.navigationController!.view.layer.addAnimation(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(homevc, animated: false)
+   
+    }
+     func nextOne()
+    {
+         let transition = CATransition()
+        transition.type = kCATransitionPush//可更改为其他方式
+        transition.subtype = kCATransitionFromRight//可更改为其他方式
+        let homevc:HomeVC=HomeVC(nibName: "HomeVC", bundle: nil)
+        self.navigationController!.view.layer.addAnimation(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(homevc, animated: false)
+
     }
     
     //    //MARK-转屏适配-optional

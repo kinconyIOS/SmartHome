@@ -22,7 +22,7 @@
 @end
 
 @implementation JK_ViewController
-
+@synthesize dataArray;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -72,7 +72,7 @@
                                   @"validationCode":self.passWord.text,
                                    @"deviceCode":@"commonsxt"};
             __weak typeof(self) weakSelf = self;
-            [BaseHttpService sendRequestAccess:@"http://120.27.137.65/smarthome.IMCPlatform/xingUser/setDeviceInfo.action" parameters:dict success:^(id _Nonnull) {
+            [BaseHttpService sendRequestAccess:@"http://114.55.89.143:8080/smarthome.IMCPlatform/xingUser/setDeviceInfo.action" parameters:dict success:^(id _Nonnull) {
                 
                 //摄像头里这个字段存的是账号 及密码
                 // equip.icon = _userName.text;
@@ -85,6 +85,7 @@
                 eq.roomCode = weakSelf.roomCode;
                 [eq saveEquip];
                 [[[UIAlertView alloc]initWithTitle:nil message:@"添加成功" delegate:nil cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil]show];
+                [weakSelf startSearch];
             }];
         }
             break;
@@ -108,7 +109,7 @@
 }
 
 - (void) startSearch
-{
+{  [dataArray removeAllObjects];
     [prefixDataArray removeAllObjects];
     [self stopSearch];
     NSLog(@"-----%d",[DataWrapper getCameras].count)  ;

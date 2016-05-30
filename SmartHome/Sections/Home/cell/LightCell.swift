@@ -87,9 +87,10 @@ class LightCell: UITableViewCell {
         
         if isMoni
         {
-            self.equip?.status = String(Int(iswitch.on ? 100 : 0))
+            self.iswitch.setOn(e.status == "100", animated: true)
+           self.equip?.status = String(Int(iswitch.on ? 100 : 0))
           
-            app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
+          app.modelEquipArr.replaceObjectAtIndex((self.index?.row)!, withObject: self.equip!)
             self.delayBtn.hidden = false
             /// delay
             var str = ""
@@ -118,7 +119,9 @@ class LightCell: UITableViewCell {
                 
             }
             self.delayBtn.setTitle(str, forState: UIControlState.Normal)
-          
+            
+           
+            
             return
         }
         self.delayBtn.hidden = true
@@ -136,6 +139,7 @@ class LightCell: UITableViewCell {
         print(sender.on)
        
         let commad = sender.on ? 100 : 0
+         self.btn.selected = !sender.on
         let address = self.equip?.equipID
         if isMoni
         {
@@ -146,7 +150,7 @@ class LightCell: UITableViewCell {
         let dic = ["deviceAddress":address!,"command":commad]
         BaseHttpService.sendRequestAccess(commad_do, parameters: dic) { (back) -> () in
            
-            self.btn.selected = !self.btn.selected
+           
             print(back)
         }
     }

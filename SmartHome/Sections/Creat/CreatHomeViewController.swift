@@ -141,7 +141,8 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
             floorArr.append(floor)
             dataSource.append(floor)
             let rooms = dataDeal.getRoomsByFloor(_floor)
-           
+           floor.isUnfold = false//打开
+            
              var roomArr: [Building] = []
             for _room in rooms{
                 let room = Building(buildType: .BuildRoom, buildName: _room.name, isAddCell: false)
@@ -149,13 +150,15 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
                 print(room.buildName)
                 room.floor = floor
                 roomArr.append(room)
-               
+               dataSource.append(room)//添加房间
+                
                 
             }
             
             let add = Building(buildType: .BuildRoom, buildName: "添加", isAddCell: true)
             add.floor = floor
             roomArr.append(add)
+             dataSource.append(add)//添加房间
             roomDic[floor.buildName] = roomArr
            
             
@@ -181,7 +184,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
     }
     func handleRightItem(barButton: UIBarButtonItem) {
         
-        var parameter: [String : AnyObject] = ["userCode" : userCode]
+        var parameter: [String : AnyObject] = [:]
         parameter["roomInfo"] = assembleRoom()
         parameter["floorInfo"] = assembleFloor()
         print("------\(parameter["roomInfo"])")
@@ -201,7 +204,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
                         return
                     }
                     let addDeviceVC: AddDeviceViewController = AddDeviceViewController(nibName: "AddDeviceViewController", bundle: nil)
-                    addDeviceVC.setCompeletBlock { [unowned self]() -> () in
+                    addDeviceVC.setCompeletBlock { () -> () in
 //                        let classifyVC = ClassifyHomeVC(nibName: "ClassifyHomeVC", bundle: nil)
 //                        self.navigationController?.pushViewController(classifyVC, animated: true)
                         app.window!.rootViewController = TabbarC()
@@ -255,7 +258,9 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
             cell.configEndEditing({ [unowned self, unowned cell] (text) -> () in
                 let oldName = building.buildName
                 if text.trimString() == "" {
-                     cell.floorName.text = oldName
+                    print("oldName=\(oldName)")
+                     showMsg("楼层名不能为空")
+                    // cell.floorName.text = oldName
                
                 }else if self.checkDuplicateName(text) {
                     building.buildName = text
@@ -324,7 +329,8 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.configEndEditing({ (text) -> () in
                     let oldName = building.buildName
                     if text.trimString() == "" {
-                        cell.roomName.text = oldName
+                         showMsg("房间名不能为空")
+                        //cell.roomName.text = oldName
                         
                     
                     }else if self.checkDuplicateRoomName(text,floorName: (building.floor?.buildName)!) {
@@ -389,16 +395,24 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-          let building = dataSource[indexPath.row]
+        print("-----------\(indexPath.row)")
+        if dataSource.count == 0{
+            return false
+        }
+        let building = dataSource[indexPath.row]
         if building.isAddCell{
         return false
         }
         return true
+       
     }
     func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
         return "删除"
     }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if dataSource.count == 0{
+            return
+        }
         let building = dataSource[indexPath.row]
         if building.buildType == BuildType.BuildRoom
         {
@@ -467,7 +481,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
                 BaseHttpService .sendRequestAccess(deletefloor_do, parameters: parameter) {[unowned self](back) -> () in
                     
                          Floor( floorCode:building.buildCode).delete()
-                        NSUserDefaults.standardUserDefaults().setFloat((back["version"]!?.floatValue)!, forKey: "\(BaseHttpService.userCode())RoomInfoVersionNumber")
+                        
                         showMsg("删除成功");
                         let correctArray = getRemoveIndex(building,array:self.floorArr)
                         //从原数组中删除指定元素
@@ -479,6 +493,7 @@ class CreatHomeViewController: UIViewController, UITableViewDataSource, UITableV
                             self.floorArr.removeAtIndex(index)
                         }
                         self.dataSource.removeAtIndex(indexPath.row)
+                 print("self.dataSource.count-----------\(self.dataSource.count)")
                         self.tableView.reloadData()
                   
                 }
