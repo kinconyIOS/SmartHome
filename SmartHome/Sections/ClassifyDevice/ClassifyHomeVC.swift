@@ -240,7 +240,7 @@ class ClassifyHomeVC: UIViewController, UICollectionViewDataSource, UICollection
         }
         let equip = cDataSource[indexPath.row]
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("equipcollectioncell", forIndexPath: indexPath) as! EquipCollectionCell
-      ////BUG
+      ///--MARK
         if equip.icon == "未知" && equip.type == "8192"
         {
             equip.icon = "红外"
